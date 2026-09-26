@@ -1,0 +1,4001 @@
+{
+  "status": "audit_only_not_integrated",
+  "source_revision": "dfb0dcd0a01a1eba4f27d038eb0c7703b8136571",
+  "pokeheartgold_base_revision": "9d8b7591f09b65804da2fb2dfd56f320633e0d36",
+  "missing_build_inputs": [
+    "tools/mwccarm/2.0/sp2p2/mwccarm.exe",
+    "tools/mwccarm/2.0/sp2p2/mwasmarm.exe",
+    "tools/mwccarm/2.0/sp2p2/mwldarm.exe",
+    "tools/mwccarm/1.2/sp2p3/mwasmarm.exe",
+    "tools/mwccarm/2.0/sp2p3/mwccarm.exe",
+    "tools/mwccarm/2.0/sp2p3/mwasmarm.exe",
+    "tools/mwccarm/2.0/sp2p3/mwldarm.exe",
+    "tools/mwccarm/license.dat",
+    "tools/bin/makerom.exe",
+    "tools/bin/makelcf.exe",
+    "tools/bin/makebanner.exe",
+    "tools/bin/ntrcomp.exe",
+    "ARM9-TS.lcf.template",
+    "mwldarm.response.template",
+    "sub/ARM7-TS.lcf.template"
+  ],
+  "wine_available": false,
+  "approved_balance_constraints": {
+    "source": "user gameplay guidelines, superseding concept-sheet evolution levels",
+    "base_stat_total_by_stage": {
+      "1": 315,
+      "2": 405,
+      "3": 600
+    },
+    "first_evolution_level": 16,
+    "identical_stat_spreads": [
+      [
+        "pyrovaran",
+        "rimevaran"
+      ],
+      [
+        "magmalisk",
+        "fimbulisk"
+      ]
+    ],
+    "final_evolution_level": 49,
+    "approved_spreads_and_guidelines": "DATA-WORKSHEET.md"
+  },
+  "approved_growth_transition": {
+    "status": "implemented_level_and_fraction_preserved",
+    "desired_rates": {
+      "base": "Medium Slow",
+      "middle": "Slow",
+      "final": "Slow"
+    },
+    "proposed_policy": "At an evolution changing growth groups, convert stored experience to preserve current level and fractional progress toward next level. Handle delayed evolution and level 100; do not convert again for Slow-to-Slow evolution.",
+    "policy_status": "approved_by_user",
+    "reason": "Growth tables store cumulative thresholds; changing species expRate alone leaves stored experience on the old scale."
+  },
+  "approved_acquisition_policy": {
+    "status": "approved_by_user",
+    "normal_gameplay_distribution": "none",
+    "wild_encounters": false,
+    "starter_selection": false,
+    "npc_gifts": false,
+    "other_scripted_distribution": false,
+    "current_intended_access": "User may create a separate patch to obtain all three base species for a playthrough. No acquisition patch requested yet.",
+    "future_possibility": "NPC gifts in a broader release; deferred, not authorized for implementation.",
+    "scope_note": "No normal acquisition source for any family. Existing approved breeding and evolution remain valid once specimens are externally obtained; this is not a breeding/evolution prohibition."
+  },
+  "approved_other_defaults": {
+    "status": "approved_by_user",
+    "base_experience_yield_by_stage": {
+      "1": 64,
+      "2": 142,
+      "3": 300
+    },
+    "catch_rate_all_stages": 45,
+    "wild_held_items": {
+      "common": null,
+      "rare": null
+    },
+    "base_friendship": 70,
+    "regional_dex": "No Johto regional Dex slots; preserve existing order.",
+    "national_dex": "Use approved internal IDs 1076-1086 as National Dex numbers, subject to engine integration checks.",
+    "evolution_item_consumption": "Neither Icicle Plate nor NeverMeltIce is consumed."
+  },
+  "species": [
+    {
+      "name": "Voltuff",
+      "key": "voltuff",
+      "source_species_id": 1076,
+      "base_stats": {
+        "hp": 45,
+        "attack": 60,
+        "defense": 50,
+        "sp_attack": 55,
+        "sp_defense": 50,
+        "speed": 55
+      },
+      "bst": 315,
+      "types": [
+        "Electric"
+      ],
+      "abilities": {
+        "primary": "Static",
+        "secondary": null,
+        "hidden": null
+      },
+      "growth_rate": "Medium Slow",
+      "ev_yield": {
+        "hp": 0,
+        "attack": 1,
+        "defense": 0,
+        "sp_attack": 0,
+        "sp_defense": 0,
+        "speed": 0
+      },
+      "breeding": {
+        "egg_groups": [
+          "Field",
+          "Human-Like"
+        ],
+        "male_percent": 50,
+        "female_percent": 50,
+        "hatch_cycles": 20,
+        "status": "approved_by_user_individual_donor_routes_checked",
+        "hatch_species": "voltuff"
+      },
+      "pokedex": {
+        "classification": "Spark Pok\u00e9mon",
+        "classification_status": "derived_under_user_authorization",
+        "entry_text": "They brush against one another to build up electricity. Together, they create dazzling showers of sparks that frighten off much larger Pok\u00e9mon.",
+        "entry_source": "user_supplied_complete_entries_verbatim",
+        "height_decimetres": 5,
+        "weight_hectograms": 63,
+        "dimension_source": "Explicit concept-sheet values",
+        "implementation_status": "registered_full_text_paged",
+        "entry_status": "approved_user_text"
+      },
+      "approved_learnset": {
+        "LevelMoves": [
+          {
+            "Level": 1,
+            "Move": "MOVE_SCRATCH"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_LEER"
+          },
+          {
+            "Level": 4,
+            "Move": "MOVE_THUNDER_SHOCK"
+          },
+          {
+            "Level": 9,
+            "Move": "MOVE_QUICK_ATTACK"
+          },
+          {
+            "Level": 13,
+            "Move": "MOVE_SPARK"
+          },
+          {
+            "Level": 19,
+            "Move": "MOVE_CHARGE"
+          },
+          {
+            "Level": 23,
+            "Move": "MOVE_THUNDER_PUNCH"
+          },
+          {
+            "Level": 33,
+            "Move": "MOVE_SWIFT"
+          },
+          {
+            "Level": 37,
+            "Move": "MOVE_AGILITY"
+          },
+          {
+            "Level": 41,
+            "Move": "MOVE_DISCHARGE"
+          },
+          {
+            "Level": 48,
+            "Move": "MOVE_THUNDERBOLT"
+          },
+          {
+            "Level": 55,
+            "Move": "MOVE_WILD_CHARGE"
+          }
+        ],
+        "MachineMoves": [
+          "MOVE_AGILITY",
+          "MOVE_ALLURING_VOICE",
+          "MOVE_ATTRACT",
+          "MOVE_BODY_SLAM",
+          "MOVE_CAPTIVATE",
+          "MOVE_CHARGE",
+          "MOVE_CHARGE_BEAM",
+          "MOVE_CONFIDE",
+          "MOVE_CURSE",
+          "MOVE_DIG",
+          "MOVE_DOUBLE_EDGE",
+          "MOVE_DOUBLE_TEAM",
+          "MOVE_EERIE_IMPULSE",
+          "MOVE_ELECTRIC_TERRAIN",
+          "MOVE_ELECTROWEB",
+          "MOVE_ELECTRO_BALL",
+          "MOVE_ENDEAVOR",
+          "MOVE_ENDURE",
+          "MOVE_FACADE",
+          "MOVE_FLASH",
+          "MOVE_FLING",
+          "MOVE_FRUSTRATION",
+          "MOVE_HELPING_HAND",
+          "MOVE_HIDDEN_POWER",
+          "MOVE_IRON_TAIL",
+          "MOVE_LIGHT_SCREEN",
+          "MOVE_METAL_SOUND",
+          "MOVE_NATURAL_GIFT",
+          "MOVE_PLAY_ROUGH",
+          "MOVE_PROTECT",
+          "MOVE_RAIN_DANCE",
+          "MOVE_REFLECT",
+          "MOVE_REST",
+          "MOVE_RETURN",
+          "MOVE_ROAR",
+          "MOVE_ROCK_SMASH",
+          "MOVE_SECRET_POWER",
+          "MOVE_SHOCK_WAVE",
+          "MOVE_SLEEP_TALK",
+          "MOVE_STRENGTH",
+          "MOVE_SUBSTITUTE",
+          "MOVE_SUNNY_DAY",
+          "MOVE_SUPERCELL_SLAM",
+          "MOVE_SWAGGER",
+          "MOVE_TERA_BLAST",
+          "MOVE_THIEF",
+          "MOVE_THUNDER",
+          "MOVE_THUNDERBOLT",
+          "MOVE_THUNDER_WAVE",
+          "MOVE_TOXIC",
+          "MOVE_UPROAR",
+          "MOVE_WILD_CHARGE"
+        ],
+        "TutorMoves": [
+          "MOVE_HEADBUTT",
+          "MOVE_HELPING_HAND",
+          "MOVE_MAGNET_RISE",
+          "MOVE_MUD_SLAP",
+          "MOVE_ROLLOUT",
+          "MOVE_SIGNAL_BEAM",
+          "MOVE_SNORE",
+          "MOVE_SWIFT",
+          "MOVE_THUNDER_PUNCH",
+          "MOVE_UPROAR"
+        ],
+        "EggMoves": [
+          "MOVE_FAKE_OUT",
+          "MOVE_ENCORE",
+          "MOVE_DOUBLE_KICK",
+          "MOVE_FIRE_PUNCH",
+          "MOVE_ICE_PUNCH",
+          "MOVE_FEINT"
+        ]
+      },
+      "stock_move_symbol_aliases": {
+        "MOVE_SCRATCH": "MOVE_ATTRIBUTE_CONTEST_EFFECT",
+        "MOVE_THUNDER_PUNCH": "MOVE_ATTRIBUTE_FLAGS",
+        "MOVE_FIRE_PUNCH": "MOVE_ATTRIBUTE_RANGE",
+        "MOVE_ICE_PUNCH": "MOVE_ATTRIBUTE_PRIORTY"
+      },
+      "moves_absent_from_stock_by_method": {
+        "LevelMoves": [
+          {
+            "Level": 55,
+            "Move": "MOVE_WILD_CHARGE"
+          }
+        ],
+        "MachineMoves": [
+          "MOVE_ALLURING_VOICE",
+          "MOVE_CONFIDE",
+          "MOVE_EERIE_IMPULSE",
+          "MOVE_ELECTRIC_TERRAIN",
+          "MOVE_ELECTROWEB",
+          "MOVE_ELECTRO_BALL",
+          "MOVE_PLAY_ROUGH",
+          "MOVE_SUPERCELL_SLAM",
+          "MOVE_TERA_BLAST",
+          "MOVE_WILD_CHARGE"
+        ],
+        "TutorMoves": [],
+        "EggMoves": []
+      },
+      "existing_moves_not_on_stock_machines": [
+        "MOVE_AGILITY",
+        "MOVE_ATTRACT",
+        "MOVE_BODY_SLAM",
+        "MOVE_CAPTIVATE",
+        "MOVE_CHARGE",
+        "MOVE_CHARGE_BEAM",
+        "MOVE_CURSE",
+        "MOVE_DIG",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_ENDEAVOR",
+        "MOVE_ENDURE",
+        "MOVE_FACADE",
+        "MOVE_FLASH",
+        "MOVE_FLING",
+        "MOVE_FRUSTRATION",
+        "MOVE_HELPING_HAND",
+        "MOVE_HIDDEN_POWER",
+        "MOVE_IRON_TAIL",
+        "MOVE_LIGHT_SCREEN",
+        "MOVE_METAL_SOUND",
+        "MOVE_NATURAL_GIFT",
+        "MOVE_PROTECT",
+        "MOVE_RAIN_DANCE",
+        "MOVE_REFLECT",
+        "MOVE_REST",
+        "MOVE_RETURN",
+        "MOVE_ROAR",
+        "MOVE_ROCK_SMASH",
+        "MOVE_SECRET_POWER",
+        "MOVE_SHOCK_WAVE",
+        "MOVE_SLEEP_TALK",
+        "MOVE_STRENGTH",
+        "MOVE_SUBSTITUTE",
+        "MOVE_SUNNY_DAY",
+        "MOVE_SWAGGER",
+        "MOVE_THIEF",
+        "MOVE_THUNDER",
+        "MOVE_THUNDERBOLT",
+        "MOVE_THUNDER_WAVE",
+        "MOVE_TOXIC",
+        "MOVE_UPROAR"
+      ],
+      "assets": [
+        {
+          "path": "data/graphics/sprites/voltuff/female/back.png",
+          "sha256": "b43c3b578b6330239815f79b1a9bfa96859bb023aafb030529f442e29c1c2fa6"
+        },
+        {
+          "path": "data/graphics/sprites/voltuff/female/front.png",
+          "sha256": "cda5e03a674439550a82febb601c500e9d9fb95da1d639ce9124cb668f407641"
+        },
+        {
+          "path": "data/graphics/sprites/voltuff/icon.png",
+          "sha256": "a759410b0874d43ebe11e2602419e551aabd5cdb975020e735ca68ce4c66dbaf"
+        },
+        {
+          "path": "data/graphics/sprites/voltuff/male/back.png",
+          "sha256": "b43c3b578b6330239815f79b1a9bfa96859bb023aafb030529f442e29c1c2fa6"
+        },
+        {
+          "path": "data/graphics/sprites/voltuff/male/front.png",
+          "sha256": "cda5e03a674439550a82febb601c500e9d9fb95da1d639ce9124cb668f407641"
+        },
+        {
+          "path": "data/graphics/sprites/voltuff/overworld.png",
+          "sha256": "c7f815639db92d440b41e7643cdbb70a9f4a2016702ede17798470ac708ba049"
+        },
+        {
+          "path": "documentation/fakemon/designs-2026-09/cries/drafts/voltuff.wav",
+          "sha256": "d359640a6d94dd09cf47335ca05f3f90b9932efca73f817d34144a3a5b24ae8c"
+        }
+      ]
+    },
+    {
+      "name": "Surguenon",
+      "key": "surguenon",
+      "source_species_id": 1077,
+      "base_stats": {
+        "hp": 65,
+        "attack": 85,
+        "defense": 50,
+        "sp_attack": 55,
+        "sp_defense": 55,
+        "speed": 95
+      },
+      "bst": 405,
+      "types": [
+        "Electric",
+        "Fighting"
+      ],
+      "abilities": {
+        "primary": "Static",
+        "secondary": null,
+        "hidden": null
+      },
+      "growth_rate": "Slow",
+      "ev_yield": {
+        "hp": 0,
+        "attack": 1,
+        "defense": 0,
+        "sp_attack": 0,
+        "sp_defense": 0,
+        "speed": 1
+      },
+      "breeding": {
+        "egg_groups": [
+          "Field",
+          "Human-Like"
+        ],
+        "male_percent": 50,
+        "female_percent": 50,
+        "hatch_cycles": 20,
+        "status": "approved_by_user_individual_donor_routes_checked",
+        "hatch_species": "voltuff"
+      },
+      "pokedex": {
+        "classification": "Current Pok\u00e9mon",
+        "classification_status": "derived_under_user_authorization",
+        "entry_text": "Troop members practice together until their movements match perfectly. Their synchronized strikes overwhelm foes with powerful electric shocks.",
+        "entry_source": "user_supplied_complete_entries_verbatim",
+        "height_decimetres": 11,
+        "weight_hectograms": 284,
+        "dimension_source": "Explicit concept-sheet values",
+        "implementation_status": "registered_full_text_paged",
+        "entry_status": "approved_user_text"
+      },
+      "approved_learnset": {
+        "LevelMoves": [
+          {
+            "Level": 0,
+            "Move": "MOVE_FORCE_PALM"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_SCRATCH"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_LEER"
+          },
+          {
+            "Level": 4,
+            "Move": "MOVE_THUNDER_SHOCK"
+          },
+          {
+            "Level": 9,
+            "Move": "MOVE_QUICK_ATTACK"
+          },
+          {
+            "Level": 13,
+            "Move": "MOVE_SPARK"
+          },
+          {
+            "Level": 19,
+            "Move": "MOVE_CHARGE"
+          },
+          {
+            "Level": 23,
+            "Move": "MOVE_THUNDER_PUNCH"
+          },
+          {
+            "Level": 28,
+            "Move": "MOVE_BRICK_BREAK"
+          },
+          {
+            "Level": 33,
+            "Move": "MOVE_SWIFT"
+          },
+          {
+            "Level": 37,
+            "Move": "MOVE_AGILITY"
+          },
+          {
+            "Level": 41,
+            "Move": "MOVE_DISCHARGE"
+          },
+          {
+            "Level": 45,
+            "Move": "MOVE_AURA_SPHERE"
+          },
+          {
+            "Level": 48,
+            "Move": "MOVE_THUNDERBOLT"
+          }
+        ],
+        "MachineMoves": [
+          "MOVE_AERIAL_ACE",
+          "MOVE_AGILITY",
+          "MOVE_ALLURING_VOICE",
+          "MOVE_ATTRACT",
+          "MOVE_AURA_SPHERE",
+          "MOVE_BATON_PASS",
+          "MOVE_BODY_PRESS",
+          "MOVE_BODY_SLAM",
+          "MOVE_BRICK_BREAK",
+          "MOVE_BULK_UP",
+          "MOVE_CAPTIVATE",
+          "MOVE_CHARGE",
+          "MOVE_CHARGE_BEAM",
+          "MOVE_CLOSE_COMBAT",
+          "MOVE_COACHING",
+          "MOVE_CONFIDE",
+          "MOVE_CURSE",
+          "MOVE_CUT",
+          "MOVE_DIG",
+          "MOVE_DOUBLE_EDGE",
+          "MOVE_DOUBLE_TEAM",
+          "MOVE_DRAIN_PUNCH",
+          "MOVE_EARTHQUAKE",
+          "MOVE_EERIE_IMPULSE",
+          "MOVE_ELECTRIC_TERRAIN",
+          "MOVE_ELECTROWEB",
+          "MOVE_ELECTRO_BALL",
+          "MOVE_ENCORE",
+          "MOVE_ENDEAVOR",
+          "MOVE_ENDURE",
+          "MOVE_FACADE",
+          "MOVE_FLASH",
+          "MOVE_FLING",
+          "MOVE_FOCUS_BLAST",
+          "MOVE_FOCUS_PUNCH",
+          "MOVE_FRUSTRATION",
+          "MOVE_HELPING_HAND",
+          "MOVE_HIDDEN_POWER",
+          "MOVE_IRON_TAIL",
+          "MOVE_KNOCK_OFF",
+          "MOVE_LIGHT_SCREEN",
+          "MOVE_LOW_KICK",
+          "MOVE_MEGA_PUNCH",
+          "MOVE_METAL_SOUND",
+          "MOVE_METRONOME",
+          "MOVE_NATURAL_GIFT",
+          "MOVE_PAYBACK",
+          "MOVE_PLAY_ROUGH",
+          "MOVE_POISON_JAB",
+          "MOVE_PROTECT",
+          "MOVE_PSYCH_UP",
+          "MOVE_RAIN_DANCE",
+          "MOVE_REFLECT",
+          "MOVE_REST",
+          "MOVE_RETURN",
+          "MOVE_REVERSAL",
+          "MOVE_ROAR",
+          "MOVE_ROCK_CLIMB",
+          "MOVE_ROCK_SLIDE",
+          "MOVE_ROCK_SMASH",
+          "MOVE_ROCK_TOMB",
+          "MOVE_SECRET_POWER",
+          "MOVE_SHADOW_CLAW",
+          "MOVE_SHOCK_WAVE",
+          "MOVE_SLEEP_TALK",
+          "MOVE_SMACK_DOWN",
+          "MOVE_STONE_EDGE",
+          "MOVE_STRENGTH",
+          "MOVE_SUBSTITUTE",
+          "MOVE_SUNNY_DAY",
+          "MOVE_SUPERCELL_SLAM",
+          "MOVE_SUPERPOWER",
+          "MOVE_SWAGGER",
+          "MOVE_SWORDS_DANCE",
+          "MOVE_TAUNT",
+          "MOVE_TERA_BLAST",
+          "MOVE_THIEF",
+          "MOVE_THROAT_CHOP",
+          "MOVE_THUNDER",
+          "MOVE_THUNDERBOLT",
+          "MOVE_THUNDER_WAVE",
+          "MOVE_TOXIC",
+          "MOVE_UPPER_HAND",
+          "MOVE_UPROAR",
+          "MOVE_VACUUM_WAVE",
+          "MOVE_WILD_CHARGE",
+          "MOVE_WORK_UP",
+          "MOVE_ZEN_HEADBUTT"
+        ],
+        "TutorMoves": [
+          "MOVE_FIRE_PUNCH",
+          "MOVE_FURY_CUTTER",
+          "MOVE_HEADBUTT",
+          "MOVE_HELPING_HAND",
+          "MOVE_ICE_PUNCH",
+          "MOVE_KNOCK_OFF",
+          "MOVE_LOW_KICK",
+          "MOVE_MAGNET_RISE",
+          "MOVE_MUD_SLAP",
+          "MOVE_ROLE_PLAY",
+          "MOVE_ROLLOUT",
+          "MOVE_SIGNAL_BEAM",
+          "MOVE_SNORE",
+          "MOVE_SUPERPOWER",
+          "MOVE_SWIFT",
+          "MOVE_THUNDER_PUNCH",
+          "MOVE_UPROAR",
+          "MOVE_VACUUM_WAVE"
+        ],
+        "EggMoves": [
+          "MOVE_FAKE_OUT",
+          "MOVE_ENCORE",
+          "MOVE_DOUBLE_KICK",
+          "MOVE_FIRE_PUNCH",
+          "MOVE_ICE_PUNCH",
+          "MOVE_FEINT"
+        ]
+      },
+      "stock_move_symbol_aliases": {
+        "MOVE_SCRATCH": "MOVE_ATTRIBUTE_CONTEST_EFFECT",
+        "MOVE_THUNDER_PUNCH": "MOVE_ATTRIBUTE_FLAGS",
+        "MOVE_MEGA_PUNCH": "MOVE_ATTRIBUTE_PP",
+        "MOVE_FIRE_PUNCH": "MOVE_ATTRIBUTE_RANGE",
+        "MOVE_ICE_PUNCH": "MOVE_ATTRIBUTE_PRIORTY"
+      },
+      "moves_absent_from_stock_by_method": {
+        "LevelMoves": [],
+        "MachineMoves": [
+          "MOVE_ALLURING_VOICE",
+          "MOVE_BODY_PRESS",
+          "MOVE_COACHING",
+          "MOVE_CONFIDE",
+          "MOVE_EERIE_IMPULSE",
+          "MOVE_ELECTRIC_TERRAIN",
+          "MOVE_ELECTROWEB",
+          "MOVE_ELECTRO_BALL",
+          "MOVE_PLAY_ROUGH",
+          "MOVE_SMACK_DOWN",
+          "MOVE_SUPERCELL_SLAM",
+          "MOVE_TERA_BLAST",
+          "MOVE_THROAT_CHOP",
+          "MOVE_UPPER_HAND",
+          "MOVE_WILD_CHARGE",
+          "MOVE_WORK_UP"
+        ],
+        "TutorMoves": [],
+        "EggMoves": []
+      },
+      "existing_moves_not_on_stock_machines": [
+        "MOVE_AERIAL_ACE",
+        "MOVE_AGILITY",
+        "MOVE_ATTRACT",
+        "MOVE_AURA_SPHERE",
+        "MOVE_BATON_PASS",
+        "MOVE_BODY_SLAM",
+        "MOVE_BRICK_BREAK",
+        "MOVE_BULK_UP",
+        "MOVE_CAPTIVATE",
+        "MOVE_CHARGE",
+        "MOVE_CHARGE_BEAM",
+        "MOVE_CLOSE_COMBAT",
+        "MOVE_CURSE",
+        "MOVE_CUT",
+        "MOVE_DIG",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_DRAIN_PUNCH",
+        "MOVE_EARTHQUAKE",
+        "MOVE_ENCORE",
+        "MOVE_ENDEAVOR",
+        "MOVE_ENDURE",
+        "MOVE_FACADE",
+        "MOVE_FLASH",
+        "MOVE_FLING",
+        "MOVE_FOCUS_BLAST",
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_FRUSTRATION",
+        "MOVE_HELPING_HAND",
+        "MOVE_HIDDEN_POWER",
+        "MOVE_IRON_TAIL",
+        "MOVE_KNOCK_OFF",
+        "MOVE_LIGHT_SCREEN",
+        "MOVE_LOW_KICK",
+        "MOVE_MEGA_PUNCH",
+        "MOVE_METAL_SOUND",
+        "MOVE_METRONOME",
+        "MOVE_NATURAL_GIFT",
+        "MOVE_PAYBACK",
+        "MOVE_POISON_JAB",
+        "MOVE_PROTECT",
+        "MOVE_PSYCH_UP",
+        "MOVE_RAIN_DANCE",
+        "MOVE_REFLECT",
+        "MOVE_REST",
+        "MOVE_RETURN",
+        "MOVE_REVERSAL",
+        "MOVE_ROAR",
+        "MOVE_ROCK_CLIMB",
+        "MOVE_ROCK_SLIDE",
+        "MOVE_ROCK_SMASH",
+        "MOVE_ROCK_TOMB",
+        "MOVE_SECRET_POWER",
+        "MOVE_SHADOW_CLAW",
+        "MOVE_SHOCK_WAVE",
+        "MOVE_SLEEP_TALK",
+        "MOVE_STONE_EDGE",
+        "MOVE_STRENGTH",
+        "MOVE_SUBSTITUTE",
+        "MOVE_SUNNY_DAY",
+        "MOVE_SUPERPOWER",
+        "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
+        "MOVE_TAUNT",
+        "MOVE_THIEF",
+        "MOVE_THUNDER",
+        "MOVE_THUNDERBOLT",
+        "MOVE_THUNDER_WAVE",
+        "MOVE_TOXIC",
+        "MOVE_UPROAR",
+        "MOVE_VACUUM_WAVE",
+        "MOVE_ZEN_HEADBUTT"
+      ],
+      "assets": [
+        {
+          "path": "data/graphics/sprites/surguenon/female/back.png",
+          "sha256": "26e4df492bfa099e5afb91e8c74b77a911e45a32bede8085ea80d26f20a3b609"
+        },
+        {
+          "path": "data/graphics/sprites/surguenon/female/front.png",
+          "sha256": "c40d6a58a7523dd35b2a72455de2af5b90fad5b4a549f692180bd24871ff598b"
+        },
+        {
+          "path": "data/graphics/sprites/surguenon/icon.png",
+          "sha256": "98893d70cd1957ba120126cf866a692992620a4c167a90d7f0b3cc0c3f62d264"
+        },
+        {
+          "path": "data/graphics/sprites/surguenon/male/back.png",
+          "sha256": "26e4df492bfa099e5afb91e8c74b77a911e45a32bede8085ea80d26f20a3b609"
+        },
+        {
+          "path": "data/graphics/sprites/surguenon/male/front.png",
+          "sha256": "c40d6a58a7523dd35b2a72455de2af5b90fad5b4a549f692180bd24871ff598b"
+        },
+        {
+          "path": "data/graphics/sprites/surguenon/overworld.png",
+          "sha256": "90cdb464a89a307bd7a16873279a1d7200127846851f8d8732def1a380382bbc"
+        },
+        {
+          "path": "documentation/fakemon/designs-2026-09/cries/drafts/surguenon.wav",
+          "sha256": "e3ebe1491100592c5828f1c4d470590b3270e39dbf2d11bd6afd2810257dca3c"
+        }
+      ]
+    },
+    {
+      "name": "Raijinque",
+      "key": "raijinque",
+      "source_species_id": 1078,
+      "base_stats": {
+        "hp": 85,
+        "attack": 125,
+        "defense": 75,
+        "sp_attack": 120,
+        "sp_defense": 75,
+        "speed": 120
+      },
+      "bst": 600,
+      "types": [
+        "Electric",
+        "Fighting"
+      ],
+      "abilities": {
+        "primary": "Static",
+        "secondary": null,
+        "hidden": null
+      },
+      "growth_rate": "Slow",
+      "ev_yield": {
+        "hp": 0,
+        "attack": 1,
+        "defense": 0,
+        "sp_attack": 1,
+        "sp_defense": 0,
+        "speed": 1
+      },
+      "breeding": {
+        "egg_groups": [
+          "Field",
+          "Human-Like"
+        ],
+        "male_percent": 50,
+        "female_percent": 50,
+        "hatch_cycles": 20,
+        "status": "approved_by_user_individual_donor_routes_checked",
+        "hatch_species": "voltuff"
+      },
+      "pokedex": {
+        "classification": "Thunder Pok\u00e9mon",
+        "classification_status": "derived_under_user_authorization",
+        "entry_text": "The thunder of its four fists can be heard beyond the mountains. Villagers once believed that storms began wherever these Pok\u00e9mon gathered to train.",
+        "entry_source": "user_supplied_complete_entries_verbatim",
+        "height_decimetres": 18,
+        "weight_hectograms": 762,
+        "dimension_source": "Explicit concept-sheet values",
+        "implementation_status": "registered_full_text_paged",
+        "entry_status": "approved_user_text"
+      },
+      "approved_learnset": {
+        "LevelMoves": [
+          {
+            "Level": 0,
+            "Move": "MOVE_CLOSE_COMBAT"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_SCRATCH"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_LEER"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_FORCE_PALM"
+          },
+          {
+            "Level": 4,
+            "Move": "MOVE_THUNDER_SHOCK"
+          },
+          {
+            "Level": 9,
+            "Move": "MOVE_QUICK_ATTACK"
+          },
+          {
+            "Level": 13,
+            "Move": "MOVE_SPARK"
+          },
+          {
+            "Level": 19,
+            "Move": "MOVE_CHARGE"
+          },
+          {
+            "Level": 23,
+            "Move": "MOVE_THUNDER_PUNCH"
+          },
+          {
+            "Level": 28,
+            "Move": "MOVE_BRICK_BREAK"
+          },
+          {
+            "Level": 33,
+            "Move": "MOVE_SWIFT"
+          },
+          {
+            "Level": 37,
+            "Move": "MOVE_AGILITY"
+          },
+          {
+            "Level": 41,
+            "Move": "MOVE_DISCHARGE"
+          },
+          {
+            "Level": 45,
+            "Move": "MOVE_AURA_SPHERE"
+          },
+          {
+            "Level": 48,
+            "Move": "MOVE_THUNDERBOLT"
+          },
+          {
+            "Level": 55,
+            "Move": "MOVE_WILD_CHARGE"
+          },
+          {
+            "Level": 63,
+            "Move": "MOVE_THUNDER"
+          }
+        ],
+        "MachineMoves": [
+          "MOVE_AERIAL_ACE",
+          "MOVE_AGILITY",
+          "MOVE_ALLURING_VOICE",
+          "MOVE_ATTRACT",
+          "MOVE_AURA_SPHERE",
+          "MOVE_BATON_PASS",
+          "MOVE_BODY_PRESS",
+          "MOVE_BODY_SLAM",
+          "MOVE_BRICK_BREAK",
+          "MOVE_BULK_UP",
+          "MOVE_CAPTIVATE",
+          "MOVE_CHARGE",
+          "MOVE_CHARGE_BEAM",
+          "MOVE_CLOSE_COMBAT",
+          "MOVE_COACHING",
+          "MOVE_CONFIDE",
+          "MOVE_CURSE",
+          "MOVE_CUT",
+          "MOVE_DIG",
+          "MOVE_DOUBLE_EDGE",
+          "MOVE_DOUBLE_TEAM",
+          "MOVE_DRAIN_PUNCH",
+          "MOVE_EARTHQUAKE",
+          "MOVE_EERIE_IMPULSE",
+          "MOVE_ELECTRIC_TERRAIN",
+          "MOVE_ELECTROWEB",
+          "MOVE_ELECTRO_BALL",
+          "MOVE_ENCORE",
+          "MOVE_ENDEAVOR",
+          "MOVE_ENDURE",
+          "MOVE_FACADE",
+          "MOVE_FLASH",
+          "MOVE_FLING",
+          "MOVE_FOCUS_BLAST",
+          "MOVE_FOCUS_PUNCH",
+          "MOVE_FRUSTRATION",
+          "MOVE_GIGA_IMPACT",
+          "MOVE_HELPING_HAND",
+          "MOVE_HIDDEN_POWER",
+          "MOVE_HYPER_BEAM",
+          "MOVE_IRON_TAIL",
+          "MOVE_KNOCK_OFF",
+          "MOVE_LIGHT_SCREEN",
+          "MOVE_LOW_KICK",
+          "MOVE_MEGA_PUNCH",
+          "MOVE_METAL_SOUND",
+          "MOVE_METRONOME",
+          "MOVE_NATURAL_GIFT",
+          "MOVE_PAYBACK",
+          "MOVE_PLAY_ROUGH",
+          "MOVE_POISON_JAB",
+          "MOVE_PROTECT",
+          "MOVE_PSYCH_UP",
+          "MOVE_RAIN_DANCE",
+          "MOVE_REFLECT",
+          "MOVE_REST",
+          "MOVE_RETURN",
+          "MOVE_REVERSAL",
+          "MOVE_ROAR",
+          "MOVE_ROCK_CLIMB",
+          "MOVE_ROCK_SLIDE",
+          "MOVE_ROCK_SMASH",
+          "MOVE_ROCK_TOMB",
+          "MOVE_SECRET_POWER",
+          "MOVE_SHADOW_CLAW",
+          "MOVE_SHOCK_WAVE",
+          "MOVE_SLEEP_TALK",
+          "MOVE_SMACK_DOWN",
+          "MOVE_STONE_EDGE",
+          "MOVE_STRENGTH",
+          "MOVE_SUBSTITUTE",
+          "MOVE_SUNNY_DAY",
+          "MOVE_SUPERCELL_SLAM",
+          "MOVE_SUPERPOWER",
+          "MOVE_SWAGGER",
+          "MOVE_SWORDS_DANCE",
+          "MOVE_TAUNT",
+          "MOVE_TERA_BLAST",
+          "MOVE_THIEF",
+          "MOVE_THROAT_CHOP",
+          "MOVE_THUNDER",
+          "MOVE_THUNDERBOLT",
+          "MOVE_THUNDER_WAVE",
+          "MOVE_TOXIC",
+          "MOVE_UPPER_HAND",
+          "MOVE_UPROAR",
+          "MOVE_VACUUM_WAVE",
+          "MOVE_WILD_CHARGE",
+          "MOVE_WORK_UP",
+          "MOVE_ZEN_HEADBUTT"
+        ],
+        "TutorMoves": [
+          "MOVE_FIRE_PUNCH",
+          "MOVE_FURY_CUTTER",
+          "MOVE_HEADBUTT",
+          "MOVE_HELPING_HAND",
+          "MOVE_ICE_PUNCH",
+          "MOVE_KNOCK_OFF",
+          "MOVE_LOW_KICK",
+          "MOVE_MAGNET_RISE",
+          "MOVE_MUD_SLAP",
+          "MOVE_ROLE_PLAY",
+          "MOVE_ROLLOUT",
+          "MOVE_SIGNAL_BEAM",
+          "MOVE_SNORE",
+          "MOVE_SUPERPOWER",
+          "MOVE_SWIFT",
+          "MOVE_THUNDER_PUNCH",
+          "MOVE_UPROAR",
+          "MOVE_VACUUM_WAVE"
+        ],
+        "EggMoves": [
+          "MOVE_FAKE_OUT",
+          "MOVE_ENCORE",
+          "MOVE_DOUBLE_KICK",
+          "MOVE_FIRE_PUNCH",
+          "MOVE_ICE_PUNCH",
+          "MOVE_FEINT"
+        ]
+      },
+      "stock_move_symbol_aliases": {
+        "MOVE_SCRATCH": "MOVE_ATTRIBUTE_CONTEST_EFFECT",
+        "MOVE_THUNDER_PUNCH": "MOVE_ATTRIBUTE_FLAGS",
+        "MOVE_MEGA_PUNCH": "MOVE_ATTRIBUTE_PP",
+        "MOVE_FIRE_PUNCH": "MOVE_ATTRIBUTE_RANGE",
+        "MOVE_ICE_PUNCH": "MOVE_ATTRIBUTE_PRIORTY"
+      },
+      "moves_absent_from_stock_by_method": {
+        "LevelMoves": [
+          {
+            "Level": 55,
+            "Move": "MOVE_WILD_CHARGE"
+          }
+        ],
+        "MachineMoves": [
+          "MOVE_ALLURING_VOICE",
+          "MOVE_BODY_PRESS",
+          "MOVE_COACHING",
+          "MOVE_CONFIDE",
+          "MOVE_EERIE_IMPULSE",
+          "MOVE_ELECTRIC_TERRAIN",
+          "MOVE_ELECTROWEB",
+          "MOVE_ELECTRO_BALL",
+          "MOVE_PLAY_ROUGH",
+          "MOVE_SMACK_DOWN",
+          "MOVE_SUPERCELL_SLAM",
+          "MOVE_TERA_BLAST",
+          "MOVE_THROAT_CHOP",
+          "MOVE_UPPER_HAND",
+          "MOVE_WILD_CHARGE",
+          "MOVE_WORK_UP"
+        ],
+        "TutorMoves": [],
+        "EggMoves": []
+      },
+      "existing_moves_not_on_stock_machines": [
+        "MOVE_AERIAL_ACE",
+        "MOVE_AGILITY",
+        "MOVE_ATTRACT",
+        "MOVE_AURA_SPHERE",
+        "MOVE_BATON_PASS",
+        "MOVE_BODY_SLAM",
+        "MOVE_BRICK_BREAK",
+        "MOVE_BULK_UP",
+        "MOVE_CAPTIVATE",
+        "MOVE_CHARGE",
+        "MOVE_CHARGE_BEAM",
+        "MOVE_CLOSE_COMBAT",
+        "MOVE_CURSE",
+        "MOVE_CUT",
+        "MOVE_DIG",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_DRAIN_PUNCH",
+        "MOVE_EARTHQUAKE",
+        "MOVE_ENCORE",
+        "MOVE_ENDEAVOR",
+        "MOVE_ENDURE",
+        "MOVE_FACADE",
+        "MOVE_FLASH",
+        "MOVE_FLING",
+        "MOVE_FOCUS_BLAST",
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_FRUSTRATION",
+        "MOVE_GIGA_IMPACT",
+        "MOVE_HELPING_HAND",
+        "MOVE_HIDDEN_POWER",
+        "MOVE_HYPER_BEAM",
+        "MOVE_IRON_TAIL",
+        "MOVE_KNOCK_OFF",
+        "MOVE_LIGHT_SCREEN",
+        "MOVE_LOW_KICK",
+        "MOVE_MEGA_PUNCH",
+        "MOVE_METAL_SOUND",
+        "MOVE_METRONOME",
+        "MOVE_NATURAL_GIFT",
+        "MOVE_PAYBACK",
+        "MOVE_POISON_JAB",
+        "MOVE_PROTECT",
+        "MOVE_PSYCH_UP",
+        "MOVE_RAIN_DANCE",
+        "MOVE_REFLECT",
+        "MOVE_REST",
+        "MOVE_RETURN",
+        "MOVE_REVERSAL",
+        "MOVE_ROAR",
+        "MOVE_ROCK_CLIMB",
+        "MOVE_ROCK_SLIDE",
+        "MOVE_ROCK_SMASH",
+        "MOVE_ROCK_TOMB",
+        "MOVE_SECRET_POWER",
+        "MOVE_SHADOW_CLAW",
+        "MOVE_SHOCK_WAVE",
+        "MOVE_SLEEP_TALK",
+        "MOVE_STONE_EDGE",
+        "MOVE_STRENGTH",
+        "MOVE_SUBSTITUTE",
+        "MOVE_SUNNY_DAY",
+        "MOVE_SUPERPOWER",
+        "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
+        "MOVE_TAUNT",
+        "MOVE_THIEF",
+        "MOVE_THUNDER",
+        "MOVE_THUNDERBOLT",
+        "MOVE_THUNDER_WAVE",
+        "MOVE_TOXIC",
+        "MOVE_UPROAR",
+        "MOVE_VACUUM_WAVE",
+        "MOVE_ZEN_HEADBUTT"
+      ],
+      "assets": [
+        {
+          "path": "data/graphics/sprites/raijinque/female/back.png",
+          "sha256": "a933b803245f3a4c226b1f50dea3924117a093e8153151896e67129a47cdf11c"
+        },
+        {
+          "path": "data/graphics/sprites/raijinque/female/front.png",
+          "sha256": "fe67d14dfe65eca65a390e8070f4f0f3fb90674ed6c7738f3e92ad40bbf16c46"
+        },
+        {
+          "path": "data/graphics/sprites/raijinque/icon.png",
+          "sha256": "d5c1feb9ddc33c936f17c5dd91a4bc20eb143c1388997d7356d6d83b0c4fe277"
+        },
+        {
+          "path": "data/graphics/sprites/raijinque/male/back.png",
+          "sha256": "a933b803245f3a4c226b1f50dea3924117a093e8153151896e67129a47cdf11c"
+        },
+        {
+          "path": "data/graphics/sprites/raijinque/male/front.png",
+          "sha256": "fe67d14dfe65eca65a390e8070f4f0f3fb90674ed6c7738f3e92ad40bbf16c46"
+        },
+        {
+          "path": "data/graphics/sprites/raijinque/overworld.png",
+          "sha256": "2fde5e2cba6376bbdaf40e463f60cda6aabd0fa25e5db42374b3af16d766b4ed"
+        },
+        {
+          "path": "documentation/fakemon/designs-2026-09/cries/drafts/raijinque.wav",
+          "sha256": "1a6ea55a0a640cb172b607ba2f2b93019334bb4f1dadb14d47bcca97c3747fc9"
+        }
+      ]
+    },
+    {
+      "name": "Embernewt",
+      "key": "embernewt",
+      "source_species_id": 1079,
+      "base_stats": {
+        "hp": 60,
+        "attack": 50,
+        "defense": 50,
+        "sp_attack": 60,
+        "sp_defense": 50,
+        "speed": 45
+      },
+      "bst": 315,
+      "types": [
+        "Fire"
+      ],
+      "abilities": {
+        "primary": "Flash Fire",
+        "secondary": null,
+        "hidden": null
+      },
+      "growth_rate": "Medium Slow",
+      "ev_yield": {
+        "hp": 0,
+        "attack": 0,
+        "defense": 0,
+        "sp_attack": 1,
+        "sp_defense": 0,
+        "speed": 0
+      },
+      "breeding": {
+        "egg_groups": [
+          "Monster",
+          "Dragon"
+        ],
+        "male_percent": 50,
+        "female_percent": 50,
+        "hatch_cycles": 20,
+        "hatch_species": "embernewt",
+        "status": "approved_by_user_individual_donor_routes_checked"
+      },
+      "pokedex": {
+        "classification": "Cinder Pok\u00e9mon",
+        "classification_status": "derived_under_user_authorization",
+        "entry_text": "Its will to live is remarkably strong. As its body begins to freeze, it draws its flame deep inside to keep it burning.",
+        "entry_source": "user_supplied_complete_entries_verbatim",
+        "height_decimetres": 5,
+        "weight_hectograms": 78,
+        "dimension_source": "Inferred design values; artwork has no calibrated scale",
+        "implementation_status": "registered_full_text_paged",
+        "entry_status": "approved_user_text"
+      },
+      "approved_learnset": {
+        "LevelMoves": [
+          {
+            "Level": 1,
+            "Move": "MOVE_SCRATCH"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_GROWL"
+          },
+          {
+            "Level": 5,
+            "Move": "MOVE_EMBER"
+          },
+          {
+            "Level": 10,
+            "Move": "MOVE_SMOKESCREEN"
+          },
+          {
+            "Level": 14,
+            "Move": "MOVE_FIRE_FANG"
+          },
+          {
+            "Level": 21,
+            "Move": "MOVE_SNARL"
+          },
+          {
+            "Level": 25,
+            "Move": "MOVE_ANCIENT_POWER"
+          },
+          {
+            "Level": 29,
+            "Move": "MOVE_SCARY_FACE"
+          },
+          {
+            "Level": 34,
+            "Move": "MOVE_LAVA_PLUME"
+          },
+          {
+            "Level": 38,
+            "Move": "MOVE_CRUNCH"
+          },
+          {
+            "Level": 41,
+            "Move": "MOVE_FLAMETHROWER"
+          },
+          {
+            "Level": 45,
+            "Move": "MOVE_FIRE_FANG"
+          },
+          {
+            "Level": 48,
+            "Move": "MOVE_AMNESIA"
+          }
+        ],
+        "MachineMoves": [
+          "MOVE_AERIAL_ACE",
+          "MOVE_AGILITY",
+          "MOVE_ATTRACT",
+          "MOVE_BLAZE_KICK",
+          "MOVE_BODY_SLAM",
+          "MOVE_BRICK_BREAK",
+          "MOVE_BURNING_JEALOUSY",
+          "MOVE_CALM_MIND",
+          "MOVE_CAPTIVATE",
+          "MOVE_CONFIDE",
+          "MOVE_CRUNCH",
+          "MOVE_CURSE",
+          "MOVE_CUT",
+          "MOVE_DIG",
+          "MOVE_DOUBLE_EDGE",
+          "MOVE_DOUBLE_TEAM",
+          "MOVE_EARTHQUAKE",
+          "MOVE_ENDEAVOR",
+          "MOVE_ENDURE",
+          "MOVE_FACADE",
+          "MOVE_FIRE_BLAST",
+          "MOVE_FIRE_PLEDGE",
+          "MOVE_FLAMETHROWER",
+          "MOVE_FLARE_BLITZ",
+          "MOVE_FLING",
+          "MOVE_FOCUS_BLAST",
+          "MOVE_FOCUS_PUNCH",
+          "MOVE_FRUSTRATION",
+          "MOVE_HEAT_CRASH",
+          "MOVE_HEAT_WAVE",
+          "MOVE_HELPING_HAND",
+          "MOVE_HIDDEN_POWER",
+          "MOVE_IRON_HEAD",
+          "MOVE_IRON_TAIL",
+          "MOVE_LOW_KICK",
+          "MOVE_NATURAL_GIFT",
+          "MOVE_OVERHEAT",
+          "MOVE_PROTECT",
+          "MOVE_RAIN_DANCE",
+          "MOVE_REFLECT",
+          "MOVE_REST",
+          "MOVE_RETURN",
+          "MOVE_REVERSAL",
+          "MOVE_ROAR",
+          "MOVE_ROCK_CLIMB",
+          "MOVE_ROCK_SLIDE",
+          "MOVE_ROCK_SMASH",
+          "MOVE_ROCK_TOMB",
+          "MOVE_SANDSTORM",
+          "MOVE_SCORCHING_SANDS",
+          "MOVE_SECRET_POWER",
+          "MOVE_SHADOW_BALL",
+          "MOVE_SLEEP_TALK",
+          "MOVE_SOLAR_BEAM",
+          "MOVE_STONE_EDGE",
+          "MOVE_STRENGTH",
+          "MOVE_SUBSTITUTE",
+          "MOVE_SUNNY_DAY",
+          "MOVE_SWAGGER",
+          "MOVE_TEMPER_FLARE",
+          "MOVE_TERA_BLAST",
+          "MOVE_THIEF",
+          "MOVE_TOXIC",
+          "MOVE_WEATHER_BALL",
+          "MOVE_WILL_O_WISP",
+          "MOVE_WORK_UP",
+          "MOVE_ZEN_HEADBUTT"
+        ],
+        "TutorMoves": [
+          "MOVE_FIRE_PUNCH",
+          "MOVE_HEADBUTT",
+          "MOVE_HEAT_WAVE",
+          "MOVE_HELPING_HAND",
+          "MOVE_LOW_KICK",
+          "MOVE_MUD_SLAP",
+          "MOVE_SNORE",
+          "MOVE_SWIFT",
+          "MOVE_THUNDER_PUNCH"
+        ],
+        "EggMoves": [
+          "MOVE_ANCIENT_POWER",
+          "MOVE_DRAGON_RUSH",
+          "MOVE_COUNTER",
+          "MOVE_THUNDER_FANG",
+          "MOVE_YAWN",
+          "MOVE_CURSE"
+        ]
+      },
+      "stock_move_symbol_aliases": {
+        "MOVE_SCRATCH": "MOVE_ATTRIBUTE_CONTEST_EFFECT",
+        "MOVE_SMOKESCREEN": "MOVE_SMOKE_SCREEN",
+        "MOVE_FIRE_PUNCH": "MOVE_ATTRIBUTE_RANGE",
+        "MOVE_THUNDER_PUNCH": "MOVE_ATTRIBUTE_FLAGS"
+      },
+      "moves_absent_from_stock_by_method": {
+        "LevelMoves": [
+          {
+            "Level": 21,
+            "Move": "MOVE_SNARL"
+          }
+        ],
+        "MachineMoves": [
+          "MOVE_BURNING_JEALOUSY",
+          "MOVE_CONFIDE",
+          "MOVE_FIRE_PLEDGE",
+          "MOVE_HEAT_CRASH",
+          "MOVE_SCORCHING_SANDS",
+          "MOVE_TEMPER_FLARE",
+          "MOVE_TERA_BLAST",
+          "MOVE_WORK_UP"
+        ],
+        "TutorMoves": [],
+        "EggMoves": []
+      },
+      "existing_moves_not_on_stock_machines": [
+        "MOVE_AERIAL_ACE",
+        "MOVE_AGILITY",
+        "MOVE_ATTRACT",
+        "MOVE_BLAZE_KICK",
+        "MOVE_BODY_SLAM",
+        "MOVE_BRICK_BREAK",
+        "MOVE_CALM_MIND",
+        "MOVE_CAPTIVATE",
+        "MOVE_CRUNCH",
+        "MOVE_CURSE",
+        "MOVE_CUT",
+        "MOVE_DIG",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_EARTHQUAKE",
+        "MOVE_ENDEAVOR",
+        "MOVE_ENDURE",
+        "MOVE_FACADE",
+        "MOVE_FIRE_BLAST",
+        "MOVE_FLAMETHROWER",
+        "MOVE_FLARE_BLITZ",
+        "MOVE_FLING",
+        "MOVE_FOCUS_BLAST",
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_FRUSTRATION",
+        "MOVE_HEAT_WAVE",
+        "MOVE_HELPING_HAND",
+        "MOVE_HIDDEN_POWER",
+        "MOVE_IRON_HEAD",
+        "MOVE_IRON_TAIL",
+        "MOVE_LOW_KICK",
+        "MOVE_NATURAL_GIFT",
+        "MOVE_OVERHEAT",
+        "MOVE_PROTECT",
+        "MOVE_RAIN_DANCE",
+        "MOVE_REFLECT",
+        "MOVE_REST",
+        "MOVE_RETURN",
+        "MOVE_REVERSAL",
+        "MOVE_ROAR",
+        "MOVE_ROCK_CLIMB",
+        "MOVE_ROCK_SLIDE",
+        "MOVE_ROCK_SMASH",
+        "MOVE_ROCK_TOMB",
+        "MOVE_SANDSTORM",
+        "MOVE_SECRET_POWER",
+        "MOVE_SHADOW_BALL",
+        "MOVE_SLEEP_TALK",
+        "MOVE_SOLAR_BEAM",
+        "MOVE_STONE_EDGE",
+        "MOVE_STRENGTH",
+        "MOVE_SUBSTITUTE",
+        "MOVE_SUNNY_DAY",
+        "MOVE_SWAGGER",
+        "MOVE_THIEF",
+        "MOVE_TOXIC",
+        "MOVE_WEATHER_BALL",
+        "MOVE_WILL_O_WISP",
+        "MOVE_ZEN_HEADBUTT"
+      ],
+      "assets": [
+        {
+          "path": "data/graphics/sprites/embernewt/female/back.png",
+          "sha256": "47d3663e2cc9d52bbe938e0b2f51538b73ea334812e9af87a553e6ca15cb298d"
+        },
+        {
+          "path": "data/graphics/sprites/embernewt/female/front.png",
+          "sha256": "59568e8a7fef4c8044df246b79d87faa2aea32127be06359321550229b80591c"
+        },
+        {
+          "path": "data/graphics/sprites/embernewt/icon.png",
+          "sha256": "491a2bc514b8cc2e918ba78dbd670e771057595f20881997070e795549c2a15e"
+        },
+        {
+          "path": "data/graphics/sprites/embernewt/male/back.png",
+          "sha256": "47d3663e2cc9d52bbe938e0b2f51538b73ea334812e9af87a553e6ca15cb298d"
+        },
+        {
+          "path": "data/graphics/sprites/embernewt/male/front.png",
+          "sha256": "59568e8a7fef4c8044df246b79d87faa2aea32127be06359321550229b80591c"
+        },
+        {
+          "path": "data/graphics/sprites/embernewt/overworld.png",
+          "sha256": "274993f6ddb4a76243654279d65f7fe55cf1b4e319056de8c5a90ee56baff424"
+        },
+        {
+          "path": "documentation/fakemon/designs-2026-09/cries/drafts/embernewt.wav",
+          "sha256": "b4b5c8553da515db969a4ef6eb558671537c2cd0d05f447b9a91ff5a11f0bc98"
+        }
+      ]
+    },
+    {
+      "name": "Pyrovaran",
+      "key": "pyrovaran",
+      "source_species_id": 1080,
+      "base_stats": {
+        "hp": 85,
+        "attack": 60,
+        "defense": 65,
+        "sp_attack": 85,
+        "sp_defense": 55,
+        "speed": 55
+      },
+      "bst": 405,
+      "types": [
+        "Fire"
+      ],
+      "abilities": {
+        "primary": "Flash Fire",
+        "secondary": null,
+        "hidden": null
+      },
+      "growth_rate": "Slow",
+      "ev_yield": {
+        "hp": 1,
+        "attack": 0,
+        "defense": 0,
+        "sp_attack": 1,
+        "sp_defense": 0,
+        "speed": 0
+      },
+      "breeding": {
+        "egg_groups": [
+          "Monster",
+          "Dragon"
+        ],
+        "male_percent": 50,
+        "female_percent": 50,
+        "hatch_cycles": 20,
+        "hatch_species": "embernewt",
+        "status": "approved_by_user_individual_donor_routes_checked"
+      },
+      "pokedex": {
+        "classification": "Heat Scale Pok\u00e9mon",
+        "classification_status": "derived_under_user_authorization",
+        "entry_text": "It basks on warm rocks along the slopes of volcanoes. As it matures, it makes its home ever closer to the crater.",
+        "entry_source": "user_supplied_complete_entries_verbatim",
+        "height_decimetres": 12,
+        "weight_hectograms": 385,
+        "dimension_source": "Inferred design values; artwork has no calibrated scale",
+        "implementation_status": "registered_full_text_paged",
+        "entry_status": "approved_user_text"
+      },
+      "approved_learnset": {
+        "LevelMoves": [
+          {
+            "Level": 0,
+            "Move": "MOVE_INCINERATE"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_SCRATCH"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_GROWL"
+          },
+          {
+            "Level": 5,
+            "Move": "MOVE_EMBER"
+          },
+          {
+            "Level": 10,
+            "Move": "MOVE_SMOKESCREEN"
+          },
+          {
+            "Level": 14,
+            "Move": "MOVE_FIRE_FANG"
+          },
+          {
+            "Level": 21,
+            "Move": "MOVE_SNARL"
+          },
+          {
+            "Level": 25,
+            "Move": "MOVE_ANCIENT_POWER"
+          },
+          {
+            "Level": 29,
+            "Move": "MOVE_SCARY_FACE"
+          },
+          {
+            "Level": 34,
+            "Move": "MOVE_LAVA_PLUME"
+          },
+          {
+            "Level": 38,
+            "Move": "MOVE_CRUNCH"
+          },
+          {
+            "Level": 41,
+            "Move": "MOVE_FLAMETHROWER"
+          },
+          {
+            "Level": 45,
+            "Move": "MOVE_FIRE_LASH"
+          },
+          {
+            "Level": 48,
+            "Move": "MOVE_AMNESIA"
+          }
+        ],
+        "MachineMoves": [
+          "MOVE_AERIAL_ACE",
+          "MOVE_AGILITY",
+          "MOVE_ATTRACT",
+          "MOVE_BLAZE_KICK",
+          "MOVE_BODY_SLAM",
+          "MOVE_BRICK_BREAK",
+          "MOVE_BURNING_JEALOUSY",
+          "MOVE_CALM_MIND",
+          "MOVE_CAPTIVATE",
+          "MOVE_CONFIDE",
+          "MOVE_CRUNCH",
+          "MOVE_CURSE",
+          "MOVE_CUT",
+          "MOVE_DIG",
+          "MOVE_DOUBLE_EDGE",
+          "MOVE_DOUBLE_TEAM",
+          "MOVE_EARTHQUAKE",
+          "MOVE_ENDEAVOR",
+          "MOVE_ENDURE",
+          "MOVE_FACADE",
+          "MOVE_FIRE_BLAST",
+          "MOVE_FIRE_PLEDGE",
+          "MOVE_FLAMETHROWER",
+          "MOVE_FLARE_BLITZ",
+          "MOVE_FLING",
+          "MOVE_FOCUS_BLAST",
+          "MOVE_FOCUS_PUNCH",
+          "MOVE_FRUSTRATION",
+          "MOVE_HEAT_CRASH",
+          "MOVE_HEAT_WAVE",
+          "MOVE_HELPING_HAND",
+          "MOVE_HIDDEN_POWER",
+          "MOVE_IRON_HEAD",
+          "MOVE_IRON_TAIL",
+          "MOVE_LOW_KICK",
+          "MOVE_NATURAL_GIFT",
+          "MOVE_OVERHEAT",
+          "MOVE_PROTECT",
+          "MOVE_RAIN_DANCE",
+          "MOVE_REFLECT",
+          "MOVE_REST",
+          "MOVE_RETURN",
+          "MOVE_REVERSAL",
+          "MOVE_ROAR",
+          "MOVE_ROCK_CLIMB",
+          "MOVE_ROCK_SLIDE",
+          "MOVE_ROCK_SMASH",
+          "MOVE_ROCK_TOMB",
+          "MOVE_SANDSTORM",
+          "MOVE_SCORCHING_SANDS",
+          "MOVE_SECRET_POWER",
+          "MOVE_SHADOW_BALL",
+          "MOVE_SLEEP_TALK",
+          "MOVE_SOLAR_BEAM",
+          "MOVE_STONE_EDGE",
+          "MOVE_STRENGTH",
+          "MOVE_SUBSTITUTE",
+          "MOVE_SUNNY_DAY",
+          "MOVE_SWAGGER",
+          "MOVE_TEMPER_FLARE",
+          "MOVE_TERA_BLAST",
+          "MOVE_THIEF",
+          "MOVE_TOXIC",
+          "MOVE_WEATHER_BALL",
+          "MOVE_WILL_O_WISP",
+          "MOVE_WORK_UP",
+          "MOVE_ZEN_HEADBUTT"
+        ],
+        "TutorMoves": [
+          "MOVE_FIRE_PUNCH",
+          "MOVE_HEADBUTT",
+          "MOVE_HEAT_WAVE",
+          "MOVE_HELPING_HAND",
+          "MOVE_LOW_KICK",
+          "MOVE_MUD_SLAP",
+          "MOVE_SNORE",
+          "MOVE_SWIFT",
+          "MOVE_THUNDER_PUNCH"
+        ],
+        "EggMoves": [
+          "MOVE_ANCIENT_POWER",
+          "MOVE_DRAGON_RUSH",
+          "MOVE_COUNTER",
+          "MOVE_THUNDER_FANG",
+          "MOVE_YAWN",
+          "MOVE_CURSE"
+        ]
+      },
+      "stock_move_symbol_aliases": {
+        "MOVE_SCRATCH": "MOVE_ATTRIBUTE_CONTEST_EFFECT",
+        "MOVE_SMOKESCREEN": "MOVE_SMOKE_SCREEN",
+        "MOVE_FIRE_PUNCH": "MOVE_ATTRIBUTE_RANGE",
+        "MOVE_THUNDER_PUNCH": "MOVE_ATTRIBUTE_FLAGS"
+      },
+      "moves_absent_from_stock_by_method": {
+        "LevelMoves": [
+          {
+            "Level": 0,
+            "Move": "MOVE_INCINERATE"
+          },
+          {
+            "Level": 21,
+            "Move": "MOVE_SNARL"
+          },
+          {
+            "Level": 45,
+            "Move": "MOVE_FIRE_LASH"
+          }
+        ],
+        "MachineMoves": [
+          "MOVE_BURNING_JEALOUSY",
+          "MOVE_CONFIDE",
+          "MOVE_FIRE_PLEDGE",
+          "MOVE_HEAT_CRASH",
+          "MOVE_SCORCHING_SANDS",
+          "MOVE_TEMPER_FLARE",
+          "MOVE_TERA_BLAST",
+          "MOVE_WORK_UP"
+        ],
+        "TutorMoves": [],
+        "EggMoves": []
+      },
+      "existing_moves_not_on_stock_machines": [
+        "MOVE_AERIAL_ACE",
+        "MOVE_AGILITY",
+        "MOVE_ATTRACT",
+        "MOVE_BLAZE_KICK",
+        "MOVE_BODY_SLAM",
+        "MOVE_BRICK_BREAK",
+        "MOVE_CALM_MIND",
+        "MOVE_CAPTIVATE",
+        "MOVE_CRUNCH",
+        "MOVE_CURSE",
+        "MOVE_CUT",
+        "MOVE_DIG",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_EARTHQUAKE",
+        "MOVE_ENDEAVOR",
+        "MOVE_ENDURE",
+        "MOVE_FACADE",
+        "MOVE_FIRE_BLAST",
+        "MOVE_FLAMETHROWER",
+        "MOVE_FLARE_BLITZ",
+        "MOVE_FLING",
+        "MOVE_FOCUS_BLAST",
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_FRUSTRATION",
+        "MOVE_HEAT_WAVE",
+        "MOVE_HELPING_HAND",
+        "MOVE_HIDDEN_POWER",
+        "MOVE_IRON_HEAD",
+        "MOVE_IRON_TAIL",
+        "MOVE_LOW_KICK",
+        "MOVE_NATURAL_GIFT",
+        "MOVE_OVERHEAT",
+        "MOVE_PROTECT",
+        "MOVE_RAIN_DANCE",
+        "MOVE_REFLECT",
+        "MOVE_REST",
+        "MOVE_RETURN",
+        "MOVE_REVERSAL",
+        "MOVE_ROAR",
+        "MOVE_ROCK_CLIMB",
+        "MOVE_ROCK_SLIDE",
+        "MOVE_ROCK_SMASH",
+        "MOVE_ROCK_TOMB",
+        "MOVE_SANDSTORM",
+        "MOVE_SECRET_POWER",
+        "MOVE_SHADOW_BALL",
+        "MOVE_SLEEP_TALK",
+        "MOVE_SOLAR_BEAM",
+        "MOVE_STONE_EDGE",
+        "MOVE_STRENGTH",
+        "MOVE_SUBSTITUTE",
+        "MOVE_SUNNY_DAY",
+        "MOVE_SWAGGER",
+        "MOVE_THIEF",
+        "MOVE_TOXIC",
+        "MOVE_WEATHER_BALL",
+        "MOVE_WILL_O_WISP",
+        "MOVE_ZEN_HEADBUTT"
+      ],
+      "assets": [
+        {
+          "path": "data/graphics/sprites/pyrovaran/female/back.png",
+          "sha256": "ee8edbe613a306920e390956f986c6704dca7dccd0afaf0a7fb8d068a4267e53"
+        },
+        {
+          "path": "data/graphics/sprites/pyrovaran/female/front.png",
+          "sha256": "15e68b539815bd8b3afa6daf52dfd2bf26658a601fb85b10bf26281851f0ae1e"
+        },
+        {
+          "path": "data/graphics/sprites/pyrovaran/icon.png",
+          "sha256": "cb2463bfec8794cf477be2303eae6e835157250b4bfe275162547b575e16f037"
+        },
+        {
+          "path": "data/graphics/sprites/pyrovaran/male/back.png",
+          "sha256": "ee8edbe613a306920e390956f986c6704dca7dccd0afaf0a7fb8d068a4267e53"
+        },
+        {
+          "path": "data/graphics/sprites/pyrovaran/male/front.png",
+          "sha256": "15e68b539815bd8b3afa6daf52dfd2bf26658a601fb85b10bf26281851f0ae1e"
+        },
+        {
+          "path": "data/graphics/sprites/pyrovaran/overworld.png",
+          "sha256": "cc3214a5d46071b36c5ea00386326dee47319e22d2d737497e7666c76da98dc9"
+        },
+        {
+          "path": "documentation/fakemon/designs-2026-09/cries/drafts/pyrovaran.wav",
+          "sha256": "4d2530b7e4442e0a99711304f0c19f98fcb485dcba89857d300cadc297c3d55e"
+        }
+      ]
+    },
+    {
+      "name": "Magmalisk",
+      "key": "magmalisk",
+      "source_species_id": 1081,
+      "base_stats": {
+        "hp": 110,
+        "attack": 110,
+        "defense": 95,
+        "sp_attack": 110,
+        "sp_defense": 90,
+        "speed": 85
+      },
+      "bst": 600,
+      "types": [
+        "Fire"
+      ],
+      "abilities": {
+        "primary": "Flash Fire",
+        "secondary": null,
+        "hidden": null
+      },
+      "growth_rate": "Slow",
+      "ev_yield": {
+        "hp": 1,
+        "attack": 1,
+        "defense": 0,
+        "sp_attack": 1,
+        "sp_defense": 0,
+        "speed": 0
+      },
+      "breeding": {
+        "egg_groups": [
+          "Monster",
+          "Dragon"
+        ],
+        "male_percent": 50,
+        "female_percent": 50,
+        "hatch_cycles": 20,
+        "hatch_species": "embernewt",
+        "status": "approved_by_user_individual_donor_routes_checked"
+      },
+      "pokedex": {
+        "classification": "Volcanic Pok\u00e9mon",
+        "classification_status": "derived_under_user_authorization",
+        "entry_text": "Volcanic eruptions were once believed to be the result of two Magmalisk fighting over territory deep beneath the mountain. Its every step leaves a pool of bubbling lava behind.",
+        "entry_source": "user_supplied_complete_entries_verbatim",
+        "height_decimetres": 21,
+        "weight_hectograms": 1420,
+        "dimension_source": "Inferred design values; artwork has no calibrated scale",
+        "implementation_status": "registered_full_text_paged",
+        "entry_status": "approved_user_text"
+      },
+      "approved_learnset": {
+        "LevelMoves": [
+          {
+            "Level": 0,
+            "Move": "MOVE_FLARE_BLITZ"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_SCRATCH"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_GROWL"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_INCINERATE"
+          },
+          {
+            "Level": 5,
+            "Move": "MOVE_EMBER"
+          },
+          {
+            "Level": 10,
+            "Move": "MOVE_SMOKESCREEN"
+          },
+          {
+            "Level": 14,
+            "Move": "MOVE_FIRE_FANG"
+          },
+          {
+            "Level": 21,
+            "Move": "MOVE_SNARL"
+          },
+          {
+            "Level": 25,
+            "Move": "MOVE_ANCIENT_POWER"
+          },
+          {
+            "Level": 29,
+            "Move": "MOVE_SCARY_FACE"
+          },
+          {
+            "Level": 34,
+            "Move": "MOVE_LAVA_PLUME"
+          },
+          {
+            "Level": 38,
+            "Move": "MOVE_CRUNCH"
+          },
+          {
+            "Level": 41,
+            "Move": "MOVE_FLAMETHROWER"
+          },
+          {
+            "Level": 45,
+            "Move": "MOVE_FIRE_LASH"
+          },
+          {
+            "Level": 48,
+            "Move": "MOVE_AMNESIA"
+          },
+          {
+            "Level": 57,
+            "Move": "MOVE_EARTH_POWER"
+          },
+          {
+            "Level": 65,
+            "Move": "MOVE_FIRE_BLAST"
+          }
+        ],
+        "MachineMoves": [
+          "MOVE_AERIAL_ACE",
+          "MOVE_AGILITY",
+          "MOVE_ATTRACT",
+          "MOVE_BLAST_BURN",
+          "MOVE_BLAZE_KICK",
+          "MOVE_BODY_SLAM",
+          "MOVE_BRICK_BREAK",
+          "MOVE_BURNING_JEALOUSY",
+          "MOVE_CALM_MIND",
+          "MOVE_CAPTIVATE",
+          "MOVE_CONFIDE",
+          "MOVE_CRUNCH",
+          "MOVE_CURSE",
+          "MOVE_CUT",
+          "MOVE_DIG",
+          "MOVE_DOUBLE_EDGE",
+          "MOVE_DOUBLE_TEAM",
+          "MOVE_EARTHQUAKE",
+          "MOVE_ENDEAVOR",
+          "MOVE_ENDURE",
+          "MOVE_FACADE",
+          "MOVE_FIRE_BLAST",
+          "MOVE_FIRE_PLEDGE",
+          "MOVE_FLAMETHROWER",
+          "MOVE_FLARE_BLITZ",
+          "MOVE_FLING",
+          "MOVE_FOCUS_BLAST",
+          "MOVE_FOCUS_PUNCH",
+          "MOVE_FRUSTRATION",
+          "MOVE_GIGA_IMPACT",
+          "MOVE_HEAT_CRASH",
+          "MOVE_HEAT_WAVE",
+          "MOVE_HELPING_HAND",
+          "MOVE_HIDDEN_POWER",
+          "MOVE_HYPER_BEAM",
+          "MOVE_IRON_HEAD",
+          "MOVE_IRON_TAIL",
+          "MOVE_LOW_KICK",
+          "MOVE_NATURAL_GIFT",
+          "MOVE_OVERHEAT",
+          "MOVE_PROTECT",
+          "MOVE_RAIN_DANCE",
+          "MOVE_REFLECT",
+          "MOVE_REST",
+          "MOVE_RETURN",
+          "MOVE_REVERSAL",
+          "MOVE_ROAR",
+          "MOVE_ROCK_CLIMB",
+          "MOVE_ROCK_SLIDE",
+          "MOVE_ROCK_SMASH",
+          "MOVE_ROCK_TOMB",
+          "MOVE_SANDSTORM",
+          "MOVE_SCORCHING_SANDS",
+          "MOVE_SECRET_POWER",
+          "MOVE_SHADOW_BALL",
+          "MOVE_SLEEP_TALK",
+          "MOVE_SOLAR_BEAM",
+          "MOVE_STONE_EDGE",
+          "MOVE_STRENGTH",
+          "MOVE_SUBSTITUTE",
+          "MOVE_SUNNY_DAY",
+          "MOVE_SWAGGER",
+          "MOVE_TEMPER_FLARE",
+          "MOVE_TERA_BLAST",
+          "MOVE_THIEF",
+          "MOVE_TOXIC",
+          "MOVE_WEATHER_BALL",
+          "MOVE_WILL_O_WISP",
+          "MOVE_WORK_UP",
+          "MOVE_ZEN_HEADBUTT"
+        ],
+        "TutorMoves": [
+          "MOVE_FIRE_PUNCH",
+          "MOVE_HEADBUTT",
+          "MOVE_HEAT_WAVE",
+          "MOVE_HELPING_HAND",
+          "MOVE_LOW_KICK",
+          "MOVE_MUD_SLAP",
+          "MOVE_SNORE",
+          "MOVE_SWIFT",
+          "MOVE_THUNDER_PUNCH"
+        ],
+        "EggMoves": [
+          "MOVE_ANCIENT_POWER",
+          "MOVE_DRAGON_RUSH",
+          "MOVE_COUNTER",
+          "MOVE_THUNDER_FANG",
+          "MOVE_YAWN",
+          "MOVE_CURSE"
+        ]
+      },
+      "stock_move_symbol_aliases": {
+        "MOVE_SCRATCH": "MOVE_ATTRIBUTE_CONTEST_EFFECT",
+        "MOVE_SMOKESCREEN": "MOVE_SMOKE_SCREEN",
+        "MOVE_FIRE_PUNCH": "MOVE_ATTRIBUTE_RANGE",
+        "MOVE_THUNDER_PUNCH": "MOVE_ATTRIBUTE_FLAGS"
+      },
+      "moves_absent_from_stock_by_method": {
+        "LevelMoves": [
+          {
+            "Level": 1,
+            "Move": "MOVE_INCINERATE"
+          },
+          {
+            "Level": 21,
+            "Move": "MOVE_SNARL"
+          },
+          {
+            "Level": 45,
+            "Move": "MOVE_FIRE_LASH"
+          }
+        ],
+        "MachineMoves": [
+          "MOVE_BURNING_JEALOUSY",
+          "MOVE_CONFIDE",
+          "MOVE_FIRE_PLEDGE",
+          "MOVE_HEAT_CRASH",
+          "MOVE_SCORCHING_SANDS",
+          "MOVE_TEMPER_FLARE",
+          "MOVE_TERA_BLAST",
+          "MOVE_WORK_UP"
+        ],
+        "TutorMoves": [],
+        "EggMoves": []
+      },
+      "existing_moves_not_on_stock_machines": [
+        "MOVE_AERIAL_ACE",
+        "MOVE_AGILITY",
+        "MOVE_ATTRACT",
+        "MOVE_BLAST_BURN",
+        "MOVE_BLAZE_KICK",
+        "MOVE_BODY_SLAM",
+        "MOVE_BRICK_BREAK",
+        "MOVE_CALM_MIND",
+        "MOVE_CAPTIVATE",
+        "MOVE_CRUNCH",
+        "MOVE_CURSE",
+        "MOVE_CUT",
+        "MOVE_DIG",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_EARTHQUAKE",
+        "MOVE_ENDEAVOR",
+        "MOVE_ENDURE",
+        "MOVE_FACADE",
+        "MOVE_FIRE_BLAST",
+        "MOVE_FLAMETHROWER",
+        "MOVE_FLARE_BLITZ",
+        "MOVE_FLING",
+        "MOVE_FOCUS_BLAST",
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_FRUSTRATION",
+        "MOVE_GIGA_IMPACT",
+        "MOVE_HEAT_WAVE",
+        "MOVE_HELPING_HAND",
+        "MOVE_HIDDEN_POWER",
+        "MOVE_HYPER_BEAM",
+        "MOVE_IRON_HEAD",
+        "MOVE_IRON_TAIL",
+        "MOVE_LOW_KICK",
+        "MOVE_NATURAL_GIFT",
+        "MOVE_OVERHEAT",
+        "MOVE_PROTECT",
+        "MOVE_RAIN_DANCE",
+        "MOVE_REFLECT",
+        "MOVE_REST",
+        "MOVE_RETURN",
+        "MOVE_REVERSAL",
+        "MOVE_ROAR",
+        "MOVE_ROCK_CLIMB",
+        "MOVE_ROCK_SLIDE",
+        "MOVE_ROCK_SMASH",
+        "MOVE_ROCK_TOMB",
+        "MOVE_SANDSTORM",
+        "MOVE_SECRET_POWER",
+        "MOVE_SHADOW_BALL",
+        "MOVE_SLEEP_TALK",
+        "MOVE_SOLAR_BEAM",
+        "MOVE_STONE_EDGE",
+        "MOVE_STRENGTH",
+        "MOVE_SUBSTITUTE",
+        "MOVE_SUNNY_DAY",
+        "MOVE_SWAGGER",
+        "MOVE_THIEF",
+        "MOVE_TOXIC",
+        "MOVE_WEATHER_BALL",
+        "MOVE_WILL_O_WISP",
+        "MOVE_ZEN_HEADBUTT"
+      ],
+      "assets": [
+        {
+          "path": "data/graphics/sprites/magmalisk/female/back.png",
+          "sha256": "e060f5f75a195fe3199a54b9b0626fd618d747ceb06ddad689b5d4913cfff256"
+        },
+        {
+          "path": "data/graphics/sprites/magmalisk/female/front.png",
+          "sha256": "23db66c3a82b0ea8de98c2c31fe9d7b0ed1c61d8e8f4ad30721513262da8c4c0"
+        },
+        {
+          "path": "data/graphics/sprites/magmalisk/icon.png",
+          "sha256": "32bd2931deda080b79b688345d0bf2f6349e6d3ae274b315902bf0a3d71d13a8"
+        },
+        {
+          "path": "data/graphics/sprites/magmalisk/male/back.png",
+          "sha256": "e060f5f75a195fe3199a54b9b0626fd618d747ceb06ddad689b5d4913cfff256"
+        },
+        {
+          "path": "data/graphics/sprites/magmalisk/male/front.png",
+          "sha256": "23db66c3a82b0ea8de98c2c31fe9d7b0ed1c61d8e8f4ad30721513262da8c4c0"
+        },
+        {
+          "path": "data/graphics/sprites/magmalisk/overworld.png",
+          "sha256": "82ad1ff22ba0f5f556efbed48df3058d44941a6e8cc04140e6ac41ce8e74ef67"
+        },
+        {
+          "path": "documentation/fakemon/designs-2026-09/cries/drafts/magmalisk.wav",
+          "sha256": "1754d309ddc2809db4e34bdcdfdf108e3f50bafa37fe787af0e3dea39f2f74e6"
+        }
+      ]
+    },
+    {
+      "name": "Rimevaran",
+      "key": "rimevaran",
+      "source_species_id": 1082,
+      "base_stats": {
+        "hp": 85,
+        "attack": 60,
+        "defense": 65,
+        "sp_attack": 85,
+        "sp_defense": 55,
+        "speed": 55
+      },
+      "bst": 405,
+      "types": [
+        "Dark",
+        "Ice"
+      ],
+      "abilities": {
+        "primary": "Flash Fire",
+        "secondary": null,
+        "hidden": null
+      },
+      "growth_rate": "Slow",
+      "ev_yield": {
+        "hp": 1,
+        "attack": 0,
+        "defense": 0,
+        "sp_attack": 1,
+        "sp_defense": 0,
+        "speed": 0
+      },
+      "breeding": {
+        "egg_groups": [
+          "Monster",
+          "Dragon"
+        ],
+        "male_percent": 50,
+        "female_percent": 50,
+        "hatch_cycles": 20,
+        "hatch_species": "embernewt",
+        "status": "approved_by_user_individual_donor_routes_checked"
+      },
+      "pokedex": {
+        "classification": "Frost Crown Pok\u00e9mon",
+        "classification_status": "derived_under_user_authorization",
+        "entry_text": "Only an Embernewt whose flame survives being sealed in ice becomes this Pok\u00e9mon. It draws all warmth from the surrounding air to keep its inner flame alive.",
+        "entry_source": "user_supplied_complete_entries_verbatim",
+        "height_decimetres": 12,
+        "weight_hectograms": 415,
+        "dimension_source": "Inferred design values; artwork has no calibrated scale",
+        "implementation_status": "registered_full_text_paged",
+        "entry_status": "approved_user_text"
+      },
+      "approved_learnset": {
+        "LevelMoves": [
+          {
+            "Level": 0,
+            "Move": "MOVE_ICY_WIND"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_SCRATCH"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_GROWL"
+          },
+          {
+            "Level": 5,
+            "Move": "MOVE_EMBER"
+          },
+          {
+            "Level": 10,
+            "Move": "MOVE_SMOKESCREEN"
+          },
+          {
+            "Level": 14,
+            "Move": "MOVE_ICE_FANG"
+          },
+          {
+            "Level": 21,
+            "Move": "MOVE_SNARL"
+          },
+          {
+            "Level": 25,
+            "Move": "MOVE_ANCIENT_POWER"
+          },
+          {
+            "Level": 29,
+            "Move": "MOVE_SCARY_FACE"
+          },
+          {
+            "Level": 34,
+            "Move": "MOVE_AURORA_BEAM"
+          },
+          {
+            "Level": 38,
+            "Move": "MOVE_CRUNCH"
+          },
+          {
+            "Level": 41,
+            "Move": "MOVE_ICE_BEAM"
+          },
+          {
+            "Level": 45,
+            "Move": "MOVE_AVALANCHE"
+          },
+          {
+            "Level": 48,
+            "Move": "MOVE_AMNESIA"
+          }
+        ],
+        "MachineMoves": [
+          "MOVE_AERIAL_ACE",
+          "MOVE_ATTRACT",
+          "MOVE_AVALANCHE",
+          "MOVE_BLIZZARD",
+          "MOVE_BODY_PRESS",
+          "MOVE_BODY_SLAM",
+          "MOVE_BRICK_BREAK",
+          "MOVE_BRINE",
+          "MOVE_CALM_MIND",
+          "MOVE_CAPTIVATE",
+          "MOVE_CONFIDE",
+          "MOVE_CRUNCH",
+          "MOVE_CURSE",
+          "MOVE_CUT",
+          "MOVE_DARKEST_LARIAT",
+          "MOVE_DARK_PULSE",
+          "MOVE_DIG",
+          "MOVE_DIVE",
+          "MOVE_DOUBLE_EDGE",
+          "MOVE_DOUBLE_TEAM",
+          "MOVE_DREAM_EATER",
+          "MOVE_EARTHQUAKE",
+          "MOVE_EMBARGO",
+          "MOVE_ENDEAVOR",
+          "MOVE_ENDURE",
+          "MOVE_FACADE",
+          "MOVE_FALSE_SWIPE",
+          "MOVE_FLASH",
+          "MOVE_FLING",
+          "MOVE_FOCUS_ENERGY",
+          "MOVE_FOUL_PLAY",
+          "MOVE_FRUSTRATION",
+          "MOVE_HAIL",
+          "MOVE_HAZE",
+          "MOVE_HELPING_HAND",
+          "MOVE_HIDDEN_POWER",
+          "MOVE_HYDRO_PUMP",
+          "MOVE_ICE_BEAM",
+          "MOVE_ICE_SPINNER",
+          "MOVE_ICICLE_SPEAR",
+          "MOVE_IRON_HEAD",
+          "MOVE_IRON_TAIL",
+          "MOVE_KNOCK_OFF",
+          "MOVE_LASH_OUT",
+          "MOVE_LIGHT_SCREEN",
+          "MOVE_LIQUIDATION",
+          "MOVE_LOW_KICK",
+          "MOVE_NASTY_PLOT",
+          "MOVE_NATURAL_GIFT",
+          "MOVE_PAYBACK",
+          "MOVE_POISON_JAB",
+          "MOVE_PROTECT",
+          "MOVE_PSYCH_UP",
+          "MOVE_RAIN_DANCE",
+          "MOVE_REFLECT",
+          "MOVE_REST",
+          "MOVE_RETURN",
+          "MOVE_ROAR",
+          "MOVE_ROCK_SLIDE",
+          "MOVE_ROCK_SMASH",
+          "MOVE_ROCK_TOMB",
+          "MOVE_SAFEGUARD",
+          "MOVE_SECRET_POWER",
+          "MOVE_SHADOW_BALL",
+          "MOVE_SHADOW_CLAW",
+          "MOVE_SLEEP_TALK",
+          "MOVE_SNATCH",
+          "MOVE_SPITE",
+          "MOVE_STRENGTH",
+          "MOVE_SUBSTITUTE",
+          "MOVE_SUNNY_DAY",
+          "MOVE_SURF",
+          "MOVE_SWAGGER",
+          "MOVE_SWORDS_DANCE",
+          "MOVE_TAUNT",
+          "MOVE_TERA_BLAST",
+          "MOVE_THIEF",
+          "MOVE_THROAT_CHOP",
+          "MOVE_THUNDER_WAVE",
+          "MOVE_TORMENT",
+          "MOVE_TOXIC",
+          "MOVE_TRIPLE_AXEL",
+          "MOVE_UPROAR",
+          "MOVE_WATERFALL",
+          "MOVE_WATER_PULSE",
+          "MOVE_WEATHER_BALL",
+          "MOVE_WHIRLPOOL",
+          "MOVE_WILL_O_WISP",
+          "MOVE_X_SCISSOR"
+        ],
+        "TutorMoves": [
+          "MOVE_BLOCK",
+          "MOVE_DIVE",
+          "MOVE_FURY_CUTTER",
+          "MOVE_HEADBUTT",
+          "MOVE_ICE_PUNCH",
+          "MOVE_ICY_WIND",
+          "MOVE_IRON_HEAD",
+          "MOVE_KNOCK_OFF",
+          "MOVE_LOW_KICK",
+          "MOVE_MUD_SLAP",
+          "MOVE_SIGNAL_BEAM",
+          "MOVE_SNORE",
+          "MOVE_SPITE",
+          "MOVE_SUCKER_PUNCH",
+          "MOVE_SUPERPOWER",
+          "MOVE_SWIFT",
+          "MOVE_UPROAR"
+        ],
+        "EggMoves": [
+          "MOVE_ANCIENT_POWER",
+          "MOVE_DRAGON_RUSH",
+          "MOVE_COUNTER",
+          "MOVE_THUNDER_FANG",
+          "MOVE_YAWN",
+          "MOVE_CURSE"
+        ]
+      },
+      "stock_move_symbol_aliases": {
+        "MOVE_SCRATCH": "MOVE_ATTRIBUTE_CONTEST_EFFECT",
+        "MOVE_SMOKESCREEN": "MOVE_SMOKE_SCREEN",
+        "MOVE_ICE_PUNCH": "MOVE_ATTRIBUTE_PRIORTY"
+      },
+      "moves_absent_from_stock_by_method": {
+        "LevelMoves": [
+          {
+            "Level": 21,
+            "Move": "MOVE_SNARL"
+          }
+        ],
+        "MachineMoves": [
+          "MOVE_BODY_PRESS",
+          "MOVE_CONFIDE",
+          "MOVE_DARKEST_LARIAT",
+          "MOVE_FOUL_PLAY",
+          "MOVE_ICE_SPINNER",
+          "MOVE_LASH_OUT",
+          "MOVE_LIQUIDATION",
+          "MOVE_TERA_BLAST",
+          "MOVE_THROAT_CHOP",
+          "MOVE_TRIPLE_AXEL"
+        ],
+        "TutorMoves": [],
+        "EggMoves": []
+      },
+      "existing_moves_not_on_stock_machines": [
+        "MOVE_AERIAL_ACE",
+        "MOVE_ATTRACT",
+        "MOVE_AVALANCHE",
+        "MOVE_BLIZZARD",
+        "MOVE_BODY_SLAM",
+        "MOVE_BRICK_BREAK",
+        "MOVE_BRINE",
+        "MOVE_CALM_MIND",
+        "MOVE_CAPTIVATE",
+        "MOVE_CRUNCH",
+        "MOVE_CURSE",
+        "MOVE_CUT",
+        "MOVE_DARK_PULSE",
+        "MOVE_DIG",
+        "MOVE_DIVE",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_DREAM_EATER",
+        "MOVE_EARTHQUAKE",
+        "MOVE_EMBARGO",
+        "MOVE_ENDEAVOR",
+        "MOVE_ENDURE",
+        "MOVE_FACADE",
+        "MOVE_FALSE_SWIPE",
+        "MOVE_FLASH",
+        "MOVE_FLING",
+        "MOVE_FOCUS_ENERGY",
+        "MOVE_FRUSTRATION",
+        "MOVE_HAIL",
+        "MOVE_HAZE",
+        "MOVE_HELPING_HAND",
+        "MOVE_HIDDEN_POWER",
+        "MOVE_HYDRO_PUMP",
+        "MOVE_ICE_BEAM",
+        "MOVE_ICICLE_SPEAR",
+        "MOVE_IRON_HEAD",
+        "MOVE_IRON_TAIL",
+        "MOVE_KNOCK_OFF",
+        "MOVE_LIGHT_SCREEN",
+        "MOVE_LOW_KICK",
+        "MOVE_NASTY_PLOT",
+        "MOVE_NATURAL_GIFT",
+        "MOVE_PAYBACK",
+        "MOVE_POISON_JAB",
+        "MOVE_PROTECT",
+        "MOVE_PSYCH_UP",
+        "MOVE_RAIN_DANCE",
+        "MOVE_REFLECT",
+        "MOVE_REST",
+        "MOVE_RETURN",
+        "MOVE_ROAR",
+        "MOVE_ROCK_SLIDE",
+        "MOVE_ROCK_SMASH",
+        "MOVE_ROCK_TOMB",
+        "MOVE_SAFEGUARD",
+        "MOVE_SECRET_POWER",
+        "MOVE_SHADOW_BALL",
+        "MOVE_SHADOW_CLAW",
+        "MOVE_SLEEP_TALK",
+        "MOVE_SNATCH",
+        "MOVE_SPITE",
+        "MOVE_STRENGTH",
+        "MOVE_SUBSTITUTE",
+        "MOVE_SUNNY_DAY",
+        "MOVE_SURF",
+        "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
+        "MOVE_TAUNT",
+        "MOVE_THIEF",
+        "MOVE_THUNDER_WAVE",
+        "MOVE_TORMENT",
+        "MOVE_TOXIC",
+        "MOVE_UPROAR",
+        "MOVE_WATERFALL",
+        "MOVE_WATER_PULSE",
+        "MOVE_WEATHER_BALL",
+        "MOVE_WHIRLPOOL",
+        "MOVE_WILL_O_WISP",
+        "MOVE_X_SCISSOR"
+      ],
+      "assets": [
+        {
+          "path": "data/graphics/sprites/rimevaran/female/back.png",
+          "sha256": "069a4baa3cfb5477910cf0434b4bb8d90aecbb9ae17ee889a4d7f5f614ed2f3c"
+        },
+        {
+          "path": "data/graphics/sprites/rimevaran/female/front.png",
+          "sha256": "fdac825c66e74f00f66e6a2e5fdcc85b56a3e7ff094d10b922d24cc8e248152e"
+        },
+        {
+          "path": "data/graphics/sprites/rimevaran/icon.png",
+          "sha256": "f4019e91d1ed7803c23c2c4580c10f4b52d50193e48be5fbae652a47615a7e9e"
+        },
+        {
+          "path": "data/graphics/sprites/rimevaran/male/back.png",
+          "sha256": "069a4baa3cfb5477910cf0434b4bb8d90aecbb9ae17ee889a4d7f5f614ed2f3c"
+        },
+        {
+          "path": "data/graphics/sprites/rimevaran/male/front.png",
+          "sha256": "fdac825c66e74f00f66e6a2e5fdcc85b56a3e7ff094d10b922d24cc8e248152e"
+        },
+        {
+          "path": "data/graphics/sprites/rimevaran/overworld.png",
+          "sha256": "c28a109483c9247533e5b63c84b7caaf2d8997893f5b588f1619b8bbcd238ec3"
+        },
+        {
+          "path": "documentation/fakemon/designs-2026-09/cries/drafts/rimevaran.wav",
+          "sha256": "a4ec423ba7665ce5ba61866596d3f54d8193ee4a47f3f49e7bd8eb0ec0cc1ccd"
+        }
+      ]
+    },
+    {
+      "name": "Fimbulisk",
+      "key": "fimbulisk",
+      "source_species_id": 1083,
+      "base_stats": {
+        "hp": 110,
+        "attack": 110,
+        "defense": 95,
+        "sp_attack": 110,
+        "sp_defense": 90,
+        "speed": 85
+      },
+      "bst": 600,
+      "types": [
+        "Dark",
+        "Ice"
+      ],
+      "abilities": {
+        "primary": "Flash Fire",
+        "secondary": null,
+        "hidden": null
+      },
+      "growth_rate": "Slow",
+      "ev_yield": {
+        "hp": 1,
+        "attack": 1,
+        "defense": 0,
+        "sp_attack": 1,
+        "sp_defense": 0,
+        "speed": 0
+      },
+      "breeding": {
+        "egg_groups": [
+          "Monster",
+          "Dragon"
+        ],
+        "male_percent": 50,
+        "female_percent": 50,
+        "hatch_cycles": 20,
+        "hatch_species": "embernewt",
+        "status": "approved_by_user_individual_donor_routes_checked"
+      },
+      "pokedex": {
+        "classification": "Blizzard Pok\u00e9mon",
+        "classification_status": "derived_under_user_authorization",
+        "entry_text": "Travelers once froze solid following its glowing eyes through blizzards, believing them to be a distant hearth. Where it rests, winter lingers long after the surrounding snow has melted.",
+        "entry_source": "user_supplied_complete_entries_verbatim",
+        "height_decimetres": 21,
+        "weight_hectograms": 1510,
+        "dimension_source": "Inferred design values; artwork has no calibrated scale",
+        "implementation_status": "registered_full_text_paged",
+        "entry_status": "approved_user_text"
+      },
+      "approved_learnset": {
+        "LevelMoves": [
+          {
+            "Level": 0,
+            "Move": "MOVE_ICICLE_CRASH"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_SCRATCH"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_GROWL"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_ICY_WIND"
+          },
+          {
+            "Level": 5,
+            "Move": "MOVE_EMBER"
+          },
+          {
+            "Level": 10,
+            "Move": "MOVE_SMOKESCREEN"
+          },
+          {
+            "Level": 14,
+            "Move": "MOVE_ICE_FANG"
+          },
+          {
+            "Level": 21,
+            "Move": "MOVE_SNARL"
+          },
+          {
+            "Level": 25,
+            "Move": "MOVE_ANCIENT_POWER"
+          },
+          {
+            "Level": 29,
+            "Move": "MOVE_SCARY_FACE"
+          },
+          {
+            "Level": 34,
+            "Move": "MOVE_AURORA_BEAM"
+          },
+          {
+            "Level": 38,
+            "Move": "MOVE_CRUNCH"
+          },
+          {
+            "Level": 41,
+            "Move": "MOVE_ICE_BEAM"
+          },
+          {
+            "Level": 45,
+            "Move": "MOVE_AVALANCHE"
+          },
+          {
+            "Level": 48,
+            "Move": "MOVE_AMNESIA"
+          },
+          {
+            "Level": 57,
+            "Move": "MOVE_DARK_PULSE"
+          },
+          {
+            "Level": 65,
+            "Move": "MOVE_BLIZZARD"
+          }
+        ],
+        "MachineMoves": [
+          "MOVE_AERIAL_ACE",
+          "MOVE_ATTRACT",
+          "MOVE_AVALANCHE",
+          "MOVE_BLIZZARD",
+          "MOVE_BODY_PRESS",
+          "MOVE_BODY_SLAM",
+          "MOVE_BRICK_BREAK",
+          "MOVE_BRINE",
+          "MOVE_CALM_MIND",
+          "MOVE_CAPTIVATE",
+          "MOVE_CONFIDE",
+          "MOVE_CRUNCH",
+          "MOVE_CURSE",
+          "MOVE_CUT",
+          "MOVE_DARKEST_LARIAT",
+          "MOVE_DARK_PULSE",
+          "MOVE_DIG",
+          "MOVE_DIVE",
+          "MOVE_DOUBLE_EDGE",
+          "MOVE_DOUBLE_TEAM",
+          "MOVE_DREAM_EATER",
+          "MOVE_EARTHQUAKE",
+          "MOVE_EMBARGO",
+          "MOVE_ENDEAVOR",
+          "MOVE_ENDURE",
+          "MOVE_FACADE",
+          "MOVE_FALSE_SWIPE",
+          "MOVE_FLASH",
+          "MOVE_FLING",
+          "MOVE_FOCUS_ENERGY",
+          "MOVE_FOUL_PLAY",
+          "MOVE_FRUSTRATION",
+          "MOVE_GIGA_IMPACT",
+          "MOVE_HAIL",
+          "MOVE_HAZE",
+          "MOVE_HELPING_HAND",
+          "MOVE_HIDDEN_POWER",
+          "MOVE_HYDRO_PUMP",
+          "MOVE_HYPER_BEAM",
+          "MOVE_ICE_BEAM",
+          "MOVE_ICE_SPINNER",
+          "MOVE_ICICLE_SPEAR",
+          "MOVE_IRON_HEAD",
+          "MOVE_IRON_TAIL",
+          "MOVE_KNOCK_OFF",
+          "MOVE_LASH_OUT",
+          "MOVE_LIGHT_SCREEN",
+          "MOVE_LIQUIDATION",
+          "MOVE_LOW_KICK",
+          "MOVE_NASTY_PLOT",
+          "MOVE_NATURAL_GIFT",
+          "MOVE_PAYBACK",
+          "MOVE_POISON_JAB",
+          "MOVE_PROTECT",
+          "MOVE_PSYCH_UP",
+          "MOVE_RAIN_DANCE",
+          "MOVE_REFLECT",
+          "MOVE_REST",
+          "MOVE_RETURN",
+          "MOVE_ROAR",
+          "MOVE_ROCK_SLIDE",
+          "MOVE_ROCK_SMASH",
+          "MOVE_ROCK_TOMB",
+          "MOVE_SAFEGUARD",
+          "MOVE_SECRET_POWER",
+          "MOVE_SHADOW_BALL",
+          "MOVE_SHADOW_CLAW",
+          "MOVE_SLEEP_TALK",
+          "MOVE_SNATCH",
+          "MOVE_SPITE",
+          "MOVE_STRENGTH",
+          "MOVE_SUBSTITUTE",
+          "MOVE_SUNNY_DAY",
+          "MOVE_SURF",
+          "MOVE_SWAGGER",
+          "MOVE_SWORDS_DANCE",
+          "MOVE_TAUNT",
+          "MOVE_TERA_BLAST",
+          "MOVE_THIEF",
+          "MOVE_THROAT_CHOP",
+          "MOVE_THUNDER_WAVE",
+          "MOVE_TORMENT",
+          "MOVE_TOXIC",
+          "MOVE_TRIPLE_AXEL",
+          "MOVE_UPROAR",
+          "MOVE_WATERFALL",
+          "MOVE_WATER_PULSE",
+          "MOVE_WEATHER_BALL",
+          "MOVE_WHIRLPOOL",
+          "MOVE_WILL_O_WISP",
+          "MOVE_X_SCISSOR"
+        ],
+        "TutorMoves": [
+          "MOVE_BLOCK",
+          "MOVE_DIVE",
+          "MOVE_FURY_CUTTER",
+          "MOVE_HEADBUTT",
+          "MOVE_ICE_PUNCH",
+          "MOVE_ICY_WIND",
+          "MOVE_IRON_HEAD",
+          "MOVE_KNOCK_OFF",
+          "MOVE_LOW_KICK",
+          "MOVE_MUD_SLAP",
+          "MOVE_SIGNAL_BEAM",
+          "MOVE_SNORE",
+          "MOVE_SPITE",
+          "MOVE_SUCKER_PUNCH",
+          "MOVE_SUPERPOWER",
+          "MOVE_SWIFT",
+          "MOVE_UPROAR"
+        ],
+        "EggMoves": [
+          "MOVE_ANCIENT_POWER",
+          "MOVE_DRAGON_RUSH",
+          "MOVE_COUNTER",
+          "MOVE_THUNDER_FANG",
+          "MOVE_YAWN",
+          "MOVE_CURSE"
+        ]
+      },
+      "stock_move_symbol_aliases": {
+        "MOVE_SCRATCH": "MOVE_ATTRIBUTE_CONTEST_EFFECT",
+        "MOVE_SMOKESCREEN": "MOVE_SMOKE_SCREEN",
+        "MOVE_ICE_PUNCH": "MOVE_ATTRIBUTE_PRIORTY"
+      },
+      "moves_absent_from_stock_by_method": {
+        "LevelMoves": [
+          {
+            "Level": 0,
+            "Move": "MOVE_ICICLE_CRASH"
+          },
+          {
+            "Level": 21,
+            "Move": "MOVE_SNARL"
+          }
+        ],
+        "MachineMoves": [
+          "MOVE_BODY_PRESS",
+          "MOVE_CONFIDE",
+          "MOVE_DARKEST_LARIAT",
+          "MOVE_FOUL_PLAY",
+          "MOVE_ICE_SPINNER",
+          "MOVE_LASH_OUT",
+          "MOVE_LIQUIDATION",
+          "MOVE_TERA_BLAST",
+          "MOVE_THROAT_CHOP",
+          "MOVE_TRIPLE_AXEL"
+        ],
+        "TutorMoves": [],
+        "EggMoves": []
+      },
+      "existing_moves_not_on_stock_machines": [
+        "MOVE_AERIAL_ACE",
+        "MOVE_ATTRACT",
+        "MOVE_AVALANCHE",
+        "MOVE_BLIZZARD",
+        "MOVE_BODY_SLAM",
+        "MOVE_BRICK_BREAK",
+        "MOVE_BRINE",
+        "MOVE_CALM_MIND",
+        "MOVE_CAPTIVATE",
+        "MOVE_CRUNCH",
+        "MOVE_CURSE",
+        "MOVE_CUT",
+        "MOVE_DARK_PULSE",
+        "MOVE_DIG",
+        "MOVE_DIVE",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_DREAM_EATER",
+        "MOVE_EARTHQUAKE",
+        "MOVE_EMBARGO",
+        "MOVE_ENDEAVOR",
+        "MOVE_ENDURE",
+        "MOVE_FACADE",
+        "MOVE_FALSE_SWIPE",
+        "MOVE_FLASH",
+        "MOVE_FLING",
+        "MOVE_FOCUS_ENERGY",
+        "MOVE_FRUSTRATION",
+        "MOVE_GIGA_IMPACT",
+        "MOVE_HAIL",
+        "MOVE_HAZE",
+        "MOVE_HELPING_HAND",
+        "MOVE_HIDDEN_POWER",
+        "MOVE_HYDRO_PUMP",
+        "MOVE_HYPER_BEAM",
+        "MOVE_ICE_BEAM",
+        "MOVE_ICICLE_SPEAR",
+        "MOVE_IRON_HEAD",
+        "MOVE_IRON_TAIL",
+        "MOVE_KNOCK_OFF",
+        "MOVE_LIGHT_SCREEN",
+        "MOVE_LOW_KICK",
+        "MOVE_NASTY_PLOT",
+        "MOVE_NATURAL_GIFT",
+        "MOVE_PAYBACK",
+        "MOVE_POISON_JAB",
+        "MOVE_PROTECT",
+        "MOVE_PSYCH_UP",
+        "MOVE_RAIN_DANCE",
+        "MOVE_REFLECT",
+        "MOVE_REST",
+        "MOVE_RETURN",
+        "MOVE_ROAR",
+        "MOVE_ROCK_SLIDE",
+        "MOVE_ROCK_SMASH",
+        "MOVE_ROCK_TOMB",
+        "MOVE_SAFEGUARD",
+        "MOVE_SECRET_POWER",
+        "MOVE_SHADOW_BALL",
+        "MOVE_SHADOW_CLAW",
+        "MOVE_SLEEP_TALK",
+        "MOVE_SNATCH",
+        "MOVE_SPITE",
+        "MOVE_STRENGTH",
+        "MOVE_SUBSTITUTE",
+        "MOVE_SUNNY_DAY",
+        "MOVE_SURF",
+        "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
+        "MOVE_TAUNT",
+        "MOVE_THIEF",
+        "MOVE_THUNDER_WAVE",
+        "MOVE_TORMENT",
+        "MOVE_TOXIC",
+        "MOVE_UPROAR",
+        "MOVE_WATERFALL",
+        "MOVE_WATER_PULSE",
+        "MOVE_WEATHER_BALL",
+        "MOVE_WHIRLPOOL",
+        "MOVE_WILL_O_WISP",
+        "MOVE_X_SCISSOR"
+      ],
+      "assets": [
+        {
+          "path": "data/graphics/sprites/fimbulisk/female/back.png",
+          "sha256": "cb01a98652664b37fa9a49ebb630cea78cfaf057af212bc73700cd082178b871"
+        },
+        {
+          "path": "data/graphics/sprites/fimbulisk/female/front.png",
+          "sha256": "4c2bd63802c5069729375df3a9698f38e67eee67c350b00b3c59ee46ba266748"
+        },
+        {
+          "path": "data/graphics/sprites/fimbulisk/icon.png",
+          "sha256": "f5aa9a9caa893c5c951ef23ad77e4f4a5ff8c81e98aee2534962c45216ac8f3b"
+        },
+        {
+          "path": "data/graphics/sprites/fimbulisk/male/back.png",
+          "sha256": "cb01a98652664b37fa9a49ebb630cea78cfaf057af212bc73700cd082178b871"
+        },
+        {
+          "path": "data/graphics/sprites/fimbulisk/male/front.png",
+          "sha256": "4c2bd63802c5069729375df3a9698f38e67eee67c350b00b3c59ee46ba266748"
+        },
+        {
+          "path": "data/graphics/sprites/fimbulisk/overworld.png",
+          "sha256": "622ea6e2417b122b0cb8caa31caf0ecd967d3b4b959e87251d0a8ee9269fa9b6"
+        },
+        {
+          "path": "documentation/fakemon/designs-2026-09/cries/drafts/fimbulisk.wav",
+          "sha256": "9571e951af9c34a63d7cb8d0ab2df609b4cb1bf6de91fc639ac3522a29c0ead8"
+        }
+      ]
+    },
+    {
+      "name": "Sedgling",
+      "key": "sedgling",
+      "source_species_id": 1084,
+      "base_stats": {
+        "hp": 40,
+        "attack": 55,
+        "defense": 55,
+        "sp_attack": 60,
+        "sp_defense": 50,
+        "speed": 55
+      },
+      "bst": 315,
+      "types": [
+        "Ground",
+        "Water"
+      ],
+      "abilities": {
+        "primary": "Water Absorb",
+        "secondary": null,
+        "hidden": null
+      },
+      "growth_rate": "Medium Slow",
+      "ev_yield": {
+        "hp": 0,
+        "attack": 0,
+        "defense": 0,
+        "sp_attack": 1,
+        "sp_defense": 0,
+        "speed": 0
+      },
+      "breeding": {
+        "egg_groups": [
+          "Water 1",
+          "Flying"
+        ],
+        "male_percent": 50,
+        "female_percent": 50,
+        "hatch_cycles": 20,
+        "hatch_species": "sedgling",
+        "status": "approved_by_user_individual_donor_routes_checked"
+      },
+      "pokedex": {
+        "classification": "Marsh Duck Pok\u00e9mon",
+        "classification_status": "derived_under_user_authorization",
+        "entry_text": "It loves to nap in shallow puddles. Its down soaks up so much water that it sometimes wakes to find itself sitting on dry ground.",
+        "entry_source": "user_supplied_complete_entries_verbatim",
+        "height_decimetres": 4,
+        "weight_hectograms": 52,
+        "dimension_source": "Inferred design values; artwork has no calibrated scale",
+        "implementation_status": "registered_full_text_paged",
+        "entry_status": "approved_user_text"
+      },
+      "approved_learnset": {
+        "LevelMoves": [
+          {
+            "Level": 1,
+            "Move": "MOVE_PECK"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_GROWL"
+          },
+          {
+            "Level": 6,
+            "Move": "MOVE_MUD_SLAP"
+          },
+          {
+            "Level": 10,
+            "Move": "MOVE_WATER_GUN"
+          },
+          {
+            "Level": 15,
+            "Move": "MOVE_MUD_SHOT"
+          },
+          {
+            "Level": 19,
+            "Move": "MOVE_WATER_PULSE"
+          },
+          {
+            "Level": 24,
+            "Move": "MOVE_BULLDOZE"
+          },
+          {
+            "Level": 27,
+            "Move": "MOVE_ANCIENT_POWER"
+          },
+          {
+            "Level": 31,
+            "Move": "MOVE_AQUA_TAIL"
+          },
+          {
+            "Level": 35,
+            "Move": "MOVE_AMNESIA"
+          },
+          {
+            "Level": 39,
+            "Move": "MOVE_EARTH_POWER"
+          },
+          {
+            "Level": 43,
+            "Move": "MOVE_MUDDY_WATER"
+          },
+          {
+            "Level": 47,
+            "Move": "MOVE_AGILITY"
+          }
+        ],
+        "MachineMoves": [
+          "MOVE_AGILITY",
+          "MOVE_AMNESIA",
+          "MOVE_ATTRACT",
+          "MOVE_AVALANCHE",
+          "MOVE_BLIZZARD",
+          "MOVE_BODY_PRESS",
+          "MOVE_BODY_SLAM",
+          "MOVE_BRICK_BREAK",
+          "MOVE_BRINE",
+          "MOVE_CAPTIVATE",
+          "MOVE_CONFIDE",
+          "MOVE_CRUNCH",
+          "MOVE_CURSE",
+          "MOVE_CUT",
+          "MOVE_DIG",
+          "MOVE_DIVE",
+          "MOVE_DOUBLE_EDGE",
+          "MOVE_DOUBLE_TEAM",
+          "MOVE_DRILL_RUN",
+          "MOVE_EARTHQUAKE",
+          "MOVE_EARTH_POWER",
+          "MOVE_ENDEAVOR",
+          "MOVE_ENDURE",
+          "MOVE_FACADE",
+          "MOVE_FIRE_BLAST",
+          "MOVE_FLAMETHROWER",
+          "MOVE_FLING",
+          "MOVE_FLIP_TURN",
+          "MOVE_FOCUS_BLAST",
+          "MOVE_FOCUS_PUNCH",
+          "MOVE_FRUSTRATION",
+          "MOVE_HAIL",
+          "MOVE_HAZE",
+          "MOVE_HEAVY_SLAM",
+          "MOVE_HELPING_HAND",
+          "MOVE_HIDDEN_POWER",
+          "MOVE_HIGH_HORSEPOWER",
+          "MOVE_HYDRO_PUMP",
+          "MOVE_ICE_BEAM",
+          "MOVE_IRON_DEFENSE",
+          "MOVE_IRON_HEAD",
+          "MOVE_IRON_TAIL",
+          "MOVE_LIQUIDATION",
+          "MOVE_MEGA_PUNCH",
+          "MOVE_MUDDY_WATER",
+          "MOVE_NATURAL_GIFT",
+          "MOVE_OUTRAGE",
+          "MOVE_POISON_JAB",
+          "MOVE_PROTECT",
+          "MOVE_RAIN_DANCE",
+          "MOVE_REST",
+          "MOVE_RETURN",
+          "MOVE_ROAR",
+          "MOVE_ROCK_CLIMB",
+          "MOVE_ROCK_POLISH",
+          "MOVE_ROCK_SLIDE",
+          "MOVE_ROCK_SMASH",
+          "MOVE_ROCK_TOMB",
+          "MOVE_SANDSTORM",
+          "MOVE_SAND_TOMB",
+          "MOVE_SCALD",
+          "MOVE_SCORCHING_SANDS",
+          "MOVE_SECRET_POWER",
+          "MOVE_SLEEP_TALK",
+          "MOVE_SMACK_DOWN",
+          "MOVE_SPIKES",
+          "MOVE_STEALTH_ROCK",
+          "MOVE_STONE_EDGE",
+          "MOVE_STRENGTH",
+          "MOVE_SUBSTITUTE",
+          "MOVE_SUNNY_DAY",
+          "MOVE_SUPERPOWER",
+          "MOVE_SURF",
+          "MOVE_SWAGGER",
+          "MOVE_SWORDS_DANCE",
+          "MOVE_TERA_BLAST",
+          "MOVE_THIEF",
+          "MOVE_THROAT_CHOP",
+          "MOVE_TOXIC",
+          "MOVE_UPROAR",
+          "MOVE_WATERFALL",
+          "MOVE_WATER_PLEDGE",
+          "MOVE_WATER_PULSE",
+          "MOVE_WEATHER_BALL",
+          "MOVE_WHIRLPOOL"
+        ],
+        "TutorMoves": [
+          "MOVE_ANCIENT_POWER",
+          "MOVE_AQUA_TAIL",
+          "MOVE_DIVE",
+          "MOVE_EARTH_POWER",
+          "MOVE_FURY_CUTTER",
+          "MOVE_HEADBUTT",
+          "MOVE_ICY_WIND",
+          "MOVE_IRON_HEAD",
+          "MOVE_MUD_SLAP",
+          "MOVE_OUTRAGE",
+          "MOVE_ROLLOUT",
+          "MOVE_SIGNAL_BEAM",
+          "MOVE_SNORE",
+          "MOVE_SUPERPOWER",
+          "MOVE_SWIFT"
+        ],
+        "EggMoves": [
+          "MOVE_AQUA_JET",
+          "MOVE_FEATHER_DANCE",
+          "MOVE_ROOST",
+          "MOVE_MIRROR_COAT",
+          "MOVE_YAWN",
+          "MOVE_STEEL_WING"
+        ]
+      },
+      "stock_move_symbol_aliases": {
+        "MOVE_MEGA_PUNCH": "MOVE_ATTRIBUTE_PP"
+      },
+      "moves_absent_from_stock_by_method": {
+        "LevelMoves": [
+          {
+            "Level": 24,
+            "Move": "MOVE_BULLDOZE"
+          }
+        ],
+        "MachineMoves": [
+          "MOVE_BODY_PRESS",
+          "MOVE_CONFIDE",
+          "MOVE_DRILL_RUN",
+          "MOVE_FLIP_TURN",
+          "MOVE_HEAVY_SLAM",
+          "MOVE_HIGH_HORSEPOWER",
+          "MOVE_LIQUIDATION",
+          "MOVE_SCALD",
+          "MOVE_SCORCHING_SANDS",
+          "MOVE_SMACK_DOWN",
+          "MOVE_TERA_BLAST",
+          "MOVE_THROAT_CHOP",
+          "MOVE_WATER_PLEDGE"
+        ],
+        "TutorMoves": [],
+        "EggMoves": []
+      },
+      "existing_moves_not_on_stock_machines": [
+        "MOVE_AGILITY",
+        "MOVE_AMNESIA",
+        "MOVE_ATTRACT",
+        "MOVE_AVALANCHE",
+        "MOVE_BLIZZARD",
+        "MOVE_BODY_SLAM",
+        "MOVE_BRICK_BREAK",
+        "MOVE_BRINE",
+        "MOVE_CAPTIVATE",
+        "MOVE_CRUNCH",
+        "MOVE_CURSE",
+        "MOVE_CUT",
+        "MOVE_DIG",
+        "MOVE_DIVE",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_EARTHQUAKE",
+        "MOVE_EARTH_POWER",
+        "MOVE_ENDEAVOR",
+        "MOVE_ENDURE",
+        "MOVE_FACADE",
+        "MOVE_FIRE_BLAST",
+        "MOVE_FLAMETHROWER",
+        "MOVE_FLING",
+        "MOVE_FOCUS_BLAST",
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_FRUSTRATION",
+        "MOVE_HAIL",
+        "MOVE_HAZE",
+        "MOVE_HELPING_HAND",
+        "MOVE_HIDDEN_POWER",
+        "MOVE_HYDRO_PUMP",
+        "MOVE_ICE_BEAM",
+        "MOVE_IRON_DEFENSE",
+        "MOVE_IRON_HEAD",
+        "MOVE_IRON_TAIL",
+        "MOVE_MEGA_PUNCH",
+        "MOVE_MUDDY_WATER",
+        "MOVE_NATURAL_GIFT",
+        "MOVE_OUTRAGE",
+        "MOVE_POISON_JAB",
+        "MOVE_PROTECT",
+        "MOVE_RAIN_DANCE",
+        "MOVE_REST",
+        "MOVE_RETURN",
+        "MOVE_ROAR",
+        "MOVE_ROCK_CLIMB",
+        "MOVE_ROCK_POLISH",
+        "MOVE_ROCK_SLIDE",
+        "MOVE_ROCK_SMASH",
+        "MOVE_ROCK_TOMB",
+        "MOVE_SANDSTORM",
+        "MOVE_SAND_TOMB",
+        "MOVE_SECRET_POWER",
+        "MOVE_SLEEP_TALK",
+        "MOVE_SPIKES",
+        "MOVE_STEALTH_ROCK",
+        "MOVE_STONE_EDGE",
+        "MOVE_STRENGTH",
+        "MOVE_SUBSTITUTE",
+        "MOVE_SUNNY_DAY",
+        "MOVE_SUPERPOWER",
+        "MOVE_SURF",
+        "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
+        "MOVE_THIEF",
+        "MOVE_TOXIC",
+        "MOVE_UPROAR",
+        "MOVE_WATERFALL",
+        "MOVE_WATER_PULSE",
+        "MOVE_WEATHER_BALL",
+        "MOVE_WHIRLPOOL"
+      ],
+      "assets": [
+        {
+          "path": "data/graphics/sprites/sedgling/female/back.png",
+          "sha256": "3ed9094ce8cca49d19c762e2723d8cd3816fcb79d49b7b1d47d7105924a3fdb6"
+        },
+        {
+          "path": "data/graphics/sprites/sedgling/female/front.png",
+          "sha256": "3941bba41cf826a64564cbb0178e410e43bc5a6f93e50de09eefa2b2dca5280a"
+        },
+        {
+          "path": "data/graphics/sprites/sedgling/icon.png",
+          "sha256": "9c33c5f689b7e73e77baa097d8ac2742ffb0a59f8f05be5d010263f73d9e3f6f"
+        },
+        {
+          "path": "data/graphics/sprites/sedgling/male/back.png",
+          "sha256": "3ed9094ce8cca49d19c762e2723d8cd3816fcb79d49b7b1d47d7105924a3fdb6"
+        },
+        {
+          "path": "data/graphics/sprites/sedgling/male/front.png",
+          "sha256": "3941bba41cf826a64564cbb0178e410e43bc5a6f93e50de09eefa2b2dca5280a"
+        },
+        {
+          "path": "data/graphics/sprites/sedgling/overworld.png",
+          "sha256": "b790ced823b09a74ad5312aa1e843f12660bf3ed95f476f35e708f2d609bbc6a"
+        },
+        {
+          "path": "documentation/fakemon/designs-2026-09/cries/drafts/sedgling.wav",
+          "sha256": "33dacc899c5e8b86734105d9ab6acb31241566d6009691d7621c8102488ae7ea"
+        }
+      ]
+    },
+    {
+      "name": "Cragaviar",
+      "key": "cragaviar",
+      "source_species_id": 1085,
+      "base_stats": {
+        "hp": 70,
+        "attack": 75,
+        "defense": 55,
+        "sp_attack": 75,
+        "sp_defense": 55,
+        "speed": 75
+      },
+      "bst": 405,
+      "types": [
+        "Ground",
+        "Flying"
+      ],
+      "abilities": {
+        "primary": "Water Absorb",
+        "secondary": null,
+        "hidden": null
+      },
+      "growth_rate": "Slow",
+      "ev_yield": {
+        "hp": 0,
+        "attack": 1,
+        "defense": 0,
+        "sp_attack": 1,
+        "sp_defense": 0,
+        "speed": 0
+      },
+      "breeding": {
+        "egg_groups": [
+          "Water 1",
+          "Flying"
+        ],
+        "male_percent": 50,
+        "female_percent": 50,
+        "hatch_cycles": 20,
+        "hatch_species": "sedgling",
+        "status": "approved_by_user_individual_donor_routes_checked"
+      },
+      "pokedex": {
+        "classification": "Stone Plume Pok\u00e9mon",
+        "classification_status": "derived_under_user_authorization",
+        "entry_text": "It soaks its stone-like feathers in rivers before long flights. The absorbed water binds their layers together, repairing cracks caused by wear.",
+        "entry_source": "user_supplied_complete_entries_verbatim",
+        "height_decimetres": 12,
+        "weight_hectograms": 326,
+        "dimension_source": "Inferred design values; artwork has no calibrated scale",
+        "implementation_status": "registered_full_text_paged",
+        "entry_status": "approved_user_text"
+      },
+      "approved_learnset": {
+        "LevelMoves": [
+          {
+            "Level": 0,
+            "Move": "MOVE_WING_ATTACK"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_PECK"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_GROWL"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_AQUA_TAIL"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_MUDDY_WATER"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_AMNESIA"
+          },
+          {
+            "Level": 6,
+            "Move": "MOVE_MUD_SLAP"
+          },
+          {
+            "Level": 10,
+            "Move": "MOVE_WATER_GUN"
+          },
+          {
+            "Level": 15,
+            "Move": "MOVE_MUD_SHOT"
+          },
+          {
+            "Level": 19,
+            "Move": "MOVE_WATER_PULSE"
+          },
+          {
+            "Level": 24,
+            "Move": "MOVE_BULLDOZE"
+          },
+          {
+            "Level": 27,
+            "Move": "MOVE_ANCIENT_POWER"
+          },
+          {
+            "Level": 31,
+            "Move": "MOVE_AIR_SLASH"
+          },
+          {
+            "Level": 35,
+            "Move": "MOVE_ROOST"
+          },
+          {
+            "Level": 39,
+            "Move": "MOVE_EARTH_POWER"
+          },
+          {
+            "Level": 43,
+            "Move": "MOVE_DRILL_PECK"
+          },
+          {
+            "Level": 47,
+            "Move": "MOVE_AGILITY"
+          }
+        ],
+        "MachineMoves": [
+          "MOVE_AERIAL_ACE",
+          "MOVE_AGILITY",
+          "MOVE_AMNESIA",
+          "MOVE_ATTRACT",
+          "MOVE_BLIZZARD",
+          "MOVE_BODY_PRESS",
+          "MOVE_BODY_SLAM",
+          "MOVE_BRAVE_BIRD",
+          "MOVE_BRICK_BREAK",
+          "MOVE_CAPTIVATE",
+          "MOVE_CONFIDE",
+          "MOVE_CRUNCH",
+          "MOVE_CURSE",
+          "MOVE_CUT",
+          "MOVE_DIG",
+          "MOVE_DOUBLE_EDGE",
+          "MOVE_DOUBLE_TEAM",
+          "MOVE_DRILL_RUN",
+          "MOVE_DUAL_WINGBEAT",
+          "MOVE_EARTHQUAKE",
+          "MOVE_EARTH_POWER",
+          "MOVE_ENDEAVOR",
+          "MOVE_ENDURE",
+          "MOVE_FACADE",
+          "MOVE_FEATHER_DANCE",
+          "MOVE_FIRE_BLAST",
+          "MOVE_FLAMETHROWER",
+          "MOVE_FLING",
+          "MOVE_FLY",
+          "MOVE_FOCUS_BLAST",
+          "MOVE_FOCUS_PUNCH",
+          "MOVE_FRUSTRATION",
+          "MOVE_HEAT_WAVE",
+          "MOVE_HEAVY_SLAM",
+          "MOVE_HELPING_HAND",
+          "MOVE_HIDDEN_POWER",
+          "MOVE_HIGH_HORSEPOWER",
+          "MOVE_HURRICANE",
+          "MOVE_ICE_BEAM",
+          "MOVE_IRON_DEFENSE",
+          "MOVE_IRON_HEAD",
+          "MOVE_IRON_TAIL",
+          "MOVE_MEGA_PUNCH",
+          "MOVE_NATURAL_GIFT",
+          "MOVE_OUTRAGE",
+          "MOVE_PAYBACK",
+          "MOVE_PLUCK",
+          "MOVE_POISON_JAB",
+          "MOVE_PROTECT",
+          "MOVE_RAIN_DANCE",
+          "MOVE_REFLECT",
+          "MOVE_REST",
+          "MOVE_RETURN",
+          "MOVE_ROAR",
+          "MOVE_ROCK_CLIMB",
+          "MOVE_ROCK_POLISH",
+          "MOVE_ROCK_SLIDE",
+          "MOVE_ROCK_SMASH",
+          "MOVE_ROCK_TOMB",
+          "MOVE_ROOST",
+          "MOVE_SANDSTORM",
+          "MOVE_SAND_TOMB",
+          "MOVE_SCORCHING_SANDS",
+          "MOVE_SECRET_POWER",
+          "MOVE_SLEEP_TALK",
+          "MOVE_SMACK_DOWN",
+          "MOVE_SPIKES",
+          "MOVE_STEALTH_ROCK",
+          "MOVE_STEEL_WING",
+          "MOVE_STONE_EDGE",
+          "MOVE_STRENGTH",
+          "MOVE_SUBSTITUTE",
+          "MOVE_SUNNY_DAY",
+          "MOVE_SUPERPOWER",
+          "MOVE_SURF",
+          "MOVE_SWAGGER",
+          "MOVE_SWORDS_DANCE",
+          "MOVE_TAILWIND",
+          "MOVE_TAUNT",
+          "MOVE_TERA_BLAST",
+          "MOVE_THIEF",
+          "MOVE_THROAT_CHOP",
+          "MOVE_TORMENT",
+          "MOVE_TOXIC",
+          "MOVE_UPROAR",
+          "MOVE_U_TURN",
+          "MOVE_WATERFALL",
+          "MOVE_WORK_UP"
+        ],
+        "TutorMoves": [
+          "MOVE_AIR_CUTTER",
+          "MOVE_ANCIENT_POWER",
+          "MOVE_AQUA_TAIL",
+          "MOVE_BOUNCE",
+          "MOVE_EARTH_POWER",
+          "MOVE_FURY_CUTTER",
+          "MOVE_HEADBUTT",
+          "MOVE_HEAT_WAVE",
+          "MOVE_ICY_WIND",
+          "MOVE_IRON_HEAD",
+          "MOVE_MUD_SLAP",
+          "MOVE_OMINOUS_WIND",
+          "MOVE_OUTRAGE",
+          "MOVE_ROLLOUT",
+          "MOVE_SKY_ATTACK",
+          "MOVE_SNORE",
+          "MOVE_SUPERPOWER",
+          "MOVE_SWIFT",
+          "MOVE_TAILWIND",
+          "MOVE_TWISTER",
+          "MOVE_UPROAR"
+        ],
+        "EggMoves": [
+          "MOVE_AQUA_JET",
+          "MOVE_FEATHER_DANCE",
+          "MOVE_ROOST",
+          "MOVE_MIRROR_COAT",
+          "MOVE_YAWN",
+          "MOVE_STEEL_WING"
+        ]
+      },
+      "stock_move_symbol_aliases": {
+        "MOVE_MEGA_PUNCH": "MOVE_ATTRIBUTE_PP"
+      },
+      "moves_absent_from_stock_by_method": {
+        "LevelMoves": [
+          {
+            "Level": 24,
+            "Move": "MOVE_BULLDOZE"
+          }
+        ],
+        "MachineMoves": [
+          "MOVE_BODY_PRESS",
+          "MOVE_CONFIDE",
+          "MOVE_DRILL_RUN",
+          "MOVE_DUAL_WINGBEAT",
+          "MOVE_HEAVY_SLAM",
+          "MOVE_HIGH_HORSEPOWER",
+          "MOVE_HURRICANE",
+          "MOVE_SCORCHING_SANDS",
+          "MOVE_SMACK_DOWN",
+          "MOVE_TERA_BLAST",
+          "MOVE_THROAT_CHOP",
+          "MOVE_WORK_UP"
+        ],
+        "TutorMoves": [],
+        "EggMoves": []
+      },
+      "existing_moves_not_on_stock_machines": [
+        "MOVE_AERIAL_ACE",
+        "MOVE_AGILITY",
+        "MOVE_AMNESIA",
+        "MOVE_ATTRACT",
+        "MOVE_BLIZZARD",
+        "MOVE_BODY_SLAM",
+        "MOVE_BRAVE_BIRD",
+        "MOVE_BRICK_BREAK",
+        "MOVE_CAPTIVATE",
+        "MOVE_CRUNCH",
+        "MOVE_CURSE",
+        "MOVE_CUT",
+        "MOVE_DIG",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_EARTHQUAKE",
+        "MOVE_EARTH_POWER",
+        "MOVE_ENDEAVOR",
+        "MOVE_ENDURE",
+        "MOVE_FACADE",
+        "MOVE_FEATHER_DANCE",
+        "MOVE_FIRE_BLAST",
+        "MOVE_FLAMETHROWER",
+        "MOVE_FLING",
+        "MOVE_FLY",
+        "MOVE_FOCUS_BLAST",
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_FRUSTRATION",
+        "MOVE_HEAT_WAVE",
+        "MOVE_HELPING_HAND",
+        "MOVE_HIDDEN_POWER",
+        "MOVE_ICE_BEAM",
+        "MOVE_IRON_DEFENSE",
+        "MOVE_IRON_HEAD",
+        "MOVE_IRON_TAIL",
+        "MOVE_MEGA_PUNCH",
+        "MOVE_NATURAL_GIFT",
+        "MOVE_OUTRAGE",
+        "MOVE_PAYBACK",
+        "MOVE_PLUCK",
+        "MOVE_POISON_JAB",
+        "MOVE_PROTECT",
+        "MOVE_RAIN_DANCE",
+        "MOVE_REFLECT",
+        "MOVE_REST",
+        "MOVE_RETURN",
+        "MOVE_ROAR",
+        "MOVE_ROCK_CLIMB",
+        "MOVE_ROCK_POLISH",
+        "MOVE_ROCK_SLIDE",
+        "MOVE_ROCK_SMASH",
+        "MOVE_ROCK_TOMB",
+        "MOVE_ROOST",
+        "MOVE_SANDSTORM",
+        "MOVE_SAND_TOMB",
+        "MOVE_SECRET_POWER",
+        "MOVE_SLEEP_TALK",
+        "MOVE_SPIKES",
+        "MOVE_STEALTH_ROCK",
+        "MOVE_STEEL_WING",
+        "MOVE_STONE_EDGE",
+        "MOVE_STRENGTH",
+        "MOVE_SUBSTITUTE",
+        "MOVE_SUNNY_DAY",
+        "MOVE_SUPERPOWER",
+        "MOVE_SURF",
+        "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
+        "MOVE_TAILWIND",
+        "MOVE_TAUNT",
+        "MOVE_THIEF",
+        "MOVE_TORMENT",
+        "MOVE_TOXIC",
+        "MOVE_UPROAR",
+        "MOVE_U_TURN",
+        "MOVE_WATERFALL"
+      ],
+      "assets": [
+        {
+          "path": "data/graphics/sprites/cragaviar/female/back.png",
+          "sha256": "6cd36cf7cd688ce20e13ef063b84102a0047c76139afc0ad39dbb96047b9add8"
+        },
+        {
+          "path": "data/graphics/sprites/cragaviar/female/front.png",
+          "sha256": "f46d6ff5952cd5e32006748dc19d0368ecd4eda40d48f4bfa1f9488670f2162f"
+        },
+        {
+          "path": "data/graphics/sprites/cragaviar/icon.png",
+          "sha256": "4e1e8a6aaf67ea7f0c3ba49e0540a2a0b61daf25b63ddcfe2af1e5d0ddd76a17"
+        },
+        {
+          "path": "data/graphics/sprites/cragaviar/male/back.png",
+          "sha256": "6cd36cf7cd688ce20e13ef063b84102a0047c76139afc0ad39dbb96047b9add8"
+        },
+        {
+          "path": "data/graphics/sprites/cragaviar/male/front.png",
+          "sha256": "f46d6ff5952cd5e32006748dc19d0368ecd4eda40d48f4bfa1f9488670f2162f"
+        },
+        {
+          "path": "data/graphics/sprites/cragaviar/overworld.png",
+          "sha256": "b93dc7f5532e719fb21f279ba874b4eaec2aaf2b01413a548e7b02f9474b911d"
+        },
+        {
+          "path": "documentation/fakemon/designs-2026-09/cries/drafts/cragaviar.wav",
+          "sha256": "d15766cd9b7bb8b31e9a3d5e002a1127cbbebf268ad4dadc795b2934e33bd6bc"
+        }
+      ]
+    },
+    {
+      "name": "Ragnaroc",
+      "key": "ragnaroc",
+      "source_species_id": 1086,
+      "base_stats": {
+        "hp": 100,
+        "attack": 120,
+        "defense": 75,
+        "sp_attack": 115,
+        "sp_defense": 75,
+        "speed": 115
+      },
+      "bst": 600,
+      "types": [
+        "Ground",
+        "Flying"
+      ],
+      "abilities": {
+        "primary": "Water Absorb",
+        "secondary": null,
+        "hidden": null
+      },
+      "growth_rate": "Slow",
+      "ev_yield": {
+        "hp": 0,
+        "attack": 1,
+        "defense": 0,
+        "sp_attack": 1,
+        "sp_defense": 0,
+        "speed": 1
+      },
+      "breeding": {
+        "egg_groups": [
+          "Water 1",
+          "Flying"
+        ],
+        "male_percent": 50,
+        "female_percent": 50,
+        "hatch_cycles": 20,
+        "hatch_species": "sedgling",
+        "status": "approved_by_user_individual_donor_routes_checked"
+      },
+      "pokedex": {
+        "classification": "Falling Star Pok\u00e9mon",
+        "classification_status": "derived_under_user_authorization",
+        "entry_text": "Ancient accounts describe a four-winged shadow followed by a rain of falling stars. Buried settlements have been found beneath the paths of its migrations.",
+        "entry_source": "user_supplied_complete_entries_verbatim",
+        "height_decimetres": 22,
+        "weight_hectograms": 1084,
+        "dimension_source": "Inferred design values; artwork has no calibrated scale",
+        "implementation_status": "registered_full_text_paged",
+        "entry_status": "approved_user_text"
+      },
+      "approved_learnset": {
+        "LevelMoves": [
+          {
+            "Level": 0,
+            "Move": "MOVE_EARTHQUAKE"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_PECK"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_GROWL"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_WING_ATTACK"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_AQUA_TAIL"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_MUDDY_WATER"
+          },
+          {
+            "Level": 1,
+            "Move": "MOVE_AMNESIA"
+          },
+          {
+            "Level": 6,
+            "Move": "MOVE_MUD_SLAP"
+          },
+          {
+            "Level": 10,
+            "Move": "MOVE_WATER_GUN"
+          },
+          {
+            "Level": 15,
+            "Move": "MOVE_MUD_SHOT"
+          },
+          {
+            "Level": 19,
+            "Move": "MOVE_WATER_PULSE"
+          },
+          {
+            "Level": 24,
+            "Move": "MOVE_BULLDOZE"
+          },
+          {
+            "Level": 27,
+            "Move": "MOVE_ANCIENT_POWER"
+          },
+          {
+            "Level": 31,
+            "Move": "MOVE_AIR_SLASH"
+          },
+          {
+            "Level": 35,
+            "Move": "MOVE_ROOST"
+          },
+          {
+            "Level": 39,
+            "Move": "MOVE_EARTH_POWER"
+          },
+          {
+            "Level": 43,
+            "Move": "MOVE_DRILL_PECK"
+          },
+          {
+            "Level": 47,
+            "Move": "MOVE_AGILITY"
+          },
+          {
+            "Level": 55,
+            "Move": "MOVE_HURRICANE"
+          },
+          {
+            "Level": 62,
+            "Move": "MOVE_BRAVE_BIRD"
+          }
+        ],
+        "MachineMoves": [
+          "MOVE_AERIAL_ACE",
+          "MOVE_AGILITY",
+          "MOVE_AMNESIA",
+          "MOVE_ATTRACT",
+          "MOVE_BLIZZARD",
+          "MOVE_BODY_PRESS",
+          "MOVE_BODY_SLAM",
+          "MOVE_BRAVE_BIRD",
+          "MOVE_BRICK_BREAK",
+          "MOVE_CAPTIVATE",
+          "MOVE_CONFIDE",
+          "MOVE_CRUNCH",
+          "MOVE_CURSE",
+          "MOVE_CUT",
+          "MOVE_DIG",
+          "MOVE_DOUBLE_EDGE",
+          "MOVE_DOUBLE_TEAM",
+          "MOVE_DRILL_RUN",
+          "MOVE_DUAL_WINGBEAT",
+          "MOVE_EARTHQUAKE",
+          "MOVE_EARTH_POWER",
+          "MOVE_ENDEAVOR",
+          "MOVE_ENDURE",
+          "MOVE_FACADE",
+          "MOVE_FEATHER_DANCE",
+          "MOVE_FIRE_BLAST",
+          "MOVE_FLAMETHROWER",
+          "MOVE_FLING",
+          "MOVE_FLY",
+          "MOVE_FOCUS_BLAST",
+          "MOVE_FOCUS_PUNCH",
+          "MOVE_FRUSTRATION",
+          "MOVE_GIGA_IMPACT",
+          "MOVE_HEAT_WAVE",
+          "MOVE_HEAVY_SLAM",
+          "MOVE_HELPING_HAND",
+          "MOVE_HIDDEN_POWER",
+          "MOVE_HIGH_HORSEPOWER",
+          "MOVE_HURRICANE",
+          "MOVE_HYPER_BEAM",
+          "MOVE_ICE_BEAM",
+          "MOVE_IRON_DEFENSE",
+          "MOVE_IRON_HEAD",
+          "MOVE_IRON_TAIL",
+          "MOVE_MEGA_PUNCH",
+          "MOVE_NATURAL_GIFT",
+          "MOVE_OUTRAGE",
+          "MOVE_PAYBACK",
+          "MOVE_PLUCK",
+          "MOVE_POISON_JAB",
+          "MOVE_PROTECT",
+          "MOVE_RAIN_DANCE",
+          "MOVE_REFLECT",
+          "MOVE_REST",
+          "MOVE_RETURN",
+          "MOVE_ROAR",
+          "MOVE_ROCK_CLIMB",
+          "MOVE_ROCK_POLISH",
+          "MOVE_ROCK_SLIDE",
+          "MOVE_ROCK_SMASH",
+          "MOVE_ROCK_TOMB",
+          "MOVE_ROOST",
+          "MOVE_SANDSTORM",
+          "MOVE_SAND_TOMB",
+          "MOVE_SCORCHING_SANDS",
+          "MOVE_SECRET_POWER",
+          "MOVE_SLEEP_TALK",
+          "MOVE_SMACK_DOWN",
+          "MOVE_SPIKES",
+          "MOVE_STEALTH_ROCK",
+          "MOVE_STEEL_WING",
+          "MOVE_STONE_EDGE",
+          "MOVE_STRENGTH",
+          "MOVE_SUBSTITUTE",
+          "MOVE_SUNNY_DAY",
+          "MOVE_SUPERPOWER",
+          "MOVE_SURF",
+          "MOVE_SWAGGER",
+          "MOVE_SWORDS_DANCE",
+          "MOVE_TAILWIND",
+          "MOVE_TAUNT",
+          "MOVE_TERA_BLAST",
+          "MOVE_THIEF",
+          "MOVE_THROAT_CHOP",
+          "MOVE_TORMENT",
+          "MOVE_TOXIC",
+          "MOVE_UPROAR",
+          "MOVE_U_TURN",
+          "MOVE_WATERFALL",
+          "MOVE_WORK_UP"
+        ],
+        "TutorMoves": [
+          "MOVE_AIR_CUTTER",
+          "MOVE_ANCIENT_POWER",
+          "MOVE_AQUA_TAIL",
+          "MOVE_BOUNCE",
+          "MOVE_EARTH_POWER",
+          "MOVE_FURY_CUTTER",
+          "MOVE_HEADBUTT",
+          "MOVE_HEAT_WAVE",
+          "MOVE_ICY_WIND",
+          "MOVE_IRON_HEAD",
+          "MOVE_MUD_SLAP",
+          "MOVE_OMINOUS_WIND",
+          "MOVE_OUTRAGE",
+          "MOVE_ROLLOUT",
+          "MOVE_SKY_ATTACK",
+          "MOVE_SNORE",
+          "MOVE_SUPERPOWER",
+          "MOVE_SWIFT",
+          "MOVE_TAILWIND",
+          "MOVE_TWISTER",
+          "MOVE_UPROAR"
+        ],
+        "EggMoves": [
+          "MOVE_AQUA_JET",
+          "MOVE_FEATHER_DANCE",
+          "MOVE_ROOST",
+          "MOVE_MIRROR_COAT",
+          "MOVE_YAWN",
+          "MOVE_STEEL_WING"
+        ]
+      },
+      "stock_move_symbol_aliases": {
+        "MOVE_MEGA_PUNCH": "MOVE_ATTRIBUTE_PP"
+      },
+      "moves_absent_from_stock_by_method": {
+        "LevelMoves": [
+          {
+            "Level": 24,
+            "Move": "MOVE_BULLDOZE"
+          },
+          {
+            "Level": 55,
+            "Move": "MOVE_HURRICANE"
+          }
+        ],
+        "MachineMoves": [
+          "MOVE_BODY_PRESS",
+          "MOVE_CONFIDE",
+          "MOVE_DRILL_RUN",
+          "MOVE_DUAL_WINGBEAT",
+          "MOVE_HEAVY_SLAM",
+          "MOVE_HIGH_HORSEPOWER",
+          "MOVE_HURRICANE",
+          "MOVE_SCORCHING_SANDS",
+          "MOVE_SMACK_DOWN",
+          "MOVE_TERA_BLAST",
+          "MOVE_THROAT_CHOP",
+          "MOVE_WORK_UP"
+        ],
+        "TutorMoves": [],
+        "EggMoves": []
+      },
+      "existing_moves_not_on_stock_machines": [
+        "MOVE_AERIAL_ACE",
+        "MOVE_AGILITY",
+        "MOVE_AMNESIA",
+        "MOVE_ATTRACT",
+        "MOVE_BLIZZARD",
+        "MOVE_BODY_SLAM",
+        "MOVE_BRAVE_BIRD",
+        "MOVE_BRICK_BREAK",
+        "MOVE_CAPTIVATE",
+        "MOVE_CRUNCH",
+        "MOVE_CURSE",
+        "MOVE_CUT",
+        "MOVE_DIG",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DOUBLE_TEAM",
+        "MOVE_EARTHQUAKE",
+        "MOVE_EARTH_POWER",
+        "MOVE_ENDEAVOR",
+        "MOVE_ENDURE",
+        "MOVE_FACADE",
+        "MOVE_FEATHER_DANCE",
+        "MOVE_FIRE_BLAST",
+        "MOVE_FLAMETHROWER",
+        "MOVE_FLING",
+        "MOVE_FLY",
+        "MOVE_FOCUS_BLAST",
+        "MOVE_FOCUS_PUNCH",
+        "MOVE_FRUSTRATION",
+        "MOVE_GIGA_IMPACT",
+        "MOVE_HEAT_WAVE",
+        "MOVE_HELPING_HAND",
+        "MOVE_HIDDEN_POWER",
+        "MOVE_HYPER_BEAM",
+        "MOVE_ICE_BEAM",
+        "MOVE_IRON_DEFENSE",
+        "MOVE_IRON_HEAD",
+        "MOVE_IRON_TAIL",
+        "MOVE_MEGA_PUNCH",
+        "MOVE_NATURAL_GIFT",
+        "MOVE_OUTRAGE",
+        "MOVE_PAYBACK",
+        "MOVE_PLUCK",
+        "MOVE_POISON_JAB",
+        "MOVE_PROTECT",
+        "MOVE_RAIN_DANCE",
+        "MOVE_REFLECT",
+        "MOVE_REST",
+        "MOVE_RETURN",
+        "MOVE_ROAR",
+        "MOVE_ROCK_CLIMB",
+        "MOVE_ROCK_POLISH",
+        "MOVE_ROCK_SLIDE",
+        "MOVE_ROCK_SMASH",
+        "MOVE_ROCK_TOMB",
+        "MOVE_ROOST",
+        "MOVE_SANDSTORM",
+        "MOVE_SAND_TOMB",
+        "MOVE_SECRET_POWER",
+        "MOVE_SLEEP_TALK",
+        "MOVE_SPIKES",
+        "MOVE_STEALTH_ROCK",
+        "MOVE_STEEL_WING",
+        "MOVE_STONE_EDGE",
+        "MOVE_STRENGTH",
+        "MOVE_SUBSTITUTE",
+        "MOVE_SUNNY_DAY",
+        "MOVE_SUPERPOWER",
+        "MOVE_SURF",
+        "MOVE_SWAGGER",
+        "MOVE_SWORDS_DANCE",
+        "MOVE_TAILWIND",
+        "MOVE_TAUNT",
+        "MOVE_THIEF",
+        "MOVE_TORMENT",
+        "MOVE_TOXIC",
+        "MOVE_UPROAR",
+        "MOVE_U_TURN",
+        "MOVE_WATERFALL"
+      ],
+      "assets": [
+        {
+          "path": "data/graphics/sprites/ragnaroc/female/back.png",
+          "sha256": "f7a721deb44bf36937cabf14e7e3377c57492d1742913387fdb64310fa9c68fd"
+        },
+        {
+          "path": "data/graphics/sprites/ragnaroc/female/front.png",
+          "sha256": "299688c929920a657ebbe2d6fa9cf1ab755e09992f2578204e199c73919d00d0"
+        },
+        {
+          "path": "data/graphics/sprites/ragnaroc/icon.png",
+          "sha256": "609b43093ac54fced8e11a604c75a38b7c69a009d93a26a51b16f6e7dc5a2314"
+        },
+        {
+          "path": "data/graphics/sprites/ragnaroc/male/back.png",
+          "sha256": "f7a721deb44bf36937cabf14e7e3377c57492d1742913387fdb64310fa9c68fd"
+        },
+        {
+          "path": "data/graphics/sprites/ragnaroc/male/front.png",
+          "sha256": "299688c929920a657ebbe2d6fa9cf1ab755e09992f2578204e199c73919d00d0"
+        },
+        {
+          "path": "data/graphics/sprites/ragnaroc/overworld.png",
+          "sha256": "a4b184ceffdb3fbdbcc152646f1ee870ece3d8eb9531f67999e005dc1d9f7268"
+        },
+        {
+          "path": "documentation/fakemon/designs-2026-09/cries/drafts/ragnaroc.wav",
+          "sha256": "3e8e02b3cb4746988e91728f6ce3c2dfe33b6e34a0ac7a8e01c64e0e081943be"
+        }
+      ]
+    }
+  ]
+}
