@@ -362,6 +362,44 @@ Do not substitute a vanilla Johto map's name or copy GBA coordinates directly.
 
 ### Verified HGSS land-container and height-plane authoring
 
+### Flat Nitro model export checkpoint (unhooked)
+
+`scripts/export_lab_model.py --pack /tmp/emerald-lab-pack --output
+/tmp/emerald-lab-nitro` now authors a real BMD0/MDL0 model, TEX0 texture,
+standalone BTX0 texture file, and separate-texture HGSS land container.
+It verifies the extraction manifest before consuming the preview and refuses
+to overwrite evidence. Generated binary/art assets remain outside Git.
+
+The one-quad model uses a root node, SBC material/shape commands, GPU display
+list, material/texture/palette associations and single-entry Patricia resource
+dictionaries. Its 256x256 indexed texture and 256-color BGR555 palette preserve
+every visible source pixel without color loss (208x208 used area).
+Model scale 64 maps fixed-point vertices to world X/Z `[-104,104]`, matching
+13 cells of 16 units and the flat BDHC bounds. The texture consumes 64 KiB
+plus 512 palette bytes; in-game VRAM availability has not been established.
+
+Layouts were checked against `lib/include/nnsys/g3d/binres/res_struct.h`
+and independently described reader layouts in apicula revision
+`3d4e91e14045392a49c89e86dab8cb936225588c`
+(`src/nitro/{model,tex,info_block,render_cmds}.rs`). No apicula source was
+copied, and its renderer has **not** been run. Offset-following tests decode
+the generated dictionary bindings, materials, display-list vertices/UVs,
+and texture pixels; actual renderer/SDK acceptance is still unverified.
+
+This is a **flat rendering prototype, not the faithful 3D lab import**.
+Flattening the preview loses foreground occlusion and furniture heights.
+Terrain is explicitly zero-initialized, not a mapping of donor walkability.
+The output is deliberately not appended to a live map archive: area texture
+binding, movement/collision attributes, camera, objects, events and rendering
+must be validated first. The existing 540 maps, script-bank indices, and
+save ABI are unchanged. The exporter does not imply a playable episode.
+
+All 31 local tests pass, including full real-donor texture pixel equality.
+The confirmed clang-format-19 violation in the new expansion header
+(missing final newline) is corrected; no unrelated source was reformatted.
+
+### Land-container reference
+
 `scripts/hgss_land.py` losslessly decodes/re-encodes all 676 members of
 `files/a/0/6/5`. The first four words are terrain, prop, model and BDHC sizes.
 The fifth word is **two halfwords**: marker `0x1234` and extra-data length.
