@@ -1,5 +1,45 @@
 # Candidate episode: Emerald's Birch rescue (gift foundation; episode not imported)
 
+## Current implementation: appended claim bank
+
+This supersedes the historical allocation-blocked notes below. Bank 965,
+`scr_seq_0965_hoenn_reward.s`, is included by the existing script archive's
+wildcard build without renumbering original banks. It is an executable reward
+transaction, **not a reachable lab or imported map**. The selection UI and
+rescue scene are not connected yet.
+
+`constants/expansion.h` names existing slots 0x416e/0x416f for rescue state and
+received species. Capacity/save layout are unchanged. The claim entry requires
+rescue state exactly 1, rejects an existing nonzero receipt, accepts only
+Treecko/Torchic/Mudkip in VAR_SPECIAL_x8000, and returns the delivery outcome in
+VAR_SPECIAL_RESULT. Zero/invalid choice cancels. It records species only after
+confirmed party/PC insertion, without yielding. No-space retains eligibility;
+repeated claims after receipt never invoke the gift command. A future lab caller
+must lock input and display the outcome. Never reset these slots on map entry.
+
+Candidate-specific review: sys_vars computed accesses cover 0x4036–4039,
+0x4043–4044, and 0x4045–4048. Field calls of ScrCmd_530/546 use index zero.
+Trainer House's only SetTrainerHouseSprite loop is 0..9 in bank 952.
+Object graphics and temporary-variable reset ranges are below these slots.
+`test_native_variable_ranges.py` executes the real accessors against bounded
+storage; assertion-only checks are not mistaken for release runtime bounds.
+
+Frontier VM review: frontier_system.s's ov80_0222AA40 loads NARC ID 0xb6,
+`files/a/1/8/2`. SHA-1 84f012feb89ad18ccba589457d3026b89104f1c6 matches
+both edition filesystem manifests. All 11 members lack either candidate
+halfword at every byte offset. FrtCmd_061/062 read the saved-variable address
+directly from a script halfword. Other Frontier pointers (ov80_0222BE24)
+resolve only VM-local ranges 0x8000–0x8013, not saved variables.
+Original field banks were independently built/hash-matched for both editions
+before this append. This review applies to the pinned source/archive set,
+not arbitrary third-party modified saves.
+
+`test_hoenn_reward.py` executes actual compiled claim bytes in a bounded opcode
+interpreter for HG/SS: eligibility, all species, invalid/cancel choices,
+party/PC/no-space, retry and duplicate receipt after state-copy reload.
+Storage uses the separately tested production gift helper. This is not an
+ARM/emulator or encrypted-save round trip.
+
 The owner selected **Emerald** for Hoenn and **Platinum** for Sinnoh. This
 candidate uses pret/pokeemerald at `c925b8482d05fb882d6b64e523653cae599e025f`;
 the future Sinnoh audit is pinned to pret/pokeplatinum at

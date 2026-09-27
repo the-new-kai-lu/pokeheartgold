@@ -2,6 +2,20 @@
 
 This is a partial implementation checkpoint, not Stage 1 completion.
 
+## Appended reward transaction checkpoint
+
+- Supersedes earlier "no allocation/caller" notes below: two existing variable
+  slots are now named for Hoenn rescue and reward receipt; native range review
+  and the 11-member Frontier script archive check are recorded in
+  `EMERALD_OPENING.md`. No save-size/layout change.
+- Appended bank 965 implements guarded starter receipt and retry, with no
+  existing script index or NPC overwritten. It is not connected to a map yet.
+- Twenty host tests pass, including actual compiled claim-byte execution for
+  HG/SS, existing production gift-helper tests, native range tests, Frontier
+  archive checks, and all baseline/mutation tests.
+- No selection UI, rescue battle, imported map, emulator or save/editor
+  round trip is claimed. Full Stage 1 campaigns remain unimplemented.
+
 ## Gift-command extension checkpoint
 
 - Appended opcode 853 (`GiveMonToPartyOrPC`); existing opcodes, `GiveMon`,
