@@ -359,3 +359,27 @@ Use `src/data/map_headers.h`, `files/fielddata/mapmatrix`,
 Route 101's ordinary encounter data is in
 `src/data/wild_encounters.json`; the rescue first-battle setup is separate.
 Do not substitute a vanilla Johto map's name or copy GBA coordinates directly.
+
+### Verified HGSS land-container and height-plane authoring
+
+`scripts/hgss_land.py` losslessly decodes/re-encodes all 676 members of
+`files/a/0/6/5`. The first four words are terrain, prop, model and BDHC sizes.
+The fifth word is **two halfwords**: marker `0x1234` and extra-data length.
+`asm/overlay_01_021F4704.s`, `ov01_021F4AAC`, reads that extra data **before**
+terrain; its callers then read terrain, props, model and BDHC in order.
+Member 0 has 88 extra bytes, so its terrain starts at 108 and its BMD0 at
+2972. The fixed-offset reader in `src/terrain_attributes.c` is not sufficient
+to decode extended members; do not build an exporter around that shortcut.
+
+The BDHC reader is `asm/overlay_01_021FB04C.s`: signature followed by six u16
+counts, then points (8 bytes), normals (12), constants (4), plates (8),
+strips (8), and access indices (2). The new flat-plane writer reproduces
+member 1's complete 66-byte BDHC byte-for-byte for bounds -256..256 and
+height 16. A 208-by-208-unit zero-height lab plane can now be authored,
+but this is height geometry only, not terrain walkability or render proof.
+Four regression tests validate all original container/model block lengths,
+round trips, the known retail plane, and malformed input rejection.
+
+Still missing: faithful NSBMD geometry/material/texture generation, lab
+terrain behavior mapping and model/BDHC coordinate alignment verified in
+the actual field renderer. No new land member/map header is enabled yet.
