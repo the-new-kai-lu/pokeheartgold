@@ -1,4 +1,24 @@
-# Independent model decode checkpoint
+# Aligned collision checkpoint
+
+Exporter bounds are now -112..96, aligning donor cells to native terrain
+cells 9..21. Model, bounding box and BDHC use the same transform. The
+manifest-verified 169 cells map collision to native bit15 only: 58 blocked,
+109 ordinary floor and two exits held blocked until real return warps
+exist. Outside cells are blocked. Exit metadata includes donor, terrain and
+world-center coordinates; no GBA elevation or exit behavior is copied raw.
+Independent apicula decoding verifies shifted vertices and unchanged UVs.
+All 33 local tests pass including all-cell coordinate/collision checks.
+This remains an unhooked flat prototype, not tested in-game walkability.
+
+Next binding traced in `asm/overlay_01_021FB878.s`: AreaDataManager_Alloc
+loads archive 0x2a into fields at 0x8b0. AreaDataManager_Load uses the first
+halfword for archive 0x2b prop list and 0x46 prop textures; second halfword
+selects archive 0x2c map texture. The latter undergoes NNS_G3dGetTex and
+VRAM allocation. A future appended area must set these references together.
+No map/header/archive indices were added here: VRAM, matrix, events and
+entrance integration are still unvalidated.
+
+## Previous independent model decode checkpoint
 
 Apicula `3d4e91e14045392a49c89e86dab8cb936225588c`, built from source,
 successfully decodes the generated embedded-texture NSBMD and the land model

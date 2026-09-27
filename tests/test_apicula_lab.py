@@ -50,8 +50,8 @@ class ApiculaLabTests(unittest.TestCase):
                             for i in range(accessor["count"])]
 
                 self.assertEqual(floats(primitive["attributes"]["POSITION"], 3),
-                                 [(-104, 0, -104), (-104, 0, 104),
-                                  (104, 0, 104), (104, 0, -104)])
+                                 [(-112, 0, -112), (-112, 0, 96),
+                                  (96, 0, 96), (96, 0, -112)])
                 self.assertEqual(floats(primitive["attributes"]["TEXCOORD_0"], 2),
                                  [(0, 0), (0, .8125), (.8125, .8125), (.8125, 0)])
                 material = scene["materials"][primitive["material"]]

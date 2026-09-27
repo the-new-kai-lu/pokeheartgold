@@ -88,8 +88,8 @@ class LabModelTests(unittest.TestCase):
             else:
                 self.assertEqual(op, 0x41)
         self.assertEqual(primitive, 1)
-        self.assertEqual(vertices, [(-104, 0, -104), (-104, 0, 104),
-                                    (104, 0, 104), (104, 0, -104)])
+        self.assertEqual(vertices, [(-112, 0, -112), (-112, 0, 96),
+                                    (96, 0, 96), (96, 0, -112)])
         self.assertEqual(uvs, [(0, 0), (0, 3328), (3328, 3328), (3328, 0)])
 
     def test_real_donor_texture_is_lossless_and_land_roundtrips(self):

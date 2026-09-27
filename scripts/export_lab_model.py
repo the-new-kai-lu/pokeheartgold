@@ -3,7 +3,7 @@
 
 Binary layouts: NNS G3D res_struct.h, Nitro GX command encoding. Names use
 single-entry Patricia dictionaries; no template model or donor code is copied.
-The plane covers [-104,104] in world X/Z: 13 cells of 16 world units.
+The plane covers [-112,96] in world X/Z: native grid cells 9 through 21.
 """
 import argparse
 import hashlib
@@ -109,9 +109,9 @@ def model(params):
     assert len(mats) == 172
     commands = gx_command(0x20, 0x7fff) + gx_command(0x40, 1)
     # A quad with explicit UV and fixed-point16 XYZ. Model scale 64 converts
-    # [-1.625,1.625] vertex units to [-104,104] world units.
-    for x, z, u, v in ((-6656, -6656, 0, 0), (-6656, 6656, 0, 3328),
-                        (6656, 6656, 3328, 3328), (6656, -6656, 3328, 0)):
+    # [-1.75,1.5] vertex units to [-112,96] world units.
+    for x, z, u, v in ((-7168, -7168, 0, 0), (-7168, 6144, 0, 3328),
+                        (6144, 6144, 3328, 3328), (6144, -7168, 3328, 0)):
         commands += gx_command(0x22, u | (v << 16))
         commands += gx_command(0x23, x & 0xffff, z & 0xffff)
     commands += gx_command(0x41)
@@ -123,7 +123,7 @@ def model(params):
     size = shpoff + len(shapes)
     info = (bytes((0, 0, 0, 1, 1, 1, 1, 0))
             + struct.pack("<ii4H6hii", 64 * 4096, 64, 4, 1, 0, 1,
-                          -6656, 0, -6656, 13312, 0, 13312, 64 * 4096, 64))
+                          -7168, 0, -7168, 13312, 0, 13312, 64 * 4096, 64))
     data = struct.pack("<5I", size, sbcoff, matoff, shpoff, size) + info + node + sbc + mats + shapes
     assert len(data) == size
     return b"MDL0" + struct.pack("<I", size + 48) + dictionary("emerald_lab", struct.pack("<I", 48)) + data
@@ -140,32 +140,58 @@ def container(signature, blocks):
             + struct.pack("<" + "I" * len(offsets), *offsets) + b"".join(blocks))
 
 
+def terrain(cells):
+    """Map only verified basic lab collision; exits remain blocked until hooked."""
+    if (cells["width"], cells["height"]) != (13, 13) or len(cells["cells"]) != 169:
+        raise ValueError("Expected complete 13x13 lab")
+    grid = [0x8000] * 1024
+    seen, exits = set(), []
+    for cell in cells["cells"]:
+        x, z = cell["x"], cell["y"]
+        if not (0 <= x < 13 and 0 <= z < 13) or (x, z) in seen:
+            raise ValueError("Invalid or duplicate donor cell")
+        seen.add((x, z))
+        if cell["collision"] not in (0, 1) or cell["behavior"] not in (0, 101):
+            raise ValueError("Unsupported lab collision or behavior")
+        if cell["behavior"] == 101:
+            exits.append({"donor": [x, z], "terrain": [x + 9, z + 9],
+                          "world_center": [-104 + 16*x, -104 + 16*z]})
+        # Native behavior 0 is ordinary ground. No GBA elevation bits copied.
+        grid[(z + 9) * 32 + x + 9] = 0x8000 if cell["collision"] or cell["behavior"] == 101 else 0
+    return struct.pack("<1024H", *grid), exits
+
+
 def export(pack, output):
     manifest = json.loads((pack / "manifest.json").read_text())
     preview = (pack / "preview.png").read_bytes()
     if hashlib.sha256(preview).hexdigest() != manifest["outputs"]["preview.png"]:
         raise ValueError("Preview differs from extracted manifest")
+    cell_bytes = (pack / "cells.json").read_bytes()
+    if hashlib.sha256(cell_bytes).hexdigest() != manifest["outputs"]["cells.json"]:
+        raise ValueError("Cells differ from extracted manifest")
+    attributes, exits = terrain(json.loads(cell_bytes))
     tex, params = texture(rgba_preview(preview))
     mdl = model(params)
     standalone = container(b"BMD0", (mdl, tex))
     # HGSS land models use separate area textures. Emit both representations;
     # neither is installed into a live area until binding/rendering is tested.
     external = container(b"BMD0", (mdl,))
-    land = Land(0x1234, b"", b"\0" * 2048, b"", external,
-                flat_bdhc(-104, -104, 104, 104)).encode()
+    land = Land(0x1234, b"", attributes, b"", external,
+                flat_bdhc(-112, -112, 96, 96)).encode()
     artifacts = {"lab.nsbmd": standalone, "lab.nsbtx": container(b"BTX0", (tex,)),
                  "lab.land": land}
     output.mkdir(parents=True, exist_ok=False)
     for name, data in artifacts.items():
         (output / name).write_bytes(data)
-    report = dict(status="unhooked-flat-render-prototype", world_bounds=[-104, 104],
-                  terrain_status="zero-initialized, not donor walkability",
+    report = dict(status="unhooked-flat-render-prototype", world_bounds=[-112, 96],
+                  terrain_status="basic collision mapped; exits blocked until warps exist",
+                  terrain_origin=[9, 9], pending_exits=exits,
                   model_vertices=4, model_quads=1, texture_bytes=65536,
                   palette_bytes=512, preview_sha256=hashlib.sha256(preview).hexdigest(),
                   outputs={k: hashlib.sha256(v).hexdigest() for k, v in artifacts.items()},
                   limitations=["Not rendered or integrated into HGSS",
                                "Flat composite loses height and foreground occlusion",
-                               "Terrain semantics, camera, NPCs and warps not authored"])
+                               "Camera, NPCs and warps not authored"])
     (output / "manifest.json").write_text(json.dumps(report, indent=2) + "\n")
     return report
 
