@@ -8,6 +8,13 @@ This is a partial implementation checkpoint, not Stage 1 completion.
   archives referenced by the host's devcontainer setup; see `baseline.json`.
 - Seven Python baseline/mutation tests and the live source contract audit.
 - Native host utilities compile after correcting `gen_fx_consts` libm link order.
+- GitHub Actions on PR head `f699b3c01b769f95c07e7d802dd5b7369bb142b2`:
+  expansion-baseline contract passed on push and PR; build run
+  `36337502454` passed both HeartGold and SoulSilver steps. The build
+  workflow sets `COMPARE=1`, and the Makefile checks each ROM against its
+  pinned SHA-1 when that variable is set. Raw run-log retrieval returned
+  HTTP 403, so individual hash output was not inspected. No ROM artifacts
+  were retained by that run.
 - PKHeX: nine focused HGSSBaselineTests/HGEngineTests pass. Four new cases cover
   vanilla HG/SS-origin Pokémon, independent general/storage partition selection,
   checksums, every story variable/flag byte, and isolated box EXP/ability edits.
@@ -21,23 +28,20 @@ This is a partial implementation checkpoint, not Stage 1 completion.
 
 ## Blocked / not demonstrated
 
-- Full matching ROM: `make -j4` first failed linking `floor`, fixed here.
+- Local ROM reproduction: `make -j4` first failed linking `floor`, fixed here.
   Retrying reached asset conversion, where tools segfaulted after Wine assembly
   invocations produced no expected object file (`files/tel/pmtel_book.o`).
   Wine reports experimental WoW64 and no display driver in this Ubuntu 26.04
   sandbox. Root cause is not established: do not attribute the segmentation fault
   to game logic or assume installing a display driver alone will fix it.
-- Matching HeartGold and SoulSilver hashes have not been produced.
+- The local sandbox has not produced matching HeartGold/SoulSilver hashes;
+  GitHub's successful comparison does not supply local ROM files.
 - PKMDS Web Debug build is blocked by NETSDK1147: missing `wasm-tools`.
 - No emulator, Windows desktop UI, browser editing loop, real-hardware run,
   versioned in-game milestone save, or imported episode has been tested.
-- Git pushes were rejected with HTTP 403, denied to `kai-lu-replit`, although
-  GitHub independently confirms collaborator write access. Authenticated GitHub
-  API writes work: PKHeX regression tests are published in draft PR #1.
-  This game checkpoint is being published through that route without the new
-  Actions workflow: uploading that file returns 404 and the token lacks
-  `workflow` scope. The CI file remains in the original local branch and patch
-  archive. Run the documented Python commands manually until CI is installed.
+- Earlier Git pushes were rejected with HTTP 403 despite confirmed collaborator
+  write access; authenticated API code writes worked. The owner installed the
+  Actions workflow separately; it is now present on the game PR branch.
 
 ## Reproduce focused editor checks
 
@@ -55,6 +59,7 @@ one additional culture-dependent learnability failure, resolved by ICU.
 This does not validate browser behavior. No serializer production code was changed. These fixtures
 are synthetic and do not substitute for the in-game/editor loop in `README.md`.
 
-Before continuing imports, reproduce the matched vanilla ROM in a working
-32-bit-compatible Wine/toolchain environment, select donor editions with the
-owner, and obtain one disposable real game save per supported ROM variant.
+Before claiming an imported episode works, obtain disposable real game saves
+for both variants and perform the ROM/editor round trip. The owner selected
+Emerald and Platinum donors; the Birch-rescue design audit is
+`EMERALD_OPENING.md`, not an implemented episode.

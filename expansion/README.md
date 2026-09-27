@@ -38,9 +38,10 @@ validate every asset reference, prove free story IDs, measure RAM, or run script
 The layout hashes are deliberately conservative review tripwires, not a complete
 save ABI proof. When a later stage changes this contract, review and version it
 with editor migrations/tests rather than blindly regenerating expected values.
-The GitHub-published checkpoint omits the new Actions workflow because the
-connection could not upload that file. Its definition remains in the original
-local branch/patch archive; run the two Python commands above manually meanwhile.
+The owner installed the Actions workflow on the PR branch. The expansion
+contract and upstream HG/SS matching-build jobs passed at
+`f699b3c01b769f95c07e7d802dd5b7369bb142b2`; see `VALIDATION.md`.
+This does not replace the manual ROM/editor loop below.
 
 ## Capacity audit and allocation policy
 
@@ -62,9 +63,10 @@ all map IDs. Widening a bitfield can shift every following field; do not widen
 No new IDs are reserved yet. The catalogue/import inventory starts empty
 (`imported_episodes` in the manifest). Before importing, record donor repository
 and commit, edition, original/new map/resource IDs, every flag/variable/trainer
-remap, asset provenance, and any story omissions. No donor story is selected:
-Ruby/Sapphire versus Emerald, and Diamond/Pearl versus Platinum, need an owner
-decision. Do not replace recognizable plots with generic gym sequences.
+remap, asset provenance, and any story omissions. The owner selected Emerald
+and Platinum. `EMERALD_OPENING.md` audits the proposed first Birch-rescue
+slice, not an import or a completed region. Do not replace recognizable plots
+with generic gym sequences.
 
 ## Required manual ROM and editor loop
 
@@ -101,8 +103,8 @@ Expanded-ROM legality checks will need an explicit project policy later.
 
 ## Next gate
 
-Choose donor editions and the first contained episode. Then audit the episode's
-resources and story state, implement a reproducible import, and test it alongside
+Finish the selected episode's resource, story-ID and battle/return-state audit.
+Then implement a reproducible import and test it alongside
 one high-risk scene/traversal mechanic. Keep stock save storage until an explicit
 capacity requirement justifies a migration. Stage 1 completion still requires
 the full chosen campaigns and a documented end-to-end completion record.

@@ -30,7 +30,7 @@
     "include/pokemon_types_def.h": "eed1c1796f12529b94e0fe8bd51beb2bea35eb0408125c009ed56bef6ba25d1b",
     "src/save.c": "c3cd84b17b771db6c878289955794c0e55f86fda65b2205a53b2caaae571d2fc"
   },
-  "donor_editions": {"hoenn": null, "sinnoh": null},
+  "donor_editions": {"hoenn": "Emerald", "sinnoh": "Platinum"},
   "imported_episodes": [],
   "runtime_compatibility": "unverified"
 }
