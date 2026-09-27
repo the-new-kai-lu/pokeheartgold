@@ -138,7 +138,7 @@ typedef struct TrainerAIData {
     u8 unk9F[2];
     u16 unkA0[2];
     u8 unkA4[4];
-    MoveTbl moveData[NUM_MOVES + 1];
+    MoveTbl reservedStockMoveData[NUM_STOCK_MOVES + 1]; // Preserve the assembly ABI.
     ItemData *itemData;
     u16 unk280[4];
     u16 unk288[4];
@@ -434,6 +434,8 @@ typedef struct BattleContext {
     int battlersOnField;
     u32 battleContinueFlag : 1;
     u32 unused : 31;
+    // Keep every original field offset unchanged; assembly table reads use this tail.
+    MoveTbl extendedMoveData[NUM_MOVES + 1];
 } BattleContext;
 
 typedef struct BattleSystem BattleSystem;

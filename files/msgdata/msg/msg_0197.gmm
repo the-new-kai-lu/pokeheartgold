@@ -5116,4 +5116,8 @@
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">{STRVAR_1 3, 0, 0} got ${STRVAR_1 54, 1, 0} for winning!\nSent some to Mom!\r</language>
 	</row>
+	<row id="msg_0197_incinerate" index="1276">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">{STRVAR_1 1, 0, 0}’s {STRVAR_1 8, 1, 0}\nwas burned up!</language>
+	</row>
 </body>

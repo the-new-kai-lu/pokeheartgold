@@ -1,0 +1,663 @@
+{
+  "schema_version": 1,
+  "verified_at_utc": "2026-09-27T02:07:56.425653+00:00",
+  "purpose": "Verify actual in-game saves reopen losslessly in the matching stock Fakemon editor profile; counter advances distinguish in-game writes from re-exporting input fixtures.",
+  "editors": {
+    "pkhex_commit": "d00866e7d36a55ab7407b756bf26311873544bbe",
+    "pkmds_commit": "c16eff94c8b9767c0922d3583dfec6f990209ed3",
+    "pkmds_ci": {
+      "url": "https://github.com/the-new-kai-lu/PKMDS-Blazor/actions/runs/36285799708",
+      "status": "success",
+      "tests_passed": 475,
+      "tests_failed": 0,
+      "tests_skipped": 0,
+      "web_build": "success",
+      "functions_build": "success"
+    },
+    "pkhex_tests": {
+      "passed": 608,
+      "failed": 1,
+      "skipped": 1,
+      "known_upstream_failure": "EffortExpLegalityTests.ZeroEVs_ReturnsZero; expected 0, observed -999; reproduced on untouched upstream in earlier baseline work",
+      "focused_profile_cases_passed": 12
+    }
+  },
+  "final_roms": {
+    "heartgold": {
+      "path": "build/heartgold.us/pokeheartgold.us.nds",
+      "sha256": "2a42bc7ac161c6255b3fe9e43ad725c2bc8eeaa57963bc3a4ef2d1dd4025f015"
+    },
+    "soulsilver": {
+      "path": "build/soulsilver.us/pokesoulsilver.us.nds",
+      "sha256": "9caa4eccff8bf3fb1e335de6540346c732bf9124044767e1c88cf3b03936066b"
+    }
+  },
+  "format": {
+    "raw_size": 524288,
+    "partition_size": "0x40000",
+    "general_size": "0xf628",
+    "storage_offset": "0xf700",
+    "storage_size": "0x12310",
+    "crc_algorithm": "CRC16-CCITT, initial 0xffff, polynomial 0x1021, block excluding last 16 bytes",
+    "profile_marker": "FK at general 0x15ea/0x15eb, version 1 at 0x15f7",
+    "boxed_species_verified": [
+      1076,
+      1077,
+      1078,
+      1079,
+      1080,
+      1081,
+      1082,
+      1083,
+      1084,
+      1085,
+      1086
+    ]
+  },
+  "scope": [
+    "Read-only PKHeX probe compared party species, level, EXP, ability, shiny flag, moves and move-1 PP to each input, checked party checksum, and verified all eleven box entries including every move PP and individual checksums.",
+    "Independent raw checks verified both copies of general/storage blocks, counter advance, hashes, and input fixture identity.",
+    "Earlier runs retain their exact tested ROM hashes. The matches_final_rom flag identifies runs against the final delivery artifacts; historical evidence is preserved.",
+    "This evidence does not validate all battle effects, evolution rules, animation frames, cries or interactive browser behavior."
+  ],
+  "runs": [
+    {
+      "run": "phg-voltuff-final",
+      "game": "heartgold",
+      "rom_sha256": "f6aa6ae73892c695e087c2f9912a6da6eca67e379e834f3953bb7a024a072bdb",
+      "matches_final_rom": false,
+      "input_save_sha256": "795d05f26488e7b00f354c0432daba71a6aff89b8928e911f6e440b426bba127",
+      "game_save_sha256": "788a552e19e2a7189b7463d13dd087a12ee816978f245e312c68abe6670d339a",
+      "changed_bytes": 1792,
+      "active_counters": {
+        "general": {
+          "input": 2847,
+          "output": 2848
+        },
+        "storage": {
+          "input": 2847,
+          "output": 2848
+        }
+      },
+      "all_four_input_block_crcs_valid": true,
+      "all_four_output_block_crcs_valid": true,
+      "editor_read_did_not_mutate_bytes": true,
+      "editor_save_checksums_valid": true,
+      "party_matches_input": true,
+      "party": {
+        "species": 1076,
+        "level": 10,
+        "experience": 560,
+        "ability": 9,
+        "shiny": false,
+        "moves": [
+          84,
+          0,
+          0,
+          0
+        ],
+        "pp": [
+          30,
+          0,
+          0,
+          0
+        ],
+        "checksumValid": true
+      },
+      "all_eleven_box_entries_match_input": true,
+      "raw_audit_path": "/tmp/phg-voltuff-final/save-audit.json"
+    },
+    {
+      "run": "pss-voltuff-final",
+      "game": "soulsilver",
+      "rom_sha256": "5c4ae8644424448cac3d691274110685bc865d44285eab8e1975e1a0ba5418ec",
+      "matches_final_rom": false,
+      "input_save_sha256": "795d05f26488e7b00f354c0432daba71a6aff89b8928e911f6e440b426bba127",
+      "game_save_sha256": "788a552e19e2a7189b7463d13dd087a12ee816978f245e312c68abe6670d339a",
+      "changed_bytes": 1792,
+      "active_counters": {
+        "general": {
+          "input": 2847,
+          "output": 2848
+        },
+        "storage": {
+          "input": 2847,
+          "output": 2848
+        }
+      },
+      "all_four_input_block_crcs_valid": true,
+      "all_four_output_block_crcs_valid": true,
+      "editor_read_did_not_mutate_bytes": true,
+      "editor_save_checksums_valid": true,
+      "party_matches_input": true,
+      "party": {
+        "species": 1076,
+        "level": 10,
+        "experience": 560,
+        "ability": 9,
+        "shiny": false,
+        "moves": [
+          84,
+          0,
+          0,
+          0
+        ],
+        "pp": [
+          30,
+          0,
+          0,
+          0
+        ],
+        "checksumValid": true
+      },
+      "all_eleven_box_entries_match_input": true,
+      "raw_audit_path": "/tmp/pss-voltuff-final/save-audit.json"
+    },
+    {
+      "run": "phg-embernewt-isolated",
+      "game": "heartgold",
+      "rom_sha256": "bbbc8b8ab9062fc5f1374a7522e76ddd56a87308457ae45b55b5f245bf00b9c7",
+      "matches_final_rom": false,
+      "input_save_sha256": "1b2f2887abeefd098b78f7881bec9a52ee90de86cb5453a6ada26bf260d4888b",
+      "game_save_sha256": "a6af1bb952ac85624591a728b501c816cc91bcea82a0656dce5e8599ab6a042b",
+      "changed_bytes": 1793,
+      "active_counters": {
+        "general": {
+          "input": 2847,
+          "output": 2848
+        },
+        "storage": {
+          "input": 2847,
+          "output": 2848
+        }
+      },
+      "all_four_input_block_crcs_valid": true,
+      "all_four_output_block_crcs_valid": true,
+      "editor_read_did_not_mutate_bytes": true,
+      "editor_save_checksums_valid": true,
+      "party_matches_input": true,
+      "party": {
+        "species": 1079,
+        "level": 10,
+        "experience": 560,
+        "ability": 18,
+        "shiny": false,
+        "moves": [
+          52,
+          0,
+          0,
+          0
+        ],
+        "pp": [
+          25,
+          0,
+          0,
+          0
+        ],
+        "checksumValid": true
+      },
+      "all_eleven_box_entries_match_input": true,
+      "raw_audit_path": "/tmp/phg-embernewt-isolated/save-audit.json"
+    },
+    {
+      "run": "phg-sedgling-isolated",
+      "game": "heartgold",
+      "rom_sha256": "bbbc8b8ab9062fc5f1374a7522e76ddd56a87308457ae45b55b5f245bf00b9c7",
+      "matches_final_rom": false,
+      "input_save_sha256": "93c191ff1898eb8daa2b468077da5bb25f5214c12778ba92cf90a0a231cee812",
+      "game_save_sha256": "1c094744c409cd522d63e71107520e81a35e3e9c38033e6c081ae6a96df55470",
+      "changed_bytes": 1793,
+      "active_counters": {
+        "general": {
+          "input": 2847,
+          "output": 2848
+        },
+        "storage": {
+          "input": 2847,
+          "output": 2848
+        }
+      },
+      "all_four_input_block_crcs_valid": true,
+      "all_four_output_block_crcs_valid": true,
+      "editor_read_did_not_mutate_bytes": true,
+      "editor_save_checksums_valid": true,
+      "party_matches_input": true,
+      "party": {
+        "species": 1084,
+        "level": 10,
+        "experience": 560,
+        "ability": 11,
+        "shiny": false,
+        "moves": [
+          55,
+          0,
+          0,
+          0
+        ],
+        "pp": [
+          25,
+          0,
+          0,
+          0
+        ],
+        "checksumValid": true
+      },
+      "all_eleven_box_entries_match_input": true,
+      "raw_audit_path": "/tmp/phg-sedgling-isolated/save-audit.json"
+    },
+    {
+      "run": "phg-raijinque-final",
+      "game": "heartgold",
+      "rom_sha256": "f6aa6ae73892c695e087c2f9912a6da6eca67e379e834f3953bb7a024a072bdb",
+      "matches_final_rom": false,
+      "input_save_sha256": "07ec3cc8f2f5242d7781cc21abfd039a2ed993193f9fa71e93f7167833c7f311",
+      "game_save_sha256": "1696ffd2579e0c3d34c66026a74f3d99d645925ed99a34112d283392cb5a5013",
+      "changed_bytes": 1793,
+      "active_counters": {
+        "general": {
+          "input": 2847,
+          "output": 2848
+        },
+        "storage": {
+          "input": 2847,
+          "output": 2848
+        }
+      },
+      "all_four_input_block_crcs_valid": true,
+      "all_four_output_block_crcs_valid": true,
+      "editor_read_did_not_mutate_bytes": true,
+      "editor_save_checksums_valid": true,
+      "party_matches_input": true,
+      "party": {
+        "species": 1078,
+        "level": 50,
+        "experience": 156250,
+        "ability": 9,
+        "shiny": false,
+        "moves": [
+          84,
+          0,
+          0,
+          0
+        ],
+        "pp": [
+          30,
+          0,
+          0,
+          0
+        ],
+        "checksumValid": true
+      },
+      "all_eleven_box_entries_match_input": true,
+      "raw_audit_path": "/tmp/phg-raijinque-final/save-audit.json"
+    },
+    {
+      "run": "phg-fimbulisk-final",
+      "game": "heartgold",
+      "rom_sha256": "f6aa6ae73892c695e087c2f9912a6da6eca67e379e834f3953bb7a024a072bdb",
+      "matches_final_rom": false,
+      "input_save_sha256": "bdf9bdb35d9cb18704e1340bc1ec5f753180d450ddd0d7dab3d00e5fa97face0",
+      "game_save_sha256": "445dd4f675d1fda83b3547b429c2fce19510072edd8bbfbb2014989899dd77c3",
+      "changed_bytes": 1793,
+      "active_counters": {
+        "general": {
+          "input": 2847,
+          "output": 2848
+        },
+        "storage": {
+          "input": 2847,
+          "output": 2848
+        }
+      },
+      "all_four_input_block_crcs_valid": true,
+      "all_four_output_block_crcs_valid": true,
+      "editor_read_did_not_mutate_bytes": true,
+      "editor_save_checksums_valid": true,
+      "party_matches_input": true,
+      "party": {
+        "species": 1083,
+        "level": 50,
+        "experience": 156250,
+        "ability": 18,
+        "shiny": false,
+        "moves": [
+          58,
+          0,
+          0,
+          0
+        ],
+        "pp": [
+          10,
+          0,
+          0,
+          0
+        ],
+        "checksumValid": true
+      },
+      "all_eleven_box_entries_match_input": true,
+      "raw_audit_path": "/tmp/phg-fimbulisk-final/save-audit.json"
+    },
+    {
+      "run": "phg-ragnaroc-final",
+      "game": "heartgold",
+      "rom_sha256": "f6aa6ae73892c695e087c2f9912a6da6eca67e379e834f3953bb7a024a072bdb",
+      "matches_final_rom": false,
+      "input_save_sha256": "0a02f2079ea14054e8913c1656f0ce2ac0e9fe097a0fdc2b9a1d5dcd7b151ace",
+      "game_save_sha256": "821e876204c06a0d2e4d6546341528462de510764eb5a4d43291c33088548ba4",
+      "changed_bytes": 1791,
+      "active_counters": {
+        "general": {
+          "input": 2847,
+          "output": 2848
+        },
+        "storage": {
+          "input": 2847,
+          "output": 2848
+        }
+      },
+      "all_four_input_block_crcs_valid": true,
+      "all_four_output_block_crcs_valid": true,
+      "editor_read_did_not_mutate_bytes": true,
+      "editor_save_checksums_valid": true,
+      "party_matches_input": true,
+      "party": {
+        "species": 1086,
+        "level": 50,
+        "experience": 156250,
+        "ability": 11,
+        "shiny": true,
+        "moves": [
+          89,
+          0,
+          0,
+          0
+        ],
+        "pp": [
+          10,
+          0,
+          0,
+          0
+        ],
+        "checksumValid": true
+      },
+      "all_eleven_box_entries_match_input": true,
+      "raw_audit_path": "/tmp/phg-ragnaroc-final/save-audit.json"
+    },
+    {
+      "run": "pss-voltuff-delivery",
+      "game": "soulsilver",
+      "rom_sha256": "777247a68b76f85358bf036383bd6e05b6a2c48a59021bb8a09453fcf63c668e",
+      "matches_final_rom": false,
+      "input_save_sha256": "795d05f26488e7b00f354c0432daba71a6aff89b8928e911f6e440b426bba127",
+      "game_save_sha256": "ef6113be2773008aef79f1127c720966ce5bc6bcb675fffa9748ce2ac6c5fa99",
+      "changed_bytes": 1792,
+      "active_counters": {
+        "general": {
+          "input": 2847,
+          "output": 2848
+        },
+        "storage": {
+          "input": 2847,
+          "output": 2848
+        }
+      },
+      "all_four_input_block_crcs_valid": true,
+      "all_four_output_block_crcs_valid": true,
+      "editor_read_did_not_mutate_bytes": true,
+      "editor_save_checksums_valid": true,
+      "party_matches_input": true,
+      "party": {
+        "species": 1076,
+        "level": 10,
+        "experience": 560,
+        "ability": 9,
+        "shiny": false,
+        "moves": [
+          84,
+          0,
+          0,
+          0
+        ],
+        "pp": [
+          30,
+          0,
+          0,
+          0
+        ],
+        "checksumValid": true
+      },
+      "all_eleven_box_entries_match_input": true,
+      "raw_audit_path": "/tmp/pss-voltuff-delivery/save-audit.json"
+    },
+    {
+      "run": "phg-dex-delivery-verified",
+      "game": "heartgold",
+      "rom_sha256": "59cf31c8e3d6c5656cbe4dadbb582a4cf663547501d6eb6d2813fd1810048879",
+      "matches_final_rom": false,
+      "input_save_sha256": "0a02f2079ea14054e8913c1656f0ce2ac0e9fe097a0fdc2b9a1d5dcd7b151ace",
+      "game_save_sha256": "dce4d423d83d95f07a45f2f7c25b11070366059645fe1b58dc45786a9e0692f7",
+      "changed_bytes": 1791,
+      "active_counters": {
+        "general": {
+          "input": 2847,
+          "output": 2848
+        },
+        "storage": {
+          "input": 2847,
+          "output": 2848
+        }
+      },
+      "all_four_input_block_crcs_valid": true,
+      "all_four_output_block_crcs_valid": true,
+      "editor_read_did_not_mutate_bytes": true,
+      "editor_save_checksums_valid": true,
+      "party_matches_input": true,
+      "party": {
+        "species": 1086,
+        "level": 50,
+        "experience": 156250,
+        "ability": 11,
+        "shiny": true,
+        "moves": [
+          89,
+          0,
+          0,
+          0
+        ],
+        "pp": [
+          10,
+          0,
+          0,
+          0
+        ],
+        "checksumValid": true
+      },
+      "all_eleven_box_entries_match_input": true,
+      "raw_audit_path": "/tmp/phg-dex-delivery-verified/save-audit.json"
+    },
+    {
+      "run": "pss-final-verified",
+      "game": "soulsilver",
+      "rom_sha256": "392e810856910984151eeb0fe7d07b22252aeb6149f3c38a3b7bee8292ed862b",
+      "matches_final_rom": false,
+      "input_save_sha256": "795d05f26488e7b00f354c0432daba71a6aff89b8928e911f6e440b426bba127",
+      "game_save_sha256": "9204d356deba85fe69a1312470b61d3832d1b1d56b62ba5425c0c9c6dd672d58",
+      "changed_bytes": 1792,
+      "active_counters": {
+        "general": {
+          "input": 2847,
+          "output": 2848
+        },
+        "storage": {
+          "input": 2847,
+          "output": 2848
+        }
+      },
+      "all_four_input_block_crcs_valid": true,
+      "all_four_output_block_crcs_valid": true,
+      "editor_read_did_not_mutate_bytes": true,
+      "editor_save_checksums_valid": true,
+      "party_matches_input": true,
+      "party": {
+        "species": 1076,
+        "level": 10,
+        "experience": 560,
+        "ability": 9,
+        "shiny": false,
+        "moves": [
+          84,
+          0,
+          0,
+          0
+        ],
+        "pp": [
+          30,
+          0,
+          0,
+          0
+        ],
+        "checksumValid": true
+      },
+      "all_eleven_box_entries_match_input": true,
+      "raw_audit_path": "/tmp/pss-final-verified/save-audit.json"
+    },
+    {
+      "run": "phg-dex-complete",
+      "game": "heartgold",
+      "rom_sha256": "594a068227045d0f3b0bbe1a67015ba9388abf42982e38025749a1bba554b3c7",
+      "matches_final_rom": false,
+      "input_save_sha256": "0a02f2079ea14054e8913c1656f0ce2ac0e9fe097a0fdc2b9a1d5dcd7b151ace",
+      "game_save_sha256": "734aa9cb6547b2b2e8e4ad5cf50d47fddd7c99ff8f3912b3f3ecd578d0fff6f5",
+      "changed_bytes": 1792,
+      "active_counters": {
+        "general": {
+          "input": 2847,
+          "output": 2848
+        },
+        "storage": {
+          "input": 2847,
+          "output": 2848
+        }
+      },
+      "all_four_input_block_crcs_valid": true,
+      "all_four_output_block_crcs_valid": true,
+      "editor_read_did_not_mutate_bytes": true,
+      "editor_save_checksums_valid": true,
+      "party_matches_input": true,
+      "party": {
+        "species": 1086,
+        "level": 50,
+        "experience": 156250,
+        "ability": 11,
+        "shiny": true,
+        "moves": [
+          89,
+          0,
+          0,
+          0
+        ],
+        "pp": [
+          10,
+          0,
+          0,
+          0
+        ],
+        "checksumValid": true
+      },
+      "all_eleven_box_entries_match_input": true,
+      "raw_audit_path": "/tmp/phg-dex-complete/save-audit.json"
+    },
+    {
+      "run": "phg-release-verified",
+      "game": "heartgold",
+      "rom_sha256": "2a42bc7ac161c6255b3fe9e43ad725c2bc8eeaa57963bc3a4ef2d1dd4025f015",
+      "matches_final_rom": true,
+      "input_save_sha256": "0a02f2079ea14054e8913c1656f0ce2ac0e9fe097a0fdc2b9a1d5dcd7b151ace",
+      "game_save_sha256": "a5f9d94c3b155e706269a4dd88ed7cd532163571fc9b6f9cf47a641c17ea171e",
+      "changed_bytes": 1791,
+      "active_counters": {
+        "general": {
+          "input": 2847,
+          "output": 2848
+        },
+        "storage": {
+          "input": 2847,
+          "output": 2848
+        }
+      },
+      "all_four_input_block_crcs_valid": true,
+      "all_four_output_block_crcs_valid": true,
+      "editor_read_did_not_mutate_bytes": true,
+      "editor_save_checksums_valid": true,
+      "party_matches_input": true,
+      "party": {
+        "species": 1086,
+        "level": 50,
+        "experience": 156250,
+        "ability": 11,
+        "shiny": true,
+        "moves": [
+          89,
+          0,
+          0,
+          0
+        ],
+        "pp": [
+          10,
+          0,
+          0,
+          0
+        ],
+        "checksumValid": true
+      },
+      "all_eleven_box_entries_match_input": true,
+      "raw_audit_path": "/tmp/phg-release-verified/save-audit.json"
+    },
+    {
+      "run": "pss-release-verified",
+      "game": "soulsilver",
+      "rom_sha256": "9caa4eccff8bf3fb1e335de6540346c732bf9124044767e1c88cf3b03936066b",
+      "matches_final_rom": true,
+      "input_save_sha256": "795d05f26488e7b00f354c0432daba71a6aff89b8928e911f6e440b426bba127",
+      "game_save_sha256": "56c5e988967917ae80be83b23c31349c1e926f6962a596483c7faec8493c1eff",
+      "changed_bytes": 1792,
+      "active_counters": {
+        "general": {
+          "input": 2847,
+          "output": 2848
+        },
+        "storage": {
+          "input": 2847,
+          "output": 2848
+        }
+      },
+      "all_four_input_block_crcs_valid": true,
+      "all_four_output_block_crcs_valid": true,
+      "editor_read_did_not_mutate_bytes": true,
+      "editor_save_checksums_valid": true,
+      "party_matches_input": true,
+      "party": {
+        "species": 1076,
+        "level": 10,
+        "experience": 560,
+        "ability": 9,
+        "shiny": false,
+        "moves": [
+          84,
+          0,
+          0,
+          0
+        ],
+        "pp": [
+          30,
+          0,
+          0,
+          0
+        ],
+        "checksumValid": true
+      },
+      "all_eleven_box_entries_match_input": true,
+      "raw_audit_path": "/tmp/pss-release-verified/save-audit.json"
+    }
+  ]
+}

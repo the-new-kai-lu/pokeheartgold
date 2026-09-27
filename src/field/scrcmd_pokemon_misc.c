@@ -961,7 +961,7 @@ BOOL ScrCmd_CreatePokeathlonFriendshipRoomStatues(ScriptContext *ctx) {
 
         species = unkPtr->friendshipRoomStatues[i].species;
 
-        if (species != SPECIES_NONE && species <= SPECIES_ARCEUS) {
+        if (IsValidMonSpecies(species)) {
             ov01_02201F98(fieldSystem->mapObjectManager, (u8)i, species, unkPtr->friendshipRoomStatues[i].form, unkPtr->friendshipRoomStatues[i].gender, sFriendshipRoomStatuesPositions[i][0], sFriendshipRoomStatuesPositions[i][1], fieldSystem->location->mapId);
         }
     }

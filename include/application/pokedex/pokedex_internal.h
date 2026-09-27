@@ -206,7 +206,7 @@ typedef union PokedexAppData_UnkSub0868 {
 } PokedexAppData_UnkSub0868;
 
 typedef struct PokedexAppData_UnkSub0878 {
-    u16 unk_000[NATIONAL_DEX_COUNT][2];
+    u16 unk_000[NATIONAL_DEX_COUNT + FAKEMON_COUNT][2];
     u16 unk_7B4;
     u16 unk_7B6;
 } PokedexAppData_UnkSub0878;
@@ -282,7 +282,7 @@ struct PokedexAppData {
     int unk_0860;                                   // 0x0860
     u32 unk_0864;                                   // 0x0864
     PokedexAppData_UnkSub0868 unk_0868;             // 0x0868
-    PokedexAppData_UnkSub0878 unk_0878;             // 0x0878
+    u8 reservedStockDexList[0x7B8];                // 0x0878: preserve stock ABI
     PokedexAppData_UnkSub1030 unk_1030[518];        // 0x1030
     void *heights;                                  // 0x1848
     void *weights;                                  // 0x184C
@@ -321,7 +321,13 @@ struct PokedexAppData {
     PokedexAppData_UnkSub18DC unk_18DC;             // 0x18DC
     PokedexAppData_UnkSub1908 *unk_1908;            // 0x1908
     PokedexAppData_UnkSub190C *unk_190C;            // 0x190C
-}; // size: 0x1910
+    PokedexAppData_UnkSub0878 unk_0878;             // 0x1910: expanded list, old fields unchanged
+}; // size: 0x20F4
+
+u32 FakemonDexDisplayNumber(BOOL natDexFlag, u32 species);
+BOOL FakemonDexCyclePage(u16 species);
+void FakemonDexResetPage(void);
+void FakemonDexSelectSpecies(u16 species);
 
 String *ov18_021E590C(u16 species, int language, enum HeapID heapId);
 String *ov18_021E595C(u16 species, int language, enum HeapID heapId);

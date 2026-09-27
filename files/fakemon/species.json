@@ -1,0 +1,1030 @@
+{
+  "schema_version": 1,
+  "revision": "2026-09",
+  "status": "implemented",
+  "source": {
+    "kind": "user_supplied_concept_sheets",
+    "sheet_count": 3,
+    "supersedes": "Earlier concept designs, including the Electric/Fighting feline line.",
+    "notes": [
+      "Concept sheets remain the visual source; approved gameplay decisions below supersede their display numbers and evolution levels.",
+      "All eleven designs are separate registered species. Null secondary/hidden abilities and held items mean none."
+    ]
+  },
+  "inherited_requirements": [
+    {
+      "source": "earlier_user_requirements",
+      "target": "Dark/Ice designs",
+      "ability": "Flash Fire",
+      "shown_on_current_sheets": false,
+      "ability_slot": "primary"
+    },
+    {
+      "source": "earlier_user_requirements",
+      "target": "Ground/Flying designs",
+      "ability": "Water Absorb",
+      "shown_on_current_sheets": false,
+      "ability_slot": "primary"
+    }
+  ],
+  "confirmed_balance_constraints": {
+    "source": "user gameplay guidelines, superseding concept-sheet evolution levels",
+    "base_stat_total_by_stage": {
+      "1": 315,
+      "2": 405,
+      "3": 600
+    },
+    "first_evolution_level": 16,
+    "identical_stat_spreads": [
+      [
+        "pyrovaran",
+        "rimevaran"
+      ],
+      [
+        "magmalisk",
+        "fimbulisk"
+      ]
+    ],
+    "final_evolution_level": 49,
+    "approved_spreads_and_guidelines": "DATA-WORKSHEET.md"
+  },
+  "unset_gameplay_fields": [],
+  "lines": [
+    {
+      "key": "electric_primate",
+      "design_family": "primate",
+      "designs": [
+        {
+          "key": "voltuff",
+          "name": "Voltuff",
+          "concept_stage": 1,
+          "types": [
+            "Electric"
+          ],
+          "height_m": 0.5,
+          "weight_kg": 6.3,
+          "sheet_display_number": 1021,
+          "engine_species_id": 1076,
+          "lore": "They brush against one another to build up electricity. Together, they create dazzling showers of sparks that frighten off much larger Pokémon.",
+          "base_stats": {
+            "hp": 45,
+            "attack": 60,
+            "defense": 50,
+            "sp_attack": 55,
+            "sp_defense": 50,
+            "speed": 55
+          },
+          "base_stat_total": 315,
+          "base_stats_status": "approved_by_user",
+          "abilities": {
+            "primary": "Static",
+            "secondary": null,
+            "hidden": null
+          },
+          "growth_rate": "Medium Slow",
+          "growth_rate_status": "approved_by_user",
+          "ev_yield": {
+            "hp": 0,
+            "attack": 1,
+            "defense": 0,
+            "sp_attack": 0,
+            "sp_defense": 0,
+            "speed": 0
+          },
+          "ev_yield_status": "approved_by_user",
+          "breeding": {
+            "egg_groups": [
+              "Field",
+              "Human-Like"
+            ],
+            "male_percent": 50,
+            "female_percent": 50,
+            "hatch_cycles": 20,
+            "status": "approved_by_user_individual_donor_routes_checked",
+            "hatch_species": "voltuff"
+          },
+          "abilities_status": "approved_by_user_single_ability_no_secondary_or_hidden",
+          "physical_dimensions_status": "source_concept_sheet",
+          "pokedex_details": {
+            "classification": "Spark Pokémon",
+            "classification_status": "derived_under_user_authorization",
+            "entry_text": "They brush against one another to build up electricity. Together, they create dazzling showers of sparks that frighten off much larger Pokémon.",
+            "entry_source": "user_supplied_complete_entries_verbatim",
+            "height_decimetres": 5,
+            "weight_hectograms": 63,
+            "dimension_source": "Explicit concept-sheet values",
+            "implementation_status": "registered_full_text_paged",
+            "entry_status": "approved_user_text"
+          },
+          "concept_sheet_lore": "It’s full of restless energy, leaping from place to place. The fur on its head crackles when it’s excited.",
+          "lore_source": "user_supplied_complete_entries_supersedes_sheet_abbreviations",
+          "cry_draft": {
+            "wav": "cries/drafts/voltuff.wav",
+            "status": "approved_installed"
+          },
+          "engine_species_id_status": "registered",
+          "cry_archive_id": 1149
+        },
+        {
+          "key": "surguenon",
+          "name": "Surguenon",
+          "concept_stage": 2,
+          "types": [
+            "Electric",
+            "Fighting"
+          ],
+          "height_m": 1.1,
+          "weight_kg": 28.4,
+          "sheet_display_number": 1022,
+          "engine_species_id": 1077,
+          "lore": "Troop members practice together until their movements match perfectly. Their synchronized strikes overwhelm foes with powerful electric shocks.",
+          "base_stats": {
+            "hp": 65,
+            "attack": 85,
+            "defense": 50,
+            "sp_attack": 55,
+            "sp_defense": 55,
+            "speed": 95
+          },
+          "base_stat_total": 405,
+          "base_stats_status": "approved_by_user",
+          "abilities": {
+            "primary": "Static",
+            "secondary": null,
+            "hidden": null
+          },
+          "growth_rate": "Slow",
+          "growth_rate_status": "approved_by_user",
+          "ev_yield": {
+            "hp": 0,
+            "attack": 1,
+            "defense": 0,
+            "sp_attack": 0,
+            "sp_defense": 0,
+            "speed": 1
+          },
+          "ev_yield_status": "approved_by_user",
+          "breeding": {
+            "egg_groups": [
+              "Field",
+              "Human-Like"
+            ],
+            "male_percent": 50,
+            "female_percent": 50,
+            "hatch_cycles": 20,
+            "status": "approved_by_user_individual_donor_routes_checked",
+            "hatch_species": "voltuff"
+          },
+          "abilities_status": "approved_by_user_single_ability_no_secondary_or_hidden",
+          "physical_dimensions_status": "source_concept_sheet",
+          "pokedex_details": {
+            "classification": "Current Pokémon",
+            "classification_status": "derived_under_user_authorization",
+            "entry_text": "Troop members practice together until their movements match perfectly. Their synchronized strikes overwhelm foes with powerful electric shocks.",
+            "entry_source": "user_supplied_complete_entries_verbatim",
+            "height_decimetres": 11,
+            "weight_hectograms": 284,
+            "dimension_source": "Explicit concept-sheet values",
+            "implementation_status": "registered_full_text_paged",
+            "entry_status": "approved_user_text"
+          },
+          "concept_sheet_lore": "It trains by channeling electricity through its muscles. Its movements are fast and unpredictable, like lightning.",
+          "lore_source": "user_supplied_complete_entries_supersedes_sheet_abbreviations",
+          "cry_draft": {
+            "wav": "cries/drafts/surguenon.wav",
+            "status": "approved_installed"
+          },
+          "engine_species_id_status": "registered",
+          "cry_archive_id": 1150
+        },
+        {
+          "key": "raijinque",
+          "name": "Raijinque",
+          "concept_stage": 3,
+          "types": [
+            "Electric",
+            "Fighting"
+          ],
+          "height_m": 1.8,
+          "weight_kg": 76.2,
+          "sheet_display_number": 1023,
+          "engine_species_id": 1078,
+          "lore": "The thunder of its four fists can be heard beyond the mountains. Villagers once believed that storms began wherever these Pokémon gathered to train.",
+          "visual_requirements": {
+            "physical_arms": 2,
+            "thundercloud_arms": 2
+          },
+          "base_stats": {
+            "hp": 85,
+            "attack": 125,
+            "defense": 75,
+            "sp_attack": 120,
+            "sp_defense": 75,
+            "speed": 120
+          },
+          "base_stat_total": 600,
+          "base_stats_status": "approved_by_user",
+          "abilities": {
+            "primary": "Static",
+            "secondary": null,
+            "hidden": null
+          },
+          "growth_rate": "Slow",
+          "growth_rate_status": "approved_by_user",
+          "ev_yield": {
+            "hp": 0,
+            "attack": 1,
+            "defense": 0,
+            "sp_attack": 1,
+            "sp_defense": 0,
+            "speed": 1
+          },
+          "ev_yield_status": "approved_by_user",
+          "breeding": {
+            "egg_groups": [
+              "Field",
+              "Human-Like"
+            ],
+            "male_percent": 50,
+            "female_percent": 50,
+            "hatch_cycles": 20,
+            "status": "approved_by_user_individual_donor_routes_checked",
+            "hatch_species": "voltuff"
+          },
+          "abilities_status": "approved_by_user_single_ability_no_secondary_or_hidden",
+          "physical_dimensions_status": "source_concept_sheet",
+          "pokedex_details": {
+            "classification": "Thunder Pokémon",
+            "classification_status": "derived_under_user_authorization",
+            "entry_text": "The thunder of its four fists can be heard beyond the mountains. Villagers once believed that storms began wherever these Pokémon gathered to train.",
+            "entry_source": "user_supplied_complete_entries_verbatim",
+            "height_decimetres": 18,
+            "weight_hectograms": 762,
+            "dimension_source": "Explicit concept-sheet values",
+            "implementation_status": "registered_full_text_paged",
+            "entry_status": "approved_user_text"
+          },
+          "concept_sheet_lore": "It wields four striking arms — two powerful physical arms and two thundercloud arms made of condensed storm energy. All four fists strike as one, delivering the force of a thunderstorm.",
+          "lore_source": "user_supplied_complete_entries_supersedes_sheet_abbreviations",
+          "cry_draft": {
+            "wav": "cries/drafts/raijinque.wav",
+            "status": "approved_installed"
+          },
+          "engine_species_id_status": "registered",
+          "cry_archive_id": 1151
+        }
+      ],
+      "progressions": [
+        {
+          "from": "voltuff",
+          "to": "surguenon",
+          "method": "level",
+          "level": 16
+        },
+        {
+          "from": "surguenon",
+          "to": "raijinque",
+          "method": "level",
+          "level": 49
+        }
+      ],
+      "notes": [
+        "Sheet numbers 1021, 1022, and 1023 are display labels only; engine ID conflicts must be resolved before registration.",
+        "Primate-inspired anatomy replaces the earlier feline design; do not inherit its feline muzzle or pointed ears."
+      ],
+      "sheet_theme_notes": [
+        "Group spark shows.",
+        "Synchronized troop training.",
+        "Villagers believed storms began where Raijinque gathered to train."
+      ]
+    },
+    {
+      "key": "ember_rime",
+      "engine_representation": "separate_species",
+      "designs": [
+        {
+          "key": "embernewt",
+          "name": "Embernewt",
+          "concept_stage": 1,
+          "types": [
+            "Fire"
+          ],
+          "height_m": 0.5,
+          "weight_kg": 7.8,
+          "engine_species_id": 1079,
+          "lore": "Its will to live is remarkably strong. As its body begins to freeze, it draws its flame deep inside to keep it burning.",
+          "base_stats": {
+            "hp": 60,
+            "attack": 50,
+            "defense": 50,
+            "sp_attack": 60,
+            "sp_defense": 50,
+            "speed": 45
+          },
+          "base_stat_total": 315,
+          "base_stats_status": "approved_by_user",
+          "growth_rate": "Medium Slow",
+          "growth_rate_status": "approved_by_user",
+          "ev_yield": {
+            "hp": 0,
+            "attack": 0,
+            "defense": 0,
+            "sp_attack": 1,
+            "sp_defense": 0,
+            "speed": 0
+          },
+          "ev_yield_status": "derived_under_user_authorization",
+          "breeding": {
+            "egg_groups": [
+              "Monster",
+              "Dragon"
+            ],
+            "male_percent": 50,
+            "female_percent": 50,
+            "hatch_cycles": 20,
+            "hatch_species": "embernewt",
+            "status": "approved_by_user_individual_donor_routes_checked"
+          },
+          "abilities": {
+            "primary": "Flash Fire",
+            "secondary": null,
+            "hidden": null
+          },
+          "abilities_status": "approved_by_user_single_ability_no_secondary_or_hidden",
+          "physical_dimensions_status": "inferred_under_user_authorization",
+          "pokedex_details": {
+            "classification": "Cinder Pokémon",
+            "classification_status": "derived_under_user_authorization",
+            "entry_text": "Its will to live is remarkably strong. As its body begins to freeze, it draws its flame deep inside to keep it burning.",
+            "entry_source": "user_supplied_complete_entries_verbatim",
+            "height_decimetres": 5,
+            "weight_hectograms": 78,
+            "dimension_source": "Inferred design values; artwork has no calibrated scale",
+            "implementation_status": "registered_full_text_paged",
+            "entry_status": "approved_user_text"
+          },
+          "concept_sheet_lore": "A small but resilient lizard that protects its flame by drawing it inward when in danger.",
+          "lore_source": "user_supplied_complete_entries_supersedes_sheet_abbreviations",
+          "cry_draft": {
+            "wav": "cries/drafts/embernewt.wav",
+            "status": "approved_installed"
+          },
+          "engine_species_id_status": "registered",
+          "cry_archive_id": 1152
+        },
+        {
+          "key": "pyrovaran",
+          "name": "Pyrovaran",
+          "concept_stage": 2,
+          "types": [
+            "Fire"
+          ],
+          "height_m": 1.2,
+          "weight_kg": 38.5,
+          "engine_species_id": 1080,
+          "lore": "It basks on warm rocks along the slopes of volcanoes. As it matures, it makes its home ever closer to the crater.",
+          "sheet_note": "dwells on ever-warmer volcanic rocks",
+          "base_stats": {
+            "hp": 85,
+            "attack": 60,
+            "defense": 65,
+            "sp_attack": 85,
+            "sp_defense": 55,
+            "speed": 55
+          },
+          "base_stat_total": 405,
+          "base_stats_status": "approved_by_user",
+          "growth_rate": "Slow",
+          "growth_rate_status": "approved_by_user",
+          "ev_yield": {
+            "hp": 1,
+            "attack": 0,
+            "defense": 0,
+            "sp_attack": 1,
+            "sp_defense": 0,
+            "speed": 0
+          },
+          "ev_yield_status": "derived_under_user_authorization",
+          "breeding": {
+            "egg_groups": [
+              "Monster",
+              "Dragon"
+            ],
+            "male_percent": 50,
+            "female_percent": 50,
+            "hatch_cycles": 20,
+            "hatch_species": "embernewt",
+            "status": "approved_by_user_individual_donor_routes_checked"
+          },
+          "abilities": {
+            "primary": "Flash Fire",
+            "secondary": null,
+            "hidden": null
+          },
+          "abilities_status": "approved_by_user_single_ability_no_secondary_or_hidden",
+          "physical_dimensions_status": "inferred_under_user_authorization",
+          "pokedex_details": {
+            "classification": "Heat Scale Pokémon",
+            "classification_status": "derived_under_user_authorization",
+            "entry_text": "It basks on warm rocks along the slopes of volcanoes. As it matures, it makes its home ever closer to the crater.",
+            "entry_source": "user_supplied_complete_entries_verbatim",
+            "height_decimetres": 12,
+            "weight_hectograms": 385,
+            "dimension_source": "Inferred design values; artwork has no calibrated scale",
+            "implementation_status": "registered_full_text_paged",
+            "entry_status": "approved_user_text"
+          },
+          "concept_sheet_lore": null,
+          "lore_source": "user_supplied_complete_entries_supersedes_sheet_abbreviations",
+          "cry_draft": {
+            "wav": "cries/drafts/pyrovaran.wav",
+            "status": "approved_installed"
+          },
+          "engine_species_id_status": "registered",
+          "cry_archive_id": 1153
+        },
+        {
+          "key": "magmalisk",
+          "name": "Magmalisk",
+          "concept_stage": 3,
+          "types": [
+            "Fire"
+          ],
+          "height_m": 2.1,
+          "weight_kg": 142.0,
+          "engine_species_id": 1081,
+          "lore": "Volcanic eruptions were once believed to be the result of two Magmalisk fighting over territory deep beneath the mountain. Its every step leaves a pool of bubbling lava behind.",
+          "base_stats": {
+            "hp": 110,
+            "attack": 110,
+            "defense": 95,
+            "sp_attack": 110,
+            "sp_defense": 90,
+            "speed": 85
+          },
+          "base_stat_total": 600,
+          "base_stats_status": "approved_by_user",
+          "growth_rate": "Slow",
+          "growth_rate_status": "approved_by_user",
+          "ev_yield": {
+            "hp": 1,
+            "attack": 1,
+            "defense": 0,
+            "sp_attack": 1,
+            "sp_defense": 0,
+            "speed": 0
+          },
+          "ev_yield_status": "approved_by_user",
+          "breeding": {
+            "egg_groups": [
+              "Monster",
+              "Dragon"
+            ],
+            "male_percent": 50,
+            "female_percent": 50,
+            "hatch_cycles": 20,
+            "hatch_species": "embernewt",
+            "status": "approved_by_user_individual_donor_routes_checked"
+          },
+          "abilities": {
+            "primary": "Flash Fire",
+            "secondary": null,
+            "hidden": null
+          },
+          "abilities_status": "approved_by_user_single_ability_no_secondary_or_hidden",
+          "physical_dimensions_status": "inferred_under_user_authorization",
+          "pokedex_details": {
+            "classification": "Volcanic Pokémon",
+            "classification_status": "derived_under_user_authorization",
+            "entry_text": "Volcanic eruptions were once believed to be the result of two Magmalisk fighting over territory deep beneath the mountain. Its every step leaves a pool of bubbling lava behind.",
+            "entry_source": "user_supplied_complete_entries_verbatim",
+            "height_decimetres": 21,
+            "weight_hectograms": 1420,
+            "dimension_source": "Inferred design values; artwork has no calibrated scale",
+            "implementation_status": "registered_full_text_paged",
+            "entry_status": "approved_user_text"
+          },
+          "concept_sheet_lore": "A volcanic sovereign revered in legend. Its flame is said to burn as long as the world’s mountains stand.",
+          "lore_source": "user_supplied_complete_entries_supersedes_sheet_abbreviations",
+          "cry_draft": {
+            "wav": "cries/drafts/magmalisk.wav",
+            "status": "approved_installed"
+          },
+          "engine_species_id_status": "registered",
+          "cry_archive_id": 1154
+        },
+        {
+          "key": "rimevaran",
+          "name": "Rimevaran",
+          "concept_stage": 2,
+          "types": [
+            "Dark",
+            "Ice"
+          ],
+          "height_m": 1.2,
+          "weight_kg": 41.5,
+          "engine_species_id": 1082,
+          "lore": "Only an Embernewt whose flame survives being sealed in ice becomes this Pokémon. It draws all warmth from the surrounding air to keep its inner flame alive.",
+          "visual_notes": [
+            "Fiery eyes",
+            "No wings",
+            "Ice crown",
+            "Intricate shoulder ice"
+          ],
+          "base_stats": {
+            "hp": 85,
+            "attack": 60,
+            "defense": 65,
+            "sp_attack": 85,
+            "sp_defense": 55,
+            "speed": 55
+          },
+          "base_stat_total": 405,
+          "base_stats_status": "approved_by_user",
+          "growth_rate": "Slow",
+          "growth_rate_status": "approved_by_user",
+          "ev_yield": {
+            "hp": 1,
+            "attack": 0,
+            "defense": 0,
+            "sp_attack": 1,
+            "sp_defense": 0,
+            "speed": 0
+          },
+          "ev_yield_status": "derived_under_user_authorization",
+          "breeding": {
+            "egg_groups": [
+              "Monster",
+              "Dragon"
+            ],
+            "male_percent": 50,
+            "female_percent": 50,
+            "hatch_cycles": 20,
+            "hatch_species": "embernewt",
+            "status": "approved_by_user_individual_donor_routes_checked"
+          },
+          "abilities": {
+            "primary": "Flash Fire",
+            "secondary": null,
+            "hidden": null
+          },
+          "abilities_status": "approved_by_user_single_ability_no_secondary_or_hidden",
+          "physical_dimensions_status": "inferred_under_user_authorization",
+          "pokedex_details": {
+            "classification": "Frost Crown Pokémon",
+            "classification_status": "derived_under_user_authorization",
+            "entry_text": "Only an Embernewt whose flame survives being sealed in ice becomes this Pokémon. It draws all warmth from the surrounding air to keep its inner flame alive.",
+            "entry_source": "user_supplied_complete_entries_verbatim",
+            "height_decimetres": 12,
+            "weight_hectograms": 415,
+            "dimension_source": "Inferred design values; artwork has no calibrated scale",
+            "implementation_status": "registered_full_text_paged",
+            "entry_status": "approved_user_text"
+          },
+          "concept_sheet_lore": null,
+          "lore_source": "user_supplied_complete_entries_supersedes_sheet_abbreviations",
+          "cry_draft": {
+            "wav": "cries/drafts/rimevaran.wav",
+            "status": "approved_installed"
+          },
+          "engine_species_id_status": "registered",
+          "cry_archive_id": 1155
+        },
+        {
+          "key": "fimbulisk",
+          "name": "Fimbulisk",
+          "concept_stage": 3,
+          "types": [
+            "Dark",
+            "Ice"
+          ],
+          "height_m": 2.1,
+          "weight_kg": 151.0,
+          "engine_species_id": 1083,
+          "lore": "Travelers once froze solid following its glowing eyes through blizzards, believing them to be a distant hearth. Where it rests, winter lingers long after the surrounding snow has melted.",
+          "visual_notes": [
+            "Fiery eyes",
+            "No wings",
+            "Ice crown",
+            "Intricate shoulder ice"
+          ],
+          "base_stats": {
+            "hp": 110,
+            "attack": 110,
+            "defense": 95,
+            "sp_attack": 110,
+            "sp_defense": 90,
+            "speed": 85
+          },
+          "base_stat_total": 600,
+          "base_stats_status": "approved_by_user",
+          "growth_rate": "Slow",
+          "growth_rate_status": "approved_by_user",
+          "ev_yield": {
+            "hp": 1,
+            "attack": 1,
+            "defense": 0,
+            "sp_attack": 1,
+            "sp_defense": 0,
+            "speed": 0
+          },
+          "ev_yield_status": "approved_by_user",
+          "breeding": {
+            "egg_groups": [
+              "Monster",
+              "Dragon"
+            ],
+            "male_percent": 50,
+            "female_percent": 50,
+            "hatch_cycles": 20,
+            "hatch_species": "embernewt",
+            "status": "approved_by_user_individual_donor_routes_checked"
+          },
+          "abilities": {
+            "primary": "Flash Fire",
+            "secondary": null,
+            "hidden": null
+          },
+          "abilities_status": "approved_by_user_single_ability_no_secondary_or_hidden",
+          "physical_dimensions_status": "inferred_under_user_authorization",
+          "pokedex_details": {
+            "classification": "Blizzard Pokémon",
+            "classification_status": "derived_under_user_authorization",
+            "entry_text": "Travelers once froze solid following its glowing eyes through blizzards, believing them to be a distant hearth. Where it rests, winter lingers long after the surrounding snow has melted.",
+            "entry_source": "user_supplied_complete_entries_verbatim",
+            "height_decimetres": 21,
+            "weight_hectograms": 1510,
+            "dimension_source": "Inferred design values; artwork has no calibrated scale",
+            "implementation_status": "registered_full_text_paged",
+            "entry_status": "approved_user_text"
+          },
+          "concept_sheet_lore": "Its glowing eyes lured travelers into blizzards, where they would freeze, never to be seen again.",
+          "lore_source": "user_supplied_complete_entries_supersedes_sheet_abbreviations",
+          "cry_draft": {
+            "wav": "cries/drafts/fimbulisk.wav",
+            "status": "approved_installed"
+          },
+          "engine_species_id_status": "registered",
+          "cry_archive_id": 1156
+        }
+      ],
+      "concept_progressions": [
+        {
+          "from": "pyrovaran",
+          "to": "magmalisk",
+          "method": "level",
+          "level": 49
+        },
+        {
+          "from": "rimevaran",
+          "to": "fimbulisk",
+          "method": "level",
+          "level": 49
+        }
+      ],
+      "future_mechanic": {
+        "designs": [
+          "pyrovaran",
+          "rimevaran"
+        ],
+        "description": "Switching between these designs will be handled by a future mechanic.",
+        "rules": null
+      },
+      "notes": [
+        "Approved as five separate species sharing Embernewt as the breeding base; later form/species switching is not implemented."
+      ],
+      "approved_first_evolution_rule": {
+        "status": "approved_implemented",
+        "from": "embernewt",
+        "to": "rimevaran",
+        "minimum_resulting_level": 16,
+        "required_held_item": "NeverMeltIce",
+        "required_move_type": "Ice",
+        "requires_direct_ko_by_this_pokemon": true,
+        "ko_experience_must_cause_this_level_up": true,
+        "held_item_check": "Held by Embernewt at the qualifying KO and evolution evaluation",
+        "historical_ko_credit": false,
+        "branch_priority": "Evaluate this exact condition before the ordinary Pyrovaran level evolution.",
+        "fallback": {
+          "to": "pyrovaran",
+          "method": "level",
+          "minimum_level": 16,
+          "condition": "Any level-up not satisfying every Rimevaran requirement."
+        },
+        "design_intent": "Intentionally narrow: an incorrect move, held item, or EXP timing falls back to Pyrovaran.",
+        "scope_note": "No new evolution-cancellation restriction or item-consumption behavior is authorized by this condition."
+      },
+      "conditional_pre_evolution_move": {
+        "status": "approved_implemented",
+        "species": "embernewt",
+        "level": 14,
+        "normally_offered": "Fire Fang",
+        "held_item": "Icicle Plate",
+        "replacement": "Ice Fang"
+      }
+    },
+    {
+      "key": "ground_flying",
+      "designs": [
+        {
+          "key": "sedgling",
+          "name": "Sedgling",
+          "concept_stage": 1,
+          "types": [
+            "Ground",
+            "Water"
+          ],
+          "height_m": 0.4,
+          "weight_kg": 5.2,
+          "engine_species_id": 1084,
+          "lore": "It loves to nap in shallow puddles. Its down soaks up so much water that it sometimes wakes to find itself sitting on dry ground.",
+          "base_stats": {
+            "hp": 40,
+            "attack": 55,
+            "defense": 55,
+            "sp_attack": 60,
+            "sp_defense": 50,
+            "speed": 55
+          },
+          "base_stat_total": 315,
+          "base_stats_status": "approved_by_user",
+          "growth_rate": "Medium Slow",
+          "growth_rate_status": "approved_by_user",
+          "ev_yield": {
+            "hp": 0,
+            "attack": 0,
+            "defense": 0,
+            "sp_attack": 1,
+            "sp_defense": 0,
+            "speed": 0
+          },
+          "ev_yield_status": "derived_under_user_authorization",
+          "breeding": {
+            "egg_groups": [
+              "Water 1",
+              "Flying"
+            ],
+            "male_percent": 50,
+            "female_percent": 50,
+            "hatch_cycles": 20,
+            "hatch_species": "sedgling",
+            "status": "approved_by_user_individual_donor_routes_checked"
+          },
+          "abilities": {
+            "primary": "Water Absorb",
+            "secondary": null,
+            "hidden": null
+          },
+          "abilities_status": "approved_by_user_single_ability_no_secondary_or_hidden",
+          "physical_dimensions_status": "inferred_under_user_authorization",
+          "pokedex_details": {
+            "classification": "Marsh Duck Pokémon",
+            "classification_status": "derived_under_user_authorization",
+            "entry_text": "It loves to nap in shallow puddles. Its down soaks up so much water that it sometimes wakes to find itself sitting on dry ground.",
+            "entry_source": "user_supplied_complete_entries_verbatim",
+            "height_decimetres": 4,
+            "weight_hectograms": 52,
+            "dimension_source": "Inferred design values; artwork has no calibrated scale",
+            "implementation_status": "registered_full_text_paged",
+            "entry_status": "approved_user_text"
+          },
+          "concept_sheet_lore": "A water-loving duckling that matures into an earthy, elegant flier.",
+          "lore_source": "user_supplied_complete_entries_supersedes_sheet_abbreviations",
+          "cry_draft": {
+            "wav": "cries/drafts/sedgling.wav",
+            "status": "approved_installed",
+            "approved_revision": 3
+          },
+          "engine_species_id_status": "registered",
+          "cry_archive_id": 1157
+        },
+        {
+          "key": "cragaviar",
+          "name": "Cragaviar",
+          "concept_stage": 2,
+          "types": [
+            "Ground",
+            "Flying"
+          ],
+          "height_m": 1.2,
+          "weight_kg": 32.6,
+          "engine_species_id": 1085,
+          "lore": "It soaks its stone-like feathers in rivers before long flights. The absorbed water binds their layers together, repairing cracks caused by wear.",
+          "base_stats": {
+            "hp": 70,
+            "attack": 75,
+            "defense": 55,
+            "sp_attack": 75,
+            "sp_defense": 55,
+            "speed": 75
+          },
+          "base_stat_total": 405,
+          "base_stats_status": "approved_by_user",
+          "growth_rate": "Slow",
+          "growth_rate_status": "approved_by_user",
+          "ev_yield": {
+            "hp": 0,
+            "attack": 1,
+            "defense": 0,
+            "sp_attack": 1,
+            "sp_defense": 0,
+            "speed": 0
+          },
+          "ev_yield_status": "derived_under_user_authorization",
+          "breeding": {
+            "egg_groups": [
+              "Water 1",
+              "Flying"
+            ],
+            "male_percent": 50,
+            "female_percent": 50,
+            "hatch_cycles": 20,
+            "hatch_species": "sedgling",
+            "status": "approved_by_user_individual_donor_routes_checked"
+          },
+          "abilities": {
+            "primary": "Water Absorb",
+            "secondary": null,
+            "hidden": null
+          },
+          "abilities_status": "approved_by_user_single_ability_no_secondary_or_hidden",
+          "physical_dimensions_status": "inferred_under_user_authorization",
+          "pokedex_details": {
+            "classification": "Stone Plume Pokémon",
+            "classification_status": "derived_under_user_authorization",
+            "entry_text": "It soaks its stone-like feathers in rivers before long flights. The absorbed water binds their layers together, repairing cracks caused by wear.",
+            "entry_source": "user_supplied_complete_entries_verbatim",
+            "height_decimetres": 12,
+            "weight_hectograms": 326,
+            "dimension_source": "Inferred design values; artwork has no calibrated scale",
+            "implementation_status": "registered_full_text_paged",
+            "entry_status": "approved_user_text"
+          },
+          "concept_sheet_lore": "It uses absorbed water to mend its stony plumage.",
+          "lore_source": "user_supplied_complete_entries_supersedes_sheet_abbreviations",
+          "cry_draft": {
+            "wav": "cries/drafts/cragaviar.wav",
+            "status": "approved_installed",
+            "approved_revision": 5
+          },
+          "engine_species_id_status": "registered",
+          "cry_archive_id": 1158
+        },
+        {
+          "key": "ragnaroc",
+          "name": "Ragnaroc",
+          "concept_stage": 3,
+          "types": [
+            "Ground",
+            "Flying"
+          ],
+          "height_m": 2.2,
+          "weight_kg": 108.4,
+          "engine_species_id": 1086,
+          "lore": "Ancient accounts describe a four-winged shadow followed by a rain of falling stars. Buried settlements have been found beneath the paths of its migrations.",
+          "visual_requirements": {
+            "wings": 4
+          },
+          "base_stats": {
+            "hp": 100,
+            "attack": 120,
+            "defense": 75,
+            "sp_attack": 115,
+            "sp_defense": 75,
+            "speed": 115
+          },
+          "base_stat_total": 600,
+          "base_stats_status": "approved_by_user",
+          "growth_rate": "Slow",
+          "growth_rate_status": "approved_by_user",
+          "ev_yield": {
+            "hp": 0,
+            "attack": 1,
+            "defense": 0,
+            "sp_attack": 1,
+            "sp_defense": 0,
+            "speed": 1
+          },
+          "ev_yield_status": "approved_by_user",
+          "breeding": {
+            "egg_groups": [
+              "Water 1",
+              "Flying"
+            ],
+            "male_percent": 50,
+            "female_percent": 50,
+            "hatch_cycles": 20,
+            "hatch_species": "sedgling",
+            "status": "approved_by_user_individual_donor_routes_checked"
+          },
+          "abilities": {
+            "primary": "Water Absorb",
+            "secondary": null,
+            "hidden": null
+          },
+          "abilities_status": "approved_by_user_single_ability_no_secondary_or_hidden",
+          "physical_dimensions_status": "inferred_under_user_authorization",
+          "pokedex_details": {
+            "classification": "Falling Star Pokémon",
+            "classification_status": "derived_under_user_authorization",
+            "entry_text": "Ancient accounts describe a four-winged shadow followed by a rain of falling stars. Buried settlements have been found beneath the paths of its migrations.",
+            "entry_source": "user_supplied_complete_entries_verbatim",
+            "height_decimetres": 22,
+            "weight_hectograms": 1084,
+            "dimension_source": "Inferred design values; artwork has no calibrated scale",
+            "implementation_status": "registered_full_text_paged",
+            "entry_status": "approved_user_text"
+          },
+          "concept_sheet_lore": "Ancient accounts describe it as a four-winged shadow followed by a rain of falling stars.",
+          "lore_source": "user_supplied_complete_entries_supersedes_sheet_abbreviations",
+          "cry_draft": {
+            "wav": "cries/drafts/ragnaroc.wav",
+            "status": "approved_installed",
+            "approved_revision": 5
+          },
+          "engine_species_id_status": "registered",
+          "cry_archive_id": 1159
+        }
+      ],
+      "progressions": [
+        {
+          "from": "sedgling",
+          "to": "cragaviar",
+          "method": "level",
+          "level": 16
+        },
+        {
+          "from": "cragaviar",
+          "to": "ragnaroc",
+          "method": "level",
+          "level": 49
+        }
+      ],
+      "notes": [
+        "The current sheet explicitly gives Sedgling dual Ground/Water typing, replacing the earlier single-type base-stage convention."
+      ]
+    }
+  ],
+  "approved_moveset_documents": {
+    "status": "approved_installed",
+    "level_up": "moves-research/proposed-level-paths.json",
+    "machine_tutor": "moves-research/proposed-compatibility.json",
+    "egg": "moves-research/proposed-egg-moves.json"
+  },
+  "growth_curve_transition": {
+    "status": "implemented_level_and_fraction_preserved",
+    "desired_rates": {
+      "base": "Medium Slow",
+      "middle": "Slow",
+      "final": "Slow"
+    },
+    "proposed_policy": "At an evolution changing growth groups, convert stored experience to preserve current level and fractional progress toward next level. Handle delayed evolution and level 100; do not convert again for Slow-to-Slow evolution.",
+    "policy_status": "approved_by_user",
+    "reason": "Growth tables store cumulative thresholds; changing species expRate alone leaves stored experience on the old scale."
+  },
+  "breeding_proposal_document": "BREEDING.md",
+  "acquisition_policy": {
+    "status": "approved_by_user",
+    "normal_gameplay_distribution": "none",
+    "wild_encounters": false,
+    "starter_selection": false,
+    "npc_gifts": false,
+    "other_scripted_distribution": false,
+    "current_intended_access": "User may create a separate patch to obtain all three base species for a playthrough. No acquisition patch requested yet.",
+    "future_possibility": "NPC gifts in a broader release; deferred, not authorized for implementation.",
+    "scope_note": "No normal acquisition source for any family. Existing approved breeding and evolution remain valid once specimens are externally obtained; this is not a breeding/evolution prohibition."
+  },
+  "cry_assets": {
+    "status": "all_eleven_approved_cries_installed",
+    "manifest": "cries/manifest.json",
+    "listening_gallery": "cries/listen.html",
+    "generation_script": "scripts/generate_fakemon_cries.py",
+    "installed": true
+  },
+  "species_registration": {
+    "representation": "eleven_separate_species",
+    "internal_id_range": [
+      1076,
+      1086
+    ],
+    "status": "registered",
+    "displayed_dex_numbering": "1076-1086; Johto unchanged"
+  },
+  "remaining_defaults_proposal": {
+    "status": "approved_by_user",
+    "base_experience_yield_by_stage": {
+      "1": 64,
+      "2": 142,
+      "3": 300
+    },
+    "catch_rate_all_stages": 45,
+    "wild_held_items": {
+      "common": null,
+      "rare": null
+    },
+    "base_friendship": 70,
+    "regional_dex": "No Johto regional Dex slots; preserve existing order.",
+    "national_dex": "Use approved internal IDs 1076-1086 as National Dex numbers, subject to engine integration checks.",
+    "evolution_item_consumption": "Neither Icicle Plate nor NeverMeltIce is consumed."
+  }
+}

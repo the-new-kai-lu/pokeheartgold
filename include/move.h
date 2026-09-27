@@ -36,6 +36,7 @@ typedef enum MoveAttr {
     MOVEATTR_CONTEST_TYPE,
 } MoveAttr;
 
+u16 GetMoveAnimationId(u16 moveId);
 u32 GetMoveAttr(u16 moveId, MoveAttr attrno);
 u8 GetMoveMaxPP(u16 moveId, u8 ppUps);
 void LoadMoveTbl(MoveTbl *dest);

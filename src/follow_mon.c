@@ -1642,6 +1642,9 @@ LocalMapObject *FollowMon_GetMapObject(FieldSystem *fieldSystem) {
 u32 FollowMon_GetSpriteID(int species, u16 form, u32 gender) {
     int ret;
 
+    if (IsFakemonSpecies(species)) {
+        return 1050 + species - SPECIES_VOLTUFF;
+    }
     if (species <= 0 || species > NATIONAL_DEX_COUNT) {
         ret = SPRITE_FOLLOWER_MON_BULBASAUR;
     } else {
@@ -1995,10 +1998,16 @@ void FieldSystem_UnkSub108_MoveMoodTowardsNeutral(FieldSystemUnkSub108 *a0) {
 // following three might be better off in another file? they're not explicitly related to following mons
 
 int SpeciesToOverworldModelIndexOffset(int species) {
+    if (IsFakemonSpecies(species)) {
+        return 566 + species - SPECIES_VOLTUFF;
+    }
     return sModelIndexLUT[species];
 }
 
 int OverworldModelLookupFormCount(int species) {
+    if (IsFakemonSpecies(species)) {
+        return 0;
+    }
     if (!(species > 0 && species <= NATIONAL_DEX_COUNT)) {
         GF_ASSERT(FALSE);
         species = 0;
@@ -2009,6 +2018,9 @@ int OverworldModelLookupFormCount(int species) {
 }
 
 BOOL OverworldModelLookupHasFemaleForm(int species) {
+    if (IsFakemonSpecies(species)) {
+        return FALSE;
+    }
     if (!(species > 0 && species <= NATIONAL_DEX_COUNT)) {
         GF_ASSERT(FALSE);
         species = 0;

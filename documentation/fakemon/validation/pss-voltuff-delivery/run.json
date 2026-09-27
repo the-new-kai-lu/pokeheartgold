@@ -1,0 +1,16 @@
+{
+  "rom_sha256": "777247a68b76f85358bf036383bd6e05b6a2c48a59021bb8a09453fcf63c668e",
+  "input_save": "/tmp/pokeheartgold-editor-smoke/voltuff.sav",
+  "status": "script_finished_review_screenshots_and_reopen_exported_save",
+  "dex_browse": false,
+  "screenshots": [
+    "dex.png",
+    "loaded.png",
+    "party-menu.png",
+    "party.png",
+    "reloaded-party.png",
+    "reloaded.png",
+    "saved.png",
+    "summary.png"
+  ]
+}

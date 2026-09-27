@@ -1,0 +1,1697 @@
+{
+  "scope": "stock HGSS machines/tutors; seven additional level-up moves",
+  "species": [
+    {
+      "species_id": 1076,
+      "name": "Voltuff",
+      "tms": [
+        5,
+        6,
+        10,
+        11,
+        16,
+        17,
+        18,
+        21,
+        23,
+        24,
+        25,
+        27,
+        28,
+        32,
+        33,
+        34,
+        42,
+        43,
+        44,
+        45,
+        46,
+        56,
+        57,
+        58,
+        70,
+        73,
+        78,
+        82,
+        83,
+        87,
+        90
+      ],
+      "hms": [
+        4,
+        6
+      ],
+      "level_moves": [
+        {
+          "Level": 1,
+          "Move": "MOVE_SCRATCH"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_LEER"
+        },
+        {
+          "Level": 4,
+          "Move": "MOVE_THUNDER_SHOCK"
+        },
+        {
+          "Level": 9,
+          "Move": "MOVE_QUICK_ATTACK"
+        },
+        {
+          "Level": 13,
+          "Move": "MOVE_SPARK"
+        },
+        {
+          "Level": 19,
+          "Move": "MOVE_CHARGE"
+        },
+        {
+          "Level": 23,
+          "Move": "MOVE_THUNDER_PUNCH"
+        },
+        {
+          "Level": 33,
+          "Move": "MOVE_SWIFT"
+        },
+        {
+          "Level": 37,
+          "Move": "MOVE_AGILITY"
+        },
+        {
+          "Level": 41,
+          "Move": "MOVE_DISCHARGE"
+        },
+        {
+          "Level": 48,
+          "Move": "MOVE_THUNDERBOLT"
+        },
+        {
+          "Level": 55,
+          "Move": "MOVE_WILD_CHARGE"
+        }
+      ],
+      "omitted_machine_moves": [
+        "MOVE_AGILITY",
+        "MOVE_ALLURING_VOICE",
+        "MOVE_BODY_SLAM",
+        "MOVE_CHARGE",
+        "MOVE_CONFIDE",
+        "MOVE_CURSE",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_EERIE_IMPULSE",
+        "MOVE_ELECTRIC_TERRAIN",
+        "MOVE_ELECTROWEB",
+        "MOVE_ELECTRO_BALL",
+        "MOVE_ENDEAVOR",
+        "MOVE_HELPING_HAND",
+        "MOVE_METAL_SOUND",
+        "MOVE_PLAY_ROUGH",
+        "MOVE_SUPERCELL_SLAM",
+        "MOVE_TERA_BLAST",
+        "MOVE_UPROAR",
+        "MOVE_WILD_CHARGE"
+      ],
+      "omitted_tutor_moves": []
+    },
+    {
+      "species_id": 1077,
+      "name": "Surguenon",
+      "tms": [
+        1,
+        5,
+        6,
+        8,
+        10,
+        11,
+        12,
+        16,
+        17,
+        18,
+        21,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        31,
+        32,
+        33,
+        34,
+        39,
+        40,
+        42,
+        43,
+        44,
+        45,
+        46,
+        52,
+        56,
+        57,
+        58,
+        60,
+        65,
+        66,
+        70,
+        71,
+        73,
+        75,
+        77,
+        78,
+        80,
+        82,
+        83,
+        84,
+        87,
+        90
+      ],
+      "hms": [
+        1,
+        4,
+        6,
+        8
+      ],
+      "level_moves": [
+        {
+          "Level": 0,
+          "Move": "MOVE_FORCE_PALM"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_SCRATCH"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_LEER"
+        },
+        {
+          "Level": 4,
+          "Move": "MOVE_THUNDER_SHOCK"
+        },
+        {
+          "Level": 9,
+          "Move": "MOVE_QUICK_ATTACK"
+        },
+        {
+          "Level": 13,
+          "Move": "MOVE_SPARK"
+        },
+        {
+          "Level": 19,
+          "Move": "MOVE_CHARGE"
+        },
+        {
+          "Level": 23,
+          "Move": "MOVE_THUNDER_PUNCH"
+        },
+        {
+          "Level": 28,
+          "Move": "MOVE_BRICK_BREAK"
+        },
+        {
+          "Level": 33,
+          "Move": "MOVE_SWIFT"
+        },
+        {
+          "Level": 37,
+          "Move": "MOVE_AGILITY"
+        },
+        {
+          "Level": 41,
+          "Move": "MOVE_DISCHARGE"
+        },
+        {
+          "Level": 45,
+          "Move": "MOVE_AURA_SPHERE"
+        },
+        {
+          "Level": 48,
+          "Move": "MOVE_THUNDERBOLT"
+        }
+      ],
+      "omitted_machine_moves": [
+        "MOVE_AGILITY",
+        "MOVE_ALLURING_VOICE",
+        "MOVE_AURA_SPHERE",
+        "MOVE_BATON_PASS",
+        "MOVE_BODY_PRESS",
+        "MOVE_BODY_SLAM",
+        "MOVE_CHARGE",
+        "MOVE_CLOSE_COMBAT",
+        "MOVE_COACHING",
+        "MOVE_CONFIDE",
+        "MOVE_CURSE",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_EERIE_IMPULSE",
+        "MOVE_ELECTRIC_TERRAIN",
+        "MOVE_ELECTROWEB",
+        "MOVE_ELECTRO_BALL",
+        "MOVE_ENCORE",
+        "MOVE_ENDEAVOR",
+        "MOVE_HELPING_HAND",
+        "MOVE_KNOCK_OFF",
+        "MOVE_LOW_KICK",
+        "MOVE_MEGA_PUNCH",
+        "MOVE_METAL_SOUND",
+        "MOVE_METRONOME",
+        "MOVE_PLAY_ROUGH",
+        "MOVE_REVERSAL",
+        "MOVE_SMACK_DOWN",
+        "MOVE_SUPERCELL_SLAM",
+        "MOVE_SUPERPOWER",
+        "MOVE_TERA_BLAST",
+        "MOVE_THROAT_CHOP",
+        "MOVE_UPPER_HAND",
+        "MOVE_UPROAR",
+        "MOVE_VACUUM_WAVE",
+        "MOVE_WILD_CHARGE",
+        "MOVE_WORK_UP",
+        "MOVE_ZEN_HEADBUTT"
+      ],
+      "omitted_tutor_moves": []
+    },
+    {
+      "species_id": 1078,
+      "name": "Raijinque",
+      "tms": [
+        1,
+        5,
+        6,
+        8,
+        10,
+        11,
+        12,
+        15,
+        16,
+        17,
+        18,
+        21,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        31,
+        32,
+        33,
+        34,
+        39,
+        40,
+        42,
+        43,
+        44,
+        45,
+        46,
+        52,
+        56,
+        57,
+        58,
+        60,
+        65,
+        66,
+        68,
+        70,
+        71,
+        73,
+        75,
+        77,
+        78,
+        80,
+        82,
+        83,
+        84,
+        87,
+        90
+      ],
+      "hms": [
+        1,
+        4,
+        6,
+        8
+      ],
+      "level_moves": [
+        {
+          "Level": 0,
+          "Move": "MOVE_CLOSE_COMBAT"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_SCRATCH"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_LEER"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_FORCE_PALM"
+        },
+        {
+          "Level": 4,
+          "Move": "MOVE_THUNDER_SHOCK"
+        },
+        {
+          "Level": 9,
+          "Move": "MOVE_QUICK_ATTACK"
+        },
+        {
+          "Level": 13,
+          "Move": "MOVE_SPARK"
+        },
+        {
+          "Level": 19,
+          "Move": "MOVE_CHARGE"
+        },
+        {
+          "Level": 23,
+          "Move": "MOVE_THUNDER_PUNCH"
+        },
+        {
+          "Level": 28,
+          "Move": "MOVE_BRICK_BREAK"
+        },
+        {
+          "Level": 33,
+          "Move": "MOVE_SWIFT"
+        },
+        {
+          "Level": 37,
+          "Move": "MOVE_AGILITY"
+        },
+        {
+          "Level": 41,
+          "Move": "MOVE_DISCHARGE"
+        },
+        {
+          "Level": 45,
+          "Move": "MOVE_AURA_SPHERE"
+        },
+        {
+          "Level": 48,
+          "Move": "MOVE_THUNDERBOLT"
+        },
+        {
+          "Level": 55,
+          "Move": "MOVE_WILD_CHARGE"
+        },
+        {
+          "Level": 63,
+          "Move": "MOVE_THUNDER"
+        }
+      ],
+      "omitted_machine_moves": [
+        "MOVE_AGILITY",
+        "MOVE_ALLURING_VOICE",
+        "MOVE_AURA_SPHERE",
+        "MOVE_BATON_PASS",
+        "MOVE_BODY_PRESS",
+        "MOVE_BODY_SLAM",
+        "MOVE_CHARGE",
+        "MOVE_CLOSE_COMBAT",
+        "MOVE_COACHING",
+        "MOVE_CONFIDE",
+        "MOVE_CURSE",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_EERIE_IMPULSE",
+        "MOVE_ELECTRIC_TERRAIN",
+        "MOVE_ELECTROWEB",
+        "MOVE_ELECTRO_BALL",
+        "MOVE_ENCORE",
+        "MOVE_ENDEAVOR",
+        "MOVE_HELPING_HAND",
+        "MOVE_KNOCK_OFF",
+        "MOVE_LOW_KICK",
+        "MOVE_MEGA_PUNCH",
+        "MOVE_METAL_SOUND",
+        "MOVE_METRONOME",
+        "MOVE_PLAY_ROUGH",
+        "MOVE_REVERSAL",
+        "MOVE_SMACK_DOWN",
+        "MOVE_SUPERCELL_SLAM",
+        "MOVE_SUPERPOWER",
+        "MOVE_TERA_BLAST",
+        "MOVE_THROAT_CHOP",
+        "MOVE_UPPER_HAND",
+        "MOVE_UPROAR",
+        "MOVE_VACUUM_WAVE",
+        "MOVE_WILD_CHARGE",
+        "MOVE_WORK_UP",
+        "MOVE_ZEN_HEADBUTT"
+      ],
+      "omitted_tutor_moves": []
+    },
+    {
+      "species_id": 1079,
+      "name": "Embernewt",
+      "tms": [
+        1,
+        4,
+        5,
+        6,
+        10,
+        11,
+        17,
+        18,
+        21,
+        22,
+        23,
+        26,
+        27,
+        28,
+        30,
+        31,
+        32,
+        33,
+        35,
+        37,
+        38,
+        39,
+        40,
+        42,
+        43,
+        44,
+        45,
+        46,
+        50,
+        52,
+        56,
+        58,
+        61,
+        71,
+        78,
+        80,
+        82,
+        83,
+        87,
+        90
+      ],
+      "hms": [
+        1,
+        4,
+        6,
+        8
+      ],
+      "level_moves": [
+        {
+          "Level": 1,
+          "Move": "MOVE_SCRATCH"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_GROWL"
+        },
+        {
+          "Level": 5,
+          "Move": "MOVE_EMBER"
+        },
+        {
+          "Level": 10,
+          "Move": "MOVE_SMOKESCREEN"
+        },
+        {
+          "Level": 14,
+          "Move": "MOVE_FIRE_FANG"
+        },
+        {
+          "Level": 21,
+          "Move": "MOVE_SNARL"
+        },
+        {
+          "Level": 25,
+          "Move": "MOVE_ANCIENT_POWER"
+        },
+        {
+          "Level": 29,
+          "Move": "MOVE_SCARY_FACE"
+        },
+        {
+          "Level": 34,
+          "Move": "MOVE_LAVA_PLUME"
+        },
+        {
+          "Level": 38,
+          "Move": "MOVE_CRUNCH"
+        },
+        {
+          "Level": 41,
+          "Move": "MOVE_FLAMETHROWER"
+        },
+        {
+          "Level": 45,
+          "Move": "MOVE_FIRE_FANG"
+        },
+        {
+          "Level": 48,
+          "Move": "MOVE_AMNESIA"
+        }
+      ],
+      "omitted_machine_moves": [
+        "MOVE_AGILITY",
+        "MOVE_BLAZE_KICK",
+        "MOVE_BODY_SLAM",
+        "MOVE_BURNING_JEALOUSY",
+        "MOVE_CONFIDE",
+        "MOVE_CRUNCH",
+        "MOVE_CURSE",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_ENDEAVOR",
+        "MOVE_FIRE_PLEDGE",
+        "MOVE_FLARE_BLITZ",
+        "MOVE_HEAT_CRASH",
+        "MOVE_HEAT_WAVE",
+        "MOVE_HELPING_HAND",
+        "MOVE_IRON_HEAD",
+        "MOVE_LOW_KICK",
+        "MOVE_REVERSAL",
+        "MOVE_SCORCHING_SANDS",
+        "MOVE_TEMPER_FLARE",
+        "MOVE_TERA_BLAST",
+        "MOVE_WEATHER_BALL",
+        "MOVE_WORK_UP",
+        "MOVE_ZEN_HEADBUTT"
+      ],
+      "omitted_tutor_moves": []
+    },
+    {
+      "species_id": 1080,
+      "name": "Pyrovaran",
+      "tms": [
+        1,
+        4,
+        5,
+        6,
+        10,
+        11,
+        17,
+        18,
+        21,
+        22,
+        23,
+        26,
+        27,
+        28,
+        30,
+        31,
+        32,
+        33,
+        35,
+        37,
+        38,
+        39,
+        40,
+        42,
+        43,
+        44,
+        45,
+        46,
+        50,
+        52,
+        56,
+        58,
+        61,
+        71,
+        78,
+        80,
+        82,
+        83,
+        87,
+        90
+      ],
+      "hms": [
+        1,
+        4,
+        6,
+        8
+      ],
+      "level_moves": [
+        {
+          "Level": 0,
+          "Move": "MOVE_INCINERATE"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_SCRATCH"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_GROWL"
+        },
+        {
+          "Level": 5,
+          "Move": "MOVE_EMBER"
+        },
+        {
+          "Level": 10,
+          "Move": "MOVE_SMOKESCREEN"
+        },
+        {
+          "Level": 14,
+          "Move": "MOVE_FIRE_FANG"
+        },
+        {
+          "Level": 21,
+          "Move": "MOVE_SNARL"
+        },
+        {
+          "Level": 25,
+          "Move": "MOVE_ANCIENT_POWER"
+        },
+        {
+          "Level": 29,
+          "Move": "MOVE_SCARY_FACE"
+        },
+        {
+          "Level": 34,
+          "Move": "MOVE_LAVA_PLUME"
+        },
+        {
+          "Level": 38,
+          "Move": "MOVE_CRUNCH"
+        },
+        {
+          "Level": 41,
+          "Move": "MOVE_FLAMETHROWER"
+        },
+        {
+          "Level": 45,
+          "Move": "MOVE_FIRE_LASH"
+        },
+        {
+          "Level": 48,
+          "Move": "MOVE_AMNESIA"
+        }
+      ],
+      "omitted_machine_moves": [
+        "MOVE_AGILITY",
+        "MOVE_BLAZE_KICK",
+        "MOVE_BODY_SLAM",
+        "MOVE_BURNING_JEALOUSY",
+        "MOVE_CONFIDE",
+        "MOVE_CRUNCH",
+        "MOVE_CURSE",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_ENDEAVOR",
+        "MOVE_FIRE_PLEDGE",
+        "MOVE_FLARE_BLITZ",
+        "MOVE_HEAT_CRASH",
+        "MOVE_HEAT_WAVE",
+        "MOVE_HELPING_HAND",
+        "MOVE_IRON_HEAD",
+        "MOVE_LOW_KICK",
+        "MOVE_REVERSAL",
+        "MOVE_SCORCHING_SANDS",
+        "MOVE_TEMPER_FLARE",
+        "MOVE_TERA_BLAST",
+        "MOVE_WEATHER_BALL",
+        "MOVE_WORK_UP",
+        "MOVE_ZEN_HEADBUTT"
+      ],
+      "omitted_tutor_moves": []
+    },
+    {
+      "species_id": 1081,
+      "name": "Magmalisk",
+      "tms": [
+        1,
+        4,
+        5,
+        6,
+        10,
+        11,
+        15,
+        17,
+        18,
+        21,
+        22,
+        23,
+        26,
+        27,
+        28,
+        30,
+        31,
+        32,
+        33,
+        35,
+        37,
+        38,
+        39,
+        40,
+        42,
+        43,
+        44,
+        45,
+        46,
+        50,
+        52,
+        56,
+        58,
+        61,
+        68,
+        71,
+        78,
+        80,
+        82,
+        83,
+        87,
+        90
+      ],
+      "hms": [
+        1,
+        4,
+        6,
+        8
+      ],
+      "level_moves": [
+        {
+          "Level": 0,
+          "Move": "MOVE_FLARE_BLITZ"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_SCRATCH"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_GROWL"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_INCINERATE"
+        },
+        {
+          "Level": 5,
+          "Move": "MOVE_EMBER"
+        },
+        {
+          "Level": 10,
+          "Move": "MOVE_SMOKESCREEN"
+        },
+        {
+          "Level": 14,
+          "Move": "MOVE_FIRE_FANG"
+        },
+        {
+          "Level": 21,
+          "Move": "MOVE_SNARL"
+        },
+        {
+          "Level": 25,
+          "Move": "MOVE_ANCIENT_POWER"
+        },
+        {
+          "Level": 29,
+          "Move": "MOVE_SCARY_FACE"
+        },
+        {
+          "Level": 34,
+          "Move": "MOVE_LAVA_PLUME"
+        },
+        {
+          "Level": 38,
+          "Move": "MOVE_CRUNCH"
+        },
+        {
+          "Level": 41,
+          "Move": "MOVE_FLAMETHROWER"
+        },
+        {
+          "Level": 45,
+          "Move": "MOVE_FIRE_LASH"
+        },
+        {
+          "Level": 48,
+          "Move": "MOVE_AMNESIA"
+        },
+        {
+          "Level": 57,
+          "Move": "MOVE_EARTH_POWER"
+        },
+        {
+          "Level": 65,
+          "Move": "MOVE_FIRE_BLAST"
+        }
+      ],
+      "omitted_machine_moves": [
+        "MOVE_AGILITY",
+        "MOVE_BLAST_BURN",
+        "MOVE_BLAZE_KICK",
+        "MOVE_BODY_SLAM",
+        "MOVE_BURNING_JEALOUSY",
+        "MOVE_CONFIDE",
+        "MOVE_CRUNCH",
+        "MOVE_CURSE",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_ENDEAVOR",
+        "MOVE_FIRE_PLEDGE",
+        "MOVE_FLARE_BLITZ",
+        "MOVE_HEAT_CRASH",
+        "MOVE_HEAT_WAVE",
+        "MOVE_HELPING_HAND",
+        "MOVE_IRON_HEAD",
+        "MOVE_LOW_KICK",
+        "MOVE_REVERSAL",
+        "MOVE_SCORCHING_SANDS",
+        "MOVE_TEMPER_FLARE",
+        "MOVE_TERA_BLAST",
+        "MOVE_WEATHER_BALL",
+        "MOVE_WORK_UP",
+        "MOVE_ZEN_HEADBUTT"
+      ],
+      "omitted_tutor_moves": []
+    },
+    {
+      "species_id": 1082,
+      "name": "Rimevaran",
+      "tms": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16,
+        17,
+        18,
+        20,
+        21,
+        23,
+        26,
+        27,
+        28,
+        30,
+        31,
+        32,
+        33,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        49,
+        54,
+        55,
+        56,
+        58,
+        61,
+        63,
+        65,
+        66,
+        70,
+        72,
+        73,
+        75,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        87,
+        90
+      ],
+      "hms": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "level_moves": [
+        {
+          "Level": 0,
+          "Move": "MOVE_ICY_WIND"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_SCRATCH"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_GROWL"
+        },
+        {
+          "Level": 5,
+          "Move": "MOVE_EMBER"
+        },
+        {
+          "Level": 10,
+          "Move": "MOVE_SMOKESCREEN"
+        },
+        {
+          "Level": 14,
+          "Move": "MOVE_ICE_FANG"
+        },
+        {
+          "Level": 21,
+          "Move": "MOVE_SNARL"
+        },
+        {
+          "Level": 25,
+          "Move": "MOVE_ANCIENT_POWER"
+        },
+        {
+          "Level": 29,
+          "Move": "MOVE_SCARY_FACE"
+        },
+        {
+          "Level": 34,
+          "Move": "MOVE_AURORA_BEAM"
+        },
+        {
+          "Level": 38,
+          "Move": "MOVE_CRUNCH"
+        },
+        {
+          "Level": 41,
+          "Move": "MOVE_ICE_BEAM"
+        },
+        {
+          "Level": 45,
+          "Move": "MOVE_AVALANCHE"
+        },
+        {
+          "Level": 48,
+          "Move": "MOVE_AMNESIA"
+        }
+      ],
+      "omitted_machine_moves": [
+        "MOVE_BODY_PRESS",
+        "MOVE_BODY_SLAM",
+        "MOVE_CONFIDE",
+        "MOVE_CRUNCH",
+        "MOVE_CURSE",
+        "MOVE_DARKEST_LARIAT",
+        "MOVE_DIVE",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_ENDEAVOR",
+        "MOVE_FOCUS_ENERGY",
+        "MOVE_FOUL_PLAY",
+        "MOVE_HAZE",
+        "MOVE_HELPING_HAND",
+        "MOVE_HYDRO_PUMP",
+        "MOVE_ICE_SPINNER",
+        "MOVE_ICICLE_SPEAR",
+        "MOVE_IRON_HEAD",
+        "MOVE_KNOCK_OFF",
+        "MOVE_LASH_OUT",
+        "MOVE_LIQUIDATION",
+        "MOVE_LOW_KICK",
+        "MOVE_NASTY_PLOT",
+        "MOVE_SPITE",
+        "MOVE_TERA_BLAST",
+        "MOVE_THROAT_CHOP",
+        "MOVE_TRIPLE_AXEL",
+        "MOVE_UPROAR",
+        "MOVE_WEATHER_BALL"
+      ],
+      "omitted_tutor_moves": []
+    },
+    {
+      "species_id": 1083,
+      "name": "Fimbulisk",
+      "tms": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        20,
+        21,
+        23,
+        26,
+        27,
+        28,
+        30,
+        31,
+        32,
+        33,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        49,
+        54,
+        55,
+        56,
+        58,
+        61,
+        63,
+        65,
+        66,
+        68,
+        70,
+        72,
+        73,
+        75,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        87,
+        90
+      ],
+      "hms": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "level_moves": [
+        {
+          "Level": 0,
+          "Move": "MOVE_ICICLE_CRASH"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_SCRATCH"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_GROWL"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_ICY_WIND"
+        },
+        {
+          "Level": 5,
+          "Move": "MOVE_EMBER"
+        },
+        {
+          "Level": 10,
+          "Move": "MOVE_SMOKESCREEN"
+        },
+        {
+          "Level": 14,
+          "Move": "MOVE_ICE_FANG"
+        },
+        {
+          "Level": 21,
+          "Move": "MOVE_SNARL"
+        },
+        {
+          "Level": 25,
+          "Move": "MOVE_ANCIENT_POWER"
+        },
+        {
+          "Level": 29,
+          "Move": "MOVE_SCARY_FACE"
+        },
+        {
+          "Level": 34,
+          "Move": "MOVE_AURORA_BEAM"
+        },
+        {
+          "Level": 38,
+          "Move": "MOVE_CRUNCH"
+        },
+        {
+          "Level": 41,
+          "Move": "MOVE_ICE_BEAM"
+        },
+        {
+          "Level": 45,
+          "Move": "MOVE_AVALANCHE"
+        },
+        {
+          "Level": 48,
+          "Move": "MOVE_AMNESIA"
+        },
+        {
+          "Level": 57,
+          "Move": "MOVE_DARK_PULSE"
+        },
+        {
+          "Level": 65,
+          "Move": "MOVE_BLIZZARD"
+        }
+      ],
+      "omitted_machine_moves": [
+        "MOVE_BODY_PRESS",
+        "MOVE_BODY_SLAM",
+        "MOVE_CONFIDE",
+        "MOVE_CRUNCH",
+        "MOVE_CURSE",
+        "MOVE_DARKEST_LARIAT",
+        "MOVE_DIVE",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_ENDEAVOR",
+        "MOVE_FOCUS_ENERGY",
+        "MOVE_FOUL_PLAY",
+        "MOVE_HAZE",
+        "MOVE_HELPING_HAND",
+        "MOVE_HYDRO_PUMP",
+        "MOVE_ICE_SPINNER",
+        "MOVE_ICICLE_SPEAR",
+        "MOVE_IRON_HEAD",
+        "MOVE_KNOCK_OFF",
+        "MOVE_LASH_OUT",
+        "MOVE_LIQUIDATION",
+        "MOVE_LOW_KICK",
+        "MOVE_NASTY_PLOT",
+        "MOVE_SPITE",
+        "MOVE_TERA_BLAST",
+        "MOVE_THROAT_CHOP",
+        "MOVE_TRIPLE_AXEL",
+        "MOVE_UPROAR",
+        "MOVE_WEATHER_BALL"
+      ],
+      "omitted_tutor_moves": []
+    },
+    {
+      "species_id": 1084,
+      "name": "Sedgling",
+      "tms": [
+        1,
+        3,
+        5,
+        6,
+        7,
+        10,
+        11,
+        13,
+        14,
+        17,
+        18,
+        21,
+        23,
+        26,
+        27,
+        28,
+        31,
+        32,
+        35,
+        37,
+        38,
+        39,
+        42,
+        43,
+        44,
+        45,
+        46,
+        52,
+        55,
+        56,
+        58,
+        69,
+        71,
+        72,
+        75,
+        76,
+        78,
+        80,
+        82,
+        83,
+        84,
+        87,
+        90
+      ],
+      "hms": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "level_moves": [
+        {
+          "Level": 1,
+          "Move": "MOVE_PECK"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_GROWL"
+        },
+        {
+          "Level": 6,
+          "Move": "MOVE_MUD_SLAP"
+        },
+        {
+          "Level": 10,
+          "Move": "MOVE_WATER_GUN"
+        },
+        {
+          "Level": 15,
+          "Move": "MOVE_MUD_SHOT"
+        },
+        {
+          "Level": 19,
+          "Move": "MOVE_WATER_PULSE"
+        },
+        {
+          "Level": 24,
+          "Move": "MOVE_BULLDOZE"
+        },
+        {
+          "Level": 27,
+          "Move": "MOVE_ANCIENT_POWER"
+        },
+        {
+          "Level": 31,
+          "Move": "MOVE_AQUA_TAIL"
+        },
+        {
+          "Level": 35,
+          "Move": "MOVE_AMNESIA"
+        },
+        {
+          "Level": 39,
+          "Move": "MOVE_EARTH_POWER"
+        },
+        {
+          "Level": 43,
+          "Move": "MOVE_MUDDY_WATER"
+        },
+        {
+          "Level": 47,
+          "Move": "MOVE_AGILITY"
+        }
+      ],
+      "omitted_machine_moves": [
+        "MOVE_AGILITY",
+        "MOVE_AMNESIA",
+        "MOVE_BODY_PRESS",
+        "MOVE_BODY_SLAM",
+        "MOVE_CONFIDE",
+        "MOVE_CRUNCH",
+        "MOVE_CURSE",
+        "MOVE_DIVE",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DRILL_RUN",
+        "MOVE_EARTH_POWER",
+        "MOVE_ENDEAVOR",
+        "MOVE_FLIP_TURN",
+        "MOVE_HAZE",
+        "MOVE_HEAVY_SLAM",
+        "MOVE_HELPING_HAND",
+        "MOVE_HIGH_HORSEPOWER",
+        "MOVE_HYDRO_PUMP",
+        "MOVE_IRON_DEFENSE",
+        "MOVE_IRON_HEAD",
+        "MOVE_LIQUIDATION",
+        "MOVE_MEGA_PUNCH",
+        "MOVE_MUDDY_WATER",
+        "MOVE_OUTRAGE",
+        "MOVE_SAND_TOMB",
+        "MOVE_SCALD",
+        "MOVE_SCORCHING_SANDS",
+        "MOVE_SMACK_DOWN",
+        "MOVE_SPIKES",
+        "MOVE_SUPERPOWER",
+        "MOVE_TERA_BLAST",
+        "MOVE_THROAT_CHOP",
+        "MOVE_UPROAR",
+        "MOVE_WATER_PLEDGE",
+        "MOVE_WEATHER_BALL"
+      ],
+      "omitted_tutor_moves": []
+    },
+    {
+      "species_id": 1085,
+      "name": "Cragaviar",
+      "tms": [
+        1,
+        5,
+        6,
+        10,
+        11,
+        12,
+        13,
+        14,
+        17,
+        18,
+        21,
+        23,
+        26,
+        27,
+        28,
+        31,
+        32,
+        33,
+        35,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        51,
+        52,
+        56,
+        58,
+        66,
+        69,
+        71,
+        75,
+        76,
+        78,
+        80,
+        82,
+        83,
+        84,
+        87,
+        88,
+        89,
+        90
+      ],
+      "hms": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8
+      ],
+      "level_moves": [
+        {
+          "Level": 0,
+          "Move": "MOVE_WING_ATTACK"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_PECK"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_GROWL"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_AQUA_TAIL"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_MUDDY_WATER"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_AMNESIA"
+        },
+        {
+          "Level": 6,
+          "Move": "MOVE_MUD_SLAP"
+        },
+        {
+          "Level": 10,
+          "Move": "MOVE_WATER_GUN"
+        },
+        {
+          "Level": 15,
+          "Move": "MOVE_MUD_SHOT"
+        },
+        {
+          "Level": 19,
+          "Move": "MOVE_WATER_PULSE"
+        },
+        {
+          "Level": 24,
+          "Move": "MOVE_BULLDOZE"
+        },
+        {
+          "Level": 27,
+          "Move": "MOVE_ANCIENT_POWER"
+        },
+        {
+          "Level": 31,
+          "Move": "MOVE_AIR_SLASH"
+        },
+        {
+          "Level": 35,
+          "Move": "MOVE_ROOST"
+        },
+        {
+          "Level": 39,
+          "Move": "MOVE_EARTH_POWER"
+        },
+        {
+          "Level": 43,
+          "Move": "MOVE_DRILL_PECK"
+        },
+        {
+          "Level": 47,
+          "Move": "MOVE_AGILITY"
+        }
+      ],
+      "omitted_machine_moves": [
+        "MOVE_AGILITY",
+        "MOVE_AMNESIA",
+        "MOVE_BODY_PRESS",
+        "MOVE_BODY_SLAM",
+        "MOVE_BRAVE_BIRD",
+        "MOVE_CONFIDE",
+        "MOVE_CRUNCH",
+        "MOVE_CURSE",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DRILL_RUN",
+        "MOVE_DUAL_WINGBEAT",
+        "MOVE_EARTH_POWER",
+        "MOVE_ENDEAVOR",
+        "MOVE_FEATHER_DANCE",
+        "MOVE_HEAT_WAVE",
+        "MOVE_HEAVY_SLAM",
+        "MOVE_HELPING_HAND",
+        "MOVE_HIGH_HORSEPOWER",
+        "MOVE_HURRICANE",
+        "MOVE_IRON_DEFENSE",
+        "MOVE_IRON_HEAD",
+        "MOVE_MEGA_PUNCH",
+        "MOVE_OUTRAGE",
+        "MOVE_SAND_TOMB",
+        "MOVE_SCORCHING_SANDS",
+        "MOVE_SMACK_DOWN",
+        "MOVE_SPIKES",
+        "MOVE_SUPERPOWER",
+        "MOVE_TAILWIND",
+        "MOVE_TERA_BLAST",
+        "MOVE_THROAT_CHOP",
+        "MOVE_UPROAR",
+        "MOVE_WORK_UP"
+      ],
+      "omitted_tutor_moves": []
+    },
+    {
+      "species_id": 1086,
+      "name": "Ragnaroc",
+      "tms": [
+        1,
+        5,
+        6,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        17,
+        18,
+        21,
+        23,
+        26,
+        27,
+        28,
+        31,
+        32,
+        33,
+        35,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        51,
+        52,
+        56,
+        58,
+        66,
+        68,
+        69,
+        71,
+        75,
+        76,
+        78,
+        80,
+        82,
+        83,
+        84,
+        87,
+        88,
+        89,
+        90
+      ],
+      "hms": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8
+      ],
+      "level_moves": [
+        {
+          "Level": 0,
+          "Move": "MOVE_EARTHQUAKE"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_PECK"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_GROWL"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_WING_ATTACK"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_AQUA_TAIL"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_MUDDY_WATER"
+        },
+        {
+          "Level": 1,
+          "Move": "MOVE_AMNESIA"
+        },
+        {
+          "Level": 6,
+          "Move": "MOVE_MUD_SLAP"
+        },
+        {
+          "Level": 10,
+          "Move": "MOVE_WATER_GUN"
+        },
+        {
+          "Level": 15,
+          "Move": "MOVE_MUD_SHOT"
+        },
+        {
+          "Level": 19,
+          "Move": "MOVE_WATER_PULSE"
+        },
+        {
+          "Level": 24,
+          "Move": "MOVE_BULLDOZE"
+        },
+        {
+          "Level": 27,
+          "Move": "MOVE_ANCIENT_POWER"
+        },
+        {
+          "Level": 31,
+          "Move": "MOVE_AIR_SLASH"
+        },
+        {
+          "Level": 35,
+          "Move": "MOVE_ROOST"
+        },
+        {
+          "Level": 39,
+          "Move": "MOVE_EARTH_POWER"
+        },
+        {
+          "Level": 43,
+          "Move": "MOVE_DRILL_PECK"
+        },
+        {
+          "Level": 47,
+          "Move": "MOVE_AGILITY"
+        },
+        {
+          "Level": 55,
+          "Move": "MOVE_HURRICANE"
+        },
+        {
+          "Level": 62,
+          "Move": "MOVE_BRAVE_BIRD"
+        }
+      ],
+      "omitted_machine_moves": [
+        "MOVE_AGILITY",
+        "MOVE_AMNESIA",
+        "MOVE_BODY_PRESS",
+        "MOVE_BODY_SLAM",
+        "MOVE_BRAVE_BIRD",
+        "MOVE_CONFIDE",
+        "MOVE_CRUNCH",
+        "MOVE_CURSE",
+        "MOVE_DOUBLE_EDGE",
+        "MOVE_DRILL_RUN",
+        "MOVE_DUAL_WINGBEAT",
+        "MOVE_EARTH_POWER",
+        "MOVE_ENDEAVOR",
+        "MOVE_FEATHER_DANCE",
+        "MOVE_HEAT_WAVE",
+        "MOVE_HEAVY_SLAM",
+        "MOVE_HELPING_HAND",
+        "MOVE_HIGH_HORSEPOWER",
+        "MOVE_HURRICANE",
+        "MOVE_IRON_DEFENSE",
+        "MOVE_IRON_HEAD",
+        "MOVE_MEGA_PUNCH",
+        "MOVE_OUTRAGE",
+        "MOVE_SAND_TOMB",
+        "MOVE_SCORCHING_SANDS",
+        "MOVE_SMACK_DOWN",
+        "MOVE_SPIKES",
+        "MOVE_SUPERPOWER",
+        "MOVE_TAILWIND",
+        "MOVE_TERA_BLAST",
+        "MOVE_THROAT_CHOP",
+        "MOVE_UPROAR",
+        "MOVE_WORK_UP"
+      ],
+      "omitted_tutor_moves": []
+    }
+  ]
+}

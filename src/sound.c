@@ -1,5 +1,7 @@
 #include "sound.h"
 
+#include "constants/species.h"
+
 #include "constants/sndseq.h"
 
 #include "options.h"
@@ -520,4 +522,16 @@ u8 GF_SndWorkGetGbSoundsVolume(void) {
 
     work = GetSoundDataPointer();
     return work->gbSoundsVolume;
+}
+
+/* Compact extension of the stock cry bank/wave tables. 494 remains Shaymin Sky. */
+u16 Fakemon_ResolveCryBank(u16 species) {
+    if (IsFakemonSpecies(species)) {
+        return 778 + species - SPECIES_VOLTUFF;
+    }
+    /* PlayCryEx calls PlayCry again with its already-resolved bank. */
+    if (species >= 778 && species <= 788) {
+        return species;
+    }
+    return species > 0 && species <= 495 ? species : SPECIES_BULBASAUR;
 }

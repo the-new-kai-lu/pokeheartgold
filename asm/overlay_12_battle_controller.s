@@ -1,3 +1,4 @@
+#include "constants/fakemon_battle.h"
 	.include "asm/macros.inc"
 	.include "overlay_12_battle_controller.inc"
 	.include "global.inc"
@@ -4903,7 +4904,7 @@ _0226459A:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _022645A0: .word 0x00002144
-_022645A4: .word 0x000003E1
+_022645A4: .word FAKEMON_MOVE_POWER_OFFSET
 _022645A8: .word 0x00002D75
 _022645AC: .word 0x00002164
 _022645B0: .word 0x00002DB0

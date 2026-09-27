@@ -467,6 +467,7 @@ $(eval $(call arc_strip_name,files/graphic/camera_viewfinder.narc,files/a/2/6/1)
 
 $(DIFF_ARCS):
 	cp $< $@
+	python3 tools/py_scripts/apply_fakemon_assets.py $@
 
 .PHONY: files/a/0/7/5 files/a/2/5/2 files/a/1/3/3
 
@@ -567,3 +568,7 @@ clean-fs: clean-filesystem
 clean-filesystem:
 	$(RM) files/msgdata/msg/*.bin
 	$(RM) $(DIFF_ARCS) $(NAIXS)
+
+# Re-copy stock archives before applying approved custom additions.
+FAKEMON_ASSET_FILES := $(shell find files/fakemon -type f)
+files/a/0/0/4 files/a/0/0/5 files/a/0/2/0 files/a/0/6/9 files/a/0/8/1 files/a/1/4/1: tools/py_scripts/apply_fakemon_assets.py $(FAKEMON_ASSET_FILES)

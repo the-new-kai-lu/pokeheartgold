@@ -1086,10 +1086,10 @@ u16 *ov18_021E6BB8(PokedexAppData *pokedexApp, u32 a1) {
         MI_CpuCopy16(sp14, &ret[160 * i], 160 * sizeof(u16));
         for (u16 j = 0; j < 5; ++j) {
             u32 sp4 = a1 + 5 * i + j;
-            if (pokedexApp->unk_1030[sp4].unk_0 == SPECIES_NONE) {
+            if (sp4 >= NELEMS(pokedexApp->unk_1030) || pokedexApp->unk_1030[sp4].unk_0 == SPECIES_NONE) {
                 continue;
             }
-            u32 r1 = Pokedex_ConvertToCurrentDexNo(pokedexApp->unk_1858, pokedexApp->unk_1030[sp4].unk_0);
+            u32 r1 = FakemonDexDisplayNumber(pokedexApp->unk_1858, pokedexApp->unk_1030[sp4].unk_0);
             if (pokedexApp->unk_1030[sp4].unk_2 == 2) {
                 ret[160 * i + 36 + 5 * j] = 0x1002;
                 PokedexApp_3DigitNumToTiles(&ret[160 * i + 37 + 5 * j], r1, 3);
@@ -1876,6 +1876,15 @@ void ov18_021E8648(PokedexAppData *pokedexApp) {
 static void ov18_021E8698(PokedexAppData_UnkSub18DC_0 *a0, u16 species, int a2) {
     int base;
     u32 size;
+
+    // There are no encounter locations for the normally unobtainable additions.
+    // Avoid indexing a stock 495-member species block with a sparse species ID.
+    if (IsFakemonSpecies(species)) {
+        a0->maps = Heap_Alloc(HEAP_ID_POKEDEX_APP, sizeof(s32));
+        a0->maps[0] = -1;
+        a0->nMaps = 1;
+        return;
+    }
 
     switch (a2) {
     case 0:

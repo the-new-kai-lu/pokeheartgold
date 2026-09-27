@@ -1,4 +1,5 @@
 #include "global.h"
+#include "fakemon.h"
 
 #include "constants/species.h"
 
@@ -202,7 +203,13 @@ static u16 GetLearnableTutorMoves(Pokemon *mon, u32 moveTutorNpc, u8 dest[]) {
     }
     u32 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     u32 form = GetMonData(mon, MON_DATA_FORM, NULL);
-    MoveTutorLearnset *learnset = GetMoveTutorLearnset(HEAP_ID_FIELD2, GetMoveTutorLearnsetIndex(species, form));
+    MoveTutorLearnset *learnset;
+    if (IsFakemonSpecies(species)) {
+        learnset = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(MoveTutorLearnset));
+        FakemonTutorMoves(species, learnset->moves);
+    } else {
+        learnset = GetMoveTutorLearnset(HEAP_ID_FIELD2, GetMoveTutorLearnsetIndex(species, form));
+    }
     u16 numLearnableMoves = 0;
     for (j = 0; j < NELEMS(sTutorMoves); j++) {
         // this is equivalent to treating `learnset` as a bitfield of 64 bits

@@ -257,7 +257,7 @@
 .public Party_SafeCopyMonToSlot_ResetAprijuiceModifiers
 .public SaveArray_Party_Get
 .public SaveArray_IsNatDexEnabled
-.public Pokedex_ConvertToCurrentDexNo
+.public FakemonDexDisplayNumber
 .public sub_02077678
 .public sub_0207769C
 .public sub_020776B4

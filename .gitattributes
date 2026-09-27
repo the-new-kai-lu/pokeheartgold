@@ -23,3 +23,6 @@ Makefile text eol=lf
 *.inc linguist-language=Assembly
 
 *.narc binary diff=hex
+
+# Preserve the imported JASC palette files byte-for-byte (native CRLF format).
+files/fakemon/**/source/*.pal -text whitespace=cr-at-eol

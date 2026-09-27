@@ -1872,4 +1872,32 @@
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">The user disappears,\nthen strikes the foe\non the second turn.\nIt hits even if the\nfoe protects itself.</language>
 	</row>
+	<row id="msg_0749_wild_charge" index="468">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user charges\nwith electricity.\nIt takes a quarter of\nthe damage in recoil.\n</language>
+	</row>
+	<row id="msg_0749_snarl" index="469">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user snarls at\nthe opposing team,\nlowering their\nSp. Atk stats.\n</language>
+	</row>
+	<row id="msg_0749_incinerate" index="470">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user scorches\nthe opposing team.\nTheir held Berries\nare destroyed.\n</language>
+	</row>
+	<row id="msg_0749_fire_lash" index="471">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The foe is struck\nwith a lash of fire.\nIt also lowers the\nfoe’s Defense.\n</language>
+	</row>
+	<row id="msg_0749_icicle_crash" index="472">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">Large icicles fall\non the foe.\nIt may also make\nthe foe flinch.\n</language>
+	</row>
+	<row id="msg_0749_bulldoze" index="473">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">The user stomps the\nground, damaging\nnearby Pokémon and\nlowering their Speed.\n</language>
+	</row>
+	<row id="msg_0749_hurricane" index="474">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">A fierce wind hits\nthe foe. It may\ncause confusion. Its\naim changes in rain.\n</language>
+	</row>
 </body>

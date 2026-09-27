@@ -7,6 +7,8 @@
 	.extern ov18_021E5908
 	.extern ov18_021E590C
 	.extern ov18_021E595C
+	.extern FakemonDexDisplayNumber
+	.extern ov18_021F8884
 	.extern ov18_021E59A8
 	.extern ov18_021E613C
 	.extern ov18_021E6D10
@@ -368,13 +370,13 @@ ov18_021EE5FC: ; 0x021EE5FC
 	push {r4, lr}
 	ldr r1, _021EE62C ; =0x0000185D
 	add r4, r0, #0
-	ldr r2, _021EE630 ; =0x0000102C
+	ldr r2, _021EE630 ; =0x000020F0
 	ldrb r1, [r4, r1]
 	ldrh r2, [r4, r2]
 	add r1, r1, #2
 	bl ov18_021EE5E4
 	ldr r1, _021EE62C ; =0x0000185D
-	ldr r2, _021EE634 ; =0x0000102E
+	ldr r2, _021EE634 ; =0x000020F2
 	ldrb r1, [r4, r1]
 	ldrh r2, [r4, r2]
 	add r0, r4, #0
@@ -388,8 +390,8 @@ ov18_021EE5FC: ; 0x021EE5FC
 	pop {r4, pc}
 	nop
 _021EE62C: .word 0x0000185D
-_021EE630: .word 0x0000102C
-_021EE634: .word 0x0000102E
+_021EE630: .word 0x000020F0
+_021EE634: .word 0x000020F2
 	thumb_func_end ov18_021EE5FC
 
 	thumb_func_start ov18_021EE638
@@ -555,7 +557,7 @@ ov18_021EE75C: ; 0x021EE75C
 	ldr r0, _021EE7D0 ; =0x00001858
 	add r1, r7, #0
 	ldrb r0, [r5, r0]
-	bl Pokedex_ConvertToCurrentDexNo
+	bl FakemonDexDisplayNumber
 	add r2, r0, #0
 	mov r0, #2
 	str r0, [sp]
@@ -1150,7 +1152,7 @@ _021EEC5A:
 	ldr r0, _021EECA4 ; =0x00001858
 	ldr r1, [sp, #0x14]
 	ldrb r0, [r5, r0]
-	bl Pokedex_ConvertToCurrentDexNo
+	bl FakemonDexDisplayNumber
 	add r2, r0, #0
 	mov r0, #2
 	str r0, [sp]
@@ -1512,7 +1514,7 @@ _021EEF4A:
 	str r0, [sp]
 	mov r0, #1
 	str r0, [sp, #4]
-	ldr r2, _021EF1E0 ; =0x0000102C
+	ldr r2, _021EF1E0 ; =0x000020F0
 	mov r0, #0x66
 	lsl r0, r0, #4
 	ldrh r2, [r4, r2]
@@ -1812,7 +1814,7 @@ _021EF1CE:
 	.balign 4, 0
 _021EF1D8: .word 0x00020100
 _021EF1DC: .word 0x0000065C
-_021EF1E0: .word 0x0000102C
+_021EF1E0: .word 0x000020F0
 	thumb_func_end ov18_021EEED0
 
 	thumb_func_start ov18_021EF1E4
@@ -3502,14 +3504,14 @@ ov18_021EFFEC: ; 0x021EFFEC
 	mov r2, #1
 	bl ov18_021EE44C
 	ldr r1, _021F0060 ; =0x0000185D
-	ldr r2, _021F0064 ; =0x0000102C
+	ldr r2, _021F0064 ; =0x000020F0
 	ldrb r1, [r4, r1]
 	ldrh r2, [r4, r2]
 	add r0, r4, #0
 	add r1, #0x61
 	bl ov18_021EE520
 	ldr r1, _021F0060 ; =0x0000185D
-	ldr r2, _021F0068 ; =0x0000102E
+	ldr r2, _021F0068 ; =0x000020F2
 	ldrb r1, [r4, r1]
 	ldrh r2, [r4, r2]
 	add r0, r4, #0
@@ -3539,8 +3541,8 @@ ov18_021EFFEC: ; 0x021EFFEC
 	pop {r4, pc}
 	.balign 4, 0
 _021F0060: .word 0x0000185D
-_021F0064: .word 0x0000102C
-_021F0068: .word 0x0000102E
+_021F0064: .word 0x000020F0
+_021F0068: .word 0x000020F2
 	thumb_func_end ov18_021EFFEC
 
 	thumb_func_start ov18_021F006C
@@ -6239,6 +6241,10 @@ ov18_021F1598: ; 0x021F1598
 	ldr r0, [r7, r0]
 	mov r1, #0
 	bl ManagedSprite_SetDrawFlag
+	; Scrolling preloads30 icons; hide rows beyond the fixed display buffer.
+	ldr r0, _FakemonDexDisplayRowCount
+	cmp r4, r0
+	bhs _021F1614
 	ldr r0, _021F1618 ; =0x00001030
 	lsl r4, r4, #2
 	add r0, r5, r0
@@ -6291,6 +6297,7 @@ _021F1614:
 	.balign 4, 0
 _021F1618: .word 0x00001030
 _021F161C: .word 0x00001032
+_FakemonDexDisplayRowCount: .word 518
 	thumb_func_end ov18_021F1598
 
 	thumb_func_start ov18_021F1620
@@ -19477,17 +19484,17 @@ _021F7ECC: .word ov18_021FB630
 _021F7ED0: .word gSystem
 	thumb_func_end ov18_021F7E70
 
-	thumb_func_start ov18_021F7ED4
-ov18_021F7ED4: ; 0x021F7ED4
+	thumb_func_start ov18_021F7ED4_Stock
+ov18_021F7ED4_Stock: ; 0x021F7ED4
 	push {r4, r5, r6, r7, lr}
 	sub sp, #0x24
 	str r2, [sp, #0x10]
 	add r5, r0, #0
-	ldr r2, _021F815C ; =0x00000878
+	ldr r2, _021F815C ; =0x00001910
 	add r7, r1, #0
 	add r1, r5, r2
 	mov r0, #0
-	sub r2, #0xc0
+	ldr r2, _FakemonDexListSize
 	str r3, [sp, #0x14]
 	bl MIi_CpuClear32
 	ldr r1, _021F8160 ; =0x000003DA
@@ -19757,7 +19764,7 @@ _021F80B0:
 	add r3, r4, #0
 	bl ov18_021F86D0
 	ldr r1, [r5]
-	ldr r0, _021F815C ; =0x00000878
+	ldr r0, _021F815C ; =0x00001910
 	ldr r1, [r1]
 	ldr r3, [sp, #0x18]
 	add r0, r5, r0
@@ -19774,10 +19781,11 @@ _021F8142:
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 	nop
-_021F815C: .word 0x00000878
+_FakemonDexListSize: .word 0x000007E4
+_021F815C: .word 0x00001910
 _021F8160: .word 0x000003DA
 _021F8164: .word 0x00001860
-	thumb_func_end ov18_021F7ED4
+	thumb_func_end ov18_021F7ED4_Stock
 
 	thumb_func_start ov18_021F8168
 ov18_021F8168: ; 0x021F8168
@@ -19855,7 +19863,7 @@ ov18_021F81D8: ; 0x021F81D8
 	sub sp, #8
 	str r1, [sp]
 	add r5, r0, #0
-	ldr r1, _021F8228 ; =0x000007B4
+	ldr r1, _021F8228 ; =0x000007E0
 	add r0, r3, #0
 	strh r0, [r5, r1]
 	mov r7, #0
@@ -19895,7 +19903,7 @@ _021F8224:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_021F8228: .word 0x000007B4
+_021F8228: .word 0x000007E0
 	thumb_func_end ov18_021F81D8
 
 	thumb_func_start ov18_021F822C
@@ -20737,7 +20745,7 @@ _021F884C: .word 0x00001030
 	thumb_func_start ov18_021F8850
 ov18_021F8850: ; 0x021F8850
 	push {r4, r5}
-	ldr r2, _021F8880 ; =0x000007B4
+	ldr r2, _021F8880 ; =0x000007E0
 	mov r4, #0
 	ldrh r5, [r0, r2]
 	add r3, r4, #0
@@ -20764,84 +20772,9 @@ _021F8878:
 	pop {r4, r5}
 	bx lr
 	nop
-_021F8880: .word 0x000007B4
+_021F8880: .word 0x000007E0
 	thumb_func_end ov18_021F8850
 
-	thumb_func_start ov18_021F8884
-ov18_021F8884: ; 0x021F8884
-	push {r3, r4, r5, r6, r7, lr}
-	ldr r2, _021F8900 ; =0x00001030
-	add r5, r0, #0
-	add r4, r1, #0
-	add r1, r5, r2
-	mov r0, #0
-	lsr r2, r2, #1
-	bl MIi_CpuClear32
-	cmp r4, #1
-	ldr r0, _021F8904 ; =0x0000102C
-	bne _021F88D6
-	ldrh r0, [r5, r0]
-	mov r6, #0
-	cmp r0, #0
-	bls _021F88FE
-	ldr r7, _021F8904 ; =0x0000102C
-	add r4, r5, #0
-_021F88A8:
-	ldr r0, _021F8908 ; =0x00001858
-	ldr r1, _021F890C ; =0x00000878
-	ldrb r0, [r5, r0]
-	ldrh r1, [r4, r1]
-	bl Pokedex_ConvertToCurrentDexNo
-	ldr r1, _021F890C ; =0x00000878
-	sub r0, r0, #1
-	ldrh r2, [r4, r1]
-	lsl r0, r0, #2
-	ldr r1, _021F8900 ; =0x00001030
-	add r0, r5, r0
-	strh r2, [r0, r1]
-	ldr r1, _021F8910 ; =0x0000087A
-	add r6, r6, #1
-	ldrh r2, [r4, r1]
-	ldr r1, _021F8914 ; =0x00001032
-	add r4, r4, #4
-	strh r2, [r0, r1]
-	ldrh r0, [r5, r7]
-	cmp r6, r0
-	blo _021F88A8
-	pop {r3, r4, r5, r6, r7, pc}
-_021F88D6:
-	ldrh r0, [r5, r0]
-	mov r1, #0
-	cmp r0, #0
-	bls _021F88FE
-	ldr r3, _021F8918 ; =0x00001034
-	ldr r4, _021F8910 ; =0x0000087A
-	add r7, r3, #0
-	add r0, r5, #0
-	add r6, r3, #2
-	sub r7, #8
-_021F88EA:
-	ldr r2, _021F890C ; =0x00000878
-	add r1, r1, #1
-	ldrh r2, [r0, r2]
-	strh r2, [r0, r3]
-	ldrh r2, [r0, r4]
-	strh r2, [r0, r6]
-	ldrh r2, [r5, r7]
-	add r0, r0, #4
-	cmp r1, r2
-	blo _021F88EA
-_021F88FE:
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_021F8900: .word 0x00001030
-_021F8904: .word 0x0000102C
-_021F8908: .word 0x00001858
-_021F890C: .word 0x00000878
-_021F8910: .word 0x0000087A
-_021F8914: .word 0x00001032
-_021F8918: .word 0x00001034
-	thumb_func_end ov18_021F8884
 
 	thumb_func_start ov18_021F891C
 ov18_021F891C: ; 0x021F891C
@@ -20849,25 +20782,25 @@ ov18_021F891C: ; 0x021F891C
 	add r2, r0, #0
 	cmp r1, #0
 	bne _021F892A
-	ldr r0, _021F8944 ; =0x0000102C
+	ldr r0, _021F8944 ; =0x000020F0
 	ldrh r0, [r2, r0]
 	pop {r3, pc}
 _021F892A:
-	ldr r1, _021F8944 ; =0x0000102C
+	ldr r1, _021F8944 ; =0x000020F0
 	ldr r0, _021F8948 ; =0x00001858
 	ldrh r1, [r2, r1]
 	ldrb r0, [r2, r0]
 	sub r1, r1, #1
 	lsl r1, r1, #2
 	add r2, r2, r1
-	ldr r1, _021F894C ; =0x00000878
+	ldr r1, _021F894C ; =0x00001910
 	ldrh r1, [r2, r1]
-	bl Pokedex_ConvertToCurrentDexNo
+	bl FakemonDexDisplayNumber
 	pop {r3, pc}
 	nop
-_021F8944: .word 0x0000102C
+_021F8944: .word 0x000020F0
 _021F8948: .word 0x00001858
-_021F894C: .word 0x00000878
+_021F894C: .word 0x00001910
 	thumb_func_end ov18_021F891C
 
 	thumb_func_start ov18_021F8950
@@ -21372,7 +21305,7 @@ _021F8CDA:
 	lsl r1, r1, #2
 	ldr r0, [r5, #0x10]
 	ldr r1, [r5, r1]
-	bl Pokedex_ConvertToCurrentDexNo
+	bl FakemonDexDisplayNumber
 	add r2, r0, #0
 	mov r0, #2
 	str r0, [sp]

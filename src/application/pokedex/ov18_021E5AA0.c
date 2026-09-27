@@ -15,10 +15,13 @@ void ov18_021E5C3C(void);
 BOOL Pokedex_Init(OverlayManager *man, int *state) {
     PokedexAppData *appData;
 
-    Heap_Create(HEAP_ID_3, HEAP_ID_POKEDEX_APP, 0x61000);
+    // Sparse custom metrics and the expanded list stay resident while search creates
+    // its second set of windows. Keep 64 KiB headroom for transient text/art loads.
+    Heap_Create(HEAP_ID_3, HEAP_ID_POKEDEX_APP, 0x71000);
     appData = OverlayManager_CreateAndGetData(man, sizeof(PokedexAppData), HEAP_ID_POKEDEX_APP);
     MI_CpuClear8(appData, sizeof(PokedexAppData));
     appData->args = OverlayManager_GetArgs(man);
+    FakemonDexResetPage();
     appData->unk_085C = 5;
     appData->unk_1858 = UnkStruct_02092BB8_GetUnk2(appData->args->unk_08);
     if (Pokedex_GetNatDexFlag(appData->args->pokedex)) {
@@ -54,6 +57,8 @@ BOOL Pokedex_Main(OverlayManager *man, int *state) {
 
 BOOL Pokedex_Exit(OverlayManager *man, int *state) {
     PokedexAppData *appData = OverlayManager_GetData(man);
+
+    FakemonDexResetPage();
 
     FS_LoadOverlay(MI_PROCESSOR_ARM9, FS_OVERLAY_ID(ds_protect));
     if (DSProt_DetectEmulator(ov18_021E5C1C)) {

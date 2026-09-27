@@ -1,6 +1,7 @@
 #include "battle/battle_system.h"
 
 #include "global.h"
+#include "fakemon.h"
 
 #include "constants/game_stats.h"
 #include "constants/message_tags.h"
@@ -715,7 +716,9 @@ u16 BattleSystem_CheckEvolution(BattleSetup *setup, int *selectedMonIndex, int *
         }
         if (*selectedMonIndex < PARTY_SIZE) {
             mon = Party_GetMonByIndex(setup->party[0], *selectedMonIndex);
+            FakemonBattleEvolutionScope(TRUE, *selectedMonIndex);
             species = GetMonEvolution(setup->party[0], mon, EVOCTX_LEVELUP, setup->evolutionLocation, evolutionCondition);
+            FakemonBattleEvolutionScope(FALSE, -1);
             if (species) {
                 return species;
             }

@@ -477,7 +477,7 @@ static u8 Photo_CountValidMons(Photo *photo) {
     u8 answer = 0;
     for (u8 i = 0; i < PARTY_SIZE; ++i) {
         int species = photo->party[i].species;
-        if (species > SPECIES_NONE && species <= SPECIES_ARCEUS) {
+        if (IsValidMonSpecies(species)) {
             ++answer;
         }
     }

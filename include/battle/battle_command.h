@@ -235,4 +235,6 @@ BOOL BtlCmd_223(BattleSystem *battleSystem, BattleContext *ctx);
 BOOL BtlCmd_EndScript(BattleSystem *battleSystem, BattleContext *ctx);
 int BattleScriptReadWord(BattleContext *ctx);
 
+BOOL BtlCmd_TryIncinerate(BattleSystem *battleSystem, BattleContext *ctx);
+
 #endif

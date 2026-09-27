@@ -1336,6 +1336,19 @@ ov01_022074A8: ; 0x022074A8
 	.short SPRITE_FOLLOWER_MON_STATIC_TYPHLOSION, MMODEL_FOLLOWER_MON_TYPHLOSION, 0x227 | (19 << 10)
 	.short SPRITE_FOLLOWER_MON_STATIC_MEGANIUM, MMODEL_FOLLOWER_MON_MEGANIUM, 0x227 | (19 << 10)
 	.short SPRITE_FOLLOWER_MON_STATIC_FERALIGATR, MMODEL_FOLLOWER_MON_FERALIGATR, 0x227 | (19 << 10)
+
+	// Approved Fakemon: compact model slots after the stock follower table.
+	.short 1050, 863, 0x4E27 // voltuff
+	.short 1051, 864, 0x4E27 // surguenon
+	.short 1052, 865, 0x5208 // raijinque
+	.short 1053, 866, 0x4E27 // embernewt
+	.short 1054, 867, 0x4E27 // pyrovaran
+	.short 1055, 868, 0x5208 // magmalisk
+	.short 1056, 869, 0x4E27 // rimevaran
+	.short 1057, 870, 0x5208 // fimbulisk
+	.short 1058, 871, 0x4E27 // sedgling
+	.short 1059, 872, 0x4E27 // cragaviar
+	.short 1060, 873, 0x5208 // ragnaroc
 	.short 0xFFFF, 0x0000, 0x000 | (63 << 10)
 
 	.data

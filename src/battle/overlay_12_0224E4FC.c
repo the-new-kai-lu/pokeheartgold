@@ -1178,8 +1178,8 @@ u8 CheckSortSpeed(BattleSystem *battleSystem, BattleContext *ctx, int battlerId1
                 moveNo2 = GetBattlerVar(ctx, battlerId2, BMON_DATA_MOVE1 + movePos2, NULL);
             }
         }
-        movePriority1 = ctx->trainerAIData.moveData[moveNo1].priority;
-        movePriority2 = ctx->trainerAIData.moveData[moveNo2].priority;
+        movePriority1 = ctx->extendedMoveData[moveNo1].priority;
+        movePriority2 = ctx->extendedMoveData[moveNo2].priority;
     }
 
     if (movePriority1 == movePriority2) {
@@ -1306,9 +1306,9 @@ BOOL ov12_02250490(BattleSystem *battleSystem, BattleContext *ctx, int *out) {
     } else if (ctx->unk_2174 & (1 << 26)) {
         // the inclusion of serene grace here makes me think this function has to do with secondary move effects
         if (GetBattlerAbility(ctx, ctx->battlerIdAttacker) == ABILITY_SERENE_GRACE) {
-            effectChance = ctx->trainerAIData.moveData[ctx->moveNoCur].effectChance * 2;
+            effectChance = ctx->extendedMoveData[ctx->moveNoCur].effectChance * 2;
         } else {
-            effectChance = ctx->trainerAIData.moveData[ctx->moveNoCur].effectChance;
+            effectChance = ctx->extendedMoveData[ctx->moveNoCur].effectChance;
         }
 
         GF_ASSERT(effectChance);
@@ -1327,9 +1327,9 @@ BOOL ov12_02250490(BattleSystem *battleSystem, BattleContext *ctx, int *out) {
     } else if (ctx->unk_2174) {
         // the inclusion of serene grace here makes me think this function has to do with secondary move effects
         if (GetBattlerAbility(ctx, ctx->battlerIdAttacker) == ABILITY_SERENE_GRACE) {
-            effectChance = ctx->trainerAIData.moveData[ctx->moveNoCur].effectChance * 2;
+            effectChance = ctx->extendedMoveData[ctx->moveNoCur].effectChance * 2;
         } else {
-            effectChance = ctx->trainerAIData.moveData[ctx->moveNoCur].effectChance;
+            effectChance = ctx->extendedMoveData[ctx->moveNoCur].effectChance;
         }
 
         GF_ASSERT(effectChance);
@@ -1359,7 +1359,7 @@ int ov12_022506D4(BattleSystem *battleSystem, BattleContext *ctx, int battlerIdA
     int moveRange;
 
     if (moveNo) {
-        moveRange = ctx->trainerAIData.moveData[moveNo].range;
+        moveRange = ctx->extendedMoveData[moveNo].range;
     } else {
         moveRange = range;
     }
@@ -1502,12 +1502,12 @@ void ov12_02250A18(BattleSystem *battleSystem, BattleContext *ctx, int battlerId
 
     moveType = GetDynamicMoveType(battleSystem, ctx, battlerIdAttacker, moveNo);
     if (!moveType) {
-        moveType = ctx->trainerAIData.moveData[moveNo].type;
+        moveType = ctx->extendedMoveData[moveNo].type;
     }
 
     maxBattlers = BattleSystem_GetMaxBattlers(battleSystem);
 
-    if (moveType == TYPE_ELECTRIC && (ctx->trainerAIData.moveData[moveNo].range == RANGE_SINGLE_TARGET || ctx->trainerAIData.moveData[moveNo].range == RANGE_RANDOM_OPPONENT) && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) && CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_ALL_HP_NOT_USER, battlerIdAttacker, ABILITY_LIGHTNINGROD)) {
+    if (moveType == TYPE_ELECTRIC && (ctx->extendedMoveData[moveNo].range == RANGE_SINGLE_TARGET || ctx->extendedMoveData[moveNo].range == RANGE_RANDOM_OPPONENT) && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) && CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_ALL_HP_NOT_USER, battlerIdAttacker, ABILITY_LIGHTNINGROD)) {
         for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
             battlerIdTarget = ctx->turnOrder[battlerId];
             if (GetBattlerAbility(ctx, battlerIdTarget) == ABILITY_LIGHTNINGROD && ctx->battleMons[battlerIdTarget].hp && battlerIdAttacker != battlerIdTarget) {
@@ -1518,7 +1518,7 @@ void ov12_02250A18(BattleSystem *battleSystem, BattleContext *ctx, int battlerId
             ctx->selfTurnData[battlerIdTarget].lightningRodFlag = TRUE;
             ctx->battlerIdTarget = battlerIdTarget;
         }
-    } else if (moveType == TYPE_WATER && (ctx->trainerAIData.moveData[moveNo].range == RANGE_SINGLE_TARGET || ctx->trainerAIData.moveData[moveNo].range == RANGE_RANDOM_OPPONENT) && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) && CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_ALL_HP_NOT_USER, battlerIdAttacker, ABILITY_STORM_DRAIN)) {
+    } else if (moveType == TYPE_WATER && (ctx->extendedMoveData[moveNo].range == RANGE_SINGLE_TARGET || ctx->extendedMoveData[moveNo].range == RANGE_RANDOM_OPPONENT) && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) && CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_ALL_HP_NOT_USER, battlerIdAttacker, ABILITY_STORM_DRAIN)) {
         for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
             battlerIdTarget = ctx->turnOrder[battlerId];
             if (GetBattlerAbility(ctx, battlerIdTarget) == ABILITY_STORM_DRAIN && ctx->battleMons[battlerIdTarget].hp && battlerIdAttacker != battlerIdTarget) {
@@ -1980,7 +1980,7 @@ u32 StruggleCheck(BattleSystem *battleSystem, BattleContext *ctx, int battlerId,
         if ((ctx->battleMons[battlerId].moves[movePos] == ctx->moveNoBattlerPrev[battlerId]) && (struggleCheckFlags & STRUGGLE_CHECK_TORMENT) && (ctx->battleMons[battlerId].status2 & STATUS2_TORMENT)) {
             nonSelectableMoves |= MaskOfFlagNo(movePos);
         }
-        if (ctx->battleMons[battlerId].unk88.tauntTurns && (struggleCheckFlags & STRUGGLE_CHECK_TAUNT) && !(ctx->trainerAIData.moveData[ctx->battleMons[battlerId].moves[movePos]].power)) {
+        if (ctx->battleMons[battlerId].unk88.tauntTurns && (struggleCheckFlags & STRUGGLE_CHECK_TAUNT) && !(ctx->extendedMoveData[ctx->battleMons[battlerId].moves[movePos]].power)) {
             nonSelectableMoves |= MaskOfFlagNo(movePos);
         }
         if (BattleContext_CheckMoveImprisoned(battleSystem, ctx, battlerId, ctx->battleMons[battlerId].moves[movePos]) && (struggleCheckFlags & STRUGGLE_CHECK_IMPRISON)) {
@@ -2251,10 +2251,10 @@ int ov12_02251D28(BattleSystem *battleSystem, BattleContext *ctx, int moveNo, in
     } else if (moveTypeDefault) {
         moveType = moveTypeDefault;
     } else {
-        moveType = ctx->trainerAIData.moveData[moveNo].type;
+        moveType = ctx->extendedMoveData[moveNo].type;
     }
 
-    movePower = ctx->trainerAIData.moveData[moveNo].power;
+    movePower = ctx->extendedMoveData[moveNo].power;
 
     // STAB
     if (!(ctx->battleStatus & BATTLE_STATUS_IGNORE_TYPE_EFFECTIVENESS) && (GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_TYPE_1, NULL) == moveType || GetBattlerVar(ctx, battlerIdAttacker, BMON_DATA_TYPE_2, NULL) == moveType)) {
@@ -2341,7 +2341,7 @@ void ov12_02252054(BattleContext *ctx, int moveNo, int moveTypeDefault, int abil
     } else if (moveTypeDefault) {
         moveType = moveTypeDefault;
     } else {
-        moveType = ctx->trainerAIData.moveData[moveNo].type;
+        moveType = ctx->extendedMoveData[moveNo].type;
     }
 
     if (abilityAttacker != ABILITY_MOLD_BREAKER && abilityTarget == ABILITY_LEVITATE && moveType == TYPE_GROUND && !(ctx->fieldCondition & FIELD_CONDITION_GRAVITY) && item != HOLD_EFFECT_SPEED_DOWN_GROUNDED) {
@@ -2542,7 +2542,7 @@ int CheckAbilityActive(BattleSystem *battleSystem, BattleContext *ctx, int flag,
 
 // FIXME: Function name is wrong
 BOOL BattleCtx_IsIdenticalToCurrentMove(BattleContext *ctx, int moveNo) {
-    switch (ctx->trainerAIData.moveData[moveNo].effect) {
+    switch (ctx->extendedMoveData[moveNo].effect) {
     case MOVE_EFFECT_BIDE:
     case MOVE_EFFECT_CHARGE_TURN_HIGH_CRIT:
     case MOVE_EFFECT_CHARGE_TURN_HIGH_CRIT_FLINCH:
@@ -3011,7 +3011,8 @@ static u16 sSoundMoves[] = {
     MOVE_GRASS_WHISTLE,
     MOVE_HYPER_VOICE,
     MOVE_BUG_BUZZ,
-    MOVE_CHATTER
+    MOVE_CHATTER,
+    MOVE_SNARL
 };
 
 int BattleContext_CheckMoveImmunityFromAbility(BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget) {
@@ -3025,7 +3026,7 @@ int BattleContext_CheckMoveImmunityFromAbility(BattleContext *ctx, int battlerId
     } else if (ctx->moveType) {
         moveType = ctx->moveType;
     } else {
-        moveType = ctx->trainerAIData.moveData[ctx->moveNoCur].type;
+        moveType = ctx->extendedMoveData[ctx->moveNoCur].type;
     }
 
     if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_VOLT_ABSORB) == TRUE && moveType == TYPE_ELECTRIC && battlerIdAttacker != battlerIdTarget) {
@@ -3033,13 +3034,13 @@ int BattleContext_CheckMoveImmunityFromAbility(BattleContext *ctx, int battlerId
         script = BATTLE_SUBSCRIPT_ABILITY_RESTORES_HP;
     }
 
-    if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_WATER_ABSORB) == TRUE && moveType == TYPE_WATER && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) && ctx->trainerAIData.moveData[ctx->moveNoCur].power) {
+    if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_WATER_ABSORB) == TRUE && moveType == TYPE_WATER && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) && ctx->extendedMoveData[ctx->moveNoCur].power) {
         ctx->hpCalc = DamageDivide(ctx->battleMons[battlerIdTarget].maxHp, 4);
         script = BATTLE_SUBSCRIPT_ABILITY_RESTORES_HP;
     }
     int moveNoCur = ctx->moveNoCur;
     if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_FLASH_FIRE) == TRUE && moveType == TYPE_FIRE && !(ctx->battleMons[battlerIdTarget].status & STATUS_FREEZE) && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN)) {
-        if (ctx->trainerAIData.moveData[ctx->moveNoCur].power || ctx->moveNoCur == MOVE_WILL_O_WISP) {
+        if (ctx->extendedMoveData[ctx->moveNoCur].power || ctx->moveNoCur == MOVE_WILL_O_WISP) {
             script = BATTLE_SUBSCRIPT_ABSORB_AND_BOOST_FIRE_TYPE_MOVES;
         }
     }
@@ -3054,7 +3055,7 @@ int BattleContext_CheckMoveImmunityFromAbility(BattleContext *ctx, int battlerId
     if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_MOTOR_DRIVE) == TRUE && moveType == TYPE_ELECTRIC && battlerIdAttacker != battlerIdTarget) {
         script = BATTLE_SUBSCRIPT_ABSORB_AND_SPEED_UP_1_STAGE;
     }
-    if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_DRY_SKIN) == TRUE && moveType == TYPE_WATER && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) && ctx->trainerAIData.moveData[ctx->moveNoCur].power) {
+    if (CheckBattlerAbilityIfNotIgnored(ctx, battlerIdAttacker, battlerIdTarget, ABILITY_DRY_SKIN) == TRUE && moveType == TYPE_WATER && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) && ctx->extendedMoveData[ctx->moveNoCur].power) {
         ctx->hpCalc = DamageDivide(ctx->battleMons[battlerIdTarget].maxHp, 4);
         script = BATTLE_SUBSCRIPT_ABILITY_RESTORES_HP;
     }
@@ -3314,7 +3315,7 @@ int TryAbilityOnEntry(BattleSystem *battleSystem, BattleContext *ctx) {
                                 if (moveNo) {
                                     moveStatus = 0;
                                     ctx->damage = ov12_02251D28(battleSystem, ctx, moveNo, 0, battlerIdCheck, battlerId, ctx->damage, &moveStatus);
-                                    if (!(moveStatus & MOVE_STATUS_NO_EFFECT) && !ov12_0225865C(ctx, moveNo) && ((moveStatus & MOVE_STATUS_SUPER_EFFECTIVE) || (ctx->trainerAIData.moveData[moveNo].effect == MOVE_EFFECT_ONE_HIT_KO && ctx->battleMons[battlerId].level <= ctx->battleMons[battlerIdCheck].level))) {
+                                    if (!(moveStatus & MOVE_STATUS_NO_EFFECT) && !ov12_0225865C(ctx, moveNo) && ((moveStatus & MOVE_STATUS_SUPER_EFFECTIVE) || (ctx->extendedMoveData[moveNo].effect == MOVE_EFFECT_ONE_HIT_KO && ctx->battleMons[battlerId].level <= ctx->battleMons[battlerIdCheck].level))) {
                                         flag = TRUE;
                                         break;
                                     }
@@ -3356,10 +3357,10 @@ int TryAbilityOnEntry(BattleSystem *battleSystem, BattleContext *ctx) {
                             hp += ctx->battleMons[battlerIdCheck].hp;
                             for (index = 0; index < MAX_MON_MOVES; index++) {
                                 moveNo = ctx->battleMons[battlerIdCheck].moves[index];
-                                power = ctx->trainerAIData.moveData[moveNo].power;
+                                power = ctx->extendedMoveData[moveNo].power;
                                 switch (power) {
                                 case 1:
-                                    switch (ctx->trainerAIData.moveData[moveNo].effect) {
+                                    switch (ctx->extendedMoveData[moveNo].effect) {
                                     case MOVE_EFFECT_ONE_HIT_KO:
                                         if (powerTemp < 150 || (powerTemp == 150 && (BattleSystem_Random(battleSystem) & 1))) {
                                             powerTemp = 150;
@@ -3587,7 +3588,7 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *battleSystem, BattleContext *ctx, int
 
     switch (GetBattlerAbility(ctx, ctx->battlerIdTarget)) {
     case ABILITY_STATIC:
-        if (ctx->battleMons[ctx->battlerIdAttacker].hp && !ctx->battleMons[ctx->battlerIdAttacker].status && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) && !(ctx->battleStatus2 & BATTLE_STATUS2_UTURN) && (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) && (ctx->trainerAIData.moveData[ctx->moveNoCur].unkB & 1) && (BattleSystem_Random(battleSystem) % 10 < 3)) {
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp && !ctx->battleMons[ctx->battlerIdAttacker].status && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) && !(ctx->battleStatus2 & BATTLE_STATUS2_UTURN) && (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) && (ctx->extendedMoveData[ctx->moveNoCur].unkB & 1) && (BattleSystem_Random(battleSystem) % 10 < 3)) {
             ctx->statChangeType = 3;
             ctx->battlerIdStatChange = ctx->battlerIdAttacker;
             ctx->battlerIdTemp = ctx->battlerIdTarget;
@@ -3603,10 +3604,10 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *battleSystem, BattleContext *ctx, int
         } else if (ctx->moveType) {
             moveType = ctx->moveType;
         } else {
-            moveType = ctx->trainerAIData.moveData[ctx->moveNoCur].type;
+            moveType = ctx->extendedMoveData[ctx->moveNoCur].type;
         }
 
-        if (ctx->battleMons[ctx->battlerIdTarget].hp && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) && ctx->moveNoCur != MOVE_STRUGGLE && (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) && !(ctx->battleStatus2 & BATTLE_STATUS2_UTURN) && ctx->trainerAIData.moveData[ctx->moveNoCur].power && GetBattlerVar(ctx, ctx->battlerIdTarget, BMON_DATA_TYPE_1, NULL) != moveType && GetBattlerVar(ctx, ctx->battlerIdTarget, BMON_DATA_TYPE_2, NULL) != moveType) {
+        if (ctx->battleMons[ctx->battlerIdTarget].hp && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) && ctx->moveNoCur != MOVE_STRUGGLE && (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) && !(ctx->battleStatus2 & BATTLE_STATUS2_UTURN) && ctx->extendedMoveData[ctx->moveNoCur].power && GetBattlerVar(ctx, ctx->battlerIdTarget, BMON_DATA_TYPE_1, NULL) != moveType && GetBattlerVar(ctx, ctx->battlerIdTarget, BMON_DATA_TYPE_2, NULL) != moveType) {
             *script = BATTLE_SUBSCRIPT_COLOR_CHANGE;
             ctx->msgTemp = moveType;
             ret = TRUE;
@@ -3614,7 +3615,7 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *battleSystem, BattleContext *ctx, int
         break;
     }
     case ABILITY_ROUGH_SKIN:
-        if (ctx->battleMons[ctx->battlerIdAttacker].hp && GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_MAGIC_GUARD && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) && !(ctx->battleStatus2 & BATTLE_STATUS2_UTURN) && (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) && (ctx->trainerAIData.moveData[ctx->moveNoCur].unkB & 1)) {
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp && GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_MAGIC_GUARD && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) && !(ctx->battleStatus2 & BATTLE_STATUS2_UTURN) && (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) && (ctx->extendedMoveData[ctx->moveNoCur].unkB & 1)) {
             ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp * -1, 8);
             ctx->battlerIdTemp = ctx->battlerIdAttacker;
             *script = BATTLE_SUBSCRIPT_ROUGH_SKIN;
@@ -3622,7 +3623,7 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *battleSystem, BattleContext *ctx, int
         }
         break;
     case ABILITY_EFFECT_SPORE:
-        if (ctx->battleMons[ctx->battlerIdAttacker].hp && !ctx->battleMons[ctx->battlerIdAttacker].status && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) && !(ctx->battleStatus2 & BATTLE_STATUS2_UTURN) && (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) && (ctx->trainerAIData.moveData[ctx->moveNoCur].unkB & 1) && (BattleSystem_Random(battleSystem) % 10 < 3)) {
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp && !ctx->battleMons[ctx->battlerIdAttacker].status && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) && !(ctx->battleStatus2 & BATTLE_STATUS2_UTURN) && (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) && (ctx->extendedMoveData[ctx->moveNoCur].unkB & 1) && (BattleSystem_Random(battleSystem) % 10 < 3)) {
             switch (BattleSystem_Random(battleSystem) % 3) {
             case 0:
             default:
@@ -3642,7 +3643,7 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *battleSystem, BattleContext *ctx, int
         }
         break;
     case ABILITY_POISON_POINT:
-        if (ctx->battleMons[ctx->battlerIdAttacker].hp && !ctx->battleMons[ctx->battlerIdAttacker].status && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) && !(ctx->battleStatus2 & BATTLE_STATUS2_UTURN) && (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) && (ctx->trainerAIData.moveData[ctx->moveNoCur].unkB & 1) && (BattleSystem_Random(battleSystem) % 10 < 3)) {
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp && !ctx->battleMons[ctx->battlerIdAttacker].status && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) && !(ctx->battleStatus2 & BATTLE_STATUS2_UTURN) && (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) && (ctx->extendedMoveData[ctx->moveNoCur].unkB & 1) && (BattleSystem_Random(battleSystem) % 10 < 3)) {
             ctx->statChangeType = 3;
             ctx->battlerIdStatChange = ctx->battlerIdAttacker;
             ctx->battlerIdTemp = ctx->battlerIdTarget;
@@ -3651,7 +3652,7 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *battleSystem, BattleContext *ctx, int
         }
         break;
     case ABILITY_FLAME_BODY:
-        if (ctx->battleMons[ctx->battlerIdAttacker].hp && !ctx->battleMons[ctx->battlerIdAttacker].status && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) && !(ctx->battleStatus2 & BATTLE_STATUS2_UTURN) && (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) && (ctx->trainerAIData.moveData[ctx->moveNoCur].unkB & 1) && ((BattleSystem_Random(battleSystem) % 10) < 3)) {
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp && !ctx->battleMons[ctx->battlerIdAttacker].status && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) && !(ctx->battleStatus2 & BATTLE_STATUS2_UTURN) && (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) && (ctx->extendedMoveData[ctx->moveNoCur].unkB & 1) && ((BattleSystem_Random(battleSystem) % 10) < 3)) {
             ctx->statChangeType = 3;
             ctx->battlerIdStatChange = ctx->battlerIdAttacker;
             ctx->battlerIdTemp = ctx->battlerIdTarget;
@@ -3660,7 +3661,7 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *battleSystem, BattleContext *ctx, int
         }
         break;
     case ABILITY_CUTE_CHARM:
-        if (ctx->battleMons[ctx->battlerIdAttacker].hp && !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_ATTRACT) && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) && !(ctx->battleStatus2 & BATTLE_STATUS2_UTURN) && (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) && (ctx->trainerAIData.moveData[ctx->moveNoCur].unkB & 1) && ctx->battleMons[ctx->battlerIdTarget].hp && ((BattleSystem_Random(battleSystem) % 10) < 3)) {
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp && !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_ATTRACT) && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN) && !(ctx->battleStatus2 & BATTLE_STATUS2_UTURN) && (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) && (ctx->extendedMoveData[ctx->moveNoCur].unkB & 1) && ctx->battleMons[ctx->battlerIdTarget].hp && ((BattleSystem_Random(battleSystem) % 10) < 3)) {
             ctx->statChangeType = 3;
             ctx->battlerIdStatChange = ctx->battlerIdAttacker;
             ctx->battlerIdTemp = ctx->battlerIdTarget;
@@ -3669,7 +3670,7 @@ BOOL CheckAbilityEffectOnHit(BattleSystem *battleSystem, BattleContext *ctx, int
         }
         break;
     case ABILITY_AFTERMATH:
-        if (ctx->battlerIdTarget == ctx->battlerIdFainted && GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_MAGIC_GUARD && !CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_DAMP) && !(ctx->battleStatus2 & BATTLE_STATUS2_UTURN) && ctx->battleMons[ctx->battlerIdAttacker].hp && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) && (ctx->trainerAIData.moveData[ctx->moveNoCur].unkB & 1)) {
+        if (ctx->battlerIdTarget == ctx->battlerIdFainted && GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_MAGIC_GUARD && !CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_DAMP) && !(ctx->battleStatus2 & BATTLE_STATUS2_UTURN) && ctx->battleMons[ctx->battlerIdAttacker].hp && !(ctx->moveStatusFlag & MOVE_STATUS_FAIL) && (ctx->extendedMoveData[ctx->moveNoCur].unkB & 1)) {
             ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp * -1, 4);
             ctx->battlerIdTemp = ctx->battlerIdAttacker;
             *script = BATTLE_SUBSCRIPT_AFTERMATH;
@@ -4536,7 +4537,7 @@ BOOL CheckItemEffectOnHit(BattleSystem *battleSystem, BattleContext *ctx, int *s
 
     switch (item) {
     case HOLD_EFFECT_DMG_USER_CONTACT_XFR: // sticky barb
-        if (ctx->battleMons[ctx->battlerIdAttacker].hp && !(ctx->battleMons[ctx->battlerIdAttacker].item) && !(ctx->fieldSideConditionData[side].battlerBitKnockedOffItem & MaskOfFlagNo(ctx->selectedMonIndex[ctx->battlerIdAttacker])) && ctx->moveNoCur != MOVE_KNOCK_OFF && (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) && !(ctx->battleStatus2 & BATTLE_STATUS2_UTURN) && (ctx->trainerAIData.moveData[ctx->moveNoCur].unkB & 1)) {
+        if (ctx->battleMons[ctx->battlerIdAttacker].hp && !(ctx->battleMons[ctx->battlerIdAttacker].item) && !(ctx->fieldSideConditionData[side].battlerBitKnockedOffItem & MaskOfFlagNo(ctx->selectedMonIndex[ctx->battlerIdAttacker])) && ctx->moveNoCur != MOVE_KNOCK_OFF && (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) && !(ctx->battleStatus2 & BATTLE_STATUS2_UTURN) && (ctx->extendedMoveData[ctx->moveNoCur].unkB & 1)) {
             *script = BATTLE_SUBSCRIPT_TRANSFER_STICKY_BARB;
             ret = TRUE;
         }
@@ -5594,7 +5595,7 @@ int CalcMoveDamage(BattleSystem *battleSystem, BattleContext *ctx, u32 moveNo, u
     battleType = BattleSystem_GetBattleType(battleSystem);
 
     if (power == 0) {
-        movePower = ctx->trainerAIData.moveData[moveNo].power;
+        movePower = ctx->extendedMoveData[moveNo].power;
     } else {
         movePower = power;
     }
@@ -5602,7 +5603,7 @@ int CalcMoveDamage(BattleSystem *battleSystem, BattleContext *ctx, u32 moveNo, u
     if (calcAttacker.ability == ABILITY_NORMALIZE) {
         moveType = TYPE_NORMAL;
     } else if (type == 0) {
-        moveType = ctx->trainerAIData.moveData[moveNo].type;
+        moveType = ctx->extendedMoveData[moveNo].type;
     } else {
         moveType = type & 0x3F;
     }
@@ -5622,7 +5623,7 @@ int CalcMoveDamage(BattleSystem *battleSystem, BattleContext *ctx, u32 moveNo, u
         movePower = movePower * 15 / 10;
     }
 
-    moveCategory = ctx->trainerAIData.moveData[moveNo].category;
+    moveCategory = ctx->extendedMoveData[moveNo].category;
 
     if (calcAttacker.ability == ABILITY_HUGE_POWER || calcAttacker.ability == ABILITY_PURE_POWER) {
         monAtk *= 2;
@@ -5827,7 +5828,7 @@ int CalcMoveDamage(BattleSystem *battleSystem, BattleContext *ctx, u32 moveNo, u
         }
     }
 
-    if (ctx->trainerAIData.moveData[moveNo].effect == MOVE_EFFECT_HALVE_DEFENSE) {
+    if (ctx->extendedMoveData[moveNo].effect == MOVE_EFFECT_HALVE_DEFENSE) {
         monDef /= 2;
     }
 
@@ -5862,7 +5863,7 @@ int CalcMoveDamage(BattleSystem *battleSystem, BattleContext *ctx, u32 moveNo, u
             dmg /= 2;
         }
 
-        if ((sideCondition & SIDE_CONDITION_REFLECT) && crit == 1 && ctx->trainerAIData.moveData[moveNo].effect != MOVE_EFFECT_REMOVE_SCREENS) {
+        if ((sideCondition & SIDE_CONDITION_REFLECT) && crit == 1 && ctx->extendedMoveData[moveNo].effect != MOVE_EFFECT_REMOVE_SCREENS) {
             if ((battleType & BATTLE_TYPE_DOUBLES) && GetMonsHitCount(battleSystem, ctx, 1, battlerIdTarget) == 2) {
                 dmg = dmg * 2 / 3;
             } else {
@@ -5896,7 +5897,7 @@ int CalcMoveDamage(BattleSystem *battleSystem, BattleContext *ctx, u32 moveNo, u
         dmg /= dmg2;
         dmg /= 50;
 
-        if ((sideCondition & SIDE_CONDITION_LIGHT_SCREEN) && crit == 1 && ctx->trainerAIData.moveData[moveNo].effect != MOVE_EFFECT_REMOVE_SCREENS) {
+        if ((sideCondition & SIDE_CONDITION_LIGHT_SCREEN) && crit == 1 && ctx->extendedMoveData[moveNo].effect != MOVE_EFFECT_REMOVE_SCREENS) {
             if ((battleType & BATTLE_TYPE_DOUBLES) && GetMonsHitCount(battleSystem, ctx, 1, battlerIdTarget) == 2) {
                 dmg = dmg * 2 / 3;
             } else {
@@ -5905,10 +5906,10 @@ int CalcMoveDamage(BattleSystem *battleSystem, BattleContext *ctx, u32 moveNo, u
         }
     }
 
-    if ((battleType & BATTLE_TYPE_DOUBLES) && ctx->trainerAIData.moveData[moveNo].range == RANGE_ADJACENT_OPPONENTS && GetMonsHitCount(battleSystem, ctx, 1, battlerIdTarget) == 2) {
+    if ((battleType & BATTLE_TYPE_DOUBLES) && ctx->extendedMoveData[moveNo].range == RANGE_ADJACENT_OPPONENTS && GetMonsHitCount(battleSystem, ctx, 1, battlerIdTarget) == 2) {
         dmg = dmg * 3 / 4;
     }
-    if ((battleType & BATTLE_TYPE_DOUBLES) && ctx->trainerAIData.moveData[moveNo].range == RANGE_ALL_ADJACENT && GetMonsHitCount(battleSystem, ctx, 0, battlerIdTarget) >= 2) {
+    if ((battleType & BATTLE_TYPE_DOUBLES) && ctx->extendedMoveData[moveNo].range == RANGE_ALL_ADJACENT && GetMonsHitCount(battleSystem, ctx, 0, battlerIdTarget) >= 2) {
         dmg = dmg * 3 / 4;
     }
 
@@ -6068,7 +6069,7 @@ BOOL IsMoveEncored(BattleContext *ctx, u16 moveNo) {
     int i = 0;
 
     do {
-        if (ctx->trainerAIData.moveData[sEncoreFailMoves[i]].effect == ctx->trainerAIData.moveData[moveNo].effect) {
+        if (ctx->extendedMoveData[sEncoreFailMoves[i]].effect == ctx->extendedMoveData[moveNo].effect) {
             break;
         }
         i++;
@@ -6090,7 +6091,7 @@ BOOL CheckLegalMeFirstMove(BattleContext *ctx, u16 moveNo) {
     int i = 0;
 
     do {
-        if (ctx->trainerAIData.moveData[sMeFirstUnuseableMoves[i]].effect == ctx->trainerAIData.moveData[moveNo].effect) {
+        if (ctx->extendedMoveData[sMeFirstUnuseableMoves[i]].effect == ctx->extendedMoveData[moveNo].effect) {
             break;
         }
         i++;
@@ -6183,7 +6184,7 @@ BOOL CheckItemEffectOnUTurn(BattleSystem *battleSystem, BattleContext *ctx, int 
         ret = TRUE;
     }
 
-    if (itemAttacker == HOLD_EFFECT_HP_DRAIN_ON_ATK && GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_MAGIC_GUARD && (ctx->battleStatus & BATTLE_STATUS_MOVE_SUCCESSFUL) && ctx->trainerAIData.moveData[ctx->moveNoCur].category != CATEGORY_STATUS && ctx->battleMons[ctx->battlerIdAttacker].hp) {
+    if (itemAttacker == HOLD_EFFECT_HP_DRAIN_ON_ATK && GetBattlerAbility(ctx, ctx->battlerIdAttacker) != ABILITY_MAGIC_GUARD && (ctx->battleStatus & BATTLE_STATUS_MOVE_SUCCESSFUL) && ctx->extendedMoveData[ctx->moveNoCur].category != CATEGORY_STATUS && ctx->battleMons[ctx->battlerIdAttacker].hp) {
         ctx->hpCalc = DamageDivide(ctx->battleMons[ctx->battlerIdAttacker].maxHp * -1, 10);
         ctx->battlerIdTemp = ctx->battlerIdAttacker;
         *script = BATTLE_SUBSCRIPT_LOSE_HP_FROM_ITEM;
@@ -6196,7 +6197,7 @@ BOOL CheckItemEffectOnUTurn(BattleSystem *battleSystem, BattleContext *ctx, int 
         ret = TRUE;
     }
 
-    if (itemTarget == HOLD_EFFECT_DMG_USER_CONTACT_XFR && ctx->battleMons[ctx->battlerIdAttacker].hp && !ctx->battleMons[ctx->battlerIdAttacker].item && !(ctx->fieldSideConditionData[side].battlerBitKnockedOffItem & MaskOfFlagNo(ctx->selectedMonIndex[ctx->battlerIdAttacker])) && (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) && (ctx->trainerAIData.moveData[ctx->moveNoCur].unkB & 1)) {
+    if (itemTarget == HOLD_EFFECT_DMG_USER_CONTACT_XFR && ctx->battleMons[ctx->battlerIdAttacker].hp && !ctx->battleMons[ctx->battlerIdAttacker].item && !(ctx->fieldSideConditionData[side].battlerBitKnockedOffItem & MaskOfFlagNo(ctx->selectedMonIndex[ctx->battlerIdAttacker])) && (ctx->selfTurnData[ctx->battlerIdTarget].physicalDamage || ctx->selfTurnData[ctx->battlerIdTarget].specialDamage) && (ctx->extendedMoveData[ctx->moveNoCur].unkB & 1)) {
         *script = BATTLE_SUBSCRIPT_TRANSFER_STICKY_BARB;
         ret = TRUE;
     }
@@ -6281,7 +6282,7 @@ void ov12_022582B8(BattleSystem *battleSystem, BattleContext *ctx, int var, int 
     }
 }
 
-static const int sMoveStatusChangeScripts[145] = {
+static const int sMoveStatusChangeScripts[146] = {
     BATTLE_SUBSCRIPT_NONE,
     BATTLE_SUBSCRIPT_FALL_ASLEEP,
     BATTLE_SUBSCRIPT_POISON,
@@ -6426,7 +6427,8 @@ static const int sMoveStatusChangeScripts[145] = {
     BATTLE_SUBSCRIPT_PARALYZE_OR_FLINCH,
     BATTLE_SUBSCRIPT_CHATTER,
     BATTLE_SUBSCRIPT_LUNAR_DANCE,
-    BATTLE_SUBSCRIPT_GIVE_TARGET_OWN_STATUS
+    BATTLE_SUBSCRIPT_GIVE_TARGET_OWN_STATUS,
+    BATTLE_SUBSCRIPT_INCINERATE
 };
 
 static int GetMoveStatusChangeScript(BattleContext *ctx, int statChangeType, u32 flag) {
@@ -6482,7 +6484,7 @@ static int ov12_022583B4(BattleContext *ctx, int battlerId, int typeEffectivenes
 }
 
 static int ov12_02258440(BattleContext *ctx, int moveNo) {
-    switch (ctx->trainerAIData.moveData[moveNo].effect) {
+    switch (ctx->extendedMoveData[moveNo].effect) {
     case MOVE_EFFECT_BIDE:
     case MOVE_EFFECT_CHARGE_TURN_HIGH_CRIT:
     case MOVE_EFFECT_CHARGE_TURN_HIGH_CRIT_FLINCH:
@@ -6612,7 +6614,7 @@ static const u16 ov12_0226CB64[] = {
 
 static BOOL ov12_0225865C(BattleContext *ctx, int moveNo) {
     for (int i = 0; i < NELEMS(ov12_0226CB64); i++) {
-        if (ov12_0226CB64[i] == ctx->trainerAIData.moveData[moveNo].effect) {
+        if (ov12_0226CB64[i] == ctx->extendedMoveData[moveNo].effect) {
             return TRUE;
         }
     }

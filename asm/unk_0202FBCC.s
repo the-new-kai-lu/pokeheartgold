@@ -1,3 +1,5 @@
+#include "constants/moves.h"
+#include "constants/species.h"
 	.include "asm/macros.inc"
 	.include "unk_0202FBCC.inc"
 	.include "global.inc"
@@ -860,6 +862,8 @@ _020301DA:
 	add r6, r0, #0
 	add r7, #0x45
 	add r6, #0x1c
+	; Retain stock item/species limits derived above, then expand only moves.
+	ldr r0, _FakemonRecordedMoveMax
 _020301EE:
 	ldr r4, [sp]
 	mov r2, #0
@@ -867,6 +871,14 @@ _020301F2:
 	ldrh r1, [r4, #6]
 	cmp r1, r6
 	bls _020301FC
+	; Accept the exact custom range; never the unused sparse-ID gap.
+	ldr r3, _FakemonRecordedSpeciesMin
+	cmp r1, r3
+	blo _FakemonRecordedInvalidSpecies
+	add r3, #(FAKEMON_COUNT - 1)
+	cmp r1, r3
+	bls _020301FC
+_FakemonRecordedInvalidSpecies:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _020301FC:
@@ -910,7 +922,9 @@ _0203023C: .word 0x00001C62
 _02030240: .word 0x0000E281
 _02030244: .word 0x00001C64
 _02030248: .word 0x00001154
-_0203024C: .word 0x000001D3
+_0203024C: .word NUM_STOCK_MOVES
+_FakemonRecordedMoveMax: .word NUM_MOVES
+_FakemonRecordedSpeciesMin: .word SPECIES_VOLTUFF
 	thumb_func_end sub_0203018C
 
 	thumb_func_start sub_02030250

@@ -527,4 +527,21 @@
 
 #define SPECIES_MANAPHY_EGG SPECIES_BAD_EGG
 
+// Sparse Fakemon IDs; stock species/form constants and Dex array sizes stay unchanged.
+#define SPECIES_VOLTUFF 1076
+#define SPECIES_SURGUENON 1077
+#define SPECIES_RAIJINQUE 1078
+#define SPECIES_EMBERNEWT 1079
+#define SPECIES_PYROVARAN 1080
+#define SPECIES_MAGMALISK 1081
+#define SPECIES_RIMEVARAN 1082
+#define SPECIES_FIMBULISK 1083
+#define SPECIES_SEDGLING 1084
+#define SPECIES_CRAGAVIAR 1085
+#define SPECIES_RAGNAROC 1086
+#define FAKEMON_COUNT 11
+#define FAKEMON_DATA_COUNT (SPECIES_RAGNAROC + 1)
+#define IsFakemonSpecies(s) ((s) >= SPECIES_VOLTUFF && (s) <= SPECIES_RAGNAROC)
+#define IsValidMonSpecies(s) (((s) > SPECIES_NONE && (s) <= SPECIES_ARCEUS) || IsFakemonSpecies(s))
+
 #endif // POKEHEARTGOLD_CONSTANTS_SPECIES_H

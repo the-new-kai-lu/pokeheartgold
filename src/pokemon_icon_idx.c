@@ -37,6 +37,10 @@ u32 GetMonIconNaixEx(u32 species, BOOL isEgg, u32 form) {
         }
     }
 
+    if (IsFakemonSpecies(species)) {
+        return 551 + species - SPECIES_VOLTUFF;
+    }
+
     form = sub_02070438(species, form);
     if (form != 0) {
         if (species == SPECIES_DEOXYS) {
@@ -654,6 +658,8 @@ const u8 GetMonIconPaletteEx(u32 species, u32 form, u32 isEgg) {
         } else {
             species = 494;
         }
+    } else if (IsFakemonSpecies(species)) {
+        return species >= SPECIES_SEDGLING ? 2 : 0;
     } else if (species > MAX_SPECIES) {
         species = 0;
     } else if (form != 0) {

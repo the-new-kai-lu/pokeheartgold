@@ -59,3 +59,17 @@ u32 GetMoveTblAttr(MoveTbl *moveTbl, MoveAttr attr) {
 void LoadMoveEntry(u16 moveId, MoveTbl *moveTbl) {
     ReadWholeNarcMemberByIdPair(moveTbl, NARC_poketool_waza_waza_tbl, moveId);
 }
+
+// Reuse native HGSS effects without reading its non-move animation IDs 468+.
+u16 GetMoveAnimationId(u16 moveId) {
+    switch (moveId) {
+    case MOVE_WILD_CHARGE: return MOVE_VOLT_TACKLE;
+    case MOVE_SNARL: return MOVE_HYPER_VOICE;
+    case MOVE_INCINERATE: return MOVE_FLAMETHROWER;
+    case MOVE_FIRE_LASH: return MOVE_FIRE_PUNCH;
+    case MOVE_ICICLE_CRASH: return MOVE_ICICLE_SPEAR;
+    case MOVE_BULLDOZE: return MOVE_EARTHQUAKE;
+    case MOVE_HURRICANE: return MOVE_TWISTER;
+    default: return moveId;
+    }
+}

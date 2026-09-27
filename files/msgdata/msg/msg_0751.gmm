@@ -1872,4 +1872,32 @@
 		<attribute name="window_context_name">used</attribute>
 		<language name="English">SHADOW FORCE</language>
 	</row>
+	<row id="msg_0751_wild_charge" index="468">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">WILD CHARGE</language>
+	</row>
+	<row id="msg_0751_snarl" index="469">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">SNARL</language>
+	</row>
+	<row id="msg_0751_incinerate" index="470">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">INCINERATE</language>
+	</row>
+	<row id="msg_0751_fire_lash" index="471">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">FIRE LASH</language>
+	</row>
+	<row id="msg_0751_icicle_crash" index="472">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">ICICLE CRASH</language>
+	</row>
+	<row id="msg_0751_bulldoze" index="473">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">BULLDOZE</language>
+	</row>
+	<row id="msg_0751_hurricane" index="474">
+		<attribute name="window_context_name">used</attribute>
+		<language name="English">HURRICANE</language>
+	</row>
 </body>

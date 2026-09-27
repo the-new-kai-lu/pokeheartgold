@@ -3,6 +3,7 @@
 #include "global.h"
 
 #include "pokemon.h"
+#include "fakemon.h"
 
 MoveRelearnerArgs *MoveRelearner_New(enum HeapID heapID) {
     MoveRelearnerArgs *ret = Heap_Alloc(heapID, sizeof(MoveRelearnerArgs));
@@ -36,7 +37,7 @@ u16 *MoveRelearner_GetEligibleLevelUpMoves(Pokemon *mon, enum HeapID heapID) {
         } else if (LEVEL_UP_LEARNSET_LVL(tableFromFile[i]) > level) {
             continue;
         } else {
-            tableFromFile[i] = LEVEL_UP_LEARNSET_MOVE(tableFromFile[i]);
+            tableFromFile[i] = FakemonLearnMove(mon, tableFromFile[i]);
             for (j = 0; j < MAX_MON_MOVES; j++) {
                 if (tableFromFile[i] == moves[j]) {
                     break;

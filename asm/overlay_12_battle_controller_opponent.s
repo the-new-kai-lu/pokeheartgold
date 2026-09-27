@@ -1,3 +1,5 @@
+#include "constants/fakemon_battle.h"
+#include "constants/moves.h"
 #include "constants/pokemon.h"
 #include "constants/sndseq.h"
 	.include "asm/macros.inc"
@@ -453,7 +455,7 @@ _02258B84:
 _02258B8C: .word 0x000001EE
 _02258B90: .word 0x0000219C
 _02258B94: .word 0x000021A4
-_02258B98: .word 0x000003E1
+_02258B98: .word FAKEMON_MOVE_POWER_OFFSET
 _02258B9C: .word 0x00140808
 	thumb_func_end ov12_02258800
 
@@ -11754,7 +11756,7 @@ _0225E51C:
 	lsl r0, r0, #0x10
 	lsr r1, r0, #0x10
 	beq _0225E538
-	ldr r0, _0225E564 ; =0x000001D3
+	ldr r0, _0225E564 ; =NUM_MOVES
 	cmp r1, r0
 	bls _0225E53E
 _0225E538:
@@ -11777,7 +11779,7 @@ _0225E53E:
 	add sp, #4
 	pop {r3, r4, r5, r6, pc}
 	.balign 4, 0
-_0225E564: .word 0x000001D3
+_0225E564: .word NUM_MOVES
 	thumb_func_end ov12_0225E4EC
 
 	thumb_func_start ov12_0225E568

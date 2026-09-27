@@ -2069,7 +2069,7 @@ static RegisterHallOfFame_MetLocationType RegisterHallOfFame_GetMetLocationType(
 static int RegisterHallOfFame_GetMmodelBySpeciesFormGender(int species, u8 form, u8 gender) {
     int ret;
 
-    if (species <= 0 || species > SPECIES_ARCEUS) {
+    if (!IsValidMonSpecies(species)) {
         ret = NARC_mmodel_mmodel_00000001_NSBTX;
     } else {
         ret = SpeciesToOverworldModelIndexOffset(species) + NARC_mmodel_mmodel_00000297_NSBTX;

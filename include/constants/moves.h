@@ -470,7 +470,16 @@
 #define MOVE_OMINOUS_WIND  466
 #define MOVE_SHADOW_FORCE  467
 
-#define NUM_MOVES MOVE_SHADOW_FORCE
+// Stock move IDs are immutable. These compact additions fit HGSS's 9-bit learnsets.
+#define NUM_STOCK_MOVES MOVE_SHADOW_FORCE
+#define MOVE_WILD_CHARGE 468
+#define MOVE_SNARL 469
+#define MOVE_INCINERATE 470
+#define MOVE_FIRE_LASH 471
+#define MOVE_ICICLE_CRASH 472
+#define MOVE_BULLDOZE 473
+#define MOVE_HURRICANE 474
+#define NUM_MOVES MOVE_HURRICANE
 
 // Move Attributes
 #define MOVE_ATTRIBUTE_EFFECT         0

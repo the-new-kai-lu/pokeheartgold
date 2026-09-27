@@ -1,3 +1,4 @@
+#include "constants/fakemon_battle.h"
 	.include "asm/macros.inc"
 	.include "overlay_10.inc"
 	.include "global.inc"
@@ -1498,7 +1499,7 @@ _0221CAC2:
 	ldrh r4, [r5, r4]
 	lsl r4, r4, #4
 	add r5, r6, r4
-	ldr r4, _0221CAFC ; =0x000003E1
+	ldr r4, _0221CAFC ; =FAKEMON_MOVE_POWER_OFFSET
 	ldrb r4, [r5, r4]
 	cmp r4, #0
 	bne _0221CAE4
@@ -1519,7 +1520,7 @@ _0221CAF0:
 	nop
 _0221CAF4: .word 0x000003CF
 _0221CAF8: .word 0x00002D4C
-_0221CAFC: .word 0x000003E1
+_0221CAFC: .word FAKEMON_MOVE_POWER_OFFSET
 	thumb_func_end ov10_0221CA9C
 
 	thumb_func_start ov10_0221CB00
@@ -1550,7 +1551,7 @@ _0221CB26:
 	ldrh r4, [r5, r4]
 	lsl r4, r4, #4
 	add r5, r6, r4
-	ldr r4, _0221CB60 ; =0x000003E1
+	ldr r4, _0221CB60 ; =FAKEMON_MOVE_POWER_OFFSET
 	ldrb r4, [r5, r4]
 	cmp r4, #0
 	bne _0221CB48
@@ -1571,7 +1572,7 @@ _0221CB54:
 	nop
 _0221CB58: .word 0x000003CF
 _0221CB5C: .word 0x00002D4C
-_0221CB60: .word 0x000003E1
+_0221CB60: .word FAKEMON_MOVE_POWER_OFFSET
 	thumb_func_end ov10_0221CB00
 
 	thumb_func_start ov10_0221CB64
@@ -1861,7 +1862,7 @@ _0221CD84:
 	ldr r2, _0221CE58 ; =0x0000FFFF
 	cmp r1, r2
 	bne _0221CDA4
-	ldr r1, _0221CE60 ; =0x000003E1
+	ldr r1, _0221CE60 ; =FAKEMON_MOVE_POWER_OFFSET
 	add r3, r6, r7
 	ldrb r1, [r3, r1]
 	cmp r1, #1
@@ -1964,7 +1965,7 @@ _0221CE50: .word 0x00000356
 _0221CE54: .word ov10_0222B098
 _0221CE58: .word 0x0000FFFF
 _0221CE5C: .word ov10_0222B080
-_0221CE60: .word 0x000003E1
+_0221CE60: .word FAKEMON_MOVE_POWER_OFFSET
 _0221CE64: .word 0x000003CF
 _0221CE68: .word 0x00002DB8
 _0221CE6C: .word 0x00000355
@@ -3245,7 +3246,7 @@ _0221D83A:
 	ldr r2, _0221D8E0 ; =0x0000FFFF
 	cmp r1, r2
 	bne _0221D85A
-	ldr r1, _0221D8E8 ; =0x000003E1
+	ldr r1, _0221D8E8 ; =FAKEMON_MOVE_POWER_OFFSET
 	add r3, r6, r7
 	ldrb r1, [r3, r1]
 	cmp r1, #1
@@ -3321,7 +3322,7 @@ _0221D8D8: .word 0x00000356
 _0221D8DC: .word ov10_0222B098
 _0221D8E0: .word 0x0000FFFF
 _0221D8E4: .word ov10_0222B080
-_0221D8E8: .word 0x000003E1
+_0221D8E8: .word FAKEMON_MOVE_POWER_OFFSET
 _0221D8EC: .word 0x000003CF
 _0221D8F0: .word 0x00002DCC
 _0221D8F4: .word 0x00002D8C
@@ -3393,7 +3394,7 @@ _0221D966:
 	ldr r2, _0221DA0C ; =0x0000FFFF
 	cmp r1, r2
 	bne _0221D986
-	ldr r1, _0221DA14 ; =0x000003E1
+	ldr r1, _0221DA14 ; =FAKEMON_MOVE_POWER_OFFSET
 	add r3, r6, r7
 	ldrb r1, [r3, r1]
 	cmp r1, #1
@@ -3469,7 +3470,7 @@ _0221DA04: .word 0x00000356
 _0221DA08: .word ov10_0222B098
 _0221DA0C: .word 0x0000FFFF
 _0221DA10: .word ov10_0222B080
-_0221DA14: .word 0x000003E1
+_0221DA14: .word FAKEMON_MOVE_POWER_OFFSET
 _0221DA18: .word 0x000003CF
 _0221DA1C: .word 0x00002DCC
 _0221DA20: .word 0x00002D8C
@@ -3702,7 +3703,7 @@ ov10_0221DBA4: ; 0x0221DBA4
 	mov r2, #0xc0
 	mul r2, r0
 	add r0, r5, r2
-	ldr r2, _0221DC40 ; =0x000003DE
+	ldr r2, _0221DC40 ; =FAKEMON_MOVE_TABLE_OFFSET
 	ldr r3, _0221DC44 ; =0x00002D4C
 	mov r1, #0
 _0221DBE6:
@@ -3727,12 +3728,12 @@ _0221DBFE:
 	bl ov10_0221EF24
 	pop {r3, r4, r5, r6, r7, pc}
 _0221DC0C:
-	ldr r2, _0221DC40 ; =0x000003DE
+	ldr r2, _0221DC40 ; =FAKEMON_MOVE_TABLE_OFFSET
 	lsl r0, r0, #3
-	add r3, r2, #0
+	mov r3, #0x37
 	mov r1, #0
 	add r0, r5, r0
-	sub r3, #0x6e
+	lsl r3, r3, #4
 _0221DC18:
 	ldrh r6, [r0, r3]
 	cmp r6, #0
@@ -3756,7 +3757,7 @@ _0221DC30:
 _0221DC3C:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0221DC40: .word 0x000003DE
+_0221DC40: .word FAKEMON_MOVE_TABLE_OFFSET
 _0221DC44: .word 0x00002D4C
 	thumb_func_end ov10_0221DBA4
 
@@ -3787,7 +3788,7 @@ ov10_0221DC48: ; 0x0221DC48
 	mov r2, #0xc0
 	mul r2, r0
 	add r0, r5, r2
-	ldr r2, _0221DCE4 ; =0x000003DE
+	ldr r2, _0221DCE4 ; =FAKEMON_MOVE_TABLE_OFFSET
 	ldr r3, _0221DCE8 ; =0x00002D4C
 	mov r1, #0
 _0221DC8A:
@@ -3812,12 +3813,12 @@ _0221DCA2:
 	bl ov10_0221EF24
 	pop {r3, r4, r5, r6, r7, pc}
 _0221DCB0:
-	ldr r2, _0221DCE4 ; =0x000003DE
+	ldr r2, _0221DCE4 ; =FAKEMON_MOVE_TABLE_OFFSET
 	lsl r0, r0, #3
-	add r3, r2, #0
+	mov r3, #0x37
 	mov r1, #0
 	add r0, r5, r0
-	sub r3, #0x6e
+	lsl r3, r3, #4
 _0221DCBC:
 	ldrh r6, [r0, r3]
 	cmp r6, #0
@@ -3841,7 +3842,7 @@ _0221DCD4:
 _0221DCE0:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_0221DCE4: .word 0x000003DE
+_0221DCE4: .word FAKEMON_MOVE_TABLE_OFFSET
 _0221DCE8: .word 0x00002D4C
 	thumb_func_end ov10_0221DC48
 
@@ -5350,7 +5351,7 @@ _0221E898:
 	ldr r2, _0221E98C ; =0x0000FFFF
 	cmp r1, r2
 	bne _0221E8B8
-	ldr r1, _0221E994 ; =0x000003E1
+	ldr r1, _0221E994 ; =FAKEMON_MOVE_POWER_OFFSET
 	add r3, r6, r7
 	ldrb r1, [r3, r1]
 	cmp r1, #1
@@ -5471,7 +5472,7 @@ _0221E984: .word 0x00000356
 _0221E988: .word ov10_0222B098
 _0221E98C: .word 0x0000FFFF
 _0221E990: .word ov10_0222B080
-_0221E994: .word 0x000003E1
+_0221E994: .word FAKEMON_MOVE_POWER_OFFSET
 _0221E998: .word 0x000003CF
 _0221E99C: .word 0x00002DB8
 _0221E9A0: .word 0x00000355
@@ -6303,7 +6304,7 @@ ov10_0221EF7C: ; 0x0221EF7C
 	str r0, [sp, #0x28]
 _0221EFA4:
 	ldr r2, [sp, #0x1c]
-	ldr r3, _0221F070 ; =0x000003DE
+	ldr r3, _0221F070 ; =FAKEMON_MOVE_TABLE_OFFSET
 	ldrh r2, [r2]
 	ldr r1, _0221F074 ; =ov10_0222B098
 	mov r0, #0
@@ -6350,7 +6351,7 @@ _0221EFE0:
 	ldrh r0, [r0, r1]
 	cmp r0, r2
 	bne _0221F03C
-	ldr r1, _0221F080 ; =0x000003E1
+	ldr r1, _0221F080 ; =FAKEMON_MOVE_POWER_OFFSET
 	ldr r0, [sp, #0x20]
 	ldrb r0, [r0, r1]
 	cmp r0, #1
@@ -6414,11 +6415,11 @@ _0221F060:
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
 	nop
-_0221F070: .word 0x000003DE
+_0221F070: .word FAKEMON_MOVE_TABLE_OFFSET
 _0221F074: .word ov10_0222B098
 _0221F078: .word 0x0000FFFF
 _0221F07C: .word ov10_0222B080
-_0221F080: .word 0x000003E1
+_0221F080: .word FAKEMON_MOVE_POWER_OFFSET
 	thumb_func_end ov10_0221EF7C
 
 	thumb_func_start ov10_0221F084
@@ -7488,7 +7489,7 @@ _0221F82C:
 	beq _0221F8C6
 	lsl r0, r0, #4
 	add r1, r5, r0
-	ldr r0, _0221FB60 ; =0x000003E1
+	ldr r0, _0221FB60 ; =FAKEMON_MOVE_POWER_OFFSET
 	ldrb r0, [r1, r0]
 	cmp r0, #0
 	beq _0221F8C6
@@ -7682,7 +7683,7 @@ _0221F9A4:
 	beq _0221F9D6
 	lsl r0, r0, #4
 	add r1, r5, r0
-	ldr r0, _0221FB60 ; =0x000003E1
+	ldr r0, _0221FB60 ; =FAKEMON_MOVE_POWER_OFFSET
 	ldrb r0, [r1, r0]
 	cmp r0, #0
 	bne _0221F9D8
@@ -7872,7 +7873,7 @@ _0221FB26:
 	b _0221FB74
 	nop
 _0221FB5C: .word 0x00002D4C
-_0221FB60: .word 0x000003E1
+_0221FB60: .word FAKEMON_MOVE_POWER_OFFSET
 _0221FB64: .word 0x00002D8C
 _0221FB68: .word 0x000001EE
 _0221FB6C: .word 0x0000219C
@@ -7929,7 +7930,7 @@ _0221FBAE:
 	beq _0221FBE0
 	lsl r0, r0, #4
 	add r1, r5, r0
-	ldr r0, _0221FD28 ; =0x000003E1
+	ldr r0, _0221FD28 ; =FAKEMON_MOVE_POWER_OFFSET
 	ldrb r0, [r1, r0]
 	cmp r0, #0
 	bne _0221FBE2
@@ -8090,7 +8091,7 @@ _0221FD1C:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _0221FD24: .word 0x0000219C
-_0221FD28: .word 0x000003E1
+_0221FD28: .word FAKEMON_MOVE_POWER_OFFSET
 _0221FD2C: .word 0x00002D8C
 _0221FD30: .word 0x000021A4
 	thumb_func_end ov10_0221F7F0
@@ -8301,7 +8302,7 @@ _0221FECC:
 	lsl r1, r0, #4
 	ldr r0, [sp]
 	add r2, r0, r1
-	ldr r0, _02220000 ; =0x000003E1
+	ldr r0, _02220000 ; =FAKEMON_MOVE_POWER_OFFSET
 	ldrb r1, [r2, r0]
 	cmp r1, #0
 	bne _0221FEE0
@@ -8452,7 +8453,7 @@ _0221FFF4:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _0221FFFC: .word 0x00003064
-_02220000: .word 0x000003E1
+_02220000: .word FAKEMON_MOVE_POWER_OFFSET
 _02220004: .word 0x000001EE
 _02220008: .word 0x0000219C
 _0222000C: .word 0x000021A4
@@ -8484,7 +8485,7 @@ _02220032:
 _02220038:
 	lsl r1, r2, #4
 	add r2, r5, r1
-	ldr r1, _0222025C ; =0x000003E1
+	ldr r1, _0222025C ; =FAKEMON_MOVE_POWER_OFFSET
 	ldrb r1, [r2, r1]
 	cmp r1, #0
 	bne _0222004A
@@ -8741,7 +8742,7 @@ _02220250:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02220258: .word 0x00003064
-_0222025C: .word 0x000003E1
+_0222025C: .word FAKEMON_MOVE_POWER_OFFSET
 _02220260: .word 0x000001EE
 _02220264: .word 0x0000219C
 _02220268: .word 0x0000306C
@@ -8807,7 +8808,7 @@ _022202D8:
 	ldrh r0, [r7, r0]
 	lsl r0, r0, #4
 	add r1, r5, r0
-	ldr r0, _02220368 ; =0x000003E1
+	ldr r0, _02220368 ; =FAKEMON_MOVE_POWER_OFFSET
 	ldrb r0, [r1, r0]
 	cmp r0, #0
 	bne _02220302
@@ -8871,7 +8872,7 @@ _02220358: .word 0x00002DAC
 _0222035C: .word 0x00002D8C
 _02220360: .word 0x00003064
 _02220364: .word 0x000021A4
-_02220368: .word 0x000003E1
+_02220368: .word FAKEMON_MOVE_POWER_OFFSET
 	thumb_func_end ov10_02220270
 
 	thumb_func_start ov10_0222036C

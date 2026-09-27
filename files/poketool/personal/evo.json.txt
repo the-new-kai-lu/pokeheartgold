@@ -13,7 +13,7 @@ typedef struct EvolutionDataFile {
 
 size_t __size = sizeof(struct EvolutionDataFile);
 
-const struct EvolutionDataFile __data[NUM_SPECIES + 1] = {
+const struct EvolutionDataFile __data[FAKEMON_DATA_COUNT] = {
 ## for entry in evoTable
 	[{{ entry.baseSpecies }}] =
 	{

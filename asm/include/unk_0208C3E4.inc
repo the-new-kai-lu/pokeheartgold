@@ -32,7 +32,7 @@
 .public CopyBoxPokemonToPokemon
 .public GetMoveAttr
 .public GetMoveMaxPP
-.public Pokedex_ConvertToCurrentDexNo
+.public FakemonDexDisplayNumber
 .public sub_0208A520
 .public sub_0208C3E4
 .public sub_0208C42C

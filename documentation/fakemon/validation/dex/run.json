@@ -1,0 +1,67 @@
+{
+  "rom_sha256": "2a42bc7ac161c6255b3fe9e43ad725c2bc8eeaa57963bc3a4ef2d1dd4025f015",
+  "input_save": "/tmp/asset-emulator-fixtures/ragnaroc.sav",
+  "status": "script_finished_review_screenshots_and_reopen_exported_save",
+  "dex_browse": true,
+  "heap_audit": {
+    "allocation_failures": 0,
+    "minimum_free_bytes": 52248,
+    "minimum_largest_block_bytes": 52036
+  },
+  "screenshots": [
+    "dex-arceus493.png",
+    "dex-area.png",
+    "dex-custom-tail.png",
+    "dex-fimbulisk-page1.png",
+    "dex-fimbulisk-page2.png",
+    "dex-fimbulisk-page3.png",
+    "dex-fimbulisk-reset.png",
+    "dex-fimbulisk-wrap.png",
+    "dex-list.png",
+    "dex-raijinque-page2.png",
+    "dex-reopened.png",
+    "dex-search-canonical.png",
+    "dex-search-exited.png",
+    "dex-search-fimbulisk-page1.png",
+    "dex-search-fimbulisk-page2.png",
+    "dex-search-fimbulisk-page3.png",
+    "dex-search-repeat-canonical.png",
+    "dex-search-repeat-page2.png",
+    "dex-search-repeat-reset.png",
+    "dex-search-results.png",
+    "dex-search-tail.png",
+    "dex-sedgling-page1.png",
+    "dex-sedgling-page2.png",
+    "dex-size.png",
+    "dex-voltuff-page2.png",
+    "dex-voltuff494.png",
+    "dex.png",
+    "summary-performance.png"
+  ],
+  "observed_passes": [
+    "National cover displays504 seen and obtained for the all-caught fixture",
+    "Canonical493 Arceus to custom494 Voltuff boundary",
+    "Custom grid, English names, sprites, categories, types, footprints and height/weight fields",
+    "SELECT cycles all three Fimbulisk pages in normal and search-result grids, wraps, resets when species changes, and resets after closing/reopening",
+    "Repeated unfiltered search and final-page scrolling; canonical Tangrowth interlude resets Fimbulisk to page1; SELECT remains responsive",
+    "Custom unknown-area map and height/weight comparison tabs open",
+    "Ragnaroc shiny summary/follower, Performance page and save/reload smoke",
+    "Search exits back to the overworld without freezing"
+  ],
+  "limits": [
+    "Cover count504 does not test canonical diploma/completion rewards",
+    "Audio playback quality, in-battle animations and complete filter combinations remain manual tests",
+    "Comparison silhouettes use prior registration template scales; relative physical height needs visual calibration",
+    "Uncaught canonical-interlude reset is covered by host tests; emulator fixture has all entries caught"
+  ],
+  "assertions": {
+    "fimbulisk_three_distinct_pages": true,
+    "page_wrap": true,
+    "species_reset": true,
+    "reopen_reset_visually_reviewed": true,
+    "search_pages_match_normal": true,
+    "repeat_search_canonical_reset": true,
+    "repeat_search_paging": true,
+    "zero_allocation_failures": true
+  }
+}

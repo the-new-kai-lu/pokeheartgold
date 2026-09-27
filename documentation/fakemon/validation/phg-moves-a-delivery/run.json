@@ -1,0 +1,12 @@
+{
+  "rom_sha256": "59cf31c8e3d6c5656cbe4dadbb582a4cf663547501d6eb6d2813fd1810048879",
+  "input_save_sha256": "bb1dcf77e5803fe0fa1fe8a1e6cf1935e98261075c80af2e5dfa9fcb8190ccd8",
+  "input_save": "/tmp/pokeheartgold-move-fixtures/voltuff-moves-468-471.sav",
+  "status": "finished_requires_visual_review",
+  "scope": "Summary move names, types and PP; no battle execution",
+  "screenshots": [
+    "summary-page-0.png",
+    "summary-page-1.png",
+    "summary-page-2.png"
+  ]
+}

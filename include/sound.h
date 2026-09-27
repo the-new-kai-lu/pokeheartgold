@@ -65,4 +65,6 @@ u8 GF_SndWorkGetGbSoundsVolume(void);
 void GF_SndStartFadeOutBGM(u16 seqno, u16 length);
 NNSSndHandle *GF_GetSoundHandle(int playerNo);
 
+u16 Fakemon_ResolveCryBank(u16 species);
+
 #endif // POKEHEARTGOLD_SOUND_H

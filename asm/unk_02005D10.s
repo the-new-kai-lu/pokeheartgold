@@ -693,16 +693,9 @@ PlayCry: ; 0x02006218
 	bne _02006246
 	ldr r5, _020062D8 ; =0x000001EE
 _02006246:
-	ldr r0, _020062D8 ; =0x000001EE
-	cmp r5, r0
-	beq _02006258
-	add r0, r0, #1
-	cmp r5, r0
-	bhi _02006256
-	cmp r5, #0
-	bne _02006258
-_02006256:
-	mov r5, #1
+	add r0, r5, #0
+	bl Fakemon_ResolveCryBank
+	add r5, r0, #0
 _02006258:
 	ldr r0, _020062DC ; =0x000001B9
 	cmp r5, r0
@@ -894,16 +887,9 @@ PlayCryEx: ; 0x020063A4
 	bne _020063EA
 	ldr r4, _02006740 ; =0x000001EE
 _020063EA:
-	ldr r0, _02006740 ; =0x000001EE
-	cmp r4, r0
-	beq _020063FC
-	add r0, r0, #1
-	cmp r4, r0
-	bhi _020063FA
-	cmp r4, #0
-	bne _020063FC
-_020063FA:
-	mov r4, #1
+	add r0, r4, #0
+	bl Fakemon_ResolveCryBank
+	add r4, r0, #0
 _020063FC:
 	lsr r0, r6, #0x1f
 	add r0, r6, r0

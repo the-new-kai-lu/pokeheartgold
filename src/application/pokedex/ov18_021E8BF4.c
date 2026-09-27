@@ -353,6 +353,18 @@ static int PokedexApp_MainSeq_05(PokedexAppData *pokedexApp) {
     return POKEDEXAPP_MAINSEQ_02;
 }
 
+// Only entry grids call this: state 06 is the closed cover, not an entry.
+static BOOL FakemonDexHandlePageInput(PokedexAppData *pokedexApp) {
+    u16 selectedSpecies = ov18_021F8838(pokedexApp);
+    // Track selection even when no prose is drawn (uncaught/empty rows).
+    FakemonDexSelectSpecies(selectedSpecies);
+    if (!(gSystem.newKeys & PAD_BUTTON_SELECT) || !IsFakemonSpecies(selectedSpecies)
+        || !Pokedex_CheckMonCaughtFlag(pokedexApp->args->pokedex, selectedSpecies)) {
+        return FALSE;
+    }
+    return FakemonDexCyclePage(selectedSpecies);
+}
+
 static int PokedexApp_MainSeq_06(PokedexAppData *pokedexApp) {
     switch (ov18_021F6B00(pokedexApp)) {
     case 0:
@@ -561,6 +573,12 @@ static int PokedexApp_MainSeq_10(PokedexAppData *pokedexApp) {
 }
 
 static int PokedexApp_MainSeq_11(PokedexAppData *pokedexApp) {
+    if (FakemonDexHandlePageInput(pokedexApp)) {
+        ov18_021EE8B8(pokedexApp, ov18_021F8838(pokedexApp), ov18_021F8824(pokedexApp));
+        PlaySE(SEQ_SE_GS_BUTTON01);
+        return POKEDEXAPP_MAINSEQ_11;
+    }
+
     switch (ov18_021F6BBC(pokedexApp, 1)) {
     case 0:
         ov18_021F2BB0(pokedexApp, 5);
@@ -1912,6 +1930,12 @@ static int PokedexApp_MainSeq_56(PokedexAppData *pokedexApp) {
 }
 
 static int PokedexApp_MainSeq_57(PokedexAppData *pokedexApp) {
+    if (FakemonDexHandlePageInput(pokedexApp)) {
+        ov18_021E78AC(pokedexApp);
+        PlaySE(SEQ_SE_GS_BUTTON01);
+        return POKEDEXAPP_MAINSEQ_57;
+    }
+
     switch (ov18_021F7974(pokedexApp, 0)) {
     case 0:
         ov18_021F2BB0(pokedexApp, 0);
@@ -3464,7 +3488,7 @@ static void ov18_021EDDA4(PokedexAppData *pokedexApp, int a1) {
 }
 
 static void ov18_021EDDB4(PokedexAppData *pokedexApp) {
-    u32 r4 = Pokedex_ConvertToCurrentDexNo(pokedexApp->unk_1858, ov18_021F8850(&pokedexApp->unk_0878, UnkStruct_02092BB8_GetSpecies(pokedexApp->args->unk_08))) - 1;
+    u32 r4 = FakemonDexDisplayNumber(pokedexApp->unk_1858, ov18_021F8850(&pokedexApp->unk_0878, UnkStruct_02092BB8_GetSpecies(pokedexApp->args->unk_08))) - 1;
     pokedexApp->unk_185A = r4 % 15;
     pokedexApp->unk_1859 = r4 / 15;
 }

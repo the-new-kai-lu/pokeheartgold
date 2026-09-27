@@ -1237,7 +1237,7 @@ _0208CD34:
 	add r1, #0x10
 	ldrh r1, [r4, r1]
 	ldr r0, [r0, #0x1c]
-	bl Pokedex_ConvertToCurrentDexNo
+	bl FakemonDexDisplayNumber
 	add r2, r0, #0
 	beq _0208CDF0
 	mov r0, #2

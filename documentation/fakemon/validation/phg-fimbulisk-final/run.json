@@ -1,0 +1,15 @@
+{
+  "rom_sha256": "f6aa6ae73892c695e087c2f9912a6da6eca67e379e834f3953bb7a024a072bdb",
+  "input_save": "/tmp/asset-emulator-fixtures/fimbulisk.sav",
+  "status": "script_finished_review_screenshots_and_reopen_exported_save",
+  "screenshots": [
+    "loaded.png",
+    "party.png",
+    "party-menu.png",
+    "summary.png",
+    "saved.png",
+    "reloaded.png",
+    "reloaded-party.png",
+    "dex.png"
+  ]
+}

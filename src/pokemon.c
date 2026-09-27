@@ -1,4 +1,5 @@
 #include "pokemon.h"
+#include "fakemon.h"
 
 #include "global.h"
 
@@ -71,6 +72,7 @@ void sub_02072190(BoxPokemon *boxMon, PlayerProfile *a1, u32 pokeball, u32 a3, u
 #define CALC_UNOWN_LETTER(pid) ((u32)((((pid) & 0x3000000) >> 18) | (((pid) & 0x30000) >> 12) | (((pid) & 0x300) >> 6) | (((pid) & 0x3) >> 0)) % 28u)
 
 static const s8 sFlavorPreferencesByNature[NATURE_NUM][FLAVOR_MAX] = {
+
     { 0,  0,  0,  0,  0  },
     { 1,  0,  0,  0,  -1 },
     { 1,  0,  -1, 0,  0  },
@@ -1002,6 +1004,7 @@ static void SetBoxMonDataInternal(BoxPokemon *boxMon, int attr, const void *valu
         boxMon->checksum = VALUE(u16);
         break;
     case MON_DATA_SPECIES:
+        blockA->exp = FakemonConvertEvolutionExp(blockA->species, VALUE(u16), blockA->exp);
         blockA->species = VALUE(u16);
         break;
     case MON_DATA_HELD_ITEM:
@@ -1846,6 +1849,7 @@ int GetMonBaseStat_HandleAlternateForm(int species, int form, int attr) {
 
 int GetMonBaseStat(int species, int attr) {
     int ret;
+    if (attr == BASE_EXP_YIELD && (species == SPECIES_RAIJINQUE || species == SPECIES_MAGMALISK || species == SPECIES_FIMBULISK || species == SPECIES_RAGNAROC)) return 300;
     BASE_STATS *personal = AllocAndLoadMonPersonal(species, HEAP_ID_DEFAULT);
     ret = GetPersonalAttr(personal, attr);
     FreeMonPersonal(personal);
@@ -2187,6 +2191,13 @@ void GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 spec
     pokepicTemplate->species = SPECIES_NONE;
     pokepicTemplate->isAnimated = FALSE;
     pokepicTemplate->personality = 0;
+    if (IsFakemonSpecies(species)) {
+        u16 slot = 494 + species - SPECIES_VOLTUFF;
+        pokepicTemplate->narcID = NARC_poketool_pokegra_pokegra;
+        pokepicTemplate->charDataID = slot * 6 + whichFacing + (gender != MON_FEMALE);
+        pokepicTemplate->palDataID = slot * 6 + 4 + shiny;
+        return;
+    }
     form = sub_02070438(species, form);
     switch (species) {
     case SPECIES_BURMY:
@@ -2360,6 +2371,11 @@ void sub_02070560(PokepicTemplate *pokepicTemplate, u16 species, u8 whichFacing,
 }
 
 void DP_GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 personality) {
+    if (IsFakemonSpecies(species)) {
+        GetMonSpriteCharAndPlttNarcIdsEx(pokepicTemplate, species, gender, whichFacing, shiny, form, personality);
+        return;
+    }
+
     pokepicTemplate->species = SPECIES_NONE;
     pokepicTemplate->isAnimated = FALSE;
     pokepicTemplate->personality = 0;
@@ -2502,6 +2518,9 @@ u8 GetMonPicHeightBySpeciesGenderForm(u16 species, u8 gender, u8 whichFacing, u8
     s32 fileId;
     u8 ret;
 
+    if (IsFakemonSpecies(species)) {
+        return 0;
+    }
     form = sub_02070438(species, form);
     switch (species) {
     case SPECIES_BURMY:
@@ -2584,6 +2603,9 @@ u8 GetMonPicHeightBySpeciesGenderForm_PBR(u16 species, u8 gender, u8 whichFacing
     s32 fileId;
     u8 ret;
 
+    if (IsFakemonSpecies(species)) {
+        return 0;
+    }
     form = sub_02070438(species, form);
     switch (species) {
     case SPECIES_BURMY:
@@ -2810,6 +2832,12 @@ u16 GetMonEvolution(Party *party, Pokemon *mon, u8 context, u16 usedItem, int *m
     if (method_ret == NULL) {
         method_ret = &method_local;
     }
+    if (species == SPECIES_EMBERNEWT && context == EVOCTX_LEVELUP
+        && FakemonConsumeRareEvolution(mon) && heldItem == ITEM_NEVERMELTICE
+        && GetMonData(mon, MON_DATA_LEVEL, NULL) >= 16) {
+        *method_ret = EVO_LEVEL;
+        return SPECIES_RIMEVARAN;
+    }
     evoTable = Heap_Alloc(HEAP_ID_DEFAULT, MAX_EVOS_PER_POKE * sizeof(struct Evolution));
     LoadMonEvolutionTable(species, evoTable);
     switch (context) {
@@ -3006,6 +3034,7 @@ u16 GetMonEvolution(Party *party, Pokemon *mon, u8 context, u16 usedItem, int *m
 u16 ReadFromPersonalPmsNarc(u16 species) {
     u16 ret = 0;
     FSFile file;
+    if (IsFakemonSpecies(species)) return FakemonHatchSpecies(species);
     GF_ASSERT(species < SPECIES_EGG);
     FS_InitFile(&file);
     FS_OpenFile(&file, "poketool/personal/pms.narc");
@@ -3159,7 +3188,7 @@ u32 MonTryLearnMoveOnLevelUp(Pokemon *mon, int *last_i, u16 *sp0) {
         }
     }
     if ((levelUpLearnset[*last_i] & LEVEL_UP_LEARNSET_LEVEL_MASK) == (level << LEVEL_UP_LEARNSET_LEVEL_SHIFT)) {
-        *sp0 = LEVEL_UP_LEARNSET_MOVE(levelUpLearnset[*last_i]);
+        *sp0 = FakemonLearnMove(mon, levelUpLearnset[*last_i]);
         (*last_i)++;
         ret = TryAppendMonMove(mon, *sp0);
     }
@@ -3264,6 +3293,7 @@ u8 Party_GetMaxLevel(Party *party) {
 }
 
 u16 SpeciesToJohtoDexNo(u16 species) {
+    if (IsFakemonSpecies(species)) return 0;
     u16 ret;
     ReadFromNarcMemberByIdPair(&ret, NARC_poketool_johtozukan, 0, species * sizeof(u16), sizeof(u16));
     return ret;
@@ -4185,10 +4215,30 @@ void RestoreBoxMonPP(BoxPokemon *boxMon) {
     ReleaseBoxMonLock(boxMon, decry);
 }
 
+static void ReadFakemonPokepicAnimation(NARC *narc, u16 species, struct UnkStruct_02072914 *record) {
+    int facing, i;
+    if (!IsFakemonSpecies(species)) {
+        NARC_ReadFromMember(narc, 0, species * sizeof(*record), sizeof(*record), record);
+        return;
+    }
+    MI_CpuClear8(record, sizeof(*record));
+    for (facing = 0; facing < 2; facing++) {
+        record->unk0[facing].unk_1 = 2;
+        record->unk0[facing].unk_3[0].next = 0;
+        record->unk0[facing].unk_3[0].duration = 6;
+        record->unk0[facing].unk_3[1].next = 1;
+        record->unk0[facing].unk_3[1].duration = 12;
+        for (i = 2; i < 10; i++) {
+            record->unk0[facing].unk_3[i].next = -1;
+        }
+    }
+    record->unk_58 = (species == SPECIES_VOLTUFF || species == SPECIES_EMBERNEWT || species == SPECIES_SEDGLING) ? 1 : 2;
+}
+
 void NARC_ReadPokepicAnimScript(NARC *narc, PokepicAnimScript *dest, u16 species, u16 a3) {
     struct UnkStruct_02072914 sp4;
     int r5 = (a3 & 1 ? 0 : 1);
-    NARC_ReadFromMember(narc, 0, species * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &sp4);
+    ReadFakemonPokepicAnimation(narc, species, &sp4);
     MI_CpuCopy8(&sp4.unk0[r5].unk_3[0], dest, sizeof(PokepicAnimScript) * 10);
 }
 
@@ -4196,7 +4246,7 @@ void sub_0207294C(NARC *narc, void *a1, void *a2, u16 a3, int a4, int a5, int a6
     struct UnkStruct_02072914 spA;
     struct UnkStruct_0207294C sp4;
     int r4 = (a4 == 2 ? 0 : 1);
-    NARC_ReadFromMember(narc, 0, a3 * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &spA);
+    ReadFakemonPokepicAnimation(narc, a3, &spA);
     sp4.unk_0 = spA.unk0[r4].unk_1;
     sp4.unk_2 = spA.unk0[r4].unk_2;
     sp4.unk_4 = a5;
@@ -4206,25 +4256,25 @@ void sub_0207294C(NARC *narc, void *a1, void *a2, u16 a3, int a4, int a5, int a6
 void sub_020729A4(NARC *narc, u8 *ret, u16 species, u16 isFrontpic) {
     struct UnkStruct_02072914 sp4;
     int r5 = (isFrontpic & 1 ? 0 : 1);
-    NARC_ReadFromMember(narc, 0, species * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &sp4);
+    ReadFakemonPokepicAnimation(narc, species, &sp4);
     *ret = sp4.unk0[r5].unk_0;
 }
 
 void sub_020729D8(NARC *narc, s8 *ret, u16 a2, u16 a3) {
     struct UnkStruct_02072914 sp4;
-    NARC_ReadFromMember(narc, 0, a2 * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &sp4);
+    ReadFakemonPokepicAnimation(narc, a2, &sp4);
     *ret = sp4.unk_56;
 }
 
 void sub_020729FC(NARC *narc, s8 *ret, u16 a2, u16 a3) {
     struct UnkStruct_02072914 sp4;
-    NARC_ReadFromMember(narc, 0, a2 * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &sp4);
+    ReadFakemonPokepicAnimation(narc, a2, &sp4);
     *ret = sp4.unk_57;
 }
 
 void sub_02072A20(NARC *narc, u8 *ret, u16 a2, u16 a3) {
     struct UnkStruct_02072914 sp4;
-    NARC_ReadFromMember(narc, 0, a2 * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &sp4);
+    ReadFakemonPokepicAnimation(narc, a2, &sp4);
     *ret = sp4.unk_58;
 }
 
@@ -4989,7 +5039,17 @@ void CalcBoxMonPokeathlonPerformance(BoxPokemon *boxMon, struct PokeathlonTodayP
 
     species = GetBoxMonData(boxMon, MON_DATA_SPECIES, NULL);
     form = GetBoxMonData(boxMon, MON_DATA_FORM, NULL);
-    ReadWholeNarcMemberByIdPair(&data, NARC_poketool_personal_performance, sPokeathlonPerformanceArcIdxs[species] + form);
+    if (IsFakemonSpecies(species)) {
+        // Provisional neutral Pokeathlon profile; never index the stock species table.
+        MI_CpuClear8(&data, sizeof(data));
+        for (i = PERFORMANCE_MIN; i < PERFORMANCE_MAX; i++) {
+            data.base[i] = 3;
+            data.minmax[i][0] = 2;
+            data.minmax[i][1] = 4;
+        }
+    } else {
+        ReadWholeNarcMemberByIdPair(&data, NARC_poketool_personal_performance, sPokeathlonPerformanceArcIdxs[species] + form);
+    }
     dest->stats[PERFORMANCE_POWER].base = data.base[ARCPERF_POWER];
     dest->stats[PERFORMANCE_POWER].lo = data.minmax[ARCPERF_POWER][0];
     dest->stats[PERFORMANCE_POWER].hi = data.minmax[ARCPERF_POWER][1];

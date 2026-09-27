@@ -117,7 +117,14 @@ _021F7388:
 	blt _021F73A0
 	ldr r1, _021F73C4 ; =0x000003E1
 	cmp r0, r1
+	ble _FakemonFollowerPalette
+	ldr r1, _FakemonFollowerFirst
+	cmp r0, r1
+	blt _021F73A0
+	add r1, #10
+	cmp r0, r1
 	bgt _021F73A0
+_FakemonFollowerPalette:
 	add r0, r4, #0
 	bl sub_0205F40C
 	ldr r0, [r0]
@@ -140,6 +147,7 @@ _021F73B4:
 	nop
 _021F73C0: .word 0x00000103
 _021F73C4: .word 0x000003E1
+_FakemonFollowerFirst: .word 1050
 _021F73C8: .word 0x00000106
 	thumb_func_end ov01_021F72DC
 

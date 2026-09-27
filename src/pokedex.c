@@ -33,7 +33,7 @@ void Pokedex_Copy(const Pokedex *src, Pokedex *dest) {
 }
 
 BOOL DexSpeciesIsInvalid(u16 species) {
-    if (species == SPECIES_NONE || species > SPECIES_ARCEUS) {
+    if (!IsValidMonSpecies(species)) {
         GF_ASSERT(FALSE);
         return TRUE;
     }
@@ -42,17 +42,20 @@ BOOL DexSpeciesIsInvalid(u16 species) {
 }
 
 static inline BOOL CheckDexFlag(const u8 *array, u16 flagId) {
+    flagId = IsFakemonSpecies(flagId) ? flagId - SPECIES_VOLTUFF + 494 : flagId;
     flagId--;
     return (array[flagId >> 3] & (1 << (flagId & 7))) != 0;
 }
 
 static inline void SetDexFlag(u8 *array, u16 flagId) {
+    flagId = IsFakemonSpecies(flagId) ? flagId - SPECIES_VOLTUFF + 494 : flagId;
     flagId--;
     array[flagId >> 3] |= (1 << (flagId & 7));
 }
 
 static inline void SetDexFlagState(u8 *array, u8 state, u16 flagId) {
     GF_ASSERT(state < 2);
+    flagId = IsFakemonSpecies(flagId) ? flagId - SPECIES_VOLTUFF + 494 : flagId;
     flagId--;
     array[flagId >> 3] &= ~(1 << (flagId & 7));
     array[flagId >> 3] |= (state << (flagId & 7));
@@ -428,6 +431,7 @@ static void Pokedex_TryAppendSeenForm(Pokedex *pokedex, u16 species, Pokemon *mo
 static void Pokedex_SetCaughtLanguage(Pokedex *pokedex, u32 species, u32 language) {
     int shift;
 
+    if (IsFakemonSpecies(species)) return;
     shift = LanguageToDexFlag(language);
     if (shift != 6) {
         pokedex->caughtLanguages[species] |= (1 << shift);
@@ -529,6 +533,9 @@ void Save_Pokedex_Init(Pokedex *pokedex) {
     pokedex->giratinaFormOrder = 0xFF;
     pokedex->pichuFormOrder = 0xFF;
     Pokedex_InitDeoxysFormOrder(pokedex);
+    pokedex->caughtLanguages[494] = 0x46;
+    pokedex->caughtLanguages[495] = 0x4B;
+    pokedex->dummy = 1;
 }
 
 u16 Pokedex_CountNationalDexOwned(Pokedex *pokedex) {
@@ -853,6 +860,7 @@ BOOL Pokedex_HasCaughtMonWithLanguage(Pokedex *pokedex, u32 species, u32 languag
     int shift;
     GF_ASSERT(language <= 8);
     ASSERT_POKEDEX(pokedex);
+    if (IsFakemonSpecies(species)) return FALSE;
     shift = LanguageToDexFlag(language);
     if (pokedex->caughtLanguages[species] & (1 << shift)) {
         return TRUE;
@@ -880,7 +888,18 @@ void Pokedex_Enable(Pokedex *pokedex) {
 }
 
 Pokedex *Save_Pokedex_Get(SaveData *saveData) {
-    return SaveArray_Get(saveData, SAVE_POKEDEX);
+    Pokedex *pokedex = SaveArray_Get(saveData, SAVE_POKEDEX);
+    if (pokedex->caughtLanguages[494] != 0x46 || pokedex->caughtLanguages[495] != 0x4B || pokedex->dummy != 1) {
+        /* Initialize only the11 previously unused bits. Preserve Deoxys bits504-511. */
+        pokedex->caughtSpecies[15] &= ~0x00FFE000;
+        pokedex->seenSpecies[15] &= ~0x00FFE000;
+        pokedex->seenGenders[0][15] &= ~0x00FFE000;
+        pokedex->seenGenders[1][15] &= ~0x00FFE000;
+        pokedex->caughtLanguages[494] = 0x46;
+        pokedex->caughtLanguages[495] = 0x4B;
+        pokedex->dummy = 1;
+    }
+    return pokedex;
 }
 
 int Pokedex_GetSeenFormByIdx(Pokedex *pokedex, int species, int idx) {

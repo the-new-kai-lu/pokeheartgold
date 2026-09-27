@@ -95,3 +95,5 @@
 .public NNS_SndHandleReleaseSeq
 .public NNS_SndPlayerSetTrackPan
 .public NNS_SndArcPlayerStartSeqEx
+
+.public Fakemon_ResolveCryBank

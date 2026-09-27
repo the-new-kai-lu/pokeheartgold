@@ -1246,3 +1246,8 @@
     .endm
 
     .endif // ASM_BATTLE_SCRIPT_INC
+
+    .macro TryIncinerate jump_no_effect
+    .long 225
+    .long (\jump_no_effect-.) / 4 - 1
+    .endm

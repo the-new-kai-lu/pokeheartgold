@@ -1,0 +1,169 @@
+{
+  "date": "2026-09-26",
+  "status": "build_and_component_checks_passed_gameplay_acceptance_incomplete",
+  "scope": "Stock-based US HeartGold and SoulSilver; 11 Fakemon and seven moves; no normal acquisition changes",
+  "base_revision": "9d8b7591f09b65804da2fb2dfd56f320633e0d36",
+  "hg_engine_design_source_revision": "dfb0dcd0a01a1eba4f27d038eb0c7703b8136571",
+  "branch": "fakemon-stock",
+  "builds": [
+    {
+      "game": "heartgold",
+      "path": "build/heartgold.us/pokeheartgold.us.nds",
+      "result": "passed",
+      "sha256": "2a42bc7ac161c6255b3fe9e43ad725c2bc8eeaa57963bc3a4ef2d1dd4025f015",
+      "bytes": 134217728,
+      "retail_comparison": false
+    },
+    {
+      "game": "soulsilver",
+      "path": "build/soulsilver.us/pokesoulsilver.us.nds",
+      "result": "passed",
+      "sha256": "9caa4eccff8bf3fb1e335de6540346c732bf9124044767e1c88cf3b03936066b",
+      "bytes": 134217728,
+      "retail_comparison": false
+    }
+  ],
+  "component_checks": [
+    {
+      "command": "python3 tools/py_scripts/test_fakemon_runtime.py",
+      "result": "passed",
+      "exp_ko_assertions": 4240028,
+      "additional_cases": "learning substitution, hatching, reset, cloned identity with different party slot"
+    },
+    {
+      "command": "python3 tools/py_scripts/test_fakemon_dex_ui.py",
+      "result": "passed",
+      "row_number_cases": 1030,
+      "additional_cases": "empty list, guard words, all 504 rows"
+    },
+    {
+      "command": "python3 tools/py_scripts/test_fakemon_dex_paging.py",
+      "result": "passed",
+      "page_input_cases": 145,
+      "state_binding_checks": 3
+    },
+    {
+      "command": "python tools/py_scripts/test_fakemon_moves.py",
+      "result": "passed",
+      "incinerate_cases": 4296,
+      "preserved_canonical_records": 468,
+      "additional_cases": "Me First list identical to stock; Soundproof receives only Snarl"
+    },
+    {
+      "command": "python tools/py_scripts/test_fakemon_data.py --rom <rom>",
+      "result": "passed for both ROMs",
+      "checks_each": 1305
+    },
+    {
+      "command": "python tools/py_scripts/validate_fakemon_assets.py --rom <rom>",
+      "result": "passed for both ROMs",
+      "checks_each": 413
+    },
+    {
+      "command": "python tools/py_scripts/test_fakemon_recordings.py",
+      "result": "passed",
+      "actual_arm_validator_cases": 197232,
+      "scope": "exhaustive 16-bit species/item/move domains, all 24 party slots and four move slots; does not execute a complete recorded battle"
+    },
+    {
+      "command": "python tools/py_scripts/test_fakemon_dex_icons.py",
+      "result": "passed",
+      "actual_thumb_renderer_cases": 1641,
+      "scope": "last-page preload rows495-544 and extreme invalid indices; out-of-range rows stay hidden without reading species"
+    },
+    {
+      "command": "python tools/py_scripts/test_fakemon_performance.py",
+      "result": "passed",
+      "differential_cases": 24608,
+      "scope": "Canonical species0-493 and32 serialized forms match original lookup/output; all11 custom species/32forms/25natures bypass canonical table and preserve modifiers"
+    }
+  ],
+  "emulator": {
+    "implementation": "DeSmuME through py-desmume; unique ROM basenames and private save copies",
+    "native_desktop_control": false,
+    "evidence_directory": "validation/",
+    "verified": "Boot/continue, follower/party rendering, summary name/type/sprite/number/EXP, in-game save, reboot/continue, matching-editor profile and checksums; final-form shiny Ragnaroc retained",
+    "gameplay_acceptance_incomplete": true,
+    "note": "Each run.json records its exact tested ROM hash. Some smoke fixtures precede narrowly scoped later fixes; they are not claimed to exercise those fixes. Earlier shared-basename runs were discarded.",
+    "move_summary": {
+      "result": "visually verified",
+      "moves": [
+        468,
+        469,
+        470,
+        471,
+        472,
+        473,
+        474
+      ],
+      "fields": [
+        "name",
+        "type",
+        "category icon",
+        "current/max base PP"
+      ],
+      "battle_execution": false,
+      "evidence": [
+        "validation/phg-moves-a-delivery/summary-page-1.png",
+        "validation/phg-moves-b-delivery/summary-page-1.png"
+      ]
+    },
+    "pokedex": {
+      "result": "passed in final HeartGold build",
+      "run": "phg-release-verified",
+      "rom_sha256": "2a42bc7ac161c6255b3fe9e43ad725c2bc8eeaa57963bc3a4ef2d1dd4025f015",
+      "evidence": "validation/dex/run.json",
+      "heap_audit": {
+        "allocation_failures": 0,
+        "minimum_free_bytes": 52248,
+        "minimum_largest_block_bytes": 52036
+      },
+      "verified": [
+        "Arceus493 to Voltuff494 boundary and custom tail list",
+        "Fimbulisk501 name, art, types, category, dimensions and footprint",
+        "normal and search-result three-page prose, wrap and species-change reset",
+        "canonical interlude reset and repeated unfiltered search",
+        "last-page scrolling, area/size tabs and exit/reopen",
+        "Summary Performance page and exit to overworld"
+      ],
+      "unverified": "Every filter, complete size calibration, every minigame and stock diploma behavior remain manual acceptance checks"
+    },
+    "release_save_roundtrips": [
+      "phg-release-verified",
+      "pss-release-verified"
+    ]
+  },
+  "editors": {
+    "pkhex": {
+      "branch": "fakemon-stock",
+      "commit": "d00866e7d36a55ab7407b756bf26311873544bbe",
+      "build": "passed",
+      "tests": {
+        "passed": 608,
+        "skipped": 1,
+        "failed": 1,
+        "known_baseline_failure": "EffortExpLegalityTests.ZeroEVs_ReturnsZero: expected 0, actual -999; reproduced on pristine baseline"
+      }
+    },
+    "pkmds": {
+      "branch": "fakemon-stock",
+      "commit": "c16eff94c8b9767c0922d3583dfec6f990209ed3",
+      "build": "passed",
+      "ci": {
+        "passed": 475,
+        "failed": 0,
+        "url": "https://github.com/the-new-kai-lu/PKMDS-Blazor/actions/runs/36285799708"
+      }
+    },
+    "roundtrips": "validation/editor-roundtrips.json"
+  },
+  "remaining_manual_checks": [
+    "Seven move effects through the complete battle scheduler, doubles, AI, immunities, recoil and Berry edge cases",
+    "Actual evolution sequences, strict same-KO Embernewt branch, cancellation and EXP transition hooks",
+    "Breeding, hatching, tutor/TM use, EV/base EXP awards and Hall of Fame",
+    "Audible cry quality, battle sprites/animation timing, all follower directions/interiors and all gender/shiny combinations",
+    "Every Dex filter/tab, canonical form/language preservation and stock diploma completion",
+    "Full new-game/story regression, both editor UIs, physical DS/flashcart compatibility"
+  ],
+  "acceptance_checklist": "IMPLEMENTATION_AND_TESTING.md"
+}

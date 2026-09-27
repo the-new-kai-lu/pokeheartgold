@@ -428,3 +428,4 @@
 .public ov18_021F89D0
 .public ov18_021F95AC
 .public ov18_021F95F8
+.public BtlCmd_TryIncinerate

@@ -1,6 +1,7 @@
 #include "get_egg.h"
 
 #include "global.h"
+#include "fakemon.h"
 
 #include "constants/abilities.h"
 #include "constants/balls.h"
@@ -358,6 +359,7 @@ static void InheritIVs(Pokemon *egg, Daycare *dayCare) {
 static u8 LoadEggMoves(Pokemon *mon, u16 *dest) {
     u16 numEggMoves;
     u16 i;
+    if (IsFakemonSpecies(GetMonData(mon, MON_DATA_SPECIES, NULL))) return FakemonEggMoves(GetMonData(mon, MON_DATA_SPECIES, NULL), dest);
     u16 *eggMoveList = GfGfxLoader_LoadFromNarc(NARC_fielddata_breeding_egg_move_list, 0, FALSE, HEAP_ID_FIELD1, TRUE);
     numEggMoves = 0;
     u16 offset = 0;
