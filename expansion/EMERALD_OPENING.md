@@ -10,9 +10,11 @@ pins in `baseline.json`.
 
 ## Minimum recognizable flow and evidence
 
-Proposed first slice: reach Littleroot, witness Birch pursued on Route 101,
-interact with his bag, select a Hoenn starter, **fight the rescue battle**,
-return to Birch's Lab for acknowledgment/nickname, then leave and revisit.
+Approved first slice: reach Littleroot, witness Birch pursued on Route 101,
+**fight the rescue battle with the existing Johto party**, then return to
+Birch's Lab to choose and receive a Hoenn starter. Leave and revisit without
+resetting Johto progress. The original Emerald bag-selection flow below is
+donor evidence, not the approved reward timing.
 Emerald's `data/maps/LittlerootTown/scripts.inc` and
 `data/maps/Route101/scripts.inc:19-65,214-239` control rescue setup, exit
 blocking, bag interaction, object visibility, route state, and lab warp.
@@ -47,25 +49,38 @@ captured Pokémon, not a tested gift transaction.
 
 ## Proposed transaction and safety gates (not implemented)
 
-Use a separate Hoenn episode state and choice, with **no reuse of Elm's
-starter flag or `SetStarterChoice`**. Preserve all existing party members,
-badges, story flags, following Pokémon, and save partition layout. Check
-party space before any irreversible starter grant or rescue battle. Safest
-first implementation: if all six slots are occupied, stop before the bag
-selection/battle and ask the player to free a party slot at a PC; leave the
-scene retryable. This is a deliberate full-party fallback, **not** a claim
-that direct-to-PC gifts already work. If the episode later requires a
-full-party award, implement and test a separate verified PC-space check,
-deposit path and receipt. If party and boxes are both full, defer the
-reward without clearing eligibility or overwriting a Pokémon.
+Use separate rescue-completed and gift-received states, with **no reuse of
+Elm's starter flag or `SetStarterChoice`**. Preserve all existing party members,
+badges, story flags, following Pokémon, and save partition layout. A full
+party must NOT block the rescue. The earlier free-party-slot rescue fallback
+is rejected. Rescue completion unlocks the lab aftermath and onward/return
+travel independently of reward delivery.
 
-On confirmed successful delivery, persist a distinct Hoenn-starter
-received state and chosen species exactly once; a repeated bag interaction
-must not duplicate the gift. The rescue battle must use HGSS's battle
-startup/return plumbing and continue to lab only after its outcome is
-handled. Define behavior on blackout, interrupted selection, and reload
-before implementing; never set the completion/visibility flags before
-receipt and battle outcome are safe. Link the route, lab, and Johto return
+At the lab, let the player choose Treecko, Torchic, or Mudkip. Proposed delivery
+result contract (semantic names, not allocated opcode/result IDs):
+
+| Outcome | Required behavior |
+| --- | --- |
+| PARTY | Append to party; leave existing slots unchanged; record receipt once |
+| PC | Party full: deposit in an empty PC slot; report destination; record receipt once |
+| NO_SPACE | Party and all boxes full: Birch retains the reward; no receipt, overwrite, or story lock |
+| Cancel | No grant and no receipt; return to the offer later |
+| Already received | Dialogue only; never create another starter |
+
+Receipt must follow a successful insertion, not a capacity prediction. Set
+Pokédex ownership only after insertion. Retain a pending chosen species on
+NO_SPACE; retry must not reroll an already-created Pokémon or duplicate one.
+The exact choice/receipt encoding, creation timing, and whether pending gifts
+need a Pokémon object must be resolved within existing audited save storage;
+no new save block or raw donor flag numbers are authorized. Avoid an asynchronous
+save/UI boundary between insertion and receipt. Test save/reload at every
+reachable boundary; do not call this transaction atomic without runtime evidence.
+
+The rescue battle uses HGSS battle startup/return plumbing with the existing
+party, not Emerald's callback that grants a starter before fighting. A loss
+or blackout must not award rescue completion or a starter; retry behavior and
+safe return position need explicit HG/SS tests. Johto starter selection remains
+untouched. Link the route, lab, and Johto return
 with verified bidirectional warps, collision, NPC movement and persistent
 Birch placement. Allocate event IDs only after auditing all compiled
 scripts/assembly and both game versions; a symbolic gap is not proof of a
@@ -73,7 +88,68 @@ free slot. Inventory maps, tilesets, scripts, text, music, trainers,
 encounters, species and asset provenance before porting. No donor resource,
 game script, save migration, or executable episode is included here.
 
-Test both HG and SS with one and six party members, full PC, repeated
-interaction, battle loss/retry, save/reload before and after receipt, return
+Test both HG and SS with one and six party members, the last free PC slot,
+full PC, selection cancellation, repeated interaction, battle loss/retry,
+save/reload before and after receipt, deferred collection after freeing space, return
 to Johto and revisit, plus PKHeX and PKMDS export/edit/reopen on disposable
 real saves. CI's matching vanilla ROMs do not establish those behaviors.
+
+## Integration boundary: do not repurpose existing opcodes
+
+`ScrCmd_GiveMon` (`src/scrcmd_party.c:19-34`) has an existing operand layout
+and Boolean return. Changing failure into successful PC delivery globally
+would change every existing caller's assumptions about party indices.
+Keep it unchanged. The superficially relevant `ScrCmd_510`
+(`src/scrcmd_12.c:57-75`) is Pal Park's six-migrant deposit: it asserts
+insertion, clears migration data and has no per-gift no-space result.
+It is used by `scr_seq_0812_T08R0201.s` and cannot become Birch's opcode.
+
+An eventual dedicated command needs coordinated review of
+`src/data/fieldmap/script_cmd_table.h`, `include/scrcmd.h`,
+`asm/macros/script.inc`, and `tools/py_scripts/scrcmd.json`, plus an actual
+episode caller and runtime tests. No unused ID has been proven safe here.
+Therefore this checkpoint adds no uncallable C helper, opcode, global gift
+behavior change, or story ID. PC insertion exists, but integration is not yet
+implemented. `PCStorage_PlaceMonInFirstEmptySlotInAnyBox`
+(`src/pokemon_storage_system.c:54-68`) scans from the active box, wraps,
+restores PP and returns FALSE if all boxes are occupied. Its success result
+does not report a destination box; that needs explicit handling for the UI.
+
+## Three-map resource inventory
+
+Source: each map's `data/maps/<name>/map.json` and
+`data/layouts/layouts.json` at the Emerald audit revision above. Counts include
+donor events that must be omitted or adapted, not a proposed HGSS allocation.
+
+| Map | GBA layout dimensions | Objects / warps / coordinate / background events | Tilesets | Music |
+| --- | --- | --- | --- | --- |
+| LittlerootTown | 20 x 20 | 8 / 3 / 9 / 4 | General + Petalburg | MUS_LITTLEROOT |
+| Route101 | 20 x 20 | 6 / 0 / 9 / 1 | General + Petalburg | MUS_ROUTE101 |
+| LittlerootTown_ProfessorBirchsLab | 13 x 13 | 6 / 2 / 0 / 15 | Building + Lab | MUS_BIRCH_LAB |
+
+Each layout references `data/layouts/<name>/{map,border}.bin`; these are
+GBA metatile data, not DS geometry. Town connects north to Route 101;
+Route 101 connects north to Oldale and south to town. Town's three warps
+lead to May's house, Brendan's house, and the lab. The lab's two exit tiles
+both target town warp 2. **The three maps are not a closed import unit**:
+Oldale and the two houses require explicit boundary handling or additional
+resources. Do not leave dangling warps or pretend those interiors were imported.
+The Johto arrival/return connection is new and is not specified by donor data.
+
+Required object graphics include Birch, his bag, Zigzagoon, the town truck,
+mother, twin, fat man, boy, youngster, scientist, item balls and variable
+rival graphics. The lab's item balls/hide flags include Emerald's postgame
+Johto-starter gifts; exclude that subsystem rather than importing it into
+Birch's new Hoenn-starter reward. Likewise audit the moving-truck/new-game
+and rival callbacks before retaining town initialization scripts.
+
+DS integration needs map headers and IDs; matrix/land data, geometry,
+textures, collision and movement permissions; zone-event objects/triggers/warps;
+script banks and message banks; NPC sprite resources; music mapping;
+encounter/battle configuration; and map-section/region presentation.
+Use `src/data/map_headers.h`, `files/fielddata/mapmatrix`,
+`files/fielddata/eventdata/zone_event`,
+`files/fielddata/script/scr_seq` and `files/msgdata` as host entry points.
+Route 101's ordinary encounter data is in
+`src/data/wild_encounters.json`; the rescue first-battle setup is separate.
+Do not substitute a vanilla Johto map's name or copy GBA coordinates directly.
