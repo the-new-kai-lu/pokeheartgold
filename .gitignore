@@ -107,3 +107,6 @@ compile_commands.json
 __pycache__
 .venv/
 *.pyc
+
+# Windows download metadata copied into WSL
+*:Zone.Identifier

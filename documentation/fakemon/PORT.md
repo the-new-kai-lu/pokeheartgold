@@ -1,6 +1,6 @@
 # Stock-based Fakemon port — audit and prerequisites
 
-Status: **preparation only; no Fakemon are registered and no functional modified ROM has been built.** This branch is separate from hg-engine. Existing game source/data is untouched at this stage.
+Status: **stock HeartGold and SoulSilver build and match retail; no Fakemon are registered and no functional modified ROM has been built.** This branch is separate from hg-engine. Existing game source/data is untouched at this stage.
 
 Base: `9d8b7591f09b65804da2fb2dfd56f320633e0d36`. Approved species/assets are sourced from `the-new-kai-lu/hg-engine`; their source revision, data and asset hashes are captured in `port-audit.json`.
 
@@ -25,17 +25,35 @@ Investigate a separate species-to-Dex-slot mapping using those bits. Keep canoni
 
 Only after the ROM layout and round-trip behavior are established should new `fakemon-stock` branches in PKHeX and PKMDS implement its profile. Do not reuse hg-engine's 0xFDB0/0xFE00 save adapter without proof: this port should avoid inheriting its unrelated save expansions.
 
-## Build prerequisite
+## Build environment
 
-The current checkout lacks the proprietary build tools and templates required by its build system:
+The user supplied the proprietary build tools and templates required by this build system:
 
 - MWCC/MWAS/MWLD 2.0/sp2p2 for ARM9; 2.0/sp2p3 for ARM7 and supporting libraries; the 1.2/sp2p3 assembler for `asm/nitrocrypto.o`.
 - Nitro SDK `makerom.exe`, `makelcf.exe`, `makebanner.exe`, `ntrcomp.exe`, and the link/response templates named in `INSTALL.md`.
 - The locally supplied compiler license and a working executable runner (normally Wine under WSL2).
 
-`INSTALL.md` describes setup. These files are not supplied by the repository and were not found in the checked workspace/WSL tool locations. Their absence blocks a baseline ROM build. The license contents are never read or included in the audit.
+`INSTALL.md` describes setup. The supplied files are local-only and ignored by Git; neither the compiler, SDK, license nor generated ROM is committed. The license contents are never read or included in the audit.
 
-Once the tools are supplied, first build the unchanged baseline with comparison enabled (`make -j8 COMPARE=1`). Verify the documented SHA-1 before game-code edits. Modified builds will use `COMPARE=0`; validate canonical data separately and test new game, save/load, all eleven species in party/boxes/daycare/followers/battles, custom cries, reminders, both evolution branches, EXP transitions and unchanged canonical battle behavior.
+Verified on Ubuntu 24.04 under WSL2, using Ubuntu Wine 9.0 with 32-bit support. Installed the missing dependencies with:
+
+```sh
+sudo dpkg --add-architecture i386
+sudo apt-get update
+sudo apt-get install wine wine32:i386 libpugixml-dev
+```
+
+The ARM GNU binutils, build tools and libpng development package were already present. The copied `tools/mwccarm` and `tools/bin` folders initially belonged to root; ownership was changed to the WSL user so the upstream assembler patcher could open its executable for writing. Its misleading `ERROR: No file detected` message was a permissions error. No source/build-system changes were needed to run the supplied executables. Windows `:Zone.Identifier` metadata is ignored.
+
+The stock HeartGold build completed with `WINEDEBUG=-all make -j8 COMPARE=1`, including ARM7/ARM9 compilation, linking, ROM packaging and the final retail SHA-1 check:
+
+- `build/heartgold.us/pokeheartgold.us.nds`: `4fcded0e2713dc03929845de631d0932ea2b5a37`.
+- `build/soulsilver.us/pokesoulsilver.us.nds`: `f8dc38ea20c17541a43b58c5e6d18c1732c7e582` (built with `WINEDEBUG=-all make -j8 soulsilver COMPARE=1`).
+- Local build logs: `/tmp/pokeheartgold-stock-build.log` and `/tmp/pokesoulsilver-stock-build.log`.
+
+The WSL2 linker issue mentioned in upstream `INSTALL.md` did not occur in this environment.
+
+Both unchanged baselines have passed comparison. Modified builds will use `COMPARE=0`; validate canonical data separately and test new game, save/load, all eleven species in party/boxes/daycare/followers/battles, custom cries, reminders, both evolution branches, EXP transitions and unchanged canonical battle behavior.
 
 ## Reproduce the audit
 

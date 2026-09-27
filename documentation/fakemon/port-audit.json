@@ -2,24 +2,8 @@
   "status": "audit_only_not_integrated",
   "source_revision": "dfb0dcd0a01a1eba4f27d038eb0c7703b8136571",
   "pokeheartgold_base_revision": "9d8b7591f09b65804da2fb2dfd56f320633e0d36",
-  "missing_build_inputs": [
-    "tools/mwccarm/2.0/sp2p2/mwccarm.exe",
-    "tools/mwccarm/2.0/sp2p2/mwasmarm.exe",
-    "tools/mwccarm/2.0/sp2p2/mwldarm.exe",
-    "tools/mwccarm/1.2/sp2p3/mwasmarm.exe",
-    "tools/mwccarm/2.0/sp2p3/mwccarm.exe",
-    "tools/mwccarm/2.0/sp2p3/mwasmarm.exe",
-    "tools/mwccarm/2.0/sp2p3/mwldarm.exe",
-    "tools/mwccarm/license.dat",
-    "tools/bin/makerom.exe",
-    "tools/bin/makelcf.exe",
-    "tools/bin/makebanner.exe",
-    "tools/bin/ntrcomp.exe",
-    "ARM9-TS.lcf.template",
-    "mwldarm.response.template",
-    "sub/ARM7-TS.lcf.template"
-  ],
-  "wine_available": false,
+  "missing_build_inputs": [],
+  "wine_available": true,
   "approved_balance_constraints": {
     "source": "user gameplay guidelines, superseding concept-sheet evolution levels",
     "base_stat_total_by_stage": {
