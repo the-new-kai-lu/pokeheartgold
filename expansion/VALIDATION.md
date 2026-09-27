@@ -13,6 +13,9 @@ This is a partial implementation checkpoint, not Stage 1 completion.
 - Twenty host tests pass, including actual compiled claim-byte execution for
   HG/SS, existing production gift-helper tests, native range tests, Frontier
   archive checks, and all baseline/mutation tests.
+- Full native script rebuild: 966/966 tracked hashes match separately for
+  HeartGold and SoulSilver (1,932 outputs). The appended bank has a new pinned
+  hash; original 965 hashes remain unchanged.
 - No selection UI, rescue battle, imported map, emulator or save/editor
   round trip is claimed. Full Stage 1 campaigns remain unimplemented.
 
