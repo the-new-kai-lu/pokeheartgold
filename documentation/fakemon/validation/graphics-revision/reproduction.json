@@ -1,0 +1,184 @@
+{
+  "status": "passed",
+  "asset_files_byte_identical": 44,
+  "native_frames": 88,
+  "commands": "pack_fakemon_followers.py --family <electric|varan|bird> --sheet documentation/fakemon/graphics-revision/source-sheets/<family>.png --layout documentation/fakemon/graphics-revision/follower-sheet-layout.json --output <fresh-staging-directory>",
+  "files": [
+    {
+      "path": "cragaviar/follower.bin",
+      "sha256": "68a949436655be18c9fa091675154311fa56c3ec8dca25d2137c61c70e8d916c"
+    },
+    {
+      "path": "cragaviar/source/overworld.png",
+      "sha256": "cfa0c4945f1dd2cd2591c8f6669204761ca8908195d673319b2de73d11998ec4"
+    },
+    {
+      "path": "cragaviar/source/overworld-tsure_poke0.pal",
+      "sha256": "040a1559468b41c9d5485db240aaad82965e6956b02ec9e920de1525489467b4"
+    },
+    {
+      "path": "cragaviar/source/overworld-tsure_poke1.pal",
+      "sha256": "ef536278585782aadda446ca2fe04b160f0a7bbcf62fe49cb4872b59c07a786a"
+    },
+    {
+      "path": "embernewt/follower.bin",
+      "sha256": "c682284347d9e7d33b371fb99b80b829679ee2a5f95fe2a8622724c707adb14d"
+    },
+    {
+      "path": "embernewt/source/overworld.png",
+      "sha256": "ee2a104026710f421e3bec305486638b2088cd8815ae121537e31c527bc1782d"
+    },
+    {
+      "path": "embernewt/source/overworld-tsure_poke0.pal",
+      "sha256": "aa80f2f3126a660f69b7761e1f41068363d37a5b75c9780095d2371311f08670"
+    },
+    {
+      "path": "embernewt/source/overworld-tsure_poke1.pal",
+      "sha256": "28bfd70a56c7b92ee8047aca61764588ce63c8e2f74d61e78b17018719ef21f7"
+    },
+    {
+      "path": "fimbulisk/follower.bin",
+      "sha256": "e70609d26b718c411e12effc4b26e799c67cf74afcfce9074b722904eb939707"
+    },
+    {
+      "path": "fimbulisk/source/overworld.png",
+      "sha256": "bea32613e8c31f7fd46f2182f44692f5fd90917c2e79f54be587fc403f3dad4b"
+    },
+    {
+      "path": "fimbulisk/source/overworld-tsure_poke0.pal",
+      "sha256": "dcabb9080f8c1147715ffd3e4d22df11cf9148954ba961580a4c25020921e895"
+    },
+    {
+      "path": "fimbulisk/source/overworld-tsure_poke1.pal",
+      "sha256": "5145265da7c8a341cd9d0e8cfbf0b87acd7e3e02dc7d760afad6ee8109b33b86"
+    },
+    {
+      "path": "magmalisk/follower.bin",
+      "sha256": "336f16ae83c60765ed536658646d5ece8c5d97fc55e05ed78731176f0c9d6f47"
+    },
+    {
+      "path": "magmalisk/source/overworld.png",
+      "sha256": "50931a0ed8263a56f2df0214998b2650741ff85eb7d9eefd385c952e26c86333"
+    },
+    {
+      "path": "magmalisk/source/overworld-tsure_poke0.pal",
+      "sha256": "aa80f2f3126a660f69b7761e1f41068363d37a5b75c9780095d2371311f08670"
+    },
+    {
+      "path": "magmalisk/source/overworld-tsure_poke1.pal",
+      "sha256": "28bfd70a56c7b92ee8047aca61764588ce63c8e2f74d61e78b17018719ef21f7"
+    },
+    {
+      "path": "pyrovaran/follower.bin",
+      "sha256": "b0c62d08f65cd88cdaee45272ba5aab9b581cafe8c24be5fad1b3a9162a3390f"
+    },
+    {
+      "path": "pyrovaran/source/overworld.png",
+      "sha256": "7e4a9512f692c7adb5dff451b218b5b387fa5b206b3ff500ca96e753174a5088"
+    },
+    {
+      "path": "pyrovaran/source/overworld-tsure_poke0.pal",
+      "sha256": "aa80f2f3126a660f69b7761e1f41068363d37a5b75c9780095d2371311f08670"
+    },
+    {
+      "path": "pyrovaran/source/overworld-tsure_poke1.pal",
+      "sha256": "28bfd70a56c7b92ee8047aca61764588ce63c8e2f74d61e78b17018719ef21f7"
+    },
+    {
+      "path": "ragnaroc/follower.bin",
+      "sha256": "43803ed387c82823bdd552e8e57c5b7f328ff0fca5cac0ea27361fae9fa44379"
+    },
+    {
+      "path": "ragnaroc/source/overworld.png",
+      "sha256": "8adf8054762109e87ecaffa1487b3f18923b417cb4c27634d15e4e128aa8c846"
+    },
+    {
+      "path": "ragnaroc/source/overworld-tsure_poke0.pal",
+      "sha256": "040a1559468b41c9d5485db240aaad82965e6956b02ec9e920de1525489467b4"
+    },
+    {
+      "path": "ragnaroc/source/overworld-tsure_poke1.pal",
+      "sha256": "ef536278585782aadda446ca2fe04b160f0a7bbcf62fe49cb4872b59c07a786a"
+    },
+    {
+      "path": "raijinque/follower.bin",
+      "sha256": "41bee74a9bea4387caface82786db1786df9f2c121105ce5723caf1145876d29"
+    },
+    {
+      "path": "raijinque/source/overworld.png",
+      "sha256": "656663a77df761de0abd7cef746a66b6e991633c20fa19b297f9811e76606266"
+    },
+    {
+      "path": "raijinque/source/overworld-tsure_poke0.pal",
+      "sha256": "9b9d645b5863c152e89bd1e58b0774cb83e0dc8901c604b9a0473f93b990ab92"
+    },
+    {
+      "path": "raijinque/source/overworld-tsure_poke1.pal",
+      "sha256": "6527c596908bed3600e7a97704a5af503f09b14092ebe9e7c8a408c606d38294"
+    },
+    {
+      "path": "rimevaran/follower.bin",
+      "sha256": "192ae6d4e971bbb89f24abb8102a38ae4b9e59cb5acd735b6f4807827b9e82f1"
+    },
+    {
+      "path": "rimevaran/source/overworld.png",
+      "sha256": "af07370a13d30593206376ed2712426b95db5c61517eb751391d85735a763eb7"
+    },
+    {
+      "path": "rimevaran/source/overworld-tsure_poke0.pal",
+      "sha256": "dcabb9080f8c1147715ffd3e4d22df11cf9148954ba961580a4c25020921e895"
+    },
+    {
+      "path": "rimevaran/source/overworld-tsure_poke1.pal",
+      "sha256": "5145265da7c8a341cd9d0e8cfbf0b87acd7e3e02dc7d760afad6ee8109b33b86"
+    },
+    {
+      "path": "sedgling/follower.bin",
+      "sha256": "aa679deb6dda1274598d6636b22e53e676600a31bdc95511d2e515ac07967f68"
+    },
+    {
+      "path": "sedgling/source/overworld.png",
+      "sha256": "62d24314f85dd20753377a3eb9a47f4920685eba8ad5c973d3c4f780904ac4fc"
+    },
+    {
+      "path": "sedgling/source/overworld-tsure_poke0.pal",
+      "sha256": "040a1559468b41c9d5485db240aaad82965e6956b02ec9e920de1525489467b4"
+    },
+    {
+      "path": "sedgling/source/overworld-tsure_poke1.pal",
+      "sha256": "ef536278585782aadda446ca2fe04b160f0a7bbcf62fe49cb4872b59c07a786a"
+    },
+    {
+      "path": "surguenon/follower.bin",
+      "sha256": "c9d12ff12afe5c5311af23d16e64e9605aa8a01f953892f8e679d607f0e44902"
+    },
+    {
+      "path": "surguenon/source/overworld.png",
+      "sha256": "0c683fda34baf81e9cde1bb3348ee065c025b8e8818fed6d4223c5a719e3852e"
+    },
+    {
+      "path": "surguenon/source/overworld-tsure_poke0.pal",
+      "sha256": "9b9d645b5863c152e89bd1e58b0774cb83e0dc8901c604b9a0473f93b990ab92"
+    },
+    {
+      "path": "surguenon/source/overworld-tsure_poke1.pal",
+      "sha256": "6527c596908bed3600e7a97704a5af503f09b14092ebe9e7c8a408c606d38294"
+    },
+    {
+      "path": "voltuff/follower.bin",
+      "sha256": "c858c9be6a80f66eed825cd17fe4d0dca133f2ca7940370964279119a824ed66"
+    },
+    {
+      "path": "voltuff/source/overworld.png",
+      "sha256": "1c20fec678dc2085dfcf822e468ece77bdace9a1a7aeb84278a3482bebd7ec37"
+    },
+    {
+      "path": "voltuff/source/overworld-tsure_poke0.pal",
+      "sha256": "9b9d645b5863c152e89bd1e58b0774cb83e0dc8901c604b9a0473f93b990ab92"
+    },
+    {
+      "path": "voltuff/source/overworld-tsure_poke1.pal",
+      "sha256": "6527c596908bed3600e7a97704a5af503f09b14092ebe9e7c8a408c606d38294"
+    }
+  ]
+}

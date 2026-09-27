@@ -1,0 +1,49 @@
+{
+  "result": "passed",
+  "command": "python3 tools/py_scripts/test_fakemon_names.py --report documentation/fakemon/validation/graphics-revision/names.json",
+  "species_name_rows": 88,
+  "complete_dex_entries": 99,
+  "encrypted_record_cases": 35904,
+  "tested_species": [
+    1076,
+    1077,
+    1078,
+    1079,
+    1080,
+    1081,
+    1082,
+    1083,
+    1084,
+    1085,
+    1086
+  ],
+  "tested_apis": [
+    "GetMonData",
+    "GetBoxMonData"
+  ],
+  "tested_attributes": [
+    "MON_DATA_NICKNAME",
+    "MON_DATA_NICKNAME_STRING",
+    "MON_DATA_NICKNAME_STRING_AND_FLAG"
+  ],
+  "coverage": [
+    "All 32 PID block-shuffle indexes, encrypted party and box records, and both lock states",
+    "Title-case defaults become uppercase; already uppercase names remain unchanged",
+    "Genuine nicknames, explicitly nicknamed title-case species names, Eggs, and stock species stay unchanged",
+    "Checksum-failed records retain stored data and show the stock Egg fallback",
+    "Unflagged non-default names stay unchanged",
+    "Stale-checksum locked records defer normalization until the caller finalizes its checksum",
+    "Stored nickname tail bytes and all unrelated decrypted party/box fields are preserved",
+    "Updated checksums match stored records; subsequent reads preserve exact encrypted bytes",
+    "All generated species-name rows and all custom species references in game prose/dialogue are uppercase"
+  ],
+  "limitations": [
+    "Host cipher, message-bank and String APIs are stubs; actual emulator validation is separate."
+  ],
+  "source_sha256": {
+    "src/pokemon.c": "acec458ad293af47fb5dbe1f59f7b3ad80ff432dd55b958ffa9db9c2a26dcf54",
+    "include/pokemon_types_def.h": "eed1c1796f12529b94e0fe8bd51beb2bea35eb0408125c009ed56bef6ba25d1b",
+    "tools/py_scripts/test_fakemon_names.py": "6ec54afbe88be65e86b6d2069f3a0b0ed664be8f31981f2382610fe05fcb5783",
+    "tools/py_scripts/import_fakemon_text.py": "64672984b131e8b53ef72f974953c38f934c5790a825752229c58baf8ff81693"
+  }
+}

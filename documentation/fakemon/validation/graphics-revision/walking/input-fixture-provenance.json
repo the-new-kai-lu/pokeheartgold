@@ -1,0 +1,46 @@
+{
+  "input": "/tmp/elm-trio-fixture/elm-trio-received.sav",
+  "input_sha256": "d122c377d5cabba29407fb800789460215048dd420619558618f994f014b9ffa",
+  "edit": "Party order only; all Pokemon bytes preserved. Actual new-game Elm trio save, still in lab.",
+  "fixtures": [
+    {
+      "key": "voltuff",
+      "species": 1076,
+      "path": "/tmp/follower-walk-save-fixtures/voltuff.sav",
+      "sha256": "df074cca0c1287ff42ef6fbed4caae32c63bf0e5165b3423da1caf65b93ed984",
+      "party": [
+        1076,
+        1079,
+        1084
+      ],
+      "checksums_valid": true,
+      "pokemon_data_unchanged": true
+    },
+    {
+      "key": "embernewt",
+      "species": 1079,
+      "path": "/tmp/follower-walk-save-fixtures/embernewt.sav",
+      "sha256": "b645b51ede378f42dba9c910e4f84866088761ac21ebe5c9d9d6181da7692db4",
+      "party": [
+        1079,
+        1076,
+        1084
+      ],
+      "checksums_valid": true,
+      "pokemon_data_unchanged": true
+    },
+    {
+      "key": "sedgling",
+      "species": 1084,
+      "path": "/tmp/follower-walk-save-fixtures/sedgling.sav",
+      "sha256": "d122c377d5cabba29407fb800789460215048dd420619558618f994f014b9ffa",
+      "party": [
+        1084,
+        1079,
+        1076
+      ],
+      "checksums_valid": true,
+      "pokemon_data_unchanged": true
+    }
+  ]
+}

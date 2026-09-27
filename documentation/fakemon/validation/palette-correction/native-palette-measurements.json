@@ -1,0 +1,258 @@
+[
+  {
+    "species": "voltuff",
+    "variant": "normal",
+    "palette": "before",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 19.074,
+    "visible_pixels": 240
+  },
+  {
+    "species": "voltuff",
+    "variant": "normal",
+    "palette": "after",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 17.137,
+    "visible_pixels": 240
+  },
+  {
+    "species": "voltuff",
+    "variant": "shiny",
+    "palette": "before",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 15.553,
+    "visible_pixels": 240
+  },
+  {
+    "species": "voltuff",
+    "variant": "shiny",
+    "palette": "after",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 13.804,
+    "visible_pixels": 240
+  },
+  {
+    "species": "surguenon",
+    "variant": "normal",
+    "palette": "before",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 17.146,
+    "visible_pixels": 246
+  },
+  {
+    "species": "surguenon",
+    "variant": "normal",
+    "palette": "after",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 15.566,
+    "visible_pixels": 246
+  },
+  {
+    "species": "surguenon",
+    "variant": "shiny",
+    "palette": "before",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 14.148,
+    "visible_pixels": 246
+  },
+  {
+    "species": "surguenon",
+    "variant": "shiny",
+    "palette": "after",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 12.777,
+    "visible_pixels": 246
+  },
+  {
+    "species": "raijinque",
+    "variant": "normal",
+    "palette": "before",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 17.328,
+    "visible_pixels": 1431
+  },
+  {
+    "species": "raijinque",
+    "variant": "normal",
+    "palette": "after",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 16.113,
+    "visible_pixels": 1431
+  },
+  {
+    "species": "raijinque",
+    "variant": "shiny",
+    "palette": "before",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 15.051,
+    "visible_pixels": 1431
+  },
+  {
+    "species": "raijinque",
+    "variant": "shiny",
+    "palette": "after",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 13.97,
+    "visible_pixels": 1431
+  },
+  {
+    "species": "embernewt",
+    "variant": "normal",
+    "palette": "before",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 11.07,
+    "visible_pixels": 225
+  },
+  {
+    "species": "embernewt",
+    "variant": "normal",
+    "palette": "after",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 10.144,
+    "visible_pixels": 225
+  },
+  {
+    "species": "embernewt",
+    "variant": "shiny",
+    "palette": "before",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 15.18,
+    "visible_pixels": 225
+  },
+  {
+    "species": "embernewt",
+    "variant": "shiny",
+    "palette": "after",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 14.494,
+    "visible_pixels": 225
+  },
+  {
+    "species": "pyrovaran",
+    "variant": "normal",
+    "palette": "before",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 11.892,
+    "visible_pixels": 257
+  },
+  {
+    "species": "pyrovaran",
+    "variant": "normal",
+    "palette": "after",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 10.776,
+    "visible_pixels": 257
+  },
+  {
+    "species": "pyrovaran",
+    "variant": "shiny",
+    "palette": "before",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 14.413,
+    "visible_pixels": 257
+  },
+  {
+    "species": "pyrovaran",
+    "variant": "shiny",
+    "palette": "after",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 13.564,
+    "visible_pixels": 257
+  },
+  {
+    "species": "magmalisk",
+    "variant": "normal",
+    "palette": "before",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 13.309,
+    "visible_pixels": 1370
+  },
+  {
+    "species": "magmalisk",
+    "variant": "normal",
+    "palette": "after",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 12.056,
+    "visible_pixels": 1370
+  },
+  {
+    "species": "magmalisk",
+    "variant": "shiny",
+    "palette": "before",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 14.954,
+    "visible_pixels": 1370
+  },
+  {
+    "species": "magmalisk",
+    "variant": "shiny",
+    "palette": "after",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 13.985,
+    "visible_pixels": 1370
+  },
+  {
+    "species": "rimevaran",
+    "variant": "normal",
+    "palette": "before",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 11.658,
+    "visible_pixels": 242
+  },
+  {
+    "species": "rimevaran",
+    "variant": "normal",
+    "palette": "after",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 11.285,
+    "visible_pixels": 242
+  },
+  {
+    "species": "rimevaran",
+    "variant": "shiny",
+    "palette": "before",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 12.84,
+    "visible_pixels": 242
+  },
+  {
+    "species": "rimevaran",
+    "variant": "shiny",
+    "palette": "after",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 12.133,
+    "visible_pixels": 242
+  },
+  {
+    "species": "fimbulisk",
+    "variant": "normal",
+    "palette": "before",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 13.019,
+    "visible_pixels": 1270
+  },
+  {
+    "species": "fimbulisk",
+    "variant": "normal",
+    "palette": "after",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 12.509,
+    "visible_pixels": 1270
+  },
+  {
+    "species": "fimbulisk",
+    "variant": "shiny",
+    "palette": "before",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 14.314,
+    "visible_pixels": 1270
+  },
+  {
+    "species": "fimbulisk",
+    "variant": "shiny",
+    "palette": "after",
+    "native_frame": "tsure_poke.1",
+    "mean_visible_luma_rgb555": 13.389,
+    "visible_pixels": 1270
+  }
+]

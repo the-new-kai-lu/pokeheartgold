@@ -4308,47 +4308,47 @@
 	</row>
 	<row id="msg_0817_fakemon_01076" index="1076">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Voltuff</language>
+		<language name="English">VOLTUFF</language>
 	</row>
 	<row id="msg_0817_fakemon_01077" index="1077">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Surguenon</language>
+		<language name="English">SURGUENON</language>
 	</row>
 	<row id="msg_0817_fakemon_01078" index="1078">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Raijinque</language>
+		<language name="English">RAIJINQUE</language>
 	</row>
 	<row id="msg_0817_fakemon_01079" index="1079">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Embernewt</language>
+		<language name="English">EMBERNEWT</language>
 	</row>
 	<row id="msg_0817_fakemon_01080" index="1080">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Pyrovaran</language>
+		<language name="English">PYROVARAN</language>
 	</row>
 	<row id="msg_0817_fakemon_01081" index="1081">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Magmalisk</language>
+		<language name="English">MAGMALISK</language>
 	</row>
 	<row id="msg_0817_fakemon_01082" index="1082">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Rimevaran</language>
+		<language name="English">RIMEVARAN</language>
 	</row>
 	<row id="msg_0817_fakemon_01083" index="1083">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Fimbulisk</language>
+		<language name="English">FIMBULISK</language>
 	</row>
 	<row id="msg_0817_fakemon_01084" index="1084">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Sedgling</language>
+		<language name="English">SEDGLING</language>
 	</row>
 	<row id="msg_0817_fakemon_01085" index="1085">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Cragaviar</language>
+		<language name="English">CRAGAVIAR</language>
 	</row>
 	<row id="msg_0817_fakemon_01086" index="1086">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Ragnaroc</language>
+		<language name="English">RAGNAROC</language>
 	</row>
 	<!-- END FAKEMON -->
 </body>

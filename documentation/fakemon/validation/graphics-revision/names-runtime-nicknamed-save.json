@@ -1,0 +1,105 @@
+{
+  "result": "passed",
+  "checks": 35,
+  "before_save": "/tmp/fakemon-name-check/nicknames.sav",
+  "before_sha256": "9fbdc12ca8cb3c561a60b1255432b1b8c0d4868465d49c1ccc0e3783be52b781",
+  "after_save": "/tmp/names-nicknamed-runtime-0926/game-saved.sav",
+  "after_sha256": "2959f166862a91c78a4746b680d7b843bcfcb7ddc1b6dfeee840f8c252a91915",
+  "save_checksums_valid": true,
+  "party_records": [
+    {
+      "slot": 0,
+      "species": 1076,
+      "pid": 2747424974,
+      "old_name": "Voltuff",
+      "new_name": "VOLTUFF",
+      "is_nicknamed": false,
+      "level": 5,
+      "experience": 135,
+      "ability": 9,
+      "stats": {
+        "hp": 21,
+        "max_hp": 21,
+        "atk": 11,
+        "def": 10,
+        "spa": 12,
+        "spd": 10,
+        "spe": 11
+      },
+      "moves": [
+        10,
+        43,
+        84,
+        0
+      ],
+      "checksum_valid": true,
+      "changed_decrypted_offsets": [
+        "0x06",
+        "0x07",
+        "0x4A",
+        "0x4C",
+        "0x4E",
+        "0x50",
+        "0x52",
+        "0x54"
+      ]
+    },
+    {
+      "slot": 1,
+      "species": 1079,
+      "pid": 1259160289,
+      "old_name": "Cinder",
+      "new_name": "Cinder",
+      "is_nicknamed": true,
+      "level": 5,
+      "experience": 135,
+      "ability": 18,
+      "stats": {
+        "hp": 21,
+        "max_hp": 21,
+        "atk": 10,
+        "def": 11,
+        "spa": 11,
+        "spd": 9,
+        "spe": 11
+      },
+      "moves": [
+        10,
+        45,
+        52,
+        0
+      ],
+      "checksum_valid": true,
+      "changed_decrypted_offsets": []
+    },
+    {
+      "slot": 2,
+      "species": 1084,
+      "pid": 202797191,
+      "old_name": "Sedgling",
+      "new_name": "Sedgling",
+      "is_nicknamed": true,
+      "level": 5,
+      "experience": 135,
+      "ability": 11,
+      "stats": {
+        "hp": 19,
+        "max_hp": 19,
+        "atk": 11,
+        "def": 9,
+        "spa": 13,
+        "spd": 11,
+        "spe": 11
+      },
+      "moves": [
+        64,
+        45,
+        0,
+        0
+      ],
+      "checksum_valid": true,
+      "changed_decrypted_offsets": []
+    }
+  ],
+  "editor_roundtrip": "valid_checksums_and_exact_Pokemon_bytes_preserved"
+}

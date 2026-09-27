@@ -1,0 +1,376 @@
+{
+  "result": "passed",
+  "rom_sha256": "08071b5a07bd5186b460501406c2a15a37d2e24371108700d9ac4a66115e49a5",
+  "emulator": "DeSmuME through py-desmume API; no desktop automation or savestate transfer",
+  "original_fixture_provenance": "Genuine game-created post-Elm save from previous starter-trio build; no edits to default-name fixture",
+  "original_fixture_sha256": "b6e3981c5ac0f9ca345776c933c83e28a5c2bea0f032dd78b78fcd25ebc0d5d2",
+  "nickname_fixture_provenance": "Copy of genuine save; only Embernewt nickname Cinder and explicit Sedgling nickname flag/name changed; untouched original retained",
+  "visual_checks": [
+    "Old default trio shows VOLTUFF, EMBERNEWT, SEDGLING in party and all three summary screens",
+    "Updated Voltuff and Embernewt art is visible in their summaries",
+    "Deliberate Cinder and Sedgling nicknames retain case, while their species labels read EMBERNEWT and SEDGLING",
+    "Both cases save through actual game UI; exported saves reopen in separate emulator processes and show correct names"
+  ],
+  "save_validation": {
+    "default": "names-runtime-default-save.json",
+    "nicknamed": "names-runtime-nicknamed-save.json",
+    "assertions_passed": 68,
+    "profile": "fakemon-stock",
+    "save_and_pokemon_checksums": "valid",
+    "unrelated_pokemon_bytes": "exactly preserved",
+    "genuine_nickname_pokemon_bytes": "entire decrypted records exactly preserved"
+  },
+  "screenshots": [
+    "names-runtime-default-party.png",
+    "names-runtime-default-summary-voltuff.png",
+    "names-runtime-default-summary-embernewt.png",
+    "names-runtime-default-summary-sedgling.png",
+    "names-runtime-default-reload-reloaded-party.png",
+    "names-runtime-nicknamed-party.png",
+    "names-runtime-nicknamed-summary-cinder.png",
+    "names-runtime-nicknamed-summary-deliberate-sedgling.png",
+    "names-runtime-nicknamed-reload-reloaded-party.png"
+  ],
+  "runs": [
+    {
+      "rom": "/home/fredd/git/pokeheartgold/build/heartgold.us/heartgold-fakemon-starters.nds",
+      "rom_sha256": "08071b5a07bd5186b460501406c2a15a37d2e24371108700d9ac4a66115e49a5",
+      "input_save": "/tmp/elm-trio-fixture/elm-trio-received.sav",
+      "input_sha256": "b6e3981c5ac0f9ca345776c933c83e28a5c2bea0f032dd78b78fcd25ebc0d5d2",
+      "status": "passed_visual_review_and_save_validation",
+      "inputs": [
+        {
+          "keys": [
+            [
+              "A",
+              10,
+              400
+            ],
+            [
+              "A",
+              10,
+              400
+            ],
+            [
+              "A",
+              10,
+              400
+            ],
+            [
+              "A",
+              10,
+              400
+            ]
+          ],
+          "frames": 400,
+          "name": "loaded"
+        },
+        {
+          "touches": [
+            [
+              43,
+              77,
+              3,
+              400
+            ]
+          ],
+          "name": "party"
+        },
+        {
+          "keys": [
+            [
+              "A",
+              3,
+              180
+            ],
+            [
+              "A",
+              3,
+              400
+            ]
+          ],
+          "name": "summary-voltuff"
+        },
+        {
+          "keys": [
+            [
+              "DOWN",
+              3,
+              300
+            ]
+          ],
+          "name": "summary-embernewt"
+        },
+        {
+          "keys": [
+            [
+              "DOWN",
+              3,
+              300
+            ]
+          ],
+          "name": "summary-sedgling"
+        },
+        {
+          "keys": [
+            [
+              "B",
+              3,
+              180
+            ],
+            [
+              "B",
+              3,
+              300
+            ]
+          ],
+          "touches": [
+            [
+              126,
+              77,
+              3,
+              400
+            ]
+          ],
+          "name": "save-prompt"
+        },
+        {
+          "keys": [
+            [
+              "A",
+              10,
+              800
+            ],
+            [
+              "A",
+              10,
+              2400
+            ]
+          ],
+          "name": "saved",
+          "save": "game-saved.sav"
+        }
+      ],
+      "case": "default"
+    },
+    {
+      "rom": "/home/fredd/git/pokeheartgold/build/heartgold.us/heartgold-fakemon-starters.nds",
+      "rom_sha256": "08071b5a07bd5186b460501406c2a15a37d2e24371108700d9ac4a66115e49a5",
+      "input_save": "/tmp/names-default-runtime-0926/game-saved.sav",
+      "input_sha256": "35fd2d2624a301b294b64dd9d26d2d451cb9d2ea54256b4d16a7784a2abfb748",
+      "status": "passed_fresh_process_reload_visual_review",
+      "inputs": [
+        {
+          "keys": [
+            [
+              "A",
+              10,
+              400
+            ],
+            [
+              "A",
+              10,
+              400
+            ],
+            [
+              "A",
+              10,
+              400
+            ],
+            [
+              "A",
+              10,
+              400
+            ]
+          ],
+          "frames": 400,
+          "name": "reloaded"
+        },
+        {
+          "touches": [
+            [
+              43,
+              77,
+              3,
+              400
+            ]
+          ],
+          "name": "reloaded-party"
+        }
+      ],
+      "case": "default-reload"
+    },
+    {
+      "rom": "/home/fredd/git/pokeheartgold/build/heartgold.us/heartgold-fakemon-starters.nds",
+      "rom_sha256": "08071b5a07bd5186b460501406c2a15a37d2e24371108700d9ac4a66115e49a5",
+      "input_save": "/tmp/fakemon-name-check/nicknames.sav",
+      "input_sha256": "9fbdc12ca8cb3c561a60b1255432b1b8c0d4868465d49c1ccc0e3783be52b781",
+      "status": "passed_visual_review_and_save_validation",
+      "inputs": [
+        {
+          "keys": [
+            [
+              "A",
+              10,
+              400
+            ],
+            [
+              "A",
+              10,
+              400
+            ],
+            [
+              "A",
+              10,
+              400
+            ],
+            [
+              "A",
+              10,
+              400
+            ]
+          ],
+          "frames": 400,
+          "name": "loaded"
+        },
+        {
+          "touches": [
+            [
+              43,
+              77,
+              3,
+              400
+            ]
+          ],
+          "name": "party"
+        },
+        {
+          "keys": [
+            [
+              "A",
+              3,
+              180
+            ],
+            [
+              "A",
+              3,
+              300
+            ],
+            [
+              "DOWN",
+              3,
+              300
+            ]
+          ],
+          "name": "summary-cinder"
+        },
+        {
+          "keys": [
+            [
+              "DOWN",
+              3,
+              300
+            ]
+          ],
+          "name": "summary-deliberate-sedgling"
+        },
+        {
+          "keys": [
+            [
+              "B",
+              3,
+              180
+            ],
+            [
+              "B",
+              3,
+              300
+            ]
+          ],
+          "touches": [
+            [
+              126,
+              77,
+              3,
+              400
+            ]
+          ],
+          "name": "save-prompt"
+        },
+        {
+          "keys": [
+            [
+              "A",
+              10,
+              800
+            ],
+            [
+              "A",
+              10,
+              2400
+            ]
+          ],
+          "name": "saved",
+          "save": "game-saved.sav"
+        }
+      ],
+      "case": "nicknamed"
+    },
+    {
+      "rom": "/home/fredd/git/pokeheartgold/build/heartgold.us/heartgold-fakemon-starters.nds",
+      "rom_sha256": "08071b5a07bd5186b460501406c2a15a37d2e24371108700d9ac4a66115e49a5",
+      "input_save": "/tmp/names-nicknamed-runtime-0926/game-saved.sav",
+      "input_sha256": "2959f166862a91c78a4746b680d7b843bcfcb7ddc1b6dfeee840f8c252a91915",
+      "status": "passed_fresh_process_reload_visual_review",
+      "inputs": [
+        {
+          "keys": [
+            [
+              "A",
+              10,
+              400
+            ],
+            [
+              "A",
+              10,
+              400
+            ],
+            [
+              "A",
+              10,
+              400
+            ],
+            [
+              "A",
+              10,
+              400
+            ]
+          ],
+          "frames": 400,
+          "name": "reloaded"
+        },
+        {
+          "touches": [
+            [
+              43,
+              77,
+              3,
+              400
+            ]
+          ],
+          "name": "reloaded-party"
+        }
+      ],
+      "case": "nicknamed-reload"
+    }
+  ],
+  "reproduction": {
+    "harness": "names-runtime-harness.py",
+    "inspector": "names-runtime-inspector.cs",
+    "inspector_project": "Temporary net10.0 console app with ProjectReference to sibling PKHeX/PKHeX.Core/PKHeX.Core.csproj",
+    "inspector_command": "dotnet run -- check <before.sav> <game-saved.sav> <report.json>"
+  },
+  "limitations": [
+    "Runtime checks cover the three base starters in HeartGold; full eleven-species and boxed-name behavior is covered by the host record tests."
+  ]
+}

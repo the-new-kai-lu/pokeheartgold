@@ -1,0 +1,51 @@
+{
+  "provenance": "Original genuine post-Elm save; only two nicknames and nickname flags edited",
+  "original_save": "/tmp/elm-trio-fixture/elm-trio-received.sav",
+  "original_sha256": "b6e3981c5ac0f9ca345776c933c83e28a5c2bea0f032dd78b78fcd25ebc0d5d2",
+  "fixture": "/tmp/fakemon-name-check/nicknames.sav",
+  "fixture_sha256": "9fbdc12ca8cb3c561a60b1255432b1b8c0d4868465d49c1ccc0e3783be52b781",
+  "changes": [
+    {
+      "slot": 0,
+      "species": 1076,
+      "pid": 2747424974,
+      "original_nickname": "Voltuff",
+      "new_nickname": "Voltuff",
+      "nickname_flag": false,
+      "changed_decrypted_offsets": []
+    },
+    {
+      "slot": 1,
+      "species": 1079,
+      "pid": 1259160289,
+      "original_nickname": "Embernewt",
+      "new_nickname": "Cinder",
+      "nickname_flag": true,
+      "changed_decrypted_offsets": [
+        "0x06",
+        "0x07",
+        "0x3B",
+        "0x48",
+        "0x4A",
+        "0x4C",
+        "0x4E",
+        "0x50",
+        "0x52",
+        "0x54",
+        "0x55"
+      ]
+    },
+    {
+      "slot": 2,
+      "species": 1084,
+      "pid": 202797191,
+      "original_nickname": "Sedgling",
+      "new_nickname": "Sedgling",
+      "nickname_flag": true,
+      "changed_decrypted_offsets": [
+        "0x07",
+        "0x3B"
+      ]
+    }
+  ]
+}

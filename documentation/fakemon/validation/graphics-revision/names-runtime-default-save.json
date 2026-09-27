@@ -1,0 +1,126 @@
+{
+  "result": "passed",
+  "checks": 33,
+  "before_save": "/tmp/elm-trio-fixture/elm-trio-received.sav",
+  "before_sha256": "b6e3981c5ac0f9ca345776c933c83e28a5c2bea0f032dd78b78fcd25ebc0d5d2",
+  "after_save": "/tmp/names-default-runtime-0926/game-saved.sav",
+  "after_sha256": "35fd2d2624a301b294b64dd9d26d2d451cb9d2ea54256b4d16a7784a2abfb748",
+  "save_checksums_valid": true,
+  "party_records": [
+    {
+      "slot": 0,
+      "species": 1076,
+      "pid": 2747424974,
+      "old_name": "Voltuff",
+      "new_name": "VOLTUFF",
+      "is_nicknamed": false,
+      "level": 5,
+      "experience": 135,
+      "ability": 9,
+      "stats": {
+        "hp": 21,
+        "max_hp": 21,
+        "atk": 11,
+        "def": 10,
+        "spa": 12,
+        "spd": 10,
+        "spe": 11
+      },
+      "moves": [
+        10,
+        43,
+        84,
+        0
+      ],
+      "checksum_valid": true,
+      "changed_decrypted_offsets": [
+        "0x06",
+        "0x07",
+        "0x4A",
+        "0x4C",
+        "0x4E",
+        "0x50",
+        "0x52",
+        "0x54"
+      ]
+    },
+    {
+      "slot": 1,
+      "species": 1079,
+      "pid": 1259160289,
+      "old_name": "Embernewt",
+      "new_name": "EMBERNEWT",
+      "is_nicknamed": false,
+      "level": 5,
+      "experience": 135,
+      "ability": 18,
+      "stats": {
+        "hp": 21,
+        "max_hp": 21,
+        "atk": 10,
+        "def": 11,
+        "spa": 11,
+        "spd": 9,
+        "spe": 11
+      },
+      "moves": [
+        10,
+        45,
+        52,
+        0
+      ],
+      "checksum_valid": true,
+      "changed_decrypted_offsets": [
+        "0x06",
+        "0x07",
+        "0x4A",
+        "0x4C",
+        "0x4E",
+        "0x50",
+        "0x52",
+        "0x54",
+        "0x56",
+        "0x58"
+      ]
+    },
+    {
+      "slot": 2,
+      "species": 1084,
+      "pid": 202797191,
+      "old_name": "Sedgling",
+      "new_name": "SEDGLING",
+      "is_nicknamed": false,
+      "level": 5,
+      "experience": 135,
+      "ability": 11,
+      "stats": {
+        "hp": 19,
+        "max_hp": 19,
+        "atk": 11,
+        "def": 9,
+        "spa": 13,
+        "spd": 11,
+        "spe": 11
+      },
+      "moves": [
+        64,
+        45,
+        0,
+        0
+      ],
+      "checksum_valid": true,
+      "changed_decrypted_offsets": [
+        "0x06",
+        "0x07",
+        "0x4A",
+        "0x4C",
+        "0x4E",
+        "0x50",
+        "0x52",
+        "0x54",
+        "0x56"
+      ]
+    }
+  ],
+  "editor_roundtrip": "valid_checksums_and_exact_Pokemon_bytes_preserved"
+}

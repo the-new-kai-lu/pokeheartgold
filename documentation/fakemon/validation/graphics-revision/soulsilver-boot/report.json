@@ -1,0 +1,49 @@
+{
+  "rom": "/home/fredd/git/pokeheartgold/build/soulsilver.us/soulsilver-fakemon-starters.nds",
+  "rom_sha256": "6f504c9289e7d3c6603b2ae1179378edf716c21496c2d01fbc8c3c4c09fcedb2",
+  "isolated_workspace": "/tmp/ss-graphics-revision-boot-7ibo36om",
+  "emulator": "py-desmume DeSmuME",
+  "unique_rom_basename": "ss-graphics-revision-boot-7ibo36om.nds",
+  "fresh_battery": true,
+  "imported_save": null,
+  "source_rom_unchanged": true,
+  "frames": 1143,
+  "input": [
+    {
+      "at_frame": 900,
+      "key": "A",
+      "held_frames": 3
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "documentation/fakemon/validation/graphics-revision/soulsilver-boot/boot-180.png",
+      "frame": 180,
+      "sha256": "e0aaece400268a70e3e6eaeea7f4c4bf73f48df318a79690719a913e2f83e3c6"
+    },
+    {
+      "file": "documentation/fakemon/validation/graphics-revision/soulsilver-boot/intro-900.png",
+      "frame": 900,
+      "sha256": "76c5deba0304476eada321b4b51669d55e546f959bd50860da9338fd450d38fa"
+    },
+    {
+      "file": "documentation/fakemon/validation/graphics-revision/soulsilver-boot/title-after-a-1143.png",
+      "frame": 1143,
+      "sha256": "cdf125590fd729aeb0becaa2934646e32ee81d145d922452d97caa363e56ad5d"
+    }
+  ],
+  "scope": "Fresh isolated boot/title smoke only; no playthrough and no user save loaded or modified.",
+  "visual_review_pending": false,
+  "result": "passed",
+  "visual_observations": [
+    "Frame180 is a blank boot transition, not the pass criterion.",
+    "Frame900 renders the animated SoulSilver ocean/moon intro.",
+    "Pressing A at frame900 skips the intro and frame1143 displays the SoulSilver title, Lugia and TOUCH TO START prompt."
+  ],
+  "verified_behavior": [
+    "Fresh isolated ROM boots without importing a save.",
+    "Title screen renders correctly.",
+    "A input advances from intro to title.",
+    "Exact announced ROM SHA256 matches before copying and after execution."
+  ]
+}

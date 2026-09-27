@@ -1,0 +1,109 @@
+{
+  "revision": "2026-09-26-playtest-graphics",
+  "base_commit": "8f94b0e256f6f81caea28d5f280fe82862d1892a",
+  "build_command": "./tools/build_starter_trio.sh",
+  "build_exit_code": 0,
+  "roms": {
+    "build/heartgold.us/heartgold-fakemon-starters.nds": {
+      "sha256": "7a04465c7bbeedd44050cdf8f1a7b469a0a58e8dc1a0897cdbbdc4d66909a6a6",
+      "bytes": 134217728,
+      "asset_checks": 413,
+      "packaged_updated_message_banks": [
+        237,
+        238,
+        543,
+        550,
+        803,
+        804,
+        805,
+        806,
+        807,
+        808,
+        809,
+        810,
+        811,
+        817,
+        818,
+        819,
+        820,
+        821,
+        822
+      ],
+      "starter_gift_backend_and_69_script_paths": "passed",
+      "rival_team_checks": 1604,
+      "rival_records": 27,
+      "runtime_tested_before_story_text_only_change": "08071b5a07bd5186b460501406c2a15a37d2e24371108700d9ac4a66115e49a5",
+      "final_binary_comparison": "heartgold-final-text-delta.json"
+    },
+    "build/soulsilver.us/soulsilver-fakemon-starters.nds": {
+      "sha256": "52d3715d89147ba73a1086675fa2bd7a974d5622ac3efdb9478cf1da1b89c276",
+      "bytes": 134217728,
+      "asset_checks": 413,
+      "packaged_updated_message_banks": [
+        237,
+        238,
+        543,
+        550,
+        803,
+        804,
+        805,
+        806,
+        807,
+        808,
+        809,
+        810,
+        811,
+        817,
+        818,
+        819,
+        820,
+        821,
+        822
+      ],
+      "starter_gift_backend_and_69_script_paths": "passed",
+      "rival_team_checks": 1604,
+      "rival_records": 27,
+      "runtime_tested_before_story_text_only_change": "6f504c9289e7d3c6603b2ae1179378edf716c21496c2d01fbc8c3c4c09fcedb2",
+      "final_binary_comparison": "soulsilver-final-text-delta.json"
+    }
+  },
+  "original_roms_unchanged": {
+    "build/heartgold.us/pokeheartgold.us.nds": "2a42bc7ac161c6255b3fe9e43ad725c2bc8eeaa57963bc3a4ef2d1dd4025f015",
+    "build/soulsilver.us/pokesoulsilver.us.nds": "9caa4eccff8bf3fb1e335de6540346c732bf9124044767e1c88cf3b03936066b"
+  },
+  "checks": {
+    "host_nickname_cases": 35904,
+    "name_rows": 88,
+    "complete_dex_entries": 99,
+    "native_source_follower_frames": 88,
+    "reproducible_follower_files": 44,
+    "palette_source_checks": 80,
+    "normal_and_shiny_follower_palettes": 22,
+    "independent_review": "no_blocking_findings"
+  },
+  "runtime_checks": {
+    "heartgold_existing_save_names": {
+      "status": "passed",
+      "save_checks": 68,
+      "evidence": "names-runtime.json",
+      "existing_default_names": "uppercase",
+      "deliberate_nicknames": "preserved",
+      "unrelated_pokemon_bytes": "exactly_preserved",
+      "fresh_process_reload": "passed"
+    },
+    "soulsilver_boot_title": {
+      "status": "passed",
+      "evidence": "soulsilver-boot/report.json"
+    },
+    "heartgold_base_followers": {
+      "status": "visually_reviewed",
+      "species": 3,
+      "directions_each": 4,
+      "valid_clips": 14,
+      "native_frames_captured": 288,
+      "long_straight_cycles": "Embernewt and Sedgling",
+      "evidence": "walking/runtime-review.json"
+    }
+  },
+  "runtime_evidence_scope": "The final rebuild changes only two story message banks after the emulator runs. Per-version final-text-delta reports prove identical ARM9/ARM7, overlays, species names, all art and all other filesystem resources."
+}

@@ -4,7 +4,7 @@ The goal is to render and play the eleven already-approved designs and cries in 
 
 ## Imported material
 
-`files/fakemon/` contains the approved indexed PNG sources, normal/shiny follower palettes, the final native graphic payloads, the approved PCM16 cry sources, and the complete approved species metadata. `assets.json` records the source hg-engine ROM SHA-256 and each installed payload SHA-256. The native battle/icon/follower payloads were extracted from the previously validated hg-engine build rather than re-quantized or painted again.
+`files/fakemon/` contains the approved indexed PNG sources, normal/shiny follower palettes, the final native graphic payloads, the approved PCM16 cry sources, and the complete approved species metadata. `assets.json` records the source hg-engine ROM SHA-256 and each installed payload SHA-256. The initial native battle/icon/follower payloads were extracted from the previously validated hg-engine build. This branch subsequently corrects palettes and replaces follower walking poses and sizing; see [graphics revision](graphics-revision/README.md). Battle pixel indices and menu icon resources remain unchanged. The source ROM hash records the original import, while each payload hash describes the currently installed asset.
 
 All eleven have actual custom front and back battle art, two 80×80 frames in each facing, normal and shiny palettes, two-frame menu icons, and four-direction/two-frame followers. Male and female resources use the same approved design. Battle palettes have sixteen RGB555 entries; transparent index zero leaves fifteen visible colors. Followers use the approved 32×32 or 64×64 frame sizes. The eleven cries are separate family-related sounds, not canonical Pokémon samples; external environmental sample credits are in `files/fakemon/CRY_SOURCES.md`.
 
@@ -47,7 +47,7 @@ python3 tools/py_scripts/import_fakemon_cries.py
 python3 tools/py_scripts/import_fakemon_text.py
 ```
 
-The first command expects the approved `../hg-engine/test.nds` and source art. These are provenance/import tools; ongoing stock-port builds use the checked-in assets and do not depend on hg-engine. The cry importer preserves all original sequences, banks and wave archives and checks them after serialization. It is safe to rerun; only the eleven custom trailing sound records are regenerated.
+The asset importer expects the approved `../hg-engine/test.nds` and source art. Re-running it restores the original import and overwrites this branch's later palette/follower corrections; replay the graphics revision afterward. These are provenance/import tools; ongoing stock-port builds use the checked-in assets and do not depend on hg-engine. The cry importer preserves all original sequences, banks and wave archives and checks them after serialization. It is safe to rerun; only the eleven custom trailing sound records are regenerated.
 
 After building:
 
@@ -61,7 +61,7 @@ The validator checks payload hashes and indices, every original member of the si
 
 ## End-to-end behavior to test
 
-Use disposable copies of saves and ROMs. The eleven species are intentionally unobtainable through normal encounters, starters or gifts, so create the test party/boxes with the compatible editor branch or a development-only fixture. Never add test gifts to the production game.
+Use disposable copies of saves and ROMs. The base `fakemon-stock` branch leaves the species unobtainable; this `fakemon-starter-trio` edition deliberately gives the three base forms in Elm's introduction. Use the compatible editor branch or a disposable fixture for evolved/shiny cases. See [STARTER_TRIO.md](STARTER_TRIO.md).
 
 1. For each species, inspect both sexes, normal and shiny, in party, summary, PC boxes, battle as player and opponent, evolution preview/success, hatching and Hall of Fame. Verify the intended species image and name, transparent backgrounds, intact outlines, correct shiny colors and both animation frames. Check sprites against HP bars, platforms and shadows for clipping or bad baseline alignment.
 2. Walk each follower north/south/east/west, turn while stationary, follow through doors and stairs, ride a bike, Surf, change maps, save/load and swap party leader. Inspect two walking frames, shiny selection, correct small/large display size, and the large-form interior restriction. Verify that the four-armed Raijinque and four-winged Ragnaroc remain visually readable at native resolution.

@@ -6,12 +6,18 @@ from xml.sax.saxutils import escape
 ROOT=Path(__file__).resolve().parents[2]
 meta=json.loads((ROOT/'files/fakemon/species.json').read_text())
 mons=sorted((m for line in meta['lines'] for m in line['designs']),key=lambda m:m['engine_species_id'])
-pages={m['engine_species_id']:['\\n'.join(lines[i:i+3]) for i in range(0,len(lines),3)] for m in mons for lines in [textwrap.wrap(m['pokedex_details']['entry_text'],width=32)]}
+# HGSS uses uppercase species names both in name banks and in running text.
+# Keep the design metadata's readable spelling; transform only game strings.
+def game_species_names(text):
+    for mon in mons:
+        text=re.sub(r'\b'+re.escape(mon['name'])+r'\b',mon['name'].upper(),text)
+    return text
+pages={m['engine_species_id']:['\\n'.join(lines[i:i+3]) for i in range(0,len(lines),3)] for m in mons for lines in [textwrap.wrap(game_species_names(m['pokedex_details']['entry_text']),width=32)]}
 def extend(bank,values):
     path=ROOT/f'files/msgdata/msg/msg_{bank:04}.gmm'
     source=path.read_text()
     # Idempotent: only remove our own prior generated rows.
-    source=re.sub(r'\n\t<!-- BEGIN FAKEMON -->.*?\t<!-- END FAKEMON -->\n','\n',source,flags=re.S)
+    source=re.sub(r'\n\t<!-- BEGIN FAKEMON -->.*?\t<!-- END FAKEMON -->\n','',source,flags=re.S)
     indexes=[int(x) for x in re.findall(r'<row[^>]+index="(\d+)"',source)]
     last=max(indexes)
     assert last<1076
@@ -21,8 +27,8 @@ def extend(bank,values):
         body+=f'\t<row id="msg_{bank:04}_fakemon_{i:05}" index="{i}">\n\t\t<attribute name="window_context_name">used</attribute>\n\t\t<language name="English">{text}</language>\n\t</row>\n'
     body+='\t<!-- END FAKEMON -->\n'
     path.write_text(source.replace('</body>',body+'</body>'))
-for bank in [237,817,818,819,820,821,822]: extend(bank,{m['engine_species_id']:m['name'] for m in mons})
-extend(238,{m['engine_species_id']:('an' if m['name'][0] in 'AEIOU' else 'a')+' {COLOR 255}'+m['name']+'{COLOR 0}' for m in mons})
+for bank in [237,817,818,819,820,821,822]: extend(bank,{m['engine_species_id']:m['name'].upper() for m in mons})
+extend(238,{m['engine_species_id']:('an' if m['name'][0] in 'AEIOU' else 'a')+' {COLOR 255}'+m['name'].upper()+'{COLOR 0}' for m in mons})
 for bank in range(803,812):
     values={m['engine_species_id']+11*page:text for m in mons for page,text in enumerate(pages[m['engine_species_id']])}
     extend(bank,values)

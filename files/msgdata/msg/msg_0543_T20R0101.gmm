@@ -2,11 +2,11 @@
 <body language="English">
 	<row id="msg_0543_T20R0101_00000" index="0">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Professor Elm: Hi, {STRVAR_1 3, 0, 0}!\nI’ve been waiting for you!\rDo you know anything about\nmy research?\rAs you know, Pokémon are carried\nin Poké Balls these days.\rBut before the Poké Ball was invented,\npeople used to walk with Pokémon.\fJust like your friend Lyra does!\rPoké Balls are great because you can\ncarry many Pokémon.\rBut walking with Pokémon must have\nsome advantages.\rIt could have something to do with how\nPokémon grow or evolve...\rSo I’m going to give you three Pokémon!\rCan you walk beside your Pokémon\nto learn how those bonds grow?\rVoltuff, Embernewt, and Sedgling\nwill be your partners!\r</language>
+		<language name="English">Professor Elm: Hi, {STRVAR_1 3, 0, 0}!\nI’ve been waiting for you!\rDo you know anything about\nmy research?\rAs you know, Pokémon are carried\nin Poké Balls these days.\rBut before the Poké Ball was invented,\npeople used to walk with Pokémon.\fJust like your friend Lyra does!\rPoké Balls are great because you can\ncarry many Pokémon.\rBut walking with Pokémon must have\nsome advantages.\rIt could have something to do with how\nPokémon grow or evolve...\rSo I’m going to give you three Pokémon!\rCan you walk beside your Pokémon\nto learn how those bonds grow?\rVOLTUFF, EMBERNEWT, and SEDGLING\nwill be your partners!\r</language>
 	</row>
 	<row id="msg_0543_T20R0101_00001" index="1">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Professor Elm: Hi, {STRVAR_1 3, 0, 0}!\nI’ve been waiting for you!\rDo you know anything about\nmy research?\rAs you know, Pokémon are carried\nin Poké Balls these days.\rBut before the Poké Ball was invented,\npeople used to walk with Pokémon.\fJust like your friend Ethan does!\rPoké Balls are great because you can\ncarry many Pokémon.\rBut walking with Pokémon must have\nsome advantages.\rIt could have something to do with how\nPokémon grow or evolve...\rSo I’m going to give you three Pokémon!\rCan you walk beside your Pokémon\nto learn how those bonds grow?\rVoltuff, Embernewt, and Sedgling\nwill be your partners!\r</language>
+		<language name="English">Professor Elm: Hi, {STRVAR_1 3, 0, 0}!\nI’ve been waiting for you!\rDo you know anything about\nmy research?\rAs you know, Pokémon are carried\nin Poké Balls these days.\rBut before the Poké Ball was invented,\npeople used to walk with Pokémon.\fJust like your friend Ethan does!\rPoké Balls are great because you can\ncarry many Pokémon.\rBut walking with Pokémon must have\nsome advantages.\rIt could have something to do with how\nPokémon grow or evolve...\rSo I’m going to give you three Pokémon!\rCan you walk beside your Pokémon\nto learn how those bonds grow?\rVOLTUFF, EMBERNEWT, and SEDGLING\nwill be your partners!\r</language>
 	</row>
 	<row id="msg_0543_T20R0101_00002" index="2">
 		<attribute name="window_context_name">used</attribute>
@@ -30,7 +30,7 @@
 	</row>
 	<row id="msg_0543_T20R0101_00007" index="7">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">{STRVAR_1 3, 0, 0} received Voltuff,\nEmbernewt, and Sedgling from Elm!</language>
+		<language name="English">{STRVAR_1 3, 0, 0} received VOLTUFF,\nEMBERNEWT, and SEDGLING from Elm!</language>
 	</row>
 	<row id="msg_0543_T20R0101_00008" index="8">
 		<attribute name="window_context_name">used</attribute>
@@ -166,7 +166,7 @@
 	</row>
 	<row id="msg_0543_T20R0101_00041" index="41">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">There was a loud noise outside...\nWhen we went to look, someone took\fall three Pokémon from the device!\rChikorita, Cyndaquil, and Totodile...\nI wonder how they are doing.\rThey say Pokémon raised by a bad\nperson turn bad themselves.</language>
+		<language name="English">There was a loud noise outside...\nWhen we went to look, someone took\fall three Pokémon from the device!\rCHIKORITA, CYNDAQUIL, and TOTODILE...\nI wonder how they are doing.\rThey say Pokémon raised by a bad\nperson turn bad themselves.</language>
 	</row>
 	<row id="msg_0543_T20R0101_00042" index="42">
 		<attribute name="window_context_name">used</attribute>

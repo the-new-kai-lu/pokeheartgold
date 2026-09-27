@@ -5,12 +5,12 @@
   "build_status": "passed_both_US_versions",
   "roms": {
     "build/heartgold.us/heartgold-fakemon-starters.nds": {
-      "sha256": "5fbfc844e225c45feb23da9ff15c1abd07a0de0e5448a2ad24677c6db10ab890",
+      "sha256": "7a04465c7bbeedd44050cdf8f1a7b469a0a58e8dc1a0897cdbbdc4d66909a6a6",
       "bytes": 134217728,
       "role": "starter_trio_edition"
     },
     "build/soulsilver.us/soulsilver-fakemon-starters.nds": {
-      "sha256": "8f05d94e30ccb0bd59091044d896bd16d61df75038df85e80585c9870e7506d2",
+      "sha256": "52d3715d89147ba73a1086675fa2bd7a974d5622ac3efdb9478cf1da1b89c276",
       "bytes": 134217728,
       "role": "starter_trio_edition"
     },
@@ -95,5 +95,13 @@
     "Late return dialogue",
     "SoulSilver full opening gameplay",
     "Audio listening"
-  ]
+  ],
+  "initial_edition_rom_hashes": {
+    "build/heartgold.us/heartgold-fakemon-starters.nds": "5fbfc844e225c45feb23da9ff15c1abd07a0de0e5448a2ad24677c6db10ab890",
+    "build/soulsilver.us/soulsilver-fakemon-starters.nds": "8f05d94e30ccb0bd59091044d896bd16d61df75038df85e80585c9870e7506d2"
+  },
+  "graphics_revision": {
+    "evidence": "validation/graphics-revision/build-validation.json",
+    "notes": "ROM hashes above now identify the graphics/name revision. Original full starter-event/first-Silver emulator evidence retains its tested initial ROM hash; see the revision directory for new runtime checks."
+  }
 }

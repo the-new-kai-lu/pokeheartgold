@@ -3,7 +3,7 @@
 Run after make; --rom also checks the actual packaged ROM instead of just files/.
 Requires ndspy and Pillow; does not mutate assets or save files.
 """
-import argparse,hashlib,json,struct,subprocess,wave,xml.etree.ElementTree as ET
+import argparse,hashlib,json,re,struct,subprocess,wave,xml.etree.ElementTree as ET
 from pathlib import Path
 from PIL import Image
 from ndspy.narc import NARC
@@ -82,7 +82,12 @@ def main():
             for page in range(3):
                 text=texts.get(sid+11*page,'')
                 if text:parts.extend(text.split('\\n'))
-            check(' '.join(parts)==m['pokedex_details']['entry_text'],m['key']+f' bank{bank} complete entry preserved across pages')
+            expected=m['pokedex_details']['entry_text']
+            # Game text follows HGSS uppercase species names; design metadata
+            # retains its readable spelling. All other prose must match exactly.
+            for species in mons:
+                expected=re.sub(r'\b'+re.escape(species['name'])+r'\b',species['name'].upper(),expected)
+            check(' '.join(parts)==expected,m['key']+f' bank{bank} complete entry preserved across pages')
     report={'checks_passed':len(results),'rom':str(args.rom) if args.rom else None,'rom_sha256':hashlib.sha256(args.rom.read_bytes()).hexdigest() if args.rom else None,'checks':results}
     if args.output:args.output.write_text(json.dumps(report,indent=2)+'\n')
     print(f'{len(results)} asset checks passed.')

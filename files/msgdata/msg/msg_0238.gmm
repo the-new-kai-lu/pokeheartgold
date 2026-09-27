@@ -4309,47 +4309,47 @@
 	</row>
 	<row id="msg_0238_fakemon_01076" index="1076">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">a {COLOR 255}Voltuff{COLOR 0}</language>
+		<language name="English">a {COLOR 255}VOLTUFF{COLOR 0}</language>
 	</row>
 	<row id="msg_0238_fakemon_01077" index="1077">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">a {COLOR 255}Surguenon{COLOR 0}</language>
+		<language name="English">a {COLOR 255}SURGUENON{COLOR 0}</language>
 	</row>
 	<row id="msg_0238_fakemon_01078" index="1078">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">a {COLOR 255}Raijinque{COLOR 0}</language>
+		<language name="English">a {COLOR 255}RAIJINQUE{COLOR 0}</language>
 	</row>
 	<row id="msg_0238_fakemon_01079" index="1079">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">an {COLOR 255}Embernewt{COLOR 0}</language>
+		<language name="English">an {COLOR 255}EMBERNEWT{COLOR 0}</language>
 	</row>
 	<row id="msg_0238_fakemon_01080" index="1080">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">a {COLOR 255}Pyrovaran{COLOR 0}</language>
+		<language name="English">a {COLOR 255}PYROVARAN{COLOR 0}</language>
 	</row>
 	<row id="msg_0238_fakemon_01081" index="1081">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">a {COLOR 255}Magmalisk{COLOR 0}</language>
+		<language name="English">a {COLOR 255}MAGMALISK{COLOR 0}</language>
 	</row>
 	<row id="msg_0238_fakemon_01082" index="1082">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">a {COLOR 255}Rimevaran{COLOR 0}</language>
+		<language name="English">a {COLOR 255}RIMEVARAN{COLOR 0}</language>
 	</row>
 	<row id="msg_0238_fakemon_01083" index="1083">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">a {COLOR 255}Fimbulisk{COLOR 0}</language>
+		<language name="English">a {COLOR 255}FIMBULISK{COLOR 0}</language>
 	</row>
 	<row id="msg_0238_fakemon_01084" index="1084">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">a {COLOR 255}Sedgling{COLOR 0}</language>
+		<language name="English">a {COLOR 255}SEDGLING{COLOR 0}</language>
 	</row>
 	<row id="msg_0238_fakemon_01085" index="1085">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">a {COLOR 255}Cragaviar{COLOR 0}</language>
+		<language name="English">a {COLOR 255}CRAGAVIAR{COLOR 0}</language>
 	</row>
 	<row id="msg_0238_fakemon_01086" index="1086">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">a {COLOR 255}Ragnaroc{COLOR 0}</language>
+		<language name="English">a {COLOR 255}RAGNAROC{COLOR 0}</language>
 	</row>
 	<!-- END FAKEMON -->
 </body>

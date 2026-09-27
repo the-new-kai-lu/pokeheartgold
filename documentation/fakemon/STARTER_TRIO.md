@@ -27,6 +27,10 @@ It leaves the existing `pokeheartgold.us.nds` and `pokesoulsilver.us.nds` files 
 
 The existing PKHeX and PKMDS **`fakemon-stock` branches** read and edit these saves. This edition needs no additional save format or editor changes. Save files, ROMs and proprietary build tools stay local and are not committed.
 
+## Graphics and name corrections
+
+The current build uses uppercase in-game species names, subdued Electric/Fire/Ice palettes and new follower walking poses at species-specific sizes. Existing saves remain compatible: older unnicknamed Fakemon defaults normalize to uppercase when read, while deliberate nicknames remain unchanged. Save normally afterward to retain the normalized defaults. You do not need a new game for these corrections. See [revision details and previews](graphics-revision/README.md).
+
 ## Silver's teams
 
 All 27 records were updated: the three unnamed Passerby Boy variants actually used for the first battle, three legacy first-battle records, and all later rival/partner variants. The other trainers are unchanged.
@@ -51,6 +55,8 @@ The exact before/after record inventory is in [starter-trio-rival-teams.json](st
 ## Verification
 
 Both ROMs built successfully. The original two ROM files retain their previous SHA-256 hashes. Build hashes and results are recorded in [starter-trio-validation.json](starter-trio-validation.json).
+
+The detailed opening-event and first-rival captures below come from the initial starter edition. Current graphics/name checks, save compatibility, walking captures and exact build hashes are recorded separately in [graphics-revision/README.md](graphics-revision/README.md).
 
 Run the targeted checks after building:
 

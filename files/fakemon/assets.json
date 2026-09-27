@@ -26,12 +26,12 @@
       {
         "index": 2968,
         "file": "voltuff/battle-4.bin",
-        "sha256": "e033dec30c3c639a74c4154ea03550099038e6846fadf91072ac1877a4a79f0e"
+        "sha256": "8a684479731ac83247b4d54eb53dd604e633dc9a41d724b18700897f0f9534a0"
       },
       {
         "index": 2969,
         "file": "voltuff/battle-5.bin",
-        "sha256": "e1c8e0fb7c229e46cce419fe6b626474d521dfbaa884eac01f6a823638bb06dc"
+        "sha256": "1c22ebdd6f903b18fa65636dacacfaee5a2ed38c171a202a1665fb4c5ee5aa02"
       },
       {
         "index": 2970,
@@ -56,12 +56,12 @@
       {
         "index": 2974,
         "file": "surguenon/battle-4.bin",
-        "sha256": "e033dec30c3c639a74c4154ea03550099038e6846fadf91072ac1877a4a79f0e"
+        "sha256": "8a684479731ac83247b4d54eb53dd604e633dc9a41d724b18700897f0f9534a0"
       },
       {
         "index": 2975,
         "file": "surguenon/battle-5.bin",
-        "sha256": "e1c8e0fb7c229e46cce419fe6b626474d521dfbaa884eac01f6a823638bb06dc"
+        "sha256": "1c22ebdd6f903b18fa65636dacacfaee5a2ed38c171a202a1665fb4c5ee5aa02"
       },
       {
         "index": 2976,
@@ -86,12 +86,12 @@
       {
         "index": 2980,
         "file": "raijinque/battle-4.bin",
-        "sha256": "e033dec30c3c639a74c4154ea03550099038e6846fadf91072ac1877a4a79f0e"
+        "sha256": "8a684479731ac83247b4d54eb53dd604e633dc9a41d724b18700897f0f9534a0"
       },
       {
         "index": 2981,
         "file": "raijinque/battle-5.bin",
-        "sha256": "e1c8e0fb7c229e46cce419fe6b626474d521dfbaa884eac01f6a823638bb06dc"
+        "sha256": "1c22ebdd6f903b18fa65636dacacfaee5a2ed38c171a202a1665fb4c5ee5aa02"
       },
       {
         "index": 2982,
@@ -116,12 +116,12 @@
       {
         "index": 2986,
         "file": "embernewt/battle-4.bin",
-        "sha256": "83bb23c4b18f81000cd248728c38e9520c4088edb7aa5cee809cc76f428118d4"
+        "sha256": "e25c95f63b623a337b9b73f74bc84e521a1924e749ce816e5b8f29476bd415af"
       },
       {
         "index": 2987,
         "file": "embernewt/battle-5.bin",
-        "sha256": "620d0ef426c2b189685e539b6bf8f8bfa961c5cac478f1a8483057f89b176292"
+        "sha256": "1fa688e7c07746a3fcadf17cc0e96c11b072ae006a0bf5bc2a2ab3c8eef2ea18"
       },
       {
         "index": 2988,
@@ -146,12 +146,12 @@
       {
         "index": 2992,
         "file": "pyrovaran/battle-4.bin",
-        "sha256": "83bb23c4b18f81000cd248728c38e9520c4088edb7aa5cee809cc76f428118d4"
+        "sha256": "e25c95f63b623a337b9b73f74bc84e521a1924e749ce816e5b8f29476bd415af"
       },
       {
         "index": 2993,
         "file": "pyrovaran/battle-5.bin",
-        "sha256": "620d0ef426c2b189685e539b6bf8f8bfa961c5cac478f1a8483057f89b176292"
+        "sha256": "1fa688e7c07746a3fcadf17cc0e96c11b072ae006a0bf5bc2a2ab3c8eef2ea18"
       },
       {
         "index": 2994,
@@ -176,12 +176,12 @@
       {
         "index": 2998,
         "file": "magmalisk/battle-4.bin",
-        "sha256": "83bb23c4b18f81000cd248728c38e9520c4088edb7aa5cee809cc76f428118d4"
+        "sha256": "e25c95f63b623a337b9b73f74bc84e521a1924e749ce816e5b8f29476bd415af"
       },
       {
         "index": 2999,
         "file": "magmalisk/battle-5.bin",
-        "sha256": "620d0ef426c2b189685e539b6bf8f8bfa961c5cac478f1a8483057f89b176292"
+        "sha256": "1fa688e7c07746a3fcadf17cc0e96c11b072ae006a0bf5bc2a2ab3c8eef2ea18"
       },
       {
         "index": 3000,
@@ -206,12 +206,12 @@
       {
         "index": 3004,
         "file": "rimevaran/battle-4.bin",
-        "sha256": "83f6b20612315ef51befec65a04709527139c60ab420610876f0acad9c771bd5"
+        "sha256": "350fcebfd2308006009f2f5b7313a77f6adbe20fb7c0d83c754bb74de5669cea"
       },
       {
         "index": 3005,
         "file": "rimevaran/battle-5.bin",
-        "sha256": "8e445f1f06ac7d22a315e44c5e2d15f29cc6d408bccd9d8daac97756220cfb65"
+        "sha256": "47538c79ac0cef1741fc9628aef3d8f978fcf7185e753704ad6a9961c0007472"
       },
       {
         "index": 3006,
@@ -236,12 +236,12 @@
       {
         "index": 3010,
         "file": "fimbulisk/battle-4.bin",
-        "sha256": "83f6b20612315ef51befec65a04709527139c60ab420610876f0acad9c771bd5"
+        "sha256": "350fcebfd2308006009f2f5b7313a77f6adbe20fb7c0d83c754bb74de5669cea"
       },
       {
         "index": 3011,
         "file": "fimbulisk/battle-5.bin",
-        "sha256": "8e445f1f06ac7d22a315e44c5e2d15f29cc6d408bccd9d8daac97756220cfb65"
+        "sha256": "47538c79ac0cef1741fc9628aef3d8f978fcf7185e753704ad6a9961c0007472"
       },
       {
         "index": 3012,
@@ -617,57 +617,57 @@
       {
         "index": 863,
         "file": "voltuff/follower.bin",
-        "sha256": "ad612fb2768260c499671b8f2cd15e77d8a73ffb1fcf9e1e60fedde4b2e32022"
+        "sha256": "c858c9be6a80f66eed825cd17fe4d0dca133f2ca7940370964279119a824ed66"
       },
       {
         "index": 864,
         "file": "surguenon/follower.bin",
-        "sha256": "4ad61060f7f884804c10f1a3c7896118867bcf28efbf8d730820c14a2ca6eae6"
+        "sha256": "c9d12ff12afe5c5311af23d16e64e9605aa8a01f953892f8e679d607f0e44902"
       },
       {
         "index": 865,
         "file": "raijinque/follower.bin",
-        "sha256": "d7b6d8ada96365377f74ba9e374563f2de7bdbfc2c3561d6ec4f5678c75ac492"
+        "sha256": "41bee74a9bea4387caface82786db1786df9f2c121105ce5723caf1145876d29"
       },
       {
         "index": 866,
         "file": "embernewt/follower.bin",
-        "sha256": "c05597d31797c6c9da5e1f0b609fb665602ac4583fc5f61095dc97114fa15b95"
+        "sha256": "c682284347d9e7d33b371fb99b80b829679ee2a5f95fe2a8622724c707adb14d"
       },
       {
         "index": 867,
         "file": "pyrovaran/follower.bin",
-        "sha256": "da35233e528518175506ff855f89af2aa46521c695c624c254eb576d7305b24f"
+        "sha256": "b0c62d08f65cd88cdaee45272ba5aab9b581cafe8c24be5fad1b3a9162a3390f"
       },
       {
         "index": 868,
         "file": "magmalisk/follower.bin",
-        "sha256": "0bf7ca02aeb55cdf6a6c573f21e455337fb618fa4141c2bd59c16e526167800c"
+        "sha256": "336f16ae83c60765ed536658646d5ece8c5d97fc55e05ed78731176f0c9d6f47"
       },
       {
         "index": 869,
         "file": "rimevaran/follower.bin",
-        "sha256": "c21653114788f9d3f087a570682031784d4cfab8d5c610c6da224dbc4a5da8f4"
+        "sha256": "192ae6d4e971bbb89f24abb8102a38ae4b9e59cb5acd735b6f4807827b9e82f1"
       },
       {
         "index": 870,
         "file": "fimbulisk/follower.bin",
-        "sha256": "0e122934e302ebef631f66acb01a32181c0239a520327a9be4e440ebb041397a"
+        "sha256": "e70609d26b718c411e12effc4b26e799c67cf74afcfce9074b722904eb939707"
       },
       {
         "index": 871,
         "file": "sedgling/follower.bin",
-        "sha256": "c04f114935d0270ee3412044fcbf2821411c9d969db73e39803c7130ce38b84a"
+        "sha256": "aa679deb6dda1274598d6636b22e53e676600a31bdc95511d2e515ac07967f68"
       },
       {
         "index": 872,
         "file": "cragaviar/follower.bin",
-        "sha256": "d12f2140d43721e749027810cd838b5cdbca1c2fcd841dc4fac10a58fbedb691"
+        "sha256": "68a949436655be18c9fa091675154311fa56c3ec8dca25d2137c61c70e8d916c"
       },
       {
         "index": 873,
         "file": "ragnaroc/follower.bin",
-        "sha256": "eaf9531560cdba3d4d6d6fcede8f7e90fa1b9fbd9f0cd38b8a2bb1c5c15f76a8"
+        "sha256": "43803ed387c82823bdd552e8e57c5b7f328ff0fca5cac0ea27361fae9fa44379"
       }
     ],
     "a/1/4/1": [
@@ -917,6 +917,15 @@
       "cry_bank": 788,
       "footprint_template": 16,
       "cry_source_sha256": "3e8e02b3cb4746988e91728f6ce3c2dfe33b6e34a0ac7a8e01c64e0e081943be"
+    }
+  ],
+  "revisions": [
+    {
+      "id": "2026-09-26-playtest-graphics",
+      "description": "Native RGB555 palette corrections and new aligned species-scaled walking poses; original source ROM hash retained as initial import provenance.",
+      "documentation": "documentation/fakemon/graphics-revision/README.md",
+      "layout_sha256": "ef990d20834fd129334f58c469995cb8568757bcc5c91a0c4f87013bd65afe15",
+      "palette_plan_sha256": "26df1ab2c569255cace339380ac8261d01252fcb618b47e184ab85e86503ae09"
     }
   ]
 }

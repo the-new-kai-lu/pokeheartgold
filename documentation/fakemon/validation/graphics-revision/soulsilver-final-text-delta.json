@@ -1,0 +1,14 @@
+{
+  "tested_rom_sha256": "6f504c9289e7d3c6603b2ae1179378edf716c21496c2d01fbc8c3c4c09fcedb2",
+  "final_rom_sha256": "52d3715d89147ba73a1086675fa2bd7a974d5622ac3efdb9478cf1da1b89c276",
+  "arm9_arm7_overlay_tables_identical": true,
+  "changed_files": [
+    "a/0/2/7"
+  ],
+  "changed_message_banks": [
+    543,
+    550
+  ],
+  "all_other_resources_byte_identical": true,
+  "reason": "Two late new-story lines uppercase CHIKORITA, CYNDAQUIL and TOTODILE; name normalization code and all species name/art/walking resources match the emulator-tested build exactly."
+}

@@ -1,0 +1,40 @@
+{"keys": [["A", 10, 400], ["A", 10, 400]], "name": "continue"}
+{"keys": [["A", 10, 600], ["B", 10, 120], ["DOWN", 64, 400]], "name": "leave-lab-1"}
+{"keys": [["A", 10, 180], ["A", 10, 180], ["A", 10, 180], ["A", 10, 180], ["A", 10, 180], ["A", 10, 180], ["B", 10, 120], ["DOWN", 64, 500]], "name": "outside-lab"}
+{"keys": [["DOWN", 32, 90], ["RIGHT", 48, 90]], "name": "walking-start"}
+{"name": "south", "keys": [["DOWN", 48, 60]]}
+{"name": "west", "keys": [["LEFT", 48, 60]]}
+{"name": "north", "keys": [["UP", 48, 60]]}
+{"name": "east", "keys": [["RIGHT", 48, 60]]}
+{"keys": [["A", 10, 240], ["A", 10, 240], ["A", 10, 240], ["A", 10, 240], ["A", 10, 240], ["A", 10, 240], ["A", 10, 240], ["A", 10, 240]], "name": "lyra-finished"}
+{"keys": [["B", 3, 40], ["DOWN", 32, 40], ["RIGHT", 48, 40]], "name": "actual-walking-start"}
+{"name": "voltuff-south", "keys": [["DOWN", 48, 60]]}
+{"name": "voltuff-west", "keys": [["LEFT", 48, 60]]}
+{"name": "voltuff-north", "keys": [["UP", 48, 60]]}
+{"name": "voltuff-east", "keys": [["RIGHT", 48, 60]]}
+{"name": "voltuff-north-free", "keys": [["UP", 48, 60]]}
+{"touches": [[42, 72, 3, 220]], "name": "party-switch"}
+{"keys": [["RIGHT", 3, 60], ["A", 3, 100]], "name": "embernewt-menu"}
+{"keys": [["DOWN", 3, 60], ["A", 3, 80], ["LEFT", 3, 60], ["A", 3, 120], ["B", 3, 180]], "name": "embernewt-lead"}
+{"name": "embernewt-east", "keys": [["RIGHT", 48, 60]]}
+{"name": "embernewt-south", "keys": [["DOWN", 48, 60]]}
+{"name": "embernewt-west", "keys": [["LEFT", 48, 60]]}
+{"name": "embernewt-north", "keys": [["UP", 48, 60]]}
+{"touches": [[42, 72, 3, 180]], "name": "sedgling-party"}
+{"keys": [["DOWN", 3, 60], ["A", 3, 60], ["DOWN", 3, 60], ["A", 3, 60], ["UP", 3, 60], ["A", 3, 100], ["B", 3, 120], ["B", 3, 60], ["RIGHT", 16, 80]], "name": "sedgling-free-lead"}
+{"name": "sedgling-valid-east", "keys": [["RIGHT", 32, 60]]}
+{"name": "sedgling-valid-south", "keys": [["DOWN", 32, 60]]}
+{"name": "sedgling-valid-west", "keys": [["LEFT", 32, 60]]}
+{"name": "sedgling-valid-north", "keys": [["UP", 32, 60]]}
+{"touches": [[42, 72, 3, 180]], "name": "embernewt-second-party"}
+{"keys": [["DOWN", 3, 60], ["A", 3, 60], ["DOWN", 3, 60], ["A", 3, 60], ["UP", 3, 60], ["A", 3, 100], ["B", 3, 120], ["B", 3, 60]], "name": "embernewt-free-lead"}
+{"name": "embernewt-valid-east", "keys": [["RIGHT", 32, 60]]}
+{"name": "embernewt-valid-south", "keys": [["DOWN", 32, 60]]}
+{"name": "embernewt-valid-west", "keys": [["LEFT", 32, 60]]}
+{"name": "embernewt-valid-north", "keys": [["UP", 32, 60]]}
+{"touches": [[42, 72, 3, 180]], "name": "final-uppercase-party"}
+{"keys": [["B", 3, 120], ["B", 3, 60]], "name": "ember-extended-ready"}
+{"capture": {"direction": "LEFT", "hold": 64, "sample_every": 2, "wait": 60}, "name": "embernewt-straight-west"}
+{"touches": [[42, 72, 3, 180]], "name": "sedgling-extended-party"}
+{"keys": [["DOWN", 3, 60], ["A", 3, 60], ["DOWN", 3, 60], ["A", 3, 60], ["UP", 3, 60], ["A", 3, 100], ["B", 3, 120], ["B", 3, 60]], "name": "sedgling-extended-ready"}
+{"capture": {"direction": "RIGHT", "hold": 64, "sample_every": 2, "wait": 60}, "name": "sedgling-straight-east", "state": "walking-final-state.dst"}

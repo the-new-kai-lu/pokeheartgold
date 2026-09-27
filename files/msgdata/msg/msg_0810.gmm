@@ -4329,11 +4329,11 @@
 	</row>
 	<row id="msg_0810_fakemon_01081" index="1081">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Volcanic eruptions were once\nbelieved to be the result of two\nMagmalisk fighting over</language>
+		<language name="English">Volcanic eruptions were once\nbelieved to be the result of two\nMAGMALISK fighting over</language>
 	</row>
 	<row id="msg_0810_fakemon_01082" index="1082">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Only an Embernewt whose flame\nsurvives being sealed in ice\nbecomes this Pokémon. It draws</language>
+		<language name="English">Only an EMBERNEWT whose flame\nsurvives being sealed in ice\nbecomes this Pokémon. It draws</language>
 	</row>
 	<row id="msg_0810_fakemon_01083" index="1083">
 		<attribute name="window_context_name">used</attribute>

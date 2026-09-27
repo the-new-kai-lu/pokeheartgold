@@ -1,0 +1,20 @@
+{
+  "reviewer": "palette_correction independent agent",
+  "scope": [
+    "src/pokemon.c default nickname normalization",
+    "tools/py_scripts/pack_fakemon_followers.py native follower serialization"
+  ],
+  "result": "no_blocking_findings",
+  "reviewed_invariants": [
+    "Only decrypted valid-checksum unnicknamed custom non-Egg defaults normalize; malformed and mismatched names are preserved.",
+    "Updated BoxPokemon checksum is used by normal encryption wrappers; PID-keyed party encryption is unchanged.",
+    "Eight existing native texture dictionary entries retain order and metadata.",
+    "4bpp low/high nibble ordering, transparent zero and paired normal/shiny palettes match native resources.",
+    "Source digests and explicit per-cell placement plus common A/B transforms enable reproducible packing."
+  ],
+  "review_method": "Read-only static inspection of native record layouts, public getters, lock/encryption paths, BTX dictionary and serialization logic, and explicit source layout metadata.",
+  "reviewed_source_sha256": {
+    "src/pokemon.c": "acec458ad293af47fb5dbe1f59f7b3ad80ff432dd55b958ffa9db9c2a26dcf54",
+    "tools/py_scripts/pack_fakemon_followers.py": "fd71078016e969ee6143fa4acdf72a1f7d19323b82d43bc6d191830c6b57d6d3"
+  }
+}

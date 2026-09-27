@@ -1,0 +1,675 @@
+{
+  "format_version": 1,
+  "purpose": "Reviewed crop boundaries and format-only orientation corrections for selected generated gait sheets. No frame is independently recentered; each pair shares its crop transform.",
+  "alpha_threshold": 128,
+  "coordinates": "Half-open [left, top, right, bottom]. Rows split at the midpoint of occupied-art gaps. Columns follow the six-cell source layout.",
+  "columns": [
+    "north_a",
+    "north_b",
+    "south_a",
+    "south_b",
+    "west_a",
+    "west_b"
+  ],
+  "families": {
+    "electric": {
+      "sheet_size": [
+        1536,
+        1024
+      ],
+      "sha256": "28d27c640f6a7f55d293e0717aa239dde9ae9733abc41f2f5c73b1eb93c21540",
+      "rows": [
+        {
+          "species": "voltuff",
+          "cells": [
+            {
+              "box": [
+                0,
+                0,
+                256,
+                347
+              ]
+            },
+            {
+              "box": [
+                256,
+                0,
+                512,
+                347
+              ]
+            },
+            {
+              "box": [
+                512,
+                0,
+                768,
+                347
+              ]
+            },
+            {
+              "box": [
+                768,
+                0,
+                1024,
+                347
+              ]
+            },
+            {
+              "box": [
+                1024,
+                0,
+                1280,
+                347
+              ]
+            },
+            {
+              "box": [
+                1280,
+                0,
+                1536,
+                347
+              ]
+            }
+          ]
+        },
+        {
+          "species": "surguenon",
+          "cells": [
+            {
+              "box": [
+                0,
+                347,
+                256,
+                658
+              ]
+            },
+            {
+              "box": [
+                256,
+                347,
+                512,
+                658
+              ]
+            },
+            {
+              "box": [
+                512,
+                347,
+                768,
+                658
+              ]
+            },
+            {
+              "box": [
+                768,
+                347,
+                1024,
+                658
+              ]
+            },
+            {
+              "box": [
+                1024,
+                347,
+                1280,
+                658
+              ]
+            },
+            {
+              "box": [
+                1280,
+                347,
+                1536,
+                658
+              ]
+            }
+          ]
+        },
+        {
+          "species": "raijinque",
+          "cells": [
+            {
+              "box": [
+                0,
+                658,
+                256,
+                1024
+              ]
+            },
+            {
+              "box": [
+                256,
+                658,
+                512,
+                1024
+              ]
+            },
+            {
+              "box": [
+                512,
+                658,
+                768,
+                1024
+              ]
+            },
+            {
+              "box": [
+                768,
+                658,
+                1024,
+                1024
+              ]
+            },
+            {
+              "box": [
+                1024,
+                658,
+                1280,
+                1024
+              ]
+            },
+            {
+              "box": [
+                1280,
+                658,
+                1536,
+                1024
+              ],
+              "flip_x": true,
+              "reason": "Generated opposite-facing west B; mirror it to match west A before deriving east frames."
+            }
+          ]
+        }
+      ]
+    },
+    "varan": {
+      "sheet_size": [
+        1536,
+        1024
+      ],
+      "sha256": "fa6395ad933866b6eea67fc73cf1b13560bf5c884876e9738d091b9ebdddbe43",
+      "rows": [
+        {
+          "species": "embernewt",
+          "cells": [
+            {
+              "box": [
+                35,
+                0,
+                291,
+                187
+              ]
+            },
+            {
+              "box": [
+                272,
+                0,
+                528,
+                187
+              ]
+            },
+            {
+              "box": [
+                493,
+                0,
+                749,
+                187
+              ]
+            },
+            {
+              "box": [
+                714,
+                0,
+                970,
+                187
+              ]
+            },
+            {
+              "box": [
+                972,
+                0,
+                1228,
+                187
+              ]
+            },
+            {
+              "box": [
+                1231,
+                0,
+                1509,
+                187
+              ]
+            }
+          ]
+        },
+        {
+          "species": "pyrovaran",
+          "cells": [
+            {
+              "box": [
+                35,
+                187,
+                291,
+                380
+              ]
+            },
+            {
+              "box": [
+                272,
+                187,
+                528,
+                380
+              ]
+            },
+            {
+              "box": [
+                493,
+                187,
+                749,
+                380
+              ]
+            },
+            {
+              "box": [
+                714,
+                187,
+                970,
+                380
+              ]
+            },
+            {
+              "box": [
+                972,
+                187,
+                1228,
+                380
+              ]
+            },
+            {
+              "source_image": "source-sheets/varan-side-corrections.png",
+              "source_sha256": "cf63f428536f4a40b5358a869f2a900daa03bf91c6047198c1333003785eb19e",
+              "box": [
+                0,
+                0,
+                1122,
+                717
+              ],
+              "placement": {
+                "canvas_size": [
+                  256,
+                  193
+                ],
+                "fit_box": [
+                  26,
+                  15,
+                  230,
+                  183
+                ],
+                "mode": "height"
+              },
+              "reason": "Single-tail alternating-foot correction. Match crest-to-foot height to A while allowing the extended stride/tail to widen B. Common pair scale prevents independent body shrink; registered image must not clip."
+            }
+          ],
+          "cell_canvas_size": [
+            278,
+            193
+          ]
+        },
+        {
+          "species": "magmalisk",
+          "cells": [
+            {
+              "box": [
+                35,
+                380,
+                291,
+                594
+              ]
+            },
+            {
+              "box": [
+                272,
+                380,
+                528,
+                594
+              ]
+            },
+            {
+              "box": [
+                493,
+                380,
+                749,
+                594
+              ]
+            },
+            {
+              "box": [
+                714,
+                380,
+                970,
+                594
+              ]
+            },
+            {
+              "box": [
+                972,
+                380,
+                1228,
+                594
+              ]
+            },
+            {
+              "box": [
+                1231,
+                380,
+                1509,
+                594
+              ]
+            }
+          ]
+        },
+        {
+          "species": "rimevaran",
+          "cells": [
+            {
+              "box": [
+                35,
+                594,
+                291,
+                771
+              ]
+            },
+            {
+              "box": [
+                272,
+                594,
+                528,
+                771
+              ]
+            },
+            {
+              "box": [
+                493,
+                594,
+                749,
+                771
+              ]
+            },
+            {
+              "box": [
+                714,
+                594,
+                970,
+                771
+              ]
+            },
+            {
+              "box": [
+                972,
+                594,
+                1228,
+                771
+              ]
+            },
+            {
+              "box": [
+                1231,
+                594,
+                1509,
+                771
+              ]
+            }
+          ]
+        },
+        {
+          "species": "fimbulisk",
+          "cells": [
+            {
+              "box": [
+                35,
+                771,
+                291,
+                1024
+              ]
+            },
+            {
+              "box": [
+                272,
+                771,
+                528,
+                1024
+              ]
+            },
+            {
+              "box": [
+                493,
+                771,
+                749,
+                1024
+              ]
+            },
+            {
+              "box": [
+                714,
+                771,
+                970,
+                1024
+              ]
+            },
+            {
+              "box": [
+                972,
+                771,
+                1228,
+                1024
+              ]
+            },
+            {
+              "source_image": "source-sheets/varan-side-corrections.png",
+              "source_sha256": "cf63f428536f4a40b5358a869f2a900daa03bf91c6047198c1333003785eb19e",
+              "box": [
+                0,
+                717,
+                1122,
+                1402
+              ],
+              "placement": {
+                "canvas_size": [
+                  278,
+                  253
+                ],
+                "fit_box": [
+                  25,
+                  19,
+                  253,
+                  223
+                ],
+                "mode": "height"
+              },
+              "reason": "Single-tail alternating-foot correction. Match crest-to-foot height to A while allowing the extended stride/tail to widen B. Common pair scale prevents independent body shrink; registered image must not clip."
+            }
+          ],
+          "cell_canvas_size": [
+            278,
+            253
+          ]
+        }
+      ],
+      "layout_note": "Varan drawing columns are not equally spaced. Crop cameras centered at x=163,400,621,842,1100,1370 isolate each complete pose. Last camera is 278px wide to retain the final ice tail, then the tool center-pads all cameras to a common width before pair transforms."
+    },
+    "bird": {
+      "sheet_size": [
+        1536,
+        1024
+      ],
+      "sha256": "e0cb924fdb9e22bdc106c4e10757f44d8b165474bf62da64abcfbcc5a63e0259",
+      "rows": [
+        {
+          "species": "sedgling",
+          "cells": [
+            {
+              "box": [
+                0,
+                0,
+                256,
+                306
+              ]
+            },
+            {
+              "box": [
+                256,
+                0,
+                512,
+                306
+              ]
+            },
+            {
+              "box": [
+                512,
+                0,
+                768,
+                306
+              ]
+            },
+            {
+              "box": [
+                768,
+                0,
+                1024,
+                306
+              ]
+            },
+            {
+              "box": [
+                1024,
+                0,
+                1280,
+                306
+              ]
+            },
+            {
+              "box": [
+                1280,
+                0,
+                1536,
+                306
+              ],
+              "flip_x": true,
+              "reason": "Generated opposite-facing west B; mirror it to match west A before deriving east frames."
+            }
+          ]
+        },
+        {
+          "species": "cragaviar",
+          "cells": [
+            {
+              "box": [
+                0,
+                306,
+                256,
+                629
+              ]
+            },
+            {
+              "box": [
+                256,
+                306,
+                512,
+                629
+              ]
+            },
+            {
+              "box": [
+                512,
+                306,
+                768,
+                629
+              ]
+            },
+            {
+              "box": [
+                768,
+                306,
+                1024,
+                629
+              ]
+            },
+            {
+              "box": [
+                1024,
+                306,
+                1280,
+                629
+              ]
+            },
+            {
+              "box": [
+                1280,
+                306,
+                1536,
+                629
+              ],
+              "flip_x": true,
+              "reason": "Generated opposite-facing west B; mirror it to match west A before deriving east frames."
+            }
+          ]
+        },
+        {
+          "species": "ragnaroc",
+          "cells": [
+            {
+              "box": [
+                0,
+                629,
+                256,
+                1024
+              ]
+            },
+            {
+              "box": [
+                256,
+                629,
+                512,
+                1024
+              ]
+            },
+            {
+              "box": [
+                512,
+                629,
+                768,
+                1024
+              ]
+            },
+            {
+              "box": [
+                768,
+                629,
+                1024,
+                1024
+              ]
+            },
+            {
+              "box": [
+                1024,
+                629,
+                1280,
+                1024
+              ]
+            },
+            {
+              "box": [
+                1280,
+                629,
+                1536,
+                1024
+              ],
+              "flip_x": true,
+              "reason": "Generated opposite-facing west B; mirror it to match west A before deriving east frames."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

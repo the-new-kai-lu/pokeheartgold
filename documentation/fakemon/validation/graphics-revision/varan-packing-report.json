@@ -1,0 +1,851 @@
+{
+  "family": "varan",
+  "sheet": "documentation/fakemon/graphics-revision/source-sheets/varan.png",
+  "sheet_sha256": "fa6395ad933866b6eea67fc73cf1b13560bf5c884876e9738d091b9ebdddbe43",
+  "layout": "/home/fredd/git/pokeheartgold/documentation/fakemon/graphics-revision/follower-sheet-layout.json",
+  "external_images": [
+    {
+      "path": "/home/fredd/git/pokeheartgold/documentation/fakemon/graphics-revision/source-sheets/varan-side-corrections.png",
+      "sha256": "cf63f428536f4a40b5358a869f2a900daa03bf91c6047198c1333003785eb19e"
+    }
+  ],
+  "species": [
+    {
+      "key": "embernewt",
+      "bounds": [
+        21,
+        20
+      ],
+      "cells": [
+        {
+          "box": [
+            35,
+            0,
+            291,
+            187
+          ]
+        },
+        {
+          "box": [
+            272,
+            0,
+            528,
+            187
+          ]
+        },
+        {
+          "box": [
+            493,
+            0,
+            749,
+            187
+          ]
+        },
+        {
+          "box": [
+            714,
+            0,
+            970,
+            187
+          ]
+        },
+        {
+          "box": [
+            972,
+            0,
+            1228,
+            187
+          ]
+        },
+        {
+          "box": [
+            1231,
+            0,
+            1509,
+            187
+          ]
+        }
+      ],
+      "transforms": [
+        {
+          "source_pair_bbox": [
+            95,
+            23,
+            195,
+            182
+          ],
+          "scale": 0.12578616352201258,
+          "origin": [
+            9,
+            10
+          ],
+          "fitted_size": [
+            13,
+            20
+          ]
+        },
+        {
+          "source_pair_bbox": [
+            92,
+            23,
+            191,
+            179
+          ],
+          "scale": 0.1282051282051282,
+          "origin": [
+            9,
+            10
+          ],
+          "fitted_size": [
+            13,
+            20
+          ]
+        },
+        {
+          "source_pair_bbox": [
+            25,
+            43,
+            221,
+            180
+          ],
+          "scale": 0.10714285714285714,
+          "origin": [
+            5,
+            15
+          ],
+          "fitted_size": [
+            21,
+            15
+          ]
+        }
+      ],
+      "native_sha256": "c682284347d9e7d33b371fb99b80b829679ee2a5f95fe2a8622724c707adb14d",
+      "frame_bboxes": [
+        [
+          9,
+          10,
+          20,
+          30
+        ],
+        [
+          10,
+          10,
+          22,
+          30
+        ],
+        [
+          9,
+          11,
+          22,
+          30
+        ],
+        [
+          9,
+          10,
+          22,
+          30
+        ],
+        [
+          6,
+          15,
+          26,
+          30
+        ],
+        [
+          5,
+          15,
+          24,
+          30
+        ],
+        [
+          6,
+          15,
+          26,
+          30
+        ],
+        [
+          8,
+          15,
+          27,
+          30
+        ]
+      ]
+    },
+    {
+      "key": "pyrovaran",
+      "bounds": [
+        26,
+        25
+      ],
+      "cells": [
+        {
+          "box": [
+            35,
+            187,
+            291,
+            380
+          ]
+        },
+        {
+          "box": [
+            272,
+            187,
+            528,
+            380
+          ]
+        },
+        {
+          "box": [
+            493,
+            187,
+            749,
+            380
+          ]
+        },
+        {
+          "box": [
+            714,
+            187,
+            970,
+            380
+          ]
+        },
+        {
+          "box": [
+            972,
+            187,
+            1228,
+            380
+          ]
+        },
+        {
+          "source_image": "source-sheets/varan-side-corrections.png",
+          "source_sha256": "cf63f428536f4a40b5358a869f2a900daa03bf91c6047198c1333003785eb19e",
+          "box": [
+            0,
+            0,
+            1122,
+            717
+          ],
+          "placement": {
+            "canvas_size": [
+              256,
+              193
+            ],
+            "fit_box": [
+              26,
+              15,
+              230,
+              183
+            ],
+            "mode": "height"
+          },
+          "reason": "Single-tail alternating-foot correction. Match crest-to-foot height to A while allowing the extended stride/tail to widen B. Common pair scale prevents independent body shrink; registered image must not clip."
+        }
+      ],
+      "transforms": [
+        {
+          "source_pair_bbox": [
+            76,
+            6,
+            206,
+            192
+          ],
+          "scale": 0.13440860215053763,
+          "origin": [
+            7,
+            5
+          ],
+          "fitted_size": [
+            17,
+            25
+          ]
+        },
+        {
+          "source_pair_bbox": [
+            72,
+            6,
+            207,
+            185
+          ],
+          "scale": 0.13966480446927373,
+          "origin": [
+            6,
+            5
+          ],
+          "fitted_size": [
+            19,
+            25
+          ]
+        },
+        {
+          "source_pair_bbox": [
+            26,
+            15,
+            251,
+            183
+          ],
+          "scale": 0.11555555555555555,
+          "origin": [
+            3,
+            11
+          ],
+          "fitted_size": [
+            26,
+            19
+          ]
+        }
+      ],
+      "native_sha256": "b0c62d08f65cd88cdaee45272ba5aab9b581cafe8c24be5fad1b3a9162a3390f",
+      "frame_bboxes": [
+        [
+          8,
+          5,
+          24,
+          30
+        ],
+        [
+          7,
+          5,
+          23,
+          30
+        ],
+        [
+          6,
+          5,
+          25,
+          30
+        ],
+        [
+          6,
+          5,
+          25,
+          30
+        ],
+        [
+          4,
+          11,
+          28,
+          30
+        ],
+        [
+          3,
+          11,
+          29,
+          30
+        ],
+        [
+          4,
+          11,
+          28,
+          30
+        ],
+        [
+          3,
+          11,
+          29,
+          30
+        ]
+      ]
+    },
+    {
+      "key": "magmalisk",
+      "bounds": [
+        38,
+        34
+      ],
+      "cells": [
+        {
+          "box": [
+            35,
+            380,
+            291,
+            594
+          ]
+        },
+        {
+          "box": [
+            272,
+            380,
+            528,
+            594
+          ]
+        },
+        {
+          "box": [
+            493,
+            380,
+            749,
+            594
+          ]
+        },
+        {
+          "box": [
+            714,
+            380,
+            970,
+            594
+          ]
+        },
+        {
+          "box": [
+            972,
+            380,
+            1228,
+            594
+          ]
+        },
+        {
+          "box": [
+            1231,
+            380,
+            1509,
+            594
+          ]
+        }
+      ],
+      "transforms": [
+        {
+          "source_pair_bbox": [
+            60,
+            6,
+            224,
+            210
+          ],
+          "scale": 0.16666666666666666,
+          "origin": [
+            18,
+            28
+          ],
+          "fitted_size": [
+            27,
+            34
+          ]
+        },
+        {
+          "source_pair_bbox": [
+            60,
+            1,
+            220,
+            199
+          ],
+          "scale": 0.1717171717171717,
+          "origin": [
+            18,
+            28
+          ],
+          "fitted_size": [
+            27,
+            34
+          ]
+        },
+        {
+          "source_pair_bbox": [
+            18,
+            11,
+            256,
+            207
+          ],
+          "scale": 0.15966386554621848,
+          "origin": [
+            13,
+            31
+          ],
+          "fitted_size": [
+            38,
+            31
+          ]
+        }
+      ],
+      "native_sha256": "336f16ae83c60765ed536658646d5ece8c5d97fc55e05ed78731176f0c9d6f47",
+      "frame_bboxes": [
+        [
+          18,
+          28,
+          45,
+          62
+        ],
+        [
+          18,
+          28,
+          43,
+          62
+        ],
+        [
+          18,
+          28,
+          45,
+          62
+        ],
+        [
+          18,
+          28,
+          45,
+          62
+        ],
+        [
+          15,
+          31,
+          51,
+          62
+        ],
+        [
+          13,
+          31,
+          50,
+          62
+        ],
+        [
+          13,
+          31,
+          49,
+          62
+        ],
+        [
+          14,
+          31,
+          51,
+          62
+        ]
+      ]
+    },
+    {
+      "key": "rimevaran",
+      "bounds": [
+        26,
+        25
+      ],
+      "cells": [
+        {
+          "box": [
+            35,
+            594,
+            291,
+            771
+          ]
+        },
+        {
+          "box": [
+            272,
+            594,
+            528,
+            771
+          ]
+        },
+        {
+          "box": [
+            493,
+            594,
+            749,
+            771
+          ]
+        },
+        {
+          "box": [
+            714,
+            594,
+            970,
+            771
+          ]
+        },
+        {
+          "box": [
+            972,
+            594,
+            1228,
+            771
+          ]
+        },
+        {
+          "box": [
+            1231,
+            594,
+            1509,
+            771
+          ]
+        }
+      ],
+      "transforms": [
+        {
+          "source_pair_bbox": [
+            83,
+            4,
+            199,
+            174
+          ],
+          "scale": 0.14705882352941177,
+          "origin": [
+            7,
+            5
+          ],
+          "fitted_size": [
+            17,
+            25
+          ]
+        },
+        {
+          "source_pair_bbox": [
+            79,
+            4,
+            200,
+            175
+          ],
+          "scale": 0.14619883040935672,
+          "origin": [
+            7,
+            5
+          ],
+          "fitted_size": [
+            18,
+            25
+          ]
+        },
+        {
+          "source_pair_bbox": [
+            26,
+            15,
+            237,
+            170
+          ],
+          "scale": 0.12322274881516587,
+          "origin": [
+            3,
+            11
+          ],
+          "fitted_size": [
+            26,
+            19
+          ]
+        }
+      ],
+      "native_sha256": "192ae6d4e971bbb89f24abb8102a38ae4b9e59cb5acd735b6f4807827b9e82f1",
+      "frame_bboxes": [
+        [
+          8,
+          5,
+          24,
+          30
+        ],
+        [
+          7,
+          5,
+          23,
+          30
+        ],
+        [
+          7,
+          5,
+          24,
+          30
+        ],
+        [
+          8,
+          5,
+          25,
+          30
+        ],
+        [
+          4,
+          11,
+          29,
+          30
+        ],
+        [
+          3,
+          11,
+          29,
+          30
+        ],
+        [
+          3,
+          11,
+          28,
+          30
+        ],
+        [
+          3,
+          11,
+          29,
+          30
+        ]
+      ]
+    },
+    {
+      "key": "fimbulisk",
+      "bounds": [
+        38,
+        34
+      ],
+      "cells": [
+        {
+          "box": [
+            35,
+            771,
+            291,
+            1024
+          ]
+        },
+        {
+          "box": [
+            272,
+            771,
+            528,
+            1024
+          ]
+        },
+        {
+          "box": [
+            493,
+            771,
+            749,
+            1024
+          ]
+        },
+        {
+          "box": [
+            714,
+            771,
+            970,
+            1024
+          ]
+        },
+        {
+          "box": [
+            972,
+            771,
+            1228,
+            1024
+          ]
+        },
+        {
+          "source_image": "source-sheets/varan-side-corrections.png",
+          "source_sha256": "cf63f428536f4a40b5358a869f2a900daa03bf91c6047198c1333003785eb19e",
+          "box": [
+            0,
+            717,
+            1122,
+            1402
+          ],
+          "placement": {
+            "canvas_size": [
+              278,
+              253
+            ],
+            "fit_box": [
+              25,
+              19,
+              253,
+              223
+            ],
+            "mode": "height"
+          },
+          "reason": "Single-tail alternating-foot correction. Match crest-to-foot height to A while allowing the extended stride/tail to widen B. Common pair scale prevents independent body shrink; registered image must not clip."
+        }
+      ],
+      "transforms": [
+        {
+          "source_pair_bbox": [
+            56,
+            7,
+            221,
+            224
+          ],
+          "scale": 0.15668202764976957,
+          "origin": [
+            19,
+            28
+          ],
+          "fitted_size": [
+            26,
+            34
+          ]
+        },
+        {
+          "source_pair_bbox": [
+            60,
+            3,
+            219,
+            219
+          ],
+          "scale": 0.1574074074074074,
+          "origin": [
+            19,
+            28
+          ],
+          "fitted_size": [
+            25,
+            34
+          ]
+        },
+        {
+          "source_pair_bbox": [
+            2,
+            19,
+            276,
+            223
+          ],
+          "scale": 0.1386861313868613,
+          "origin": [
+            13,
+            34
+          ],
+          "fitted_size": [
+            38,
+            28
+          ]
+        }
+      ],
+      "native_sha256": "e70609d26b718c411e12effc4b26e799c67cf74afcfce9074b722904eb939707",
+      "frame_bboxes": [
+        [
+          19,
+          28,
+          45,
+          62
+        ],
+        [
+          20,
+          28,
+          45,
+          62
+        ],
+        [
+          19,
+          28,
+          44,
+          62
+        ],
+        [
+          19,
+          28,
+          44,
+          62
+        ],
+        [
+          16,
+          34,
+          48,
+          62
+        ],
+        [
+          13,
+          34,
+          51,
+          62
+        ],
+        [
+          16,
+          34,
+          48,
+          62
+        ],
+        [
+          13,
+          34,
+          51,
+          62
+        ]
+      ]
+    }
+  ]
+}

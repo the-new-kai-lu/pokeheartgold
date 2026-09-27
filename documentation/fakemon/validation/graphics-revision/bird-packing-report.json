@@ -1,0 +1,498 @@
+{
+  "family": "bird",
+  "sheet": "documentation/fakemon/graphics-revision/source-sheets/bird.png",
+  "sheet_sha256": "e0cb924fdb9e22bdc106c4e10757f44d8b165474bf62da64abcfbcc5a63e0259",
+  "layout": "/home/fredd/git/pokeheartgold/documentation/fakemon/graphics-revision/follower-sheet-layout.json",
+  "external_images": [],
+  "species": [
+    {
+      "key": "sedgling",
+      "bounds": [
+        18,
+        18
+      ],
+      "cells": [
+        {
+          "box": [
+            0,
+            0,
+            256,
+            306
+          ]
+        },
+        {
+          "box": [
+            256,
+            0,
+            512,
+            306
+          ]
+        },
+        {
+          "box": [
+            512,
+            0,
+            768,
+            306
+          ]
+        },
+        {
+          "box": [
+            768,
+            0,
+            1024,
+            306
+          ]
+        },
+        {
+          "box": [
+            1024,
+            0,
+            1280,
+            306
+          ]
+        },
+        {
+          "box": [
+            1280,
+            0,
+            1536,
+            306
+          ],
+          "flip_x": true,
+          "reason": "Generated opposite-facing west B; mirror it to match west A before deriving east frames."
+        }
+      ],
+      "transforms": [
+        {
+          "source_pair_bbox": [
+            79,
+            85,
+            204,
+            277
+          ],
+          "scale": 0.09375,
+          "origin": [
+            10,
+            12
+          ],
+          "fitted_size": [
+            12,
+            18
+          ]
+        },
+        {
+          "source_pair_bbox": [
+            61,
+            85,
+            194,
+            275
+          ],
+          "scale": 0.09473684210526316,
+          "origin": [
+            9,
+            12
+          ],
+          "fitted_size": [
+            13,
+            18
+          ]
+        },
+        {
+          "source_pair_bbox": [
+            37,
+            99,
+            242,
+            276
+          ],
+          "scale": 0.08780487804878048,
+          "origin": [
+            7,
+            14
+          ],
+          "fitted_size": [
+            18,
+            16
+          ]
+        }
+      ],
+      "native_sha256": "aa679deb6dda1274598d6636b22e53e676600a31bdc95511d2e515ac07967f68",
+      "frame_bboxes": [
+        [
+          10,
+          12,
+          22,
+          30
+        ],
+        [
+          10,
+          12,
+          22,
+          30
+        ],
+        [
+          9,
+          12,
+          22,
+          30
+        ],
+        [
+          9,
+          12,
+          22,
+          30
+        ],
+        [
+          7,
+          14,
+          22,
+          30
+        ],
+        [
+          10,
+          14,
+          25,
+          30
+        ],
+        [
+          10,
+          14,
+          25,
+          30
+        ],
+        [
+          7,
+          14,
+          22,
+          30
+        ]
+      ]
+    },
+    {
+      "key": "cragaviar",
+      "bounds": [
+        26,
+        26
+      ],
+      "cells": [
+        {
+          "box": [
+            0,
+            306,
+            256,
+            629
+          ]
+        },
+        {
+          "box": [
+            256,
+            306,
+            512,
+            629
+          ]
+        },
+        {
+          "box": [
+            512,
+            306,
+            768,
+            629
+          ]
+        },
+        {
+          "box": [
+            768,
+            306,
+            1024,
+            629
+          ]
+        },
+        {
+          "box": [
+            1024,
+            306,
+            1280,
+            629
+          ]
+        },
+        {
+          "box": [
+            1280,
+            306,
+            1536,
+            629
+          ],
+          "flip_x": true,
+          "reason": "Generated opposite-facing west B; mirror it to match west A before deriving east frames."
+        }
+      ],
+      "transforms": [
+        {
+          "source_pair_bbox": [
+            53,
+            29,
+            226,
+            296
+          ],
+          "scale": 0.09737827715355805,
+          "origin": [
+            7,
+            4
+          ],
+          "fitted_size": [
+            17,
+            26
+          ]
+        },
+        {
+          "source_pair_bbox": [
+            36,
+            30,
+            212,
+            302
+          ],
+          "scale": 0.09558823529411764,
+          "origin": [
+            7,
+            4
+          ],
+          "fitted_size": [
+            17,
+            26
+          ]
+        },
+        {
+          "source_pair_bbox": [
+            21,
+            35,
+            249,
+            299
+          ],
+          "scale": 0.09848484848484848,
+          "origin": [
+            5,
+            4
+          ],
+          "fitted_size": [
+            22,
+            26
+          ]
+        }
+      ],
+      "native_sha256": "68a949436655be18c9fa091675154311fa56c3ec8dca25d2137c61c70e8d916c",
+      "frame_bboxes": [
+        [
+          8,
+          4,
+          24,
+          30
+        ],
+        [
+          7,
+          4,
+          24,
+          30
+        ],
+        [
+          8,
+          4,
+          24,
+          30
+        ],
+        [
+          7,
+          4,
+          24,
+          29
+        ],
+        [
+          5,
+          4,
+          24,
+          30
+        ],
+        [
+          9,
+          4,
+          27,
+          30
+        ],
+        [
+          8,
+          4,
+          27,
+          30
+        ],
+        [
+          5,
+          4,
+          23,
+          30
+        ]
+      ]
+    },
+    {
+      "key": "ragnaroc",
+      "bounds": [
+        48,
+        42
+      ],
+      "cells": [
+        {
+          "box": [
+            0,
+            629,
+            256,
+            1024
+          ]
+        },
+        {
+          "box": [
+            256,
+            629,
+            512,
+            1024
+          ]
+        },
+        {
+          "box": [
+            512,
+            629,
+            768,
+            1024
+          ]
+        },
+        {
+          "box": [
+            768,
+            629,
+            1024,
+            1024
+          ]
+        },
+        {
+          "box": [
+            1024,
+            629,
+            1280,
+            1024
+          ]
+        },
+        {
+          "box": [
+            1280,
+            629,
+            1536,
+            1024
+          ],
+          "flip_x": true,
+          "reason": "Generated opposite-facing west B; mirror it to match west A before deriving east frames."
+        }
+      ],
+      "transforms": [
+        {
+          "source_pair_bbox": [
+            25,
+            22,
+            256,
+            306
+          ],
+          "scale": 0.14788732394366197,
+          "origin": [
+            15,
+            20
+          ],
+          "fitted_size": [
+            34,
+            42
+          ]
+        },
+        {
+          "source_pair_bbox": [
+            13,
+            22,
+            242,
+            306
+          ],
+          "scale": 0.14788732394366197,
+          "origin": [
+            15,
+            20
+          ],
+          "fitted_size": [
+            34,
+            42
+          ]
+        },
+        {
+          "source_pair_bbox": [
+            1,
+            23,
+            253,
+            306
+          ],
+          "scale": 0.14840989399293286,
+          "origin": [
+            13,
+            20
+          ],
+          "fitted_size": [
+            37,
+            42
+          ]
+        }
+      ],
+      "native_sha256": "43803ed387c82823bdd552e8e57c5b7f328ff0fca5cac0ea27361fae9fa44379",
+      "frame_bboxes": [
+        [
+          15,
+          20,
+          49,
+          62
+        ],
+        [
+          15,
+          20,
+          49,
+          62
+        ],
+        [
+          15,
+          20,
+          49,
+          62
+        ],
+        [
+          15,
+          20,
+          49,
+          62
+        ],
+        [
+          13,
+          20,
+          47,
+          62
+        ],
+        [
+          17,
+          20,
+          50,
+          62
+        ],
+        [
+          17,
+          20,
+          51,
+          62
+        ],
+        [
+          14,
+          20,
+          47,
+          62
+        ]
+      ]
+    }
+  ]
+}

@@ -54,7 +54,7 @@
 	</row>
 	<row id="msg_0550_T21_00013" index="13">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">...\rYou got three Pokémon at the Lab.\nWhat a waste.\rThey’re too good for a wimp like you.\r...\nDon’t you get what I’m saying?\rI took all three from that device.\nChikorita, Cyndaquil, and Totodile.\rI’ll show you what they can do!\r</language>
+		<language name="English">...\rYou got three Pokémon at the Lab.\nWhat a waste.\rThey’re too good for a wimp like you.\r...\nDon’t you get what I’m saying?\rI took all three from that device.\nCHIKORITA, CYNDAQUIL, and TOTODILE.\rI’ll show you what they can do!\r</language>
 	</row>
 	<row id="msg_0550_T21_00014" index="14">
 		<attribute name="window_context_name">used</attribute>

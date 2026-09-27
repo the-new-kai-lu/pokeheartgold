@@ -1,0 +1,40 @@
+{
+  "unaffected_varan_frames_byte_identical": 32,
+  "electric_bird_frames_unchanged_by_repair": 48,
+  "corrected_and_reregistered_texture_frames": [
+    [
+      "pyrovaran",
+      4
+    ],
+    [
+      "pyrovaran",
+      5
+    ],
+    [
+      "pyrovaran",
+      6
+    ],
+    [
+      "pyrovaran",
+      7
+    ],
+    [
+      "fimbulisk",
+      4
+    ],
+    [
+      "fimbulisk",
+      5
+    ],
+    [
+      "fimbulisk",
+      6
+    ],
+    [
+      "fimbulisk",
+      7
+    ]
+  ],
+  "all_native_source_frames_verified": 88,
+  "registration": "Both west/east A/B pairs use common scale after registering corrected B crest-to-foot height to A. Tail extension no longer shrinks B."
+}

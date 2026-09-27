@@ -6,6 +6,7 @@
 #include "constants/abilities.h"
 #include "constants/balls.h"
 #include "constants/battle.h"
+#include "constants/charcode.h"
 #include "constants/items.h"
 #include "constants/map_sections.h"
 #include "constants/moves.h"
@@ -480,6 +481,45 @@ u32 GetBoxMonData(BoxPokemon *boxMon, int attr, void *dest) {
     return ret;
 }
 
+// Older Fakemon builds stored title-case species defaults in the nickname field.
+// Normalize those defaults lazily when displayed, retaining genuine nicknames and
+// Eggs. This runs only with decrypted blocks and refreshes the encryption checksum.
+static void NormalizeFakemonDefaultNickname(BoxPokemon *boxMon, PokemonDataBlockA *blockA, PokemonDataBlockB *blockB, PokemonDataBlockC *blockC) {
+    u16 uppercase[POKEMON_NAME_LENGTH + 1];
+    u16 speciesName[POKEMON_NAME_LENGTH + 1];
+    BOOL changed = FALSE;
+    int i;
+
+    if (boxMon->checksumFailed || !IsFakemonSpecies(blockA->species) || blockB->hasNickname || blockB->isEgg) {
+        return;
+    }
+    for (i = 0; i < POKEMON_NAME_LENGTH + 1; i++) {
+        uppercase[i] = blockC->nickname[i];
+        if (uppercase[i] == EOS) {
+            break;
+        }
+        if (uppercase[i] >= CHAR_a && uppercase[i] <= CHAR_z) {
+            uppercase[i] -= CHAR_a - CHAR_A;
+            changed = TRUE;
+        }
+    }
+    if (!changed || i > POKEMON_NAME_LENGTH) {
+        return;
+    }
+    // Requiring an exact species-name match also protects editor-created names
+    // whose nickname flag was accidentally left unset.
+    GetSpeciesNameIntoArray(blockA->species, HEAP_ID_DEFAULT, speciesName);
+    if (StringNotEqual(uppercase, speciesName) || CHECKSUM(boxMon) != boxMon->checksum) {
+        // A caller holding a lock may have edits pending their final checksum.
+        // Defer migration until a later valid read rather than repairing data.
+        return;
+    }
+    for (i = 0; uppercase[i] != EOS; i++) {
+        blockC->nickname[i] = uppercase[i];
+    }
+    boxMon->checksum = CHECKSUM(boxMon);
+}
+
 static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void *dest) {
     u32 ret = 0;
     PokemonDataBlockA *blockA = &GetSubstruct(boxMon, boxMon->personality, 0)->blockA;
@@ -734,6 +774,7 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void *dest) {
         ret = blockB->unused2;
         break;
     case MON_DATA_NICKNAME:
+        NormalizeFakemonDefaultNickname(boxMon, blockA, blockB, blockC);
         if (boxMon->checksumFailed) {
             GetSpeciesNameIntoArray(SPECIES_MANAPHY_EGG, HEAP_ID_DEFAULT, dest);
         } else {
@@ -748,6 +789,7 @@ static u32 GetBoxMonDataInternal(BoxPokemon *boxMon, int attr, void *dest) {
         ret = blockB->hasNickname;
         // fallthrough
     case MON_DATA_NICKNAME_STRING:
+        NormalizeFakemonDefaultNickname(boxMon, blockA, blockB, blockC);
         if (boxMon->checksumFailed) {
             String *buffer = GetSpeciesName(SPECIES_MANAPHY_EGG, HEAP_ID_DEFAULT);
             String_Copy(dest, buffer);

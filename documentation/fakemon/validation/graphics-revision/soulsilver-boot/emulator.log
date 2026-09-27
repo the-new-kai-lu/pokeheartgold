@@ -1,0 +1,20 @@
+{"rom": "/home/fredd/git/pokeheartgold/build/soulsilver.us/soulsilver-fakemon-starters.nds", "rom_sha256": "6f504c9289e7d3c6603b2ae1179378edf716c21496c2d01fbc8c3c4c09fcedb2", "isolated_workspace": "/tmp/ss-graphics-revision-boot-7ibo36om", "emulator": "py-desmume DeSmuME", "unique_rom_basename": "ss-graphics-revision-boot-7ibo36om.nds", "fresh_battery": true, "imported_save": null, "source_rom_unchanged": true, "frames": 1143, "input": [{"at_frame": 900, "key": "A", "held_frames": 3}], "screenshots": [{"file": "documentation/fakemon/validation/graphics-revision/soulsilver-boot/boot-180.png", "frame": 180, "sha256": "e0aaece400268a70e3e6eaeea7f4c4bf73f48df318a79690719a913e2f83e3c6"}, {"file": "documentation/fakemon/validation/graphics-revision/soulsilver-boot/title-900.png", "frame": 900, "sha256": "76c5deba0304476eada321b4b51669d55e546f959bd50860da9338fd450d38fa"}, {"file": "documentation/fakemon/validation/graphics-revision/soulsilver-boot/after-a-1143.png", "frame": 1143, "sha256": "cdf125590fd729aeb0becaa2934646e32ee81d145d922452d97caa363e56ad5d"}], "scope": "Fresh isolated boot/title smoke only; no playthrough and no user save loaded or modified.", "visual_review_pending": true}
+Microphone successfully inited.
+DeSmuME 0.9.12 git#0 x64-JIT SSE2
+SoftRasterizer: Running using 32 additional threads. (Multithreading enabled.)
+
+ROM game code: IPGE
+ROM crc: 03911192
+ROM serial: NTR-IPGE-USA
+ROM chipID: 00007FC2
+ROM internal name: POKEMON SS
+ROM developer: Nintendo
+
+Slot1 auto-selected device type: Retail MC+ROM
+Slot2 auto-selected device type: None (0xFF)
+BackupDevice: DeSmuME .dsv save file not found. Trying to load a .sav file.
+CPU mode: Interpreter
+Already decrypted.
+WIFI: MAC Address = 00:09:BF:12:34:56
+WIFI: Emulation level is OFF.
+Autodetecting with autodetect_size=4
