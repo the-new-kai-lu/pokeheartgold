@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "stage": "1A",
+  "save_profile": "vanilla-hgss",
+  "save_format_version": 0,
+  "game_data_revision": 0,
+  "repositories": {
+    "pokeheartgold": "9d8b7591f09b65804da2fb2dfd56f320633e0d36",
+    "PKHeX": "94033cce0caf90dcc04bbacdbe991233bb3bef9f",
+    "PKMDS-Blazor": "d15390ac38546042e2e8d3fbdf4cc2799ad274da",
+    "hg-engine-reference-only": "dfb0dcd0a01a1eba4f27d038eb0c7703b8136571"
+  },
+  "toolchain_archives_sha256": {
+    "mwccarm.zip": "dc386e37b2176e960954a733de928337d9b7e7620b9e94228008c31774339ace",
+    "NitroSDK-3_2-060901.7z": "0ee935e34237cb1954e657083cd80a31ec9de1aeddd9468cceef684cac75b491"
+  },
+  "rom_sha1": {
+    "heartgold": "4fcded0e2713dc03929845de631d0932ea2b5a37",
+    "soulsilver": "f8dc38ea20c17541a43b58c5e6d18c1732c7e582"
+  },
+  "capacities": {
+    "map_count": 540,
+    "region_bits": 1,
+    "persistent_flags": 2912,
+    "variables": 368,
+    "variable_base": 16384
+  },
+  "layout_source_sha256": {
+    "include/save_vars_flags.h": "1bfd419a51443a217a27ad119fd61cbffe4dfb22d37750ba1d5f76c3599178d1",
+    "include/pokemon_types_def.h": "eed1c1796f12529b94e0fe8bd51beb2bea35eb0408125c009ed56bef6ba25d1b",
+    "src/save.c": "c3cd84b17b771db6c878289955794c0e55f86fda65b2205a53b2caaae571d2fc"
+  },
+  "donor_editions": {"hoenn": null, "sinnoh": null},
+  "imported_episodes": [],
+  "runtime_compatibility": "unverified"
+}
