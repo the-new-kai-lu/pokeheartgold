@@ -169,9 +169,31 @@ python3 scripts/audit_expansion_state.py \
 The initial scan covered 4,752 tracked source/header/assembly/event-JSON files
 and identified 965 expected compiled script banks per edition. Neither probe
 had a literal/alias use outside definitions in that scan. **This is not proof
-they are free.** No local compiled script banks were available, so coverage
-of both HG and SS binaries remains missing. Source branches for both editions
-are scanned together, not treated as a substitute for compiled variants.
+they are free.** The subsequent native script build compiled all 965 banks
+independently for each edition, with all 1,930 outputs matching the tracked
+`scr_seq.sha1` manifest. Neither probe occurred in either edition's binaries.
+Source branches for both editions are scanned together; separate builds use
+the actual HEARTGOLD/SOULSILVER preprocessor defines.
+
+Reproduce without Wine (installed gcc, g++, and ARM GNU binutils required):
+
+```sh
+python3 scripts/build_native_field_scripts.py --output /tmp/hgss-scripts
+python3 scripts/audit_expansion_state.py \
+  --candidate 0x416e --candidate 0x416f \
+  --heartgold /tmp/hgss-scripts/heartgold \
+  --soulsilver /tmp/hgss-scripts/soulsilver --output /tmp/state-audit.json
+```
+
+The output directory must not already exist. The helper uses the repository's
+native `msgenc` generator, the config.mk edition/SDK/assembly defines, and
+objcopy's script make-rule extraction. GNU compatibility conversions handle
+MW comments, `.rodata`, alignment-mode syntax, and two redundant zero macro
+arguments; **every bank must match its tracked SHA-1** or the build fails.
+The script-only output is not a ROM and does not fix the Windows compiler.
+The audit reports complete binary coverage but still exits 2: no literal
+references found, allocation not approved. It inventories 1,565 native/dynamic
+access sites for review; that count is not 1,565 proven candidate references.
 
 Supply independently built directories with `--heartgold <HG-scr_seq-dir>`
 and `--soulsilver <SS-scr_seq-dir>` to inventory every byte offset for candidate

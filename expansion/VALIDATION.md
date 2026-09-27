@@ -66,12 +66,32 @@ This is a partial implementation checkpoint, not Stage 1 completion.
   missing/empty/stale banks, decimal and alias references, computed accesses
   and evidence fingerprint changes. Together with existing tests, 15 pass.
 - Probes `0x416e`/`0x416f` found no literal source uses outside definitions;
-  they are **not allocated or certified free**. Compiled banks are unavailable
-  locally and native/dynamic accesses require review. No Birch caller or
+  they are **not allocated or certified free**. Subsequent native builds now
+  provide both editions' compiled banks; native/dynamic accesses require review. No Birch caller or
   runtime story transition is claimed implemented.
 - The owner's `COMPARE=0` workflow change at `7411b883` is preserved.
 
-## Reproduce focused editor checks
+## Reproduce focused checks
+
+### Native field-script evidence checkpoint
+
+- `scripts/build_native_field_scripts.py` independently preprocesses/assembles
+  965 field banks for HG and 965 for SS without Wine. All 1,930 outputs match
+  the existing tracked SHA-1 manifest. No ROM or message asset is committed.
+- Uses actual native `msgenc` and GNU ARM tools; the output report records tool
+  versions, edition defines and bank hashes. Existing-output refusal prevents
+  stale-bank reuse. Header-bank regression tests exercise real assembly and
+  hashes, including the MW/GNU surplus-argument compatibility case; an
+  edition-sensitive test ensures the two define paths are actually distinct.
+- All 17 host tests passed locally. The native ARM regression explicitly skips
+  when GNU ARM binutils are absent (for example in the Python-only CI job);
+  the full script-build helper instead fails on missing tools.
+- State audit now has complete binary coverage: probes `0x416e` and `0x416f`
+  have no literal hits in either edition. Exit 2 remains intentional, with
+  1,565 native/dynamic access sites inventoried for manual/dataflow review.
+  No persistent IDs are allocated and no reachable Birch interaction exists.
+
+### Editor checks
 
 Clone the editor forks alongside the game fork. In PKHeX, using .NET 10.0.401:
 
