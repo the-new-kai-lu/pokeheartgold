@@ -1,0 +1,22 @@
+{
+  "female/back": {
+    "sha256": "72a171cf0c55e89853cbaba33a613a255bd75f011902fc897b85a6ffa090d2fe",
+    "frames_mirrored_independently": true,
+    "palette_preserved": true
+  },
+  "male/back": {
+    "sha256": "72a171cf0c55e89853cbaba33a613a255bd75f011902fc897b85a6ffa090d2fe",
+    "frames_mirrored_independently": true,
+    "palette_preserved": true
+  },
+  "female/front": {
+    "sha256": "1390ec754143ab0730728acf4e5f716028d83455175af7f01af5267822dcb43b",
+    "frames_mirrored_independently": true,
+    "palette_preserved": true
+  },
+  "male/front": {
+    "sha256": "1390ec754143ab0730728acf4e5f716028d83455175af7f01af5267822dcb43b",
+    "frames_mirrored_independently": true,
+    "palette_preserved": true
+  }
+}

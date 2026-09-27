@@ -1,5 +1,7 @@
 # Side-facing follower steps
 
+**Superseded:** [Native-pixel walking and battle-facing correction](../pixel-gaits/README.md) is the current side-gait implementation.
+
 The previous side frames changed stance without clearly exchanging the feet. This revision replaces west/east contact poses for all eleven custom species, keeping heads, torsos and tails fixed between the side frames.
 
 [Animated art preview](steps.gif) | [Phase A](steps-0.png) | [Phase B](steps-1.png) | [In-game enlarged frames](runtime/east-details.png)

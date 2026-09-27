@@ -1,5 +1,7 @@
 # Follower, palette and name revision
 
+**Superseded:** [Native-pixel walking and battle-facing correction](../pixel-gaits/README.md) is the current side-gait implementation.
+
 **Later correction:** [Side-facing steps](../side-gait/README.md) supersedes the west/east frames here. The earlier walking review understated the remaining side-foot issue; use the later art, packing pass and evidence when reproducing the current ROM.
 
 This revision addresses playtest reports of mixed-case species names, overly bright colors and oversized followers whose animation looked like bouncing. It applies to both ROMs on `fakemon-starter-trio`.

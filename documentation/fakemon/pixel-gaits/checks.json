@@ -1,0 +1,1083 @@
+{
+  "voltuff": {
+    "sha256": "c3adc7ae416bc5929f49270ec1c828766dc2cee184cd462c77d528d7711a921b",
+    "joints": [
+      [
+        {
+          "hip": [
+            15,
+            24
+          ],
+          "knee": [
+            16,
+            26
+          ],
+          "ankle": [
+            18,
+            28
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            15,
+            24
+          ],
+          "knee": [
+            13,
+            26
+          ],
+          "ankle": [
+            12,
+            29
+          ],
+          "near": true
+        }
+      ],
+      [
+        {
+          "hip": [
+            15,
+            24
+          ],
+          "knee": [
+            13,
+            26
+          ],
+          "ankle": [
+            12,
+            29
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            15,
+            24
+          ],
+          "knee": [
+            16,
+            26
+          ],
+          "ankle": [
+            18,
+            28
+          ],
+          "near": true
+        }
+      ]
+    ],
+    "palettes_unchanged": true,
+    "north_south_unchanged": true
+  },
+  "surguenon": {
+    "sha256": "41b87908603c6e4b66bc29cfbc9176e0313f6f460efb2a250ef8cc469b74d807",
+    "joints": [
+      [
+        {
+          "hip": [
+            14,
+            22
+          ],
+          "knee": [
+            16,
+            25
+          ],
+          "ankle": [
+            18,
+            28
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            14,
+            22
+          ],
+          "knee": [
+            12,
+            25
+          ],
+          "ankle": [
+            10,
+            29
+          ],
+          "near": true
+        }
+      ],
+      [
+        {
+          "hip": [
+            14,
+            22
+          ],
+          "knee": [
+            12,
+            25
+          ],
+          "ankle": [
+            10,
+            29
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            14,
+            22
+          ],
+          "knee": [
+            16,
+            25
+          ],
+          "ankle": [
+            18,
+            28
+          ],
+          "near": true
+        }
+      ]
+    ],
+    "palettes_unchanged": true,
+    "north_south_unchanged": true
+  },
+  "raijinque": {
+    "sha256": "80165e43e0f7567c4a13b9ffa595e0379e6a75c999d5a8100e7bb38dcfc5d29a",
+    "joints": [
+      [
+        {
+          "hip": [
+            29,
+            52
+          ],
+          "knee": [
+            31,
+            56
+          ],
+          "ankle": [
+            34,
+            60
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            29,
+            52
+          ],
+          "knee": [
+            26,
+            56
+          ],
+          "ankle": [
+            24,
+            61
+          ],
+          "near": true
+        }
+      ],
+      [
+        {
+          "hip": [
+            29,
+            52
+          ],
+          "knee": [
+            26,
+            56
+          ],
+          "ankle": [
+            24,
+            61
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            29,
+            52
+          ],
+          "knee": [
+            31,
+            56
+          ],
+          "ankle": [
+            34,
+            60
+          ],
+          "near": true
+        }
+      ]
+    ],
+    "palettes_unchanged": true,
+    "north_south_unchanged": true
+  },
+  "embernewt": {
+    "sha256": "c56c377fee88d989378974418afb248a9805141f46c3666041b4f51dae190251",
+    "joints": [
+      [
+        {
+          "hip": [
+            11,
+            25
+          ],
+          "knee": [
+            12,
+            26
+          ],
+          "ankle": [
+            13,
+            28
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            10,
+            25
+          ],
+          "knee": [
+            9,
+            27
+          ],
+          "ankle": [
+            8,
+            29
+          ],
+          "near": true
+        },
+        {
+          "hip": [
+            19,
+            26
+          ],
+          "knee": [
+            18,
+            27
+          ],
+          "ankle": [
+            17,
+            28
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            18,
+            26
+          ],
+          "knee": [
+            19,
+            27
+          ],
+          "ankle": [
+            20,
+            29
+          ],
+          "near": true
+        }
+      ],
+      [
+        {
+          "hip": [
+            11,
+            25
+          ],
+          "knee": [
+            10,
+            26
+          ],
+          "ankle": [
+            9,
+            28
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            10,
+            25
+          ],
+          "knee": [
+            11,
+            26
+          ],
+          "ankle": [
+            12,
+            28
+          ],
+          "near": true
+        },
+        {
+          "hip": [
+            19,
+            26
+          ],
+          "knee": [
+            20,
+            27
+          ],
+          "ankle": [
+            21,
+            28
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            18,
+            26
+          ],
+          "knee": [
+            17,
+            27
+          ],
+          "ankle": [
+            16,
+            29
+          ],
+          "near": true
+        }
+      ]
+    ],
+    "palettes_unchanged": true,
+    "north_south_unchanged": true
+  },
+  "pyrovaran": {
+    "sha256": "a3d6d431c4ee278c06567ceed8d2f4ed4300375e7133dd8b05d5d5f26dbd004e",
+    "joints": [
+      [
+        {
+          "hip": [
+            11,
+            24
+          ],
+          "knee": [
+            12,
+            26
+          ],
+          "ankle": [
+            14,
+            28
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            10,
+            24
+          ],
+          "knee": [
+            8,
+            26
+          ],
+          "ankle": [
+            7,
+            29
+          ],
+          "near": true
+        },
+        {
+          "hip": [
+            21,
+            25
+          ],
+          "knee": [
+            19,
+            26
+          ],
+          "ankle": [
+            18,
+            28
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            20,
+            25
+          ],
+          "knee": [
+            21,
+            27
+          ],
+          "ankle": [
+            23,
+            29
+          ],
+          "near": true
+        }
+      ],
+      [
+        {
+          "hip": [
+            11,
+            24
+          ],
+          "knee": [
+            9,
+            26
+          ],
+          "ankle": [
+            8,
+            28
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            10,
+            24
+          ],
+          "knee": [
+            11,
+            26
+          ],
+          "ankle": [
+            13,
+            28
+          ],
+          "near": true
+        },
+        {
+          "hip": [
+            21,
+            25
+          ],
+          "knee": [
+            22,
+            26
+          ],
+          "ankle": [
+            24,
+            28
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            20,
+            25
+          ],
+          "knee": [
+            18,
+            27
+          ],
+          "ankle": [
+            17,
+            29
+          ],
+          "near": true
+        }
+      ]
+    ],
+    "palettes_unchanged": true,
+    "north_south_unchanged": true
+  },
+  "magmalisk": {
+    "sha256": "4860526481cd6ca4d29bfb8cf9485de226d0288e8c3c77ecf6de88e7faf6c34f",
+    "joints": [
+      [
+        {
+          "hip": [
+            26,
+            54
+          ],
+          "knee": [
+            28,
+            57
+          ],
+          "ankle": [
+            30,
+            60
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            25,
+            54
+          ],
+          "knee": [
+            23,
+            57
+          ],
+          "ankle": [
+            21,
+            61
+          ],
+          "near": true
+        },
+        {
+          "hip": [
+            39,
+            55
+          ],
+          "knee": [
+            37,
+            57
+          ],
+          "ankle": [
+            35,
+            60
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            38,
+            55
+          ],
+          "knee": [
+            40,
+            58
+          ],
+          "ankle": [
+            42,
+            61
+          ],
+          "near": true
+        }
+      ],
+      [
+        {
+          "hip": [
+            26,
+            54
+          ],
+          "knee": [
+            24,
+            57
+          ],
+          "ankle": [
+            22,
+            60
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            25,
+            54
+          ],
+          "knee": [
+            27,
+            57
+          ],
+          "ankle": [
+            29,
+            60
+          ],
+          "near": true
+        },
+        {
+          "hip": [
+            39,
+            55
+          ],
+          "knee": [
+            41,
+            57
+          ],
+          "ankle": [
+            43,
+            60
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            38,
+            55
+          ],
+          "knee": [
+            36,
+            58
+          ],
+          "ankle": [
+            34,
+            61
+          ],
+          "near": true
+        }
+      ]
+    ],
+    "palettes_unchanged": true,
+    "north_south_unchanged": true
+  },
+  "rimevaran": {
+    "sha256": "194074123d98bdbcd3d2d5188097fdf7c968b03e42249db58ca575c089121325",
+    "joints": [
+      [
+        {
+          "hip": [
+            12,
+            24
+          ],
+          "knee": [
+            13,
+            26
+          ],
+          "ankle": [
+            15,
+            28
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            11,
+            24
+          ],
+          "knee": [
+            9,
+            26
+          ],
+          "ankle": [
+            8,
+            29
+          ],
+          "near": true
+        },
+        {
+          "hip": [
+            23,
+            25
+          ],
+          "knee": [
+            21,
+            26
+          ],
+          "ankle": [
+            20,
+            28
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            22,
+            25
+          ],
+          "knee": [
+            23,
+            27
+          ],
+          "ankle": [
+            25,
+            29
+          ],
+          "near": true
+        }
+      ],
+      [
+        {
+          "hip": [
+            12,
+            24
+          ],
+          "knee": [
+            10,
+            26
+          ],
+          "ankle": [
+            9,
+            28
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            11,
+            24
+          ],
+          "knee": [
+            12,
+            26
+          ],
+          "ankle": [
+            14,
+            28
+          ],
+          "near": true
+        },
+        {
+          "hip": [
+            23,
+            25
+          ],
+          "knee": [
+            24,
+            26
+          ],
+          "ankle": [
+            26,
+            28
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            22,
+            25
+          ],
+          "knee": [
+            20,
+            27
+          ],
+          "ankle": [
+            19,
+            29
+          ],
+          "near": true
+        }
+      ]
+    ],
+    "palettes_unchanged": true,
+    "north_south_unchanged": true
+  },
+  "fimbulisk": {
+    "sha256": "7ed1fab8abeefd84ce24eb1b2e7ac47f5fdb8eafd6fbaaef39735a6d851e2299",
+    "joints": [
+      [
+        {
+          "hip": [
+            25,
+            54
+          ],
+          "knee": [
+            27,
+            57
+          ],
+          "ankle": [
+            29,
+            60
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            24,
+            54
+          ],
+          "knee": [
+            22,
+            57
+          ],
+          "ankle": [
+            20,
+            61
+          ],
+          "near": true
+        },
+        {
+          "hip": [
+            39,
+            55
+          ],
+          "knee": [
+            37,
+            57
+          ],
+          "ankle": [
+            35,
+            60
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            38,
+            55
+          ],
+          "knee": [
+            40,
+            58
+          ],
+          "ankle": [
+            42,
+            61
+          ],
+          "near": true
+        }
+      ],
+      [
+        {
+          "hip": [
+            25,
+            54
+          ],
+          "knee": [
+            23,
+            57
+          ],
+          "ankle": [
+            21,
+            60
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            24,
+            54
+          ],
+          "knee": [
+            26,
+            57
+          ],
+          "ankle": [
+            28,
+            60
+          ],
+          "near": true
+        },
+        {
+          "hip": [
+            39,
+            55
+          ],
+          "knee": [
+            41,
+            57
+          ],
+          "ankle": [
+            43,
+            60
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            38,
+            55
+          ],
+          "knee": [
+            36,
+            58
+          ],
+          "ankle": [
+            34,
+            61
+          ],
+          "near": true
+        }
+      ]
+    ],
+    "palettes_unchanged": true,
+    "north_south_unchanged": true
+  },
+  "sedgling": {
+    "sha256": "e3ff5ec07b54607cdb4f2923a12f31d86fb8943f61be65f908ba88b39d58c303",
+    "joints": [
+      [
+        {
+          "hip": [
+            14,
+            26
+          ],
+          "knee": [
+            15,
+            27
+          ],
+          "ankle": [
+            16,
+            28
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            14,
+            26
+          ],
+          "knee": [
+            13,
+            27
+          ],
+          "ankle": [
+            12,
+            29
+          ],
+          "near": true
+        }
+      ],
+      [
+        {
+          "hip": [
+            14,
+            26
+          ],
+          "knee": [
+            13,
+            27
+          ],
+          "ankle": [
+            12,
+            29
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            14,
+            26
+          ],
+          "knee": [
+            15,
+            27
+          ],
+          "ankle": [
+            16,
+            28
+          ],
+          "near": true
+        }
+      ]
+    ],
+    "palettes_unchanged": true,
+    "north_south_unchanged": true
+  },
+  "cragaviar": {
+    "sha256": "57fb306115486f3f793b0642c4a62a41f10fb5f52fb55afeb7b4e19f0b360d75",
+    "joints": [
+      [
+        {
+          "hip": [
+            15,
+            24
+          ],
+          "knee": [
+            16,
+            26
+          ],
+          "ankle": [
+            18,
+            28
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            15,
+            24
+          ],
+          "knee": [
+            13,
+            26
+          ],
+          "ankle": [
+            12,
+            29
+          ],
+          "near": true
+        }
+      ],
+      [
+        {
+          "hip": [
+            15,
+            24
+          ],
+          "knee": [
+            13,
+            26
+          ],
+          "ankle": [
+            12,
+            29
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            15,
+            24
+          ],
+          "knee": [
+            16,
+            26
+          ],
+          "ankle": [
+            18,
+            28
+          ],
+          "near": true
+        }
+      ]
+    ],
+    "palettes_unchanged": true,
+    "north_south_unchanged": true
+  },
+  "ragnaroc": {
+    "sha256": "52487e89a4a34f88d393ad0140ff596f9c2e39a4bf32da0dad036d26828430d5",
+    "joints": [
+      [
+        {
+          "hip": [
+            26,
+            52
+          ],
+          "knee": [
+            28,
+            56
+          ],
+          "ankle": [
+            31,
+            60
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            26,
+            52
+          ],
+          "knee": [
+            23,
+            56
+          ],
+          "ankle": [
+            21,
+            61
+          ],
+          "near": true
+        }
+      ],
+      [
+        {
+          "hip": [
+            26,
+            52
+          ],
+          "knee": [
+            23,
+            56
+          ],
+          "ankle": [
+            21,
+            61
+          ],
+          "near": false
+        },
+        {
+          "hip": [
+            26,
+            52
+          ],
+          "knee": [
+            28,
+            56
+          ],
+          "ankle": [
+            31,
+            60
+          ],
+          "near": true
+        }
+      ]
+    ],
+    "palettes_unchanged": true,
+    "north_south_unchanged": true
+  }
+}

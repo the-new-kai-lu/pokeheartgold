@@ -1,0 +1,3 @@
+{"keys": [["A", 10, 400], ["A", 10, 400], ["A", 10, 400]], "name": "continue"}
+{"capture": {"direction": "LEFT", "hold": 40, "sample_every": 2}, "name": "west"}
+{"capture": {"direction": "RIGHT", "hold": 56, "sample_every": 2}, "name": "east"}

@@ -103,3 +103,7 @@ See [the item and artwork revision](secret-items/README.md) for the Route 46 Ici
 ## Side-facing follower correction
 
 All eleven custom followers have revised alternating left/right foot poses. See [art, reproduction and validation](side-gait/README.md). Existing saves are compatible.
+
+## Native-pixel gait and battle-facing revision
+
+The current [walking correction](pixel-gaits/README.md) replaces the earlier generated side steps with complete native-pixel leg poses for all eleven species. Surguenon's front/back battle facing is corrected as well. Both starter ROMs are rebuilt and remain compatible with existing game saves.

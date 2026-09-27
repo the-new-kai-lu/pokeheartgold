@@ -1,0 +1,6 @@
+{
+  "female/back": "both encrypted frames decode to exact indexed source",
+  "male/back": "both encrypted frames decode to exact indexed source",
+  "female/front": "both encrypted frames decode to exact indexed source",
+  "male/front": "both encrypted frames decode to exact indexed source"
+}
