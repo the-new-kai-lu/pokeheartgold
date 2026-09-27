@@ -1,3 +1,32 @@
+# Independent model decode checkpoint
+
+Apicula `3d4e91e14045392a49c89e86dab8cb936225588c`, built from source,
+successfully decodes the generated embedded-texture NSBMD and the land model
+paired with its separate NSBTX. Both convert to glTF plus a decoded texture.
+The external decoder reports one model/material, opaque 256-color texture,
+no culling, and unlit/double-sided material. Its decoded vertex positions are
+(-104,0,-104), (-104,0,104), (104,0,104), (104,0,-104), with UVs spanning
+0 through 208/256 on each axis. This independently validates the resource
+tables, separate texture names and display list; it is not an emulator render,
+camera test, VRAM allocation test or proof of area-bank runtime binding.
+Reproduce the optional external regression with
+`APICULA=/path/to/apicula python3 -m unittest discover -s tests -p test_apicula_lab.py`.
+Without that executable the external check explicitly skips.
+
+Terrain follow-up: `asm/unk_02054648.s:375-401` reads bit 15 as the
+collision result (`sub_020548C0`), while `GetMetatileBehavior` reads the low
+byte and `sub_020548EC` reads bits 8–14. Field-control and Blackthorn collision
+consumers confirm this is a blocking query, not a raw GBA collision value.
+The donor lab has 58 blocked cells, 109 ordinary floor cells, and two
+passable behavior-101 exit cells. Do not copy GBA elevation 3 into DS
+attribute bits or behavior 101 into the DS low byte. The exit needs a
+separately authored warp. Also resolve alignment before emitting live terrain:
+the current 208-unit plane has edges at +/-104, whereas a 32-cell land block
+has 16-unit cell edges starting at -256. A 13-cell rectangle must be offset
+by eight units to align to that grid (for example -112 through 96).
+Zero-filled terrain is still a prototype; these findings do not certify
+walkability or justify hooking the current plane into a map.
+
 # Candidate episode: Emerald's Birch rescue (gift foundation; episode not imported)
 
 ## Reproducible lab donor graphics
