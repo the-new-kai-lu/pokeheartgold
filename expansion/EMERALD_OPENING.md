@@ -153,8 +153,58 @@ This extension changes ROM code, so retail SHA-1 matching is no longer a valid
 gate for the current expanded tree. The retail hashes remain unchanged as
 baseline evidence; do not regenerate them to bless an expanded ROM. Build
 the extension with `make COMPARE=0` and `make soulsilver COMPARE=0`, then run
-the pending manual tests. The existing CI build still sets `COMPARE=1` and
-is expected to reject a changed ROM; its workflow is not modified here.
+the pending manual tests. The owner changed CI to `COMPARE=0` in
+`7411b88312b838c9fc2d61797322568d1c611bc2`; that workflow change is preserved.
+
+## Persistent-state allocation gate (implemented inventory, no allocation)
+
+`scripts/audit_expansion_state.py` inventories candidate **variable** IDs
+without reserving them. Example (the two IDs below are probes, NOT Birch IDs):
+
+```sh
+python3 scripts/audit_expansion_state.py \
+  --candidate 0x416e --candidate 0x416f --output /tmp/state-audit.json
+```
+
+The initial scan covered 4,752 tracked source/header/assembly/event-JSON files
+and identified 965 expected compiled script banks per edition. Neither probe
+had a literal/alias use outside definitions in that scan. **This is not proof
+they are free.** No local compiled script banks were available, so coverage
+of both HG and SS binaries remains missing. Source branches for both editions
+are scanned together, not treated as a substitute for compiled variants.
+
+Supply independently built directories with `--heartgold <HG-scr_seq-dir>`
+and `--soulsilver <SS-scr_seq-dir>` to inventory every byte offset for candidate
+halfwords (including odd offsets), record SHA-256 fingerprints, and detect
+missing, empty and unexpected banks. Do not pass the same/stale directory as
+both editions. Byte matches are conservative evidence, not decoded references.
+This does not require ROM uploads or store ROM/save data in Git.
+
+The report always says `allocation_approved: false`. Exit 1 means an observed
+reference; exit 2 means no literal reference was found but manual/dataflow
+review is still required. The test suite verifies that even complete
+literal-free binary fixtures cannot authorize an allocation.
+
+Concrete remaining review paths:
+
+- `src/save_vars_flags.c:57-59` indexes the persistent array using a runtime
+  variable ID, so no symbolic name is necessary for a reference.
+- `src/script_manager.c` routes IDs through `GetVarPointer`/`FieldSystem_VarGet`
+  and resets map-temporary variables through an indexed loop. Range/alias
+  reasoning is required in addition to literal scanning.
+- `src/sys_vars.c:22-42` wraps reads/writes with runtime `var_id` parameters.
+  Its callers and native/assembly accesses are listed in the report for review.
+- `src/scrcmd_c.c` supports variable-selected flag checks/sets/clears; reserving
+  a flag based solely on its absence in constant operands would be unsafe.
+- Incoming existing saves, event/mystery-gift scripts, and opaque assets need
+  explicit compatibility policy/review; unknown variables are not promised
+  zero on all existing saves.
+
+Accordingly no state constants, live lab script, archive entry or vanilla NPC
+were changed in this checkpoint. The duplicate guard and deferred-choice
+transaction cannot be integrated safely until that allocation is reviewed.
+The gift helper itself was checked against existing party/PC APIs; no new
+defect requiring a change was established in this audit.
 
 ## Three-map resource inventory
 

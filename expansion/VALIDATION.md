@@ -56,6 +56,21 @@ This is a partial implementation checkpoint, not Stage 1 completion.
   write access; authenticated API code writes worked. The owner installed the
   Actions workflow separately; it is now present on the game PR branch.
 
+## State-allocation inventory checkpoint
+
+- Added a fail-closed candidate-variable inventory over tracked C/header,
+  assembly, script sources and event JSON, with optional independently built
+  HG/SS script-bank directories. It fingerprints inputs and reports missing,
+  empty or unexpected banks and conservative unaligned halfword matches.
+- Six new host tests cover assembled binary evidence in either edition,
+  missing/empty/stale banks, decimal and alias references, computed accesses
+  and evidence fingerprint changes. Together with existing tests, 15 pass.
+- Probes `0x416e`/`0x416f` found no literal source uses outside definitions;
+  they are **not allocated or certified free**. Compiled banks are unavailable
+  locally and native/dynamic accesses require review. No Birch caller or
+  runtime story transition is claimed implemented.
+- The owner's `COMPARE=0` workflow change at `7411b883` is preserved.
+
 ## Reproduce focused editor checks
 
 Clone the editor forks alongside the game fork. In PKHeX, using .NET 10.0.401:
