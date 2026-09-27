@@ -1,3 +1,45 @@
+# Opt-in debug lab hookup
+
+The isolated debug-build generator now attaches map 540 to area/texture 106,
+land 676, matrix 288, event bank 491, script 965 and message 829. It clones
+Elm's indoor header with followers/phone/radio disabled and no encounters.
+Map-count consumers were audited: map-header storage is inferred from its
+initializer; map-marking validation compares the limit without changing saved
+storage; Pokemon Talk's iteration excludes this no-encounter map. Matrix 288
+does not alias special matrix IDs after the existing u8 cache truncation.
+No save layout, region bit width or default-game map count is changed.
+
+Generate a **separate disposable tree**:
+
+```sh
+python3 scripts/prepare_lab_debug.py \
+  --assets /tmp/emerald-lab-aligned --output /tmp/hg-lab-debug
+```
+
+Install/link your existing authorized local toolchain into that generated tree
+as described in `INSTALL.md` (it is intentionally not copied with `git archive`).
+Build there using `make COMPARE=0` for HG or
+`make GAME_VERSION=SOULSILVER COMPARE=0`. Never use a valuable save.
+The generator refuses an existing output directory and does not edit this
+checkout. A regular build of this checkout remains without the test entrance.
+
+In that debug build, talking to Elm **after obtaining the Johto starter**
+simulates rescue eligibility and warps to the flat lab at tile (16,19).
+Before obtaining the starter, his original script remains available.
+The left scientist at (14,17) is explicitly a technical Birch placeholder:
+dialogue says `DEBUG LAB: Simulated rescue`. It offers the tested reward menu.
+The right scientist at (18,17) warps back to Elm's lab at (6,12).
+Returning and re-entering does not clear the gift receipt. Both door tiles stay
+blocked; use the return scientist rather than an unfinished exterior warp.
+No authentic rescue battle, travel episode, or campaign is implied.
+
+Tests assemble the generated entrance, reward/return bank and actual event JSON
+through the repository's native template renderer for both editions, check
+script IDs/warp destinations and walkable actor/spawn tiles, and execute reward
+delivery against bounded test storage. This is source/compiled-resource hookup,
+**not an emulator-tested room**. Full-ROM build, rendering/VRAM, collision and
+save/editor round trips in this debug build remain required.
+
 # Archive staging checkpoint
 
 `scripts/stage_lab_archives.py --assets /path/to/aligned-export --output /new/path`
