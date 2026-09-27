@@ -1,0 +1,33 @@
+{
+  "roms": {
+    "heartgold": {
+      "sha256": "b811939e293085fade2708f6aae7b9593f4129047441370141a9b4aa3dc1702d",
+      "compiled_event_paths": 80,
+      "asset_checks": 413
+    },
+    "soulsilver": {
+      "sha256": "c6fb00d9487e3d62cd00e8c99ddb51edaf82d793ce91ac8902dae6e036f14d59",
+      "compiled_event_paths": 80,
+      "asset_checks": 413
+    }
+  },
+  "icon_checks": {
+    "voltuff": "Native pixels equal indexed PNG; 32x64, both frames",
+    "surguenon": "Native pixels equal indexed PNG; 32x64, both frames",
+    "raijinque": "Native pixels equal indexed PNG; 32x64, both frames"
+  },
+  "emulator_save_persistence": {
+    "checksums_valid": true,
+    "icicle_plate": {
+      "quantity": 1,
+      "flag_0x8fe": true
+    },
+    "friend_gift": {
+      "nevermeltice_quantity": 1,
+      "vs_recorder_quantity": 1,
+      "flag_0x8ff": true,
+      "event_complete": true
+    },
+    "reload": "Cold emulator instances with unique ROM names; in-process DeSmuME reset displayed a white screen."
+  }
+}

@@ -77,6 +77,7 @@ _0138:
 	BufferPlayersName 0
 	GenderMsgBox msg_0379_R31R0101_00002, msg_0379_R31R0101_00003
 	GiveItemNoCheck ITEM_VS__RECORDER, 1
+	Call _GiveFriendIce
 	GenderMsgBox msg_0379_R31R0101_00004, msg_0379_R31R0101_00005
 	CloseMsg
 	ApplyMovement obj_R31R0101_var_1, _0294
@@ -357,7 +358,35 @@ _0474:
 	SetInvisible
 	EndMovement
 
+// The gate attendant keeps a missed gift, including on saves past this event.
 scr_seq_R31R0101_002:
-	SimpleNPCMsg msg_0379_R31R0101_00000
+	PlaySE SEQ_SE_DP_SELECT
+	LockAll
+	FacePlayer
+	Compare VAR_UNK_4132, 1
+	GoToIfNe _AttendantNormal
+	GoToIfSet FLAG_RECEIVED_FRIEND_NEVERMELTICE, _AttendantNormal
+	NPCMsg msg_0379_R31R0101_00008
+	Call _GiveFriendIce
+	GoTo _AttendantDone
+_AttendantNormal:
+	NPCMsg msg_0379_R31R0101_00000
+	WaitButton
+_AttendantDone:
+	CloseMsg
+	ReleaseAll
 	End
+
+_GiveFriendIce:
+	GoToIfSet FLAG_RECEIVED_FRIEND_NEVERMELTICE, _FriendIceDone
+	GoToIfNoItemSpace ITEM_NEVERMELTICE, 1, _FriendIceBagFull
+	CallStd std_give_item_verbose
+	SetFlag FLAG_RECEIVED_FRIEND_NEVERMELTICE
+	Return
+_FriendIceBagFull:
+	CallStd std_bag_is_full
+	NPCMsg msg_0379_R31R0101_00009
+	WaitButton
+_FriendIceDone:
+	Return
 	.balign 4, 0

@@ -95,3 +95,7 @@ Still unplayed: nickname keyboard acceptance/retry, the full uninterrupted Mr. P
 - Confirm the late Elm dialogue about Silver returning the three Pokémon is coherent.
 
 The complete species/move/evolution acceptance checklist remains in [IMPLEMENTATION_AND_TESTING.md](IMPLEMENTATION_AND_TESTING.md).
+
+## Early ice-branch items and menu portraits
+
+See [the item and artwork revision](secret-items/README.md) for the Route 46 Icicle Plate, Ethan/Lyra NeverMeltIce gift, older-save recovery, warmer electric icons, and validation.
