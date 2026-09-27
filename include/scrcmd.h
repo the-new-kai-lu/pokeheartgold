@@ -16,6 +16,7 @@ static inline u16 *ScriptGetVarPointer(ScriptContext *ctx) {
 }
 
 // Basic commands
+BOOL ScrCmd_GiveMonToPartyOrPC(ScriptContext *ctx);
 BOOL ScrCmd_Nop(ScriptContext *ctx);
 BOOL ScrCmd_Dummy(ScriptContext *ctx);
 BOOL ScrCmd_End(ScriptContext *ctx);

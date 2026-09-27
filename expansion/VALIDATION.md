@@ -2,6 +2,19 @@
 
 This is a partial implementation checkpoint, not Stage 1 completion.
 
+## Gift-command extension checkpoint
+
+- Appended opcode 853 (`GiveMonToPartyOrPC`); existing opcodes, `GiveMon`,
+  save storage and retail-baseline hashes are unchanged.
+- Baseline source audit and all nine host tests pass: seven original mutation
+  tests, compiled gift/adapter logic against storage doubles, and actual
+  macro/decompiler/reassembly round trip. These do not validate ARM execution,
+  encrypted Pokémon data, real save serialization, or a playable episode.
+- This is intentionally no longer a retail-matching ROM. Existing CI uses
+  `COMPARE=1` and will reject changed ROM hashes; the workflow was not edited.
+  Historical matching-build success below applies only to its stated commit.
+- A complete expanded ROM build and in-game/editor testing remain unverified.
+
 ## Passed
 
 - Supplied compiler and NitroSDK archive SHA-256 hashes exactly match the

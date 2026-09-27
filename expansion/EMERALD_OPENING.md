@@ -1,4 +1,4 @@
-# Candidate episode: Emerald's Birch rescue (design audit only)
+# Candidate episode: Emerald's Birch rescue (gift foundation; episode not imported)
 
 The owner selected **Emerald** for Hoenn and **Platinum** for Sinnoh. This
 candidate uses pret/pokeemerald at `c925b8482d05fb882d6b64e523653cae599e025f`;
@@ -47,7 +47,7 @@ successful delivery. The vanilla catch path in
 `src/battle/battle_command.c:6990-7030` demonstrates PC storage for
 captured Pokémon, not a tested gift transaction.
 
-## Proposed transaction and safety gates (not implemented)
+## Episode transaction and safety gates (caller not implemented)
 
 Use separate rescue-completed and gift-received states, with **no reuse of
 Elm's starter flag or `SetStarterChoice`**. Preserve all existing party members,
@@ -57,7 +57,7 @@ is rejected. Rescue completion unlocks the lab aftermath and onward/return
 travel independently of reward delivery.
 
 At the lab, let the player choose Treecko, Torchic, or Mudkip. Proposed delivery
-result contract (semantic names, not allocated opcode/result IDs):
+result contract (delivery results implemented; episode states not allocated):
 
 | Outcome | Required behavior |
 | --- | --- |
@@ -104,16 +104,57 @@ Keep it unchanged. The superficially relevant `ScrCmd_510`
 insertion, clears migration data and has no per-gift no-space result.
 It is used by `scr_seq_0812_T08R0201.s` and cannot become Birch's opcode.
 
-An eventual dedicated command needs coordinated review of
-`src/data/fieldmap/script_cmd_table.h`, `include/scrcmd.h`,
-`asm/macros/script.inc`, and `tools/py_scripts/scrcmd.json`, plus an actual
-episode caller and runtime tests. No unused ID has been proven safe here.
-Therefore this checkpoint adds no uncallable C helper, opcode, global gift
-behavior change, or story ID. PC insertion exists, but integration is not yet
-implemented. `PCStorage_PlaceMonInFirstEmptySlotInAnyBox`
+The dedicated `GiveMonToPartyOrPC` command is appended at **853 (0x355)**;
+existing indices 0–852 are unchanged. The table and decompiler had 853
+entries (including `UnsetPhoneCallTrigger`, whose name lacks `ScrCmd_`).
+`src/script.c` reads an unsigned 16-bit opcode and checks the context's
+32-bit count; `src/script_manager.c` supplies the table's `NELEMS` count,
+now 854. No dispatcher limit, save layout, or existing command is changed.
+The header, macro, and decompiler metadata use the same six halfword operands
+as `GiveMon`: species, level, held item, form, ability, result variable.
+Variable resolution and level/form/ability narrowing match that command.
+Trusted scripts must supply valid species, levels, forms, items and variables;
+this is not an untrusted-bytecode validator.
+
+`GiveMonToPartyOrPC` constructs the gift with the existing met-data/OT
+routine, tries the party, then the PC, and updates the Pokédex only after
+successful insertion. It returns `GIVE_MON_NO_SPACE` (0), `GIVE_MON_PARTY`
+(1), or `GIVE_MON_PC` (2). A full-storage preflight avoids creating a random
+Pokémon when no space exists; insertion success remains authoritative.
+It does not set any story flag or save the game. Every successful invocation
+creates a gift: the caller must guard against duplicate collection.
+`PCStorage_PlaceMonInFirstEmptySlotInAnyBox`
 (`src/pokemon_storage_system.c:54-68`) scans from the active box, wraps,
 restores PP and returns FALSE if all boxes are occupied. Its success result
 does not report a destination box; that needs explicit handling for the UI.
+The current result supports a generic "sent to your PC" message, not a box name.
+
+Caller template (pseudocode; intentionally no invented story IDs):
+
+```text
+if not rescue_completed or gift_received: show appropriate dialogue; return
+offer/restore pending Hoenn species; if cancelled: return
+GiveMonToPartyOrPC chosen_species, 5, ITEM_NONE, 0, 0, scratch_result
+if scratch_result == GIVE_MON_NO_SPACE: retain eligibility; explain space; return
+if scratch_result == GIVE_MON_PARTY or scratch_result == GIVE_MON_PC:
+    set gift_received immediately, before yielding to dialogue/save/UI
+    show party/PC receipt message
+```
+
+`tests/test_gift_delivery.py` compiles and executes the production helper and
+script adapter with bounded party/PC API doubles. It covers party preference,
+last party/PC slot, total-full no-op, retry, metadata, default/override ability,
+balanced allocation and unchanged legacy `GiveMon`. It also assembles the
+actual macro, decodes it with the repository parser, and reassembles identical
+bytes. These are host logic/tooling tests, not encrypted-save or ARM runtime
+tests. No episode caller, selection UI, state allocation or map import exists.
+
+This extension changes ROM code, so retail SHA-1 matching is no longer a valid
+gate for the current expanded tree. The retail hashes remain unchanged as
+baseline evidence; do not regenerate them to bless an expanded ROM. Build
+the extension with `make COMPARE=0` and `make soulsilver COMPARE=0`, then run
+the pending manual tests. The existing CI build still sets `COMPARE=1` and
+is expected to reject a changed ROM; its workflow is not modified here.
 
 ## Three-map resource inventory
 

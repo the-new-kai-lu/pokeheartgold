@@ -8,6 +8,13 @@ scaling to either full campaign.
 
 ## Reproduce the baseline
 
+The appended gift command is the first executable extension; it does not
+import an episode. The retail comparison commands below apply to the vanilla
+checkpoint `f699b3c01b769f95c07e7d802dd5b7369bb142b2`, not this expanded tree.
+For this tree use `make COMPARE=0` and `make soulsilver COMPARE=0`.
+Retail hashes and save-layout tripwires remain unchanged. See
+`EMERALD_OPENING.md` for the new command, host tests and remaining runtime gates.
+
 `baseline.json` records exact starting revisions, expected retail ROM hashes,
 and SHA-256 hashes of the supplied toolchain archives. It is a baseline contract,
 not a release manifest or claim that the pinned editors passed runtime tests.

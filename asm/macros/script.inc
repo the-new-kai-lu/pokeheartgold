@@ -4783,7 +4783,17 @@
 	.byte \arg1
 	.endm
 
-	; Script headers
+.macro GiveMonToPartyOrPC species, level, heldItem, form, ability, retvar
+.short 853
+.short \species
+.short \level
+.short \heldItem
+.short \form
+.short \ability
+.short \retvar
+.endm
+
+; Script headers
 
 	.macro MapScript kind, script
 	.byte \kind
