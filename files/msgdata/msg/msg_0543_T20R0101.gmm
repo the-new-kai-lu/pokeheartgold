@@ -2,11 +2,11 @@
 <body language="English">
 	<row id="msg_0543_T20R0101_00000" index="0">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Professor Elm: Hi, {STRVAR_1 3, 0, 0}!\nI’ve been waiting for you!\rDo you know anything about\nmy research?\rAs you know, Pokémon are carried\nin Poké Balls these days.\rBut before the Poké Ball was invented,\npeople used to walk with Pokémon.\fJust like your friend Lyra does!\rPoké Balls are great because you can\ncarry many Pokémon.\rBut walking with Pokémon must have\nsome advantages.\rIt could have something to do with how\nPokémon grow or evolve...\rSo I’m going to give you a Pokémon!\rCan you walk beside this Pokémon,\noutside of its Poké Ball, to see if this\fbrings any special feelings or bonds\fbetween Pokémon and people?\rThe device over there has some Pokémon\nyou could choose from...\r</language>
+		<language name="English">Professor Elm: Hi, {STRVAR_1 3, 0, 0}!\nI’ve been waiting for you!\rDo you know anything about\nmy research?\rAs you know, Pokémon are carried\nin Poké Balls these days.\rBut before the Poké Ball was invented,\npeople used to walk with Pokémon.\fJust like your friend Lyra does!\rPoké Balls are great because you can\ncarry many Pokémon.\rBut walking with Pokémon must have\nsome advantages.\rIt could have something to do with how\nPokémon grow or evolve...\rSo I’m going to give you three Pokémon!\rCan you walk beside your Pokémon\nto learn how those bonds grow?\rVoltuff, Embernewt, and Sedgling\nwill be your partners!\r</language>
 	</row>
 	<row id="msg_0543_T20R0101_00001" index="1">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Professor Elm: Hi, {STRVAR_1 3, 0, 0}!\nI’ve been waiting for you!\rDo you know anything about\nmy research?\rAs you know, Pokémon are carried\nin Poké Balls these days.\rBut before the Poké Ball was invented,\npeople used to walk with Pokémon.\fJust like your friend Ethan does!\rPoké Balls are great because you can\ncarry many Pokémon.\rBut walking with Pokémon must have\nsome advantages.\rIt could have something to do with how\nPokémon grow or evolve...\rSo I’m going to give you a Pokémon!\rCan you walk beside this Pokémon,\noutside of its Poké Ball, to see if this\fbrings any special feelings or bonds\fbetween Pokémon and people?\rThe device over there has some Pokémon\nyou could choose from...\r</language>
+		<language name="English">Professor Elm: Hi, {STRVAR_1 3, 0, 0}!\nI’ve been waiting for you!\rDo you know anything about\nmy research?\rAs you know, Pokémon are carried\nin Poké Balls these days.\rBut before the Poké Ball was invented,\npeople used to walk with Pokémon.\fJust like your friend Ethan does!\rPoké Balls are great because you can\ncarry many Pokémon.\rBut walking with Pokémon must have\nsome advantages.\rIt could have something to do with how\nPokémon grow or evolve...\rSo I’m going to give you three Pokémon!\rCan you walk beside your Pokémon\nto learn how those bonds grow?\rVoltuff, Embernewt, and Sedgling\nwill be your partners!\r</language>
 	</row>
 	<row id="msg_0543_T20R0101_00002" index="2">
 		<attribute name="window_context_name">used</attribute>
@@ -18,7 +18,7 @@
 	</row>
 	<row id="msg_0543_T20R0101_00004" index="4">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Professor Elm: Hey, listen.\nI have this acquaintance that people\fcall Mr. Pokémon.\rHe keeps finding weird things and\nraving about his discoveries.\rAnyway, I just got an email from him\nsaying that this time it’s real.\rIt’s probably another Pokémon Egg,\nbut we’re still so busy with our\fPokémon research...\rWait!\nI know!\rYou can go in our place, right?\nCan we count on you?\rYou can choose one of the Pokémon\nover there.\r</language>
+		<language name="English">Professor Elm: Hey, listen.\nI have this acquaintance that people\fcall Mr. Pokémon.\rHe keeps finding weird things and\nraving about his discoveries.\rAnyway, I just got an email from him\nsaying that this time it’s real.\rIt’s probably another Pokémon Egg,\nbut we’re still so busy with our\fPokémon research...\rWait!\nI know!\rYou can go in our place, right?\nCan we count on you?\rI’ll give you all three of your new\npartners before you go!\r</language>
 	</row>
 	<row id="msg_0543_T20R0101_00005" index="5">
 		<attribute name="window_context_name">used</attribute>
@@ -26,11 +26,11 @@
 	</row>
 	<row id="msg_0543_T20R0101_00006" index="6">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Professor Elm: Where are you going?\nThe Poké Balls are in that device.\r</language>
+		<language name="English">Professor Elm: Come and talk to me.\nI have three partners for you!\r</language>
 	</row>
 	<row id="msg_0543_T20R0101_00007" index="7">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">{STRVAR_1 3, 0, 0} received {STRVAR_1 0, 1, 0}\nfrom Professor Elm!</language>
+		<language name="English">{STRVAR_1 3, 0, 0} received Voltuff,\nEmbernewt, and Sedgling from Elm!</language>
 	</row>
 	<row id="msg_0543_T20R0101_00008" index="8">
 		<attribute name="window_context_name">used</attribute>
@@ -42,11 +42,11 @@
 	</row>
 	<row id="msg_0543_T20R0101_00010" index="10">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Professor Elm: How do you like walking\nwith your Pokémon? It’s not bad, is it?\rYou can take it all the way to\nMr. Pokémon’s house.\rIf your Pokémon gets hurt...\r</language>
+		<language name="English">Professor Elm: How do you like walking\nwith your Pokémon? It’s not bad, is it?\rThey can all come with you to\nMr. Pokémon’s house.\rIf your Pokémon gets hurt...\r</language>
 	</row>
 	<row id="msg_0543_T20R0101_00011" index="11">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">You should heal it with this machine.\rIt’s so easy to use.\nJust check the PC on my desk!\r</language>
+		<language name="English">You should heal them with this machine.\rIt’s so easy to use.\nJust check the PC on my desk!\r</language>
 	</row>
 	<row id="msg_0543_T20R0101_00012" index="12">
 		<attribute name="window_context_name">used</attribute>
@@ -62,15 +62,15 @@
 	</row>
 	<row id="msg_0543_T20R0101_00015" index="15">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">There are two valuable Pokémon left!\n...But they belong to Professor Elm.</language>
+		<language name="English">All three of Elm’s Johto Pokémon\nare still here in their Poké Balls.</language>
 	</row>
 	<row id="msg_0543_T20R0101_00016" index="16">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">There is one valuable Pokémon left!\nYou didn’t notice before, but it is\fbehind thick glass walls now so\fnothing bad can happen to it!</language>
+		<language name="English">All three of Elm’s Johto Pokémon\nwere stolen! The device is empty.</language>
 	</row>
 	<row id="msg_0543_T20R0101_00017" index="17">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">There are no valuable Pokémon left...\rYou wonder who Professor Elm gave the\nlast Pokémon to?</language>
+		<language name="English">The device is empty. The red-haired\nboy stole all three Johto Pokémon.</language>
 	</row>
 	<row id="msg_0543_T20R0101_00018" index="18">
 		<attribute name="window_context_name">used</attribute>
@@ -94,7 +94,7 @@
 	</row>
 	<row id="msg_0543_T20R0101_00023" index="23">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Who are you?\nWe are investigating the case of the\fmissing Pokémon here...\rRule number one!\n“Whoever did it will come\fback to the site.”\rOh my... So you must be...\nthe one who did it?\r</language>
+		<language name="English">Who are you?\nWe are investigating the theft of\fall three Pokémon from this Lab...\rRule number one!\n“Whoever did it will come\fback to the site.”\rOh my... So you must be...\nthe one who did it?\r</language>
 	</row>
 	<row id="msg_0543_T20R0101_00024" index="24">
 		<attribute name="window_context_name">used</attribute>
@@ -166,7 +166,7 @@
 	</row>
 	<row id="msg_0543_T20R0101_00041" index="41">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">There was a loud noise outside...\nWhen we went to look, someone\fstole a Pokémon.\rSigh... \nThat stolen Pokémon.\rI wonder how it’s doing.\nThey say a Pokémon raised by a bad\fperson turns bad itself.</language>
+		<language name="English">There was a loud noise outside...\nWhen we went to look, someone took\fall three Pokémon from the device!\rChikorita, Cyndaquil, and Totodile...\nI wonder how they are doing.\rThey say Pokémon raised by a bad\nperson turn bad themselves.</language>
 	</row>
 	<row id="msg_0543_T20R0101_00042" index="42">
 		<attribute name="window_context_name">used</attribute>
@@ -222,15 +222,15 @@
 	</row>
 	<row id="msg_0543_T20R0101_00055" index="55">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">Sigh... \nThat stolen Pokémon.\rI wonder how it’s doing.\nThey say a Pokémon raised by a bad\fperson turns bad itself.</language>
+		<language name="English">Sigh... Those three stolen Pokémon.\nI wonder how they are doing.\rThey say Pokémon raised by a bad\nperson turn bad themselves.</language>
 	</row>
 	<row id="msg_0543_T20R0101_00056" index="56">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">{STRVAR_1 3, 0, 0}!\nGuess what!\rThe person who took the Professor’s\nPokémon has...come back to return it!\rThat’s the last thing I expected!\nGuess what Professor Elm said to him.\r...\n“It seems that your Pokémon already\flikes you so much.\rFor a Pokémon, the best happiness is\nto be with someone it loves.\fI think it should stay with you.”\r...\nIsn’t it moving? It made me cry!\r</language>
+		<language name="English">{STRVAR_1 3, 0, 0}!\nGuess what!\rThe person who took the Professor’s\nthree Pokémon came back to return\fall of them!\rThat’s the last thing I expected!\nGuess what Professor Elm said to him.\r...\n“They all seem to like you so much.\rFor Pokémon, the best happiness is\nto be with someone they love.\fI think they should stay with you.”\r...\nIsn’t it moving? It made me cry!\r</language>
 	</row>
 	<row id="msg_0543_T20R0101_00057" index="57">
 		<attribute name="window_context_name">used</attribute>
-		<language name="English">The one who took it...\nI mean the red-haired boy\fcame up with the Pokémon.\rBut I saw his face as he passed\nme here. He looked so happy!</language>
+		<language name="English">The one who took them...\nI mean the red-haired boy\fcame back with all three Pokémon.\rI saw his face as he passed\nme here. He looked so happy!</language>
 	</row>
 	<row id="msg_0543_T20R0101_00058" index="58">
 		<attribute name="window_context_name">used</attribute>

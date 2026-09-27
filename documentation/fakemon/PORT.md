@@ -1,6 +1,6 @@
 # Stock-based Fakemon port
 
-This branch implements the eleven approved Fakemon and seven newer moves in source-built US HeartGold and SoulSilver. It is independent of hg-engine. Both modified ROM targets build under WSL2 with the locally supplied toolchain. The additions remain normally unobtainable.
+This branch implements the eleven approved Fakemon and seven newer moves in source-built US HeartGold and SoulSilver. It is independent of hg-engine. Both modified ROM targets build under WSL2 with the locally supplied toolchain. On the base `fakemon-stock` branch, the additions remain normally unobtainable. The separate **`fakemon-starter-trio` edition** gives the player all three first-stage Fakemon and gives Silver all three Johto starters; see [Starter-trio edition](STARTER_TRIO.md) for its distinct ROM names, teams and validation.
 
 Start with [Implementation and testing](IMPLEMENTATION_AND_TESTING.md) for the goal, mechanics, save format, reproduction and full manual acceptance checklist. Component details are in [Moves](MOVES.md), [Assets](ASSETS.md) and [Pokédex UI](DEX_UI.md). The provisional Pokéathlon profile is documented in [Performance](PERFORMANCE.md). `learnset-port.json` records the exact stock TM/tutor intersection and excluded modern-machine-only compatibility. `port-audit.json` is the historical pre-integration audit, not the current implementation status.
 

@@ -1,0 +1,6 @@
+{"keys": [["A", 10, 400], ["A", 10, 400], ["A", 10, 400], ["A", 10, 400]], "frames": 400, "name": "reloaded"}
+{"keys": [["UP", 8, 120], ["A", 10, 600]], "name": "elm-repeat-talk"}
+{"keys": [["A", 10, 500], ["A", 10, 500], ["A", 10, 500], ["A", 10, 500]], "name": "elm-repeat-finished"}
+{"keys": [["B", 10, 300], ["B", 10, 300], ["B", 10, 300]], "touches": [[42, 72, 3, 600]], "name": "repeat-party"}
+{"keys": [["B", 10, 300]], "touches": [[126, 72, 3, 600]], "name": "repeat-save-prompt"}
+{"keys": [["A", 10, 800], ["A", 10, 2400]], "name": "repeat-saved", "save": "elm-trio-repeated.sav"}

@@ -1,0 +1,840 @@
+{
+  "baseline_commit": "ae05df96b9654803cde5891f9f4cb4a2ec9093ce",
+  "description": "All Silver records, including unnamed Passerby Boy and legacy variants, carry all three original Johto starters. Non-Silver trainer data is unchanged.",
+  "normalization": "Goldenrod Underground uses the original grass/fire branch level 34 for all three flags; water branch originally used level 32.",
+  "replacement_reason": "Keep bat friendship progression, Electric coverage, and Ghost coverage. Remove Sneasel first, then Kadabra/Alakazam only where needed for the six-Pokemon party limit.",
+  "partner_note": "Dragon\u2019s Den NPC multi battle uses independent six-slot parties; Silver keeps Crobat and Gengar and adds the other two starters (five Pokemon). Visual party indicators and switching through all five remain gameplay acceptance checks.",
+  "encounters": [
+    {
+      "encounter": "Cherrygrove first battle",
+      "trainer_ids": [
+        495,
+        496,
+        497
+      ],
+      "trainer_constants": [
+        "TRAINER_PASSERBY_BOY",
+        "TRAINER_PASSERBY_BOY_2",
+        "TRAINER_PASSERBY_BOY_3"
+      ],
+      "removed": [],
+      "original_parties": {
+        "495": [
+          {
+            "species": "SPECIES_CHIKORITA",
+            "level": 5
+          }
+        ],
+        "496": [
+          {
+            "species": "SPECIES_CYNDAQUIL",
+            "level": 5
+          }
+        ],
+        "497": [
+          {
+            "species": "SPECIES_TOTODILE",
+            "level": 5
+          }
+        ]
+      },
+      "final_party": [
+        {
+          "species": "SPECIES_CHIKORITA",
+          "level": 5
+        },
+        {
+          "species": "SPECIES_CYNDAQUIL",
+          "level": 5
+        },
+        {
+          "species": "SPECIES_TOTODILE",
+          "level": 5
+        }
+      ]
+    },
+    {
+      "encounter": "Legacy first battle",
+      "trainer_ids": [
+        265,
+        2,
+        3
+      ],
+      "trainer_constants": [
+        "TRAINER_RIVAL_SILVER_6",
+        "TRAINER_RIVAL_SILVER_2",
+        "TRAINER_RIVAL_SILVER_3"
+      ],
+      "removed": [],
+      "original_parties": {
+        "265": [
+          {
+            "species": "SPECIES_CHIKORITA",
+            "level": 5
+          }
+        ],
+        "2": [
+          {
+            "species": "SPECIES_CYNDAQUIL",
+            "level": 5
+          }
+        ],
+        "3": [
+          {
+            "species": "SPECIES_TOTODILE",
+            "level": 5
+          }
+        ]
+      },
+      "final_party": [
+        {
+          "species": "SPECIES_CHIKORITA",
+          "level": 5
+        },
+        {
+          "species": "SPECIES_CYNDAQUIL",
+          "level": 5
+        },
+        {
+          "species": "SPECIES_TOTODILE",
+          "level": 5
+        }
+      ]
+    },
+    {
+      "encounter": "Azalea Town",
+      "trainer_ids": [
+        1,
+        266,
+        269
+      ],
+      "trainer_constants": [
+        "TRAINER_RIVAL_SILVER",
+        "TRAINER_RIVAL_SILVER_7",
+        "TRAINER_RIVAL_SILVER_10"
+      ],
+      "removed": [],
+      "original_parties": {
+        "1": [
+          {
+            "species": "SPECIES_GASTLY",
+            "level": 14
+          },
+          {
+            "species": "SPECIES_ZUBAT",
+            "level": 16
+          },
+          {
+            "species": "SPECIES_BAYLEEF",
+            "level": 18
+          }
+        ],
+        "266": [
+          {
+            "species": "SPECIES_GASTLY",
+            "level": 14
+          },
+          {
+            "species": "SPECIES_ZUBAT",
+            "level": 16
+          },
+          {
+            "species": "SPECIES_QUILAVA",
+            "level": 18
+          }
+        ],
+        "269": [
+          {
+            "species": "SPECIES_GASTLY",
+            "level": 14
+          },
+          {
+            "species": "SPECIES_ZUBAT",
+            "level": 16
+          },
+          {
+            "species": "SPECIES_CROCONAW",
+            "level": 18
+          }
+        ]
+      },
+      "final_party": [
+        {
+          "species": "SPECIES_GASTLY",
+          "level": 14
+        },
+        {
+          "species": "SPECIES_ZUBAT",
+          "level": 16
+        },
+        {
+          "species": "SPECIES_BAYLEEF",
+          "level": 18
+        },
+        {
+          "species": "SPECIES_QUILAVA",
+          "level": 18
+        },
+        {
+          "species": "SPECIES_CROCONAW",
+          "level": 18
+        }
+      ]
+    },
+    {
+      "encounter": "Burned Tower",
+      "trainer_ids": [
+        263,
+        267,
+        270
+      ],
+      "trainer_constants": [
+        "TRAINER_RIVAL_SILVER_4",
+        "TRAINER_RIVAL_SILVER_8",
+        "TRAINER_RIVAL_SILVER_11"
+      ],
+      "removed": [],
+      "original_parties": {
+        "263": [
+          {
+            "species": "SPECIES_GASTLY",
+            "level": 20
+          },
+          {
+            "species": "SPECIES_MAGNEMITE",
+            "level": 18
+          },
+          {
+            "species": "SPECIES_ZUBAT",
+            "level": 20
+          },
+          {
+            "species": "SPECIES_BAYLEEF",
+            "level": 22
+          }
+        ],
+        "267": [
+          {
+            "species": "SPECIES_GASTLY",
+            "level": 20
+          },
+          {
+            "species": "SPECIES_MAGNEMITE",
+            "level": 18
+          },
+          {
+            "species": "SPECIES_ZUBAT",
+            "level": 20
+          },
+          {
+            "species": "SPECIES_QUILAVA",
+            "level": 22
+          }
+        ],
+        "270": [
+          {
+            "species": "SPECIES_GASTLY",
+            "level": 20
+          },
+          {
+            "species": "SPECIES_MAGNEMITE",
+            "level": 18
+          },
+          {
+            "species": "SPECIES_ZUBAT",
+            "level": 20
+          },
+          {
+            "species": "SPECIES_CROCONAW",
+            "level": 22
+          }
+        ]
+      },
+      "final_party": [
+        {
+          "species": "SPECIES_GASTLY",
+          "level": 20
+        },
+        {
+          "species": "SPECIES_MAGNEMITE",
+          "level": 18
+        },
+        {
+          "species": "SPECIES_ZUBAT",
+          "level": 20
+        },
+        {
+          "species": "SPECIES_BAYLEEF",
+          "level": 22
+        },
+        {
+          "species": "SPECIES_QUILAVA",
+          "level": 22
+        },
+        {
+          "species": "SPECIES_CROCONAW",
+          "level": 22
+        }
+      ]
+    },
+    {
+      "encounter": "Goldenrod Underground",
+      "trainer_ids": [
+        288,
+        289,
+        271
+      ],
+      "trainer_constants": [
+        "TRAINER_RIVAL_SILVER_17",
+        "TRAINER_RIVAL_SILVER_18",
+        "TRAINER_RIVAL_SILVER_12"
+      ],
+      "removed": [
+        "SPECIES_SNEASEL"
+      ],
+      "original_parties": {
+        "288": [
+          {
+            "species": "SPECIES_GOLBAT",
+            "level": 32
+          },
+          {
+            "species": "SPECIES_MAGNEMITE",
+            "level": 30
+          },
+          {
+            "species": "SPECIES_HAUNTER",
+            "level": 32
+          },
+          {
+            "species": "SPECIES_SNEASEL",
+            "level": 34
+          },
+          {
+            "species": "SPECIES_MEGANIUM",
+            "level": 34
+          }
+        ],
+        "289": [
+          {
+            "species": "SPECIES_GOLBAT",
+            "level": 32
+          },
+          {
+            "species": "SPECIES_MAGNEMITE",
+            "level": 30
+          },
+          {
+            "species": "SPECIES_HAUNTER",
+            "level": 32
+          },
+          {
+            "species": "SPECIES_SNEASEL",
+            "level": 34
+          },
+          {
+            "species": "SPECIES_QUILAVA",
+            "level": 34
+          }
+        ],
+        "271": [
+          {
+            "species": "SPECIES_GOLBAT",
+            "level": 30
+          },
+          {
+            "species": "SPECIES_MAGNEMITE",
+            "level": 28
+          },
+          {
+            "species": "SPECIES_HAUNTER",
+            "level": 30
+          },
+          {
+            "species": "SPECIES_SNEASEL",
+            "level": 32
+          },
+          {
+            "species": "SPECIES_FERALIGATR",
+            "level": 32
+          }
+        ]
+      },
+      "final_party": [
+        {
+          "species": "SPECIES_GOLBAT",
+          "level": 32
+        },
+        {
+          "species": "SPECIES_MAGNEMITE",
+          "level": 30
+        },
+        {
+          "species": "SPECIES_HAUNTER",
+          "level": 32
+        },
+        {
+          "species": "SPECIES_MEGANIUM",
+          "level": 34
+        },
+        {
+          "species": "SPECIES_QUILAVA",
+          "level": 34
+        },
+        {
+          "species": "SPECIES_FERALIGATR",
+          "level": 34
+        }
+      ]
+    },
+    {
+      "encounter": "Victory Road",
+      "trainer_ids": [
+        264,
+        268,
+        272
+      ],
+      "trainer_constants": [
+        "TRAINER_RIVAL_SILVER_5",
+        "TRAINER_RIVAL_SILVER_9",
+        "TRAINER_RIVAL_SILVER_13"
+      ],
+      "removed": [
+        "SPECIES_SNEASEL",
+        "SPECIES_KADABRA"
+      ],
+      "original_parties": {
+        "264": [
+          {
+            "species": "SPECIES_SNEASEL",
+            "level": 36
+          },
+          {
+            "species": "SPECIES_GOLBAT",
+            "level": 38
+          },
+          {
+            "species": "SPECIES_MAGNETON",
+            "level": 37
+          },
+          {
+            "species": "SPECIES_HAUNTER",
+            "level": 37
+          },
+          {
+            "species": "SPECIES_KADABRA",
+            "level": 37
+          },
+          {
+            "species": "SPECIES_MEGANIUM",
+            "level": 40
+          }
+        ],
+        "268": [
+          {
+            "species": "SPECIES_SNEASEL",
+            "level": 36
+          },
+          {
+            "species": "SPECIES_GOLBAT",
+            "level": 38
+          },
+          {
+            "species": "SPECIES_MAGNETON",
+            "level": 37
+          },
+          {
+            "species": "SPECIES_HAUNTER",
+            "level": 37
+          },
+          {
+            "species": "SPECIES_KADABRA",
+            "level": 37
+          },
+          {
+            "species": "SPECIES_TYPHLOSION",
+            "level": 40
+          }
+        ],
+        "272": [
+          {
+            "species": "SPECIES_SNEASEL",
+            "level": 36
+          },
+          {
+            "species": "SPECIES_GOLBAT",
+            "level": 38
+          },
+          {
+            "species": "SPECIES_MAGNETON",
+            "level": 37
+          },
+          {
+            "species": "SPECIES_HAUNTER",
+            "level": 37
+          },
+          {
+            "species": "SPECIES_KADABRA",
+            "level": 37
+          },
+          {
+            "species": "SPECIES_FERALIGATR",
+            "level": 40
+          }
+        ]
+      },
+      "final_party": [
+        {
+          "species": "SPECIES_GOLBAT",
+          "level": 38
+        },
+        {
+          "species": "SPECIES_MAGNETON",
+          "level": 37
+        },
+        {
+          "species": "SPECIES_HAUNTER",
+          "level": 37
+        },
+        {
+          "species": "SPECIES_MEGANIUM",
+          "level": 40
+        },
+        {
+          "species": "SPECIES_TYPHLOSION",
+          "level": 40
+        },
+        {
+          "species": "SPECIES_FERALIGATR",
+          "level": 40
+        }
+      ]
+    },
+    {
+      "encounter": "Mt. Moon",
+      "trainer_ids": [
+        285,
+        286,
+        287
+      ],
+      "trainer_constants": [
+        "TRAINER_RIVAL_SILVER_14",
+        "TRAINER_RIVAL_SILVER_15",
+        "TRAINER_RIVAL_SILVER_16"
+      ],
+      "removed": [
+        "SPECIES_SNEASEL",
+        "SPECIES_ALAKAZAM"
+      ],
+      "original_parties": {
+        "285": [
+          {
+            "species": "SPECIES_SNEASEL",
+            "level": 46
+          },
+          {
+            "species": "SPECIES_GOLBAT",
+            "level": 47
+          },
+          {
+            "species": "SPECIES_MAGNETON",
+            "level": 46
+          },
+          {
+            "species": "SPECIES_GENGAR",
+            "level": 48
+          },
+          {
+            "species": "SPECIES_ALAKAZAM",
+            "level": 48
+          },
+          {
+            "species": "SPECIES_MEGANIUM",
+            "level": 50
+          }
+        ],
+        "286": [
+          {
+            "species": "SPECIES_SNEASEL",
+            "level": 46
+          },
+          {
+            "species": "SPECIES_GOLBAT",
+            "level": 47
+          },
+          {
+            "species": "SPECIES_MAGNETON",
+            "level": 46
+          },
+          {
+            "species": "SPECIES_GENGAR",
+            "level": 48
+          },
+          {
+            "species": "SPECIES_ALAKAZAM",
+            "level": 48
+          },
+          {
+            "species": "SPECIES_TYPHLOSION",
+            "level": 50
+          }
+        ],
+        "287": [
+          {
+            "species": "SPECIES_SNEASEL",
+            "level": 46
+          },
+          {
+            "species": "SPECIES_GOLBAT",
+            "level": 47
+          },
+          {
+            "species": "SPECIES_MAGNETON",
+            "level": 46
+          },
+          {
+            "species": "SPECIES_GENGAR",
+            "level": 48
+          },
+          {
+            "species": "SPECIES_ALAKAZAM",
+            "level": 48
+          },
+          {
+            "species": "SPECIES_FERALIGATR",
+            "level": 50
+          }
+        ]
+      },
+      "final_party": [
+        {
+          "species": "SPECIES_GOLBAT",
+          "level": 47
+        },
+        {
+          "species": "SPECIES_MAGNETON",
+          "level": 46
+        },
+        {
+          "species": "SPECIES_GENGAR",
+          "level": 48
+        },
+        {
+          "species": "SPECIES_MEGANIUM",
+          "level": 50
+        },
+        {
+          "species": "SPECIES_TYPHLOSION",
+          "level": 50
+        },
+        {
+          "species": "SPECIES_FERALIGATR",
+          "level": 50
+        }
+      ]
+    },
+    {
+      "encounter": "Indigo Plateau rematch",
+      "trainer_ids": [
+        489,
+        490,
+        491
+      ],
+      "trainer_constants": [
+        "TRAINER_RIVAL_SILVER_19",
+        "TRAINER_RIVAL_SILVER_20",
+        "TRAINER_RIVAL_SILVER_21"
+      ],
+      "removed": [
+        "SPECIES_SNEASEL",
+        "SPECIES_ALAKAZAM"
+      ],
+      "original_parties": {
+        "489": [
+          {
+            "species": "SPECIES_SNEASEL",
+            "level": 55
+          },
+          {
+            "species": "SPECIES_CROBAT",
+            "level": 58
+          },
+          {
+            "species": "SPECIES_MAGNETON",
+            "level": 55
+          },
+          {
+            "species": "SPECIES_GENGAR",
+            "level": 56
+          },
+          {
+            "species": "SPECIES_ALAKAZAM",
+            "level": 56
+          },
+          {
+            "species": "SPECIES_MEGANIUM",
+            "level": 60
+          }
+        ],
+        "490": [
+          {
+            "species": "SPECIES_SNEASEL",
+            "level": 55
+          },
+          {
+            "species": "SPECIES_CROBAT",
+            "level": 58
+          },
+          {
+            "species": "SPECIES_MAGNETON",
+            "level": 55
+          },
+          {
+            "species": "SPECIES_GENGAR",
+            "level": 56
+          },
+          {
+            "species": "SPECIES_ALAKAZAM",
+            "level": 56
+          },
+          {
+            "species": "SPECIES_TYPHLOSION",
+            "level": 60
+          }
+        ],
+        "491": [
+          {
+            "species": "SPECIES_SNEASEL",
+            "level": 55
+          },
+          {
+            "species": "SPECIES_CROBAT",
+            "level": 58
+          },
+          {
+            "species": "SPECIES_MAGNETON",
+            "level": 55
+          },
+          {
+            "species": "SPECIES_GENGAR",
+            "level": 56
+          },
+          {
+            "species": "SPECIES_ALAKAZAM",
+            "level": 56
+          },
+          {
+            "species": "SPECIES_FERALIGATR",
+            "level": 60
+          }
+        ]
+      },
+      "final_party": [
+        {
+          "species": "SPECIES_CROBAT",
+          "level": 58
+        },
+        {
+          "species": "SPECIES_MAGNETON",
+          "level": 55
+        },
+        {
+          "species": "SPECIES_GENGAR",
+          "level": 56
+        },
+        {
+          "species": "SPECIES_MEGANIUM",
+          "level": 60
+        },
+        {
+          "species": "SPECIES_TYPHLOSION",
+          "level": 60
+        },
+        {
+          "species": "SPECIES_FERALIGATR",
+          "level": 60
+        }
+      ]
+    },
+    {
+      "encounter": "Dragon's Den partner",
+      "trainer_ids": [
+        735,
+        736,
+        737
+      ],
+      "trainer_constants": [
+        "TRAINER_PARTNER_RIVAL_1",
+        "TRAINER_PARTNER_RIVAL_2",
+        "TRAINER_PARTNER_RIVAL_3"
+      ],
+      "removed": [],
+      "original_parties": {
+        "735": [
+          {
+            "species": "SPECIES_MEGANIUM",
+            "level": 60
+          },
+          {
+            "species": "SPECIES_CROBAT",
+            "level": 58
+          },
+          {
+            "species": "SPECIES_GENGAR",
+            "level": 56
+          }
+        ],
+        "736": [
+          {
+            "species": "SPECIES_TYPHLOSION",
+            "level": 60
+          },
+          {
+            "species": "SPECIES_CROBAT",
+            "level": 58
+          },
+          {
+            "species": "SPECIES_GENGAR",
+            "level": 56
+          }
+        ],
+        "737": [
+          {
+            "species": "SPECIES_FERALIGATR",
+            "level": 60
+          },
+          {
+            "species": "SPECIES_CROBAT",
+            "level": 58
+          },
+          {
+            "species": "SPECIES_GENGAR",
+            "level": 56
+          }
+        ]
+      },
+      "final_party": [
+        {
+          "species": "SPECIES_MEGANIUM",
+          "level": 60
+        },
+        {
+          "species": "SPECIES_TYPHLOSION",
+          "level": 60
+        },
+        {
+          "species": "SPECIES_FERALIGATR",
+          "level": 60
+        },
+        {
+          "species": "SPECIES_CROBAT",
+          "level": 58
+        },
+        {
+          "species": "SPECIES_GENGAR",
+          "level": 56
+        }
+      ]
+    }
+  ]
+}

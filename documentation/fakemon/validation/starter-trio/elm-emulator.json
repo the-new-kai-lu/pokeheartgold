@@ -1,0 +1,57 @@
+{
+  "method": "DeSmuME 0.9.12 Python API with actual emulated buttons/touch. Screenshots manually reviewed. Native desktop control unavailable.",
+  "fixture": {
+    "path": "/tmp/elm-fresh-fixture/pre-elm.sav",
+    "sha256": "e2040282b382372d2adb45fd13ece1abb54491aa55ce9a95b462cde74b4422fe",
+    "provenance": "Actual fresh male game initialized through Oak intro and mother/Marill events, then saved in New Bark before entering Elm lab. No editor/state modifications. Trainer TDST.",
+    "baseline_rom_sha256": "2a42bc7ac161c6255b3fe9e43ad725c2bc8eeaa57963bc3a4ef2d1dd4025f015"
+  },
+  "tested_rom": {
+    "version": "HeartGold Fakemon Starters",
+    "sha256": "5fbfc844e225c45feb23da9ff15c1abd07a0de0e5448a2ad24677c6db10ab890"
+  },
+  "verified": [
+    "Imported genuine pre-acquisition battery save into variant and entered Elm lab.",
+    "Original greeting and Mr. Pokemon setup progressed into replacement three-starter gift, without starter selector.",
+    "Received message names Voltuff, Embernewt and Sedgling together.",
+    "Three nickname prompts appeared in the correct species order; all were declined.",
+    "Ordinary postgift dialogue completed and field/menu control resumed.",
+    "Party UI displayed exactly three distinct level 5 starters: Voltuff 21/21 HP, Embernewt 21/21 HP, Sedgling 19/19 HP.",
+    "Voltuff follower appeared while walking toward aide and during repeat Elm dialogue.",
+    "Actual game Save succeeded; separate emulator process imported resulting battery save and loaded the same three starters.",
+    "Re-interacting with Elm after reload produced ordinary Mr. Pokemon directions and did not duplicate any starter; party remained exactly three."
+  ],
+  "postgift_save": {
+    "path": "/tmp/elm-trio-fixture/elm-trio-received.sav",
+    "sha256": "b6e3981c5ac0f9ca345776c933c83e28a5c2bea0f032dd78b78fcd25ebc0d5d2",
+    "editor_validation": "elm-gift-save.json"
+  },
+  "inputs": {
+    "fresh_game": "fresh-game-inputs.jsonl",
+    "gift": "elm-gift-inputs.jsonl",
+    "reload": "elm-reload-inputs.jsonl",
+    "repeat_interaction": "elm-repeat-inputs.jsonl",
+    "format": "Commands run keys first, then touches, then frames. Key: [name,holdFrames,waitFrames]. Touch: [x,y,holdFrames,waitFrames]. Screenshot name, optional save export."
+  },
+  "limits": [
+    "HeartGold UI path tested; SoulSilver script/data/build parity validated separately.",
+    "Nickname keyboard acceptance/renaming, loss handling, and complete playthrough remain outside this smoke test. A nonempty pre-starter party is unsupported; start a new game.",
+    "No savestates crossed between ROM builds. No user saves were read or modified."
+  ],
+  "evidence_files": [
+    "elm-follower.png",
+    "elm-gift-inputs.jsonl",
+    "elm-gift.png",
+    "elm-nickname-embernewt.png",
+    "elm-nickname-sedgling.png",
+    "elm-nickname-voltuff.png",
+    "elm-party.png",
+    "elm-reload-inputs.jsonl",
+    "elm-reloaded-party.png",
+    "elm-repeat-dialogue.png",
+    "elm-repeat-inputs.jsonl",
+    "elm-repeat-party.png",
+    "fresh-before-elm.png",
+    "fresh-game-inputs.jsonl"
+  ]
+}

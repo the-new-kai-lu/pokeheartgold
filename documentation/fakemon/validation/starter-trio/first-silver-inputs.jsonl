@@ -1,0 +1,33 @@
+{"keys": ["A", "A", "A", "A"], "frames": 400, "name": "relocated-field"}
+{"keys": [["RIGHT", 8, 180]], "name": "rival-approach"}
+{"frames": 400, "name": "rival-intro"}
+{"keys": ["A", "A", "A", "A"], "name": "rival-stolen-three"}
+{"keys": ["A", "A", "A"], "frames": 700, "name": "battle-start"}
+{"keys": ["A", "A", "A", "A"], "frames": 600, "name": "battle-challenge"}
+{"keys": ["A"], "frames": 180, "name": "battle-command"}
+{"touches": [[211, 169]], "name": "switch-menu"}
+{"touches": [[187, 35]], "name": "switch-embernewt"}
+{"touches": [[128, 92, 3, 600]], "name": "embernewt-active"}
+{"frames": 300, "touches": [[128, 80]], "name": "ember-moves"}
+{"touches": [[128, 80]], "name": "ember-move-select"}
+{"touches": [[64, 115, 3, 1100]], "name": "ember-turn-one"}
+{"touches": [[128, 80], [64, 115, 3, 1400]], "name": "chikorita-defeated"}
+{"frames": 900, "name": "next-opponent"}
+{"touches": [[128, 66], [50, 35], [128, 92, 3, 1000]], "name": "cyndaquil-versus-voltuff"}
+{"keys": ["B"], "touches": [[185, 35], [128, 92, 3, 1100]], "name": "cyndaquil-versus-voltuff2"}
+{"keys": ["A", "B"], "name": "switch-party-correct"}
+{"keys": ["B"], "name": "switch-party-correct2"}
+{"touches": [[187, 30], [128, 92, 3, 1100]], "name": "cyndaquil-versus-voltuff3"}
+{"touches": [[128, 80], [64, 115, 3, 1300]], "name": "cyndaquil-turn-one"}
+{"touches": [[128, 80], [64, 115, 3, 1300], [128, 80], [64, 115, 3, 1500]], "name": "cyndaquil-defeated"}
+{"keys": ["A", "A"], "frames": 600, "name": "totodile-switch-prompt"}
+{"keys": [["A", 8, 400]], "name": "level-stats-dismiss"}
+{"keys": [["A", 8, 180]], "frames": 600, "name": "totodile-offer"}
+{"touches": [[128, 144, 3, 800]], "name": "totodile-versus-voltuff"}
+{"touches": [[128, 80], [64, 115, 3, 1600]], "name": "totodile-defeated"}
+{"keys": [["A", 8, 300], ["A", 8, 300], ["A", 8, 300]], "frames": 600, "name": "rival-battle-won"}
+{"keys": [["A", 8, 180], ["A", 8, 180], ["A", 8, 180], ["A", 8, 180]], "frames": 900, "name": "rival-outro"}
+{"keys": [["A", 8, 180], ["A", 8, 180], ["A", 8, 180]], "frames": 1000, "name": "first-rival-event-complete"}
+{"touches": [[125, 77]], "name": "post-battle-save-prompt"}
+{"keys": [["A", 8, 180], ["A", 8, 180], ["A", 8, 180]], "frames": 2400, "save": "first-rival-won.sav", "name": "post-battle-saved"}
+{"keys": [["A", 8, 3000]], "save": "first-rival-won.sav", "name": "post-battle-save-completed"}

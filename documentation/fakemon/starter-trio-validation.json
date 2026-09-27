@@ -1,0 +1,99 @@
+{
+  "edition": "fakemon-starter-trio",
+  "base_commit": "ae05df96b9654803cde5891f9f4cb4a2ec9093ce",
+  "build_command": "./tools/build_starter_trio.sh",
+  "build_status": "passed_both_US_versions",
+  "roms": {
+    "build/heartgold.us/heartgold-fakemon-starters.nds": {
+      "sha256": "5fbfc844e225c45feb23da9ff15c1abd07a0de0e5448a2ad24677c6db10ab890",
+      "bytes": 134217728,
+      "role": "starter_trio_edition"
+    },
+    "build/soulsilver.us/soulsilver-fakemon-starters.nds": {
+      "sha256": "8f05d94e30ccb0bd59091044d896bd16d61df75038df85e80585c9870e7506d2",
+      "bytes": 134217728,
+      "role": "starter_trio_edition"
+    },
+    "build/heartgold.us/pokeheartgold.us.nds": {
+      "sha256": "2a42bc7ac161c6255b3fe9e43ad725c2bc8eeaa57963bc3a4ef2d1dd4025f015",
+      "bytes": 134217728,
+      "original_unchanged": true,
+      "role": "preserved_base_port"
+    },
+    "build/soulsilver.us/pokesoulsilver.us.nds": {
+      "sha256": "9caa4eccff8bf3fb1e335de6540346c732bf9124044767e1c88cf3b03936066b",
+      "bytes": 134217728,
+      "original_unchanged": true,
+      "role": "preserved_base_port"
+    }
+  },
+  "original_roms_unchanged": true,
+  "automated_checks": {
+    "gift_backend": "passed_real_C_with_host_stubs",
+    "compiled_Elm_script": {
+      "status": "passed",
+      "flow_cases": 69
+    },
+    "packaged_Elm_script_and_dialogue": {
+      "heartgold": "passed",
+      "soulsilver": "passed",
+      "script_member": 843,
+      "dialogue_members": [
+        543,
+        550
+      ]
+    },
+    "rival_teams": {
+      "heartgold_checks": 1604,
+      "soulsilver_checks": 1604,
+      "trainer_records": 27,
+      "encounter_groups": 9,
+      "status": "passed_source_and_packaged_archives"
+    },
+    "independent_code_review": "no_blocking_issues",
+    "actual_gift_save_and_PKHeX_roundtrip": {
+      "checks": 71,
+      "status": "passed",
+      "evidence": "validation/starter-trio/elm-gift-save.json"
+    },
+    "actual_repeat_save_and_PKHeX_roundtrip": {
+      "checks": 71,
+      "status": "passed",
+      "same_party_members_and_PIDs": true,
+      "evidence": "validation/starter-trio/elm-repeat-save.json"
+    }
+  },
+  "emulator": {
+    "soulsilver": "boot_and_title_passed; see validation/starter-trio/soulsilver-boot.json",
+    "heartgold": {
+      "starter_gift": "passed",
+      "party_follower_save_reload": "passed",
+      "repeat_Elm_interaction_no_duplicates": "passed",
+      "nickname_prompts": "all_three_declined_in_game; acceptance_and_retry_checked_in_compiled_script_only",
+      "evidence": "validation/starter-trio/elm-emulator.json",
+      "first_Silver_battle": {
+        "status": "passed_winning_path_and_postbattle_game_save",
+        "opponents": [
+          "Chikorita Lv5",
+          "Cyndaquil Lv5",
+          "Totodile Lv5"
+        ],
+        "assertions": 0,
+        "allocation_failures": 0,
+        "fixture": "Actual Elm-acquired party; documented event/location edits skip the errand",
+        "evidence": "validation/starter-trio/first-silver-emulator.json"
+      }
+    }
+  },
+  "remaining_gameplay_checks": [
+    "Nickname keyboard acceptance/retry",
+    "Uninterrupted Mr Pokemon errand",
+    "First-rival loss path",
+    "Return-to-Elm theft investigation and empty device",
+    "Later rival encounters",
+    "Dragons Den five-member ally switching and battle completion",
+    "Late return dialogue",
+    "SoulSilver full opening gameplay",
+    "Audio listening"
+  ]
+}

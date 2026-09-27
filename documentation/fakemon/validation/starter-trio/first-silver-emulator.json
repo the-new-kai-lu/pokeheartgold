@@ -1,0 +1,225 @@
+{
+  "result": "passed",
+  "checked_at_utc": "2026-09-27T03:10:46.945087+00:00",
+  "goal": "Exercise the real first Silver battle with the actual Elm-acquired trio, verify three level-5 Johto opponents, win, finish the event, and save the resulting progress.",
+  "rom": "build/heartgold.us/heartgold-fakemon-starters.nds",
+  "rom_sha256": "5fbfc844e225c45feb23da9ff15c1abd07a0de0e5448a2ad24677c6db10ab890",
+  "method": {
+    "emulator": "DeSmuME 0.9.12 via Python API, CPU interpreter, muted audio",
+    "rom_copy_basename": "silver-trio-actual-gifts-20260926.nds",
+    "temporary_workspace": "/tmp/silver-trio-battle",
+    "input_log": "first-silver-inputs.jsonl",
+    "fixture": "Copy of actual new-game Elm gift save; party bytes retained unchanged. Only documented event/location fixture edits skip the Mr Pokemon errand.",
+    "trigger": "Stock coordinate trigger: move east from Cherrygrove x574,z398 onto x575,z398 with scene variable3.",
+    "controls": "Normal emulator buttons/touch menus for dialogue, switching, moves, battle result, postbattle cutscene and in-game save. No battle state or HP changes injected.",
+    "battle_actions": "Switch Voltuff to Embernewt, defeat Chikorita with Ember; switch back to Voltuff, defeat Cyndaquil and Totodile with ThunderShock; retain original Sedgling in party.",
+    "read_only_hooks": [
+      "CreateNPCTrainerParty captures trainer ID/index",
+      "CreateMon captures constructed species and level",
+      "BattleSetup_Delete captures battle result",
+      "GF_AssertFail and AllocFail count runtime failures"
+    ],
+    "frames_executed": 34337
+  },
+  "fixture_provenance": {
+    "source": "/tmp/elm-trio-fixture/elm-trio-received.sav",
+    "source_sha256": "b6e3981c5ac0f9ca345776c933c83e28a5c2bea0f032dd78b78fcd25ebc0d5d2",
+    "output": "/tmp/silver-trio-battle/before-rival.sav",
+    "output_sha256": "1b8232f5e48d2038e3844fc1bb92f5cd086858b064a0bfbacdbad3a8f2a346b2",
+    "source_party": [
+      {
+        "slot": 0,
+        "species": 1076,
+        "level": 5,
+        "nickname": "Voltuff",
+        "pid": 2747424974
+      },
+      {
+        "slot": 1,
+        "species": 1079,
+        "level": 5,
+        "nickname": "Embernewt",
+        "pid": 1259160289
+      },
+      {
+        "slot": 2,
+        "species": 1084,
+        "level": 5,
+        "nickname": "Sedgling",
+        "pid": 202797191
+      }
+    ],
+    "party_bytes_unchanged": true,
+    "intentional_edits": [
+      "VAR_SCENE_CHERRYGROVE_CITY_OW (0x4073) = 3, arming actual first rival coordinate event",
+      "FLAG_HIDE_CHERRYGROVE_RIVAL (0x19C) = false",
+      "FLAG_MET_PASSERBY_BOY (0x99) = false",
+      "FLAG_UNK_966 = true: stock one-shot dynamic-warp resume, to rebuild map objects normally",
+      "LocalFieldData dynamicWarp at General 0x1270: map67 Cherrygrove, warp-1, x574,z398,direction3 east"
+    ],
+    "byte_edits_before_normal_editor_checksums": [
+      {
+        "offset": "0xECA",
+        "before": 0,
+        "after": 3
+      },
+      {
+        "offset": "0x10F7",
+        "before": 58,
+        "after": 42
+      },
+      {
+        "offset": "0x11F0",
+        "before": 1,
+        "after": 65
+      },
+      {
+        "offset": "0x1270",
+        "before": 0,
+        "after": 67
+      },
+      {
+        "offset": "0x1274",
+        "before": 0,
+        "after": 255
+      },
+      {
+        "offset": "0x1275",
+        "before": 0,
+        "after": 255
+      },
+      {
+        "offset": "0x1276",
+        "before": 0,
+        "after": 255
+      },
+      {
+        "offset": "0x1277",
+        "before": 0,
+        "after": 255
+      },
+      {
+        "offset": "0x1278",
+        "before": 0,
+        "after": 62
+      },
+      {
+        "offset": "0x1279",
+        "before": 0,
+        "after": 2
+      },
+      {
+        "offset": "0x127C",
+        "before": 0,
+        "after": 142
+      },
+      {
+        "offset": "0x127D",
+        "before": 0,
+        "after": 1
+      },
+      {
+        "offset": "0x1280",
+        "before": 0,
+        "after": 3
+      }
+    ],
+    "note": "Test-fixture relocation skips the Mr Pokemon errand. Actual game-acquired party is retained unchanged. PKHeX performs normal checksum/footer and box-dirty bookkeeping on output."
+  },
+  "runtime_evidence": {
+    "trainer_generation": [
+      {
+        "frame": 4070,
+        "trainer_id": 496,
+        "party_index": 1
+      }
+    ],
+    "created_opponents": [
+      {
+        "frame": 4070,
+        "species": 152,
+        "level": 5,
+        "iv_parameter": 0
+      },
+      {
+        "frame": 4073,
+        "species": 155,
+        "level": 5,
+        "iv_parameter": 0
+      },
+      {
+        "frame": 4075,
+        "species": 158,
+        "level": 5,
+        "iv_parameter": 0
+      }
+    ],
+    "battle_results": [
+      {
+        "frame": 24119,
+        "battle_type": 2049,
+        "result": 1,
+        "trainer_id": 496
+      }
+    ],
+    "assertion_count": 0,
+    "allocation_failure_count": 0
+  },
+  "post_battle_save": {
+    "result": "passed",
+    "save": "/tmp/silver-trio-battle/first-rival-won.sav",
+    "sha256": "a176b42450d01ebce0dd700bf0f84aeb083968ffcbc74c5795129b3853465c83",
+    "checksums_valid": true,
+    "profile": "fakemon-stock",
+    "party": [
+      {
+        "slot": 0,
+        "species": 1076,
+        "level": 7,
+        "pid": 2747424974,
+        "hp": 13,
+        "hp_max": 25,
+        "experience": 307
+      },
+      {
+        "slot": 1,
+        "species": 1079,
+        "level": 5,
+        "pid": 1259160289,
+        "hp": 21,
+        "hp_max": 21,
+        "experience": 168
+      },
+      {
+        "slot": 2,
+        "species": 1084,
+        "level": 5,
+        "pid": 202797191,
+        "hp": 19,
+        "hp_max": 19,
+        "experience": 135
+      }
+    ],
+    "original_gift_identities_preserved": true,
+    "scene_cherrygrove_0x4073": 4,
+    "flag_met_passerby_0x99": true,
+    "flag_hide_rival_0x19c": true,
+    "dynamic_warp_resume_flag_cleared": true
+  },
+  "screenshots": [
+    "first-silver-theft-dialogue.png",
+    "first-silver-chikorita.png",
+    "first-silver-cyndaquil.png",
+    "first-silver-totodile.png",
+    "first-silver-victory.png",
+    "first-silver-event-complete.png",
+    "first-silver-saved.png"
+  ],
+  "visual_review": "Screenshots reviewed: new three-starter theft dialogue, Chikorita/Cyndaquil/Totodile Lv.5 in battle, custom Voltuff/Embernewt backsprites, victory, Silver departure, and post-save field.",
+  "limits": [
+    "Fixture skips the Mr Pokemon errand; this is not an uninterrupted start-to-rival playthrough.",
+    "Only HeartGold first-battle winning path was played. SoulSilver shares the changed scripts/data but its battle was not played separately.",
+    "Losing, full return-to-Elm theft investigation, rematches, late rival teams and Dragon Den partner battle remain manual gameplay checks.",
+    "Audio muted; no cry/music listening check performed."
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "result": "passed",
+  "checks": 71,
+  "source_save": "/tmp/elm-trio-fixture/elm-trio-received.sav",
+  "source_sha256": "b6e3981c5ac0f9ca345776c933c83e28a5c2bea0f032dd78b78fcd25ebc0d5d2",
+  "source_provenance": "Exported from an actual DeSmuME new game after Elm gave the trio; no save edits used to grant Pokemon.",
+  "profile": "fakemon-stock",
+  "save_checksums_valid": true,
+  "trainer": "TDST",
+  "trainer_id32": 3938431849,
+  "game_version": "HG",
+  "party_count": 3,
+  "flag_got_starter_0x6a": true,
+  "party": [
+    {
+      "slot": 0,
+      "species": 1076,
+      "nickname": "Voltuff",
+      "level": 5,
+      "experience": 135,
+      "ability": 9,
+      "moves": [
+        10,
+        43,
+        84,
+        0
+      ],
+      "pp": [
+        35,
+        30,
+        30,
+        0
+      ],
+      "pid": 2747424974,
+      "checksum_valid": true,
+      "ot": "TDST",
+      "trainer_id32": 3938431849,
+      "ball": 4,
+      "met_location": 126,
+      "met_level": 5,
+      "ground_tile": 12,
+      "origin_game": "HG",
+      "language": 2,
+      "met_date": "2026-09-26",
+      "hp_current": 21,
+      "hp_max": 21,
+      "dex_seen": true,
+      "dex_caught": true,
+      "ivs": {
+        "hp": 31,
+        "atk": 9,
+        "def": 16,
+        "spa": 30,
+        "spd": 4,
+        "spe": 10
+      }
+    },
+    {
+      "slot": 1,
+      "species": 1079,
+      "nickname": "Embernewt",
+      "level": 5,
+      "experience": 135,
+      "ability": 18,
+      "moves": [
+        10,
+        45,
+        52,
+        0
+      ],
+      "pp": [
+        35,
+        40,
+        25,
+        0
+      ],
+      "pid": 1259160289,
+      "checksum_valid": true,
+      "ot": "TDST",
+      "trainer_id32": 3938431849,
+      "ball": 4,
+      "met_location": 126,
+      "met_level": 5,
+      "ground_tile": 12,
+      "origin_game": "HG",
+      "language": 2,
+      "met_date": "2026-09-26",
+      "hp_current": 21,
+      "hp_max": 21,
+      "dex_seen": true,
+      "dex_caught": true,
+      "ivs": {
+        "hp": 8,
+        "atk": 4,
+        "def": 26,
+        "spa": 13,
+        "spd": 4,
+        "spe": 16
+      }
+    },
+    {
+      "slot": 2,
+      "species": 1084,
+      "nickname": "Sedgling",
+      "level": 5,
+      "experience": 135,
+      "ability": 11,
+      "moves": [
+        64,
+        45,
+        0,
+        0
+      ],
+      "pp": [
+        35,
+        40,
+        0,
+        0
+      ],
+      "pid": 202797191,
+      "checksum_valid": true,
+      "ot": "TDST",
+      "trainer_id32": 3938431849,
+      "ball": 4,
+      "met_location": 126,
+      "met_level": 5,
+      "ground_tile": 12,
+      "origin_game": "HG",
+      "language": 2,
+      "met_date": "2026-09-26",
+      "hp_current": 19,
+      "hp_max": 19,
+      "dex_seen": true,
+      "dex_caught": true,
+      "ivs": {
+        "hp": 7,
+        "atk": 21,
+        "def": 27,
+        "spa": 20,
+        "spd": 20,
+        "spe": 25
+      }
+    }
+  ],
+  "editor_roundtrip": {
+    "result": "passed",
+    "pokemon_bytes_unchanged": true,
+    "save_checksums_valid": true,
+    "output_save": "/tmp/elm-trio-fixture/elm-trio-received-editor-roundtrip.sav",
+    "sha256": "df074cca0c1287ff42ef6fbed4caae32c63bf0e5165b3423da1caf65b93ed984"
+  }
+}

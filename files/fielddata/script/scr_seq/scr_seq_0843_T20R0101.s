@@ -94,11 +94,9 @@ _0145:
 	WaitMovement
 	NPCMsg msg_0543_T20R0101_00004
 	CloseMsg
-	ApplyMovement obj_T20R0101_doctor, _0368
+	ApplyMovement obj_T20R0101_doctor, _0388
 	WaitMovement
-	SetFlag FLAG_ELMS_LAB_PREVENT_PLAYER_ESCAPE
-	ReleaseAll
-	End
+	GoTo _GiveStarterTrio
 
 _0197:
 	ApplyMovement obj_T20R0101_doctor, _020C
@@ -166,64 +164,63 @@ scr_seq_T20R0101_012:
 	LockAll
 	FacePlayer
 	GoToIfSet FLAG_GOT_STARTER, _0331
+	NPCMsg msg_0543_T20R0101_00006
+	WaitButton
+	CloseMsg
+	ReleaseAll
+	End
+
+_GiveStarterTrio:
+	GoToIfSet FLAG_GOT_STARTER, _StarterTrioDone
 	ChooseStarter
 	SetFlag FLAG_GOT_STARTER
-	ScrCmd_605 3, 2
-	ToggleFollowingPokemonMovement 0
-	ScrCmd_608
-	Wait 10, VAR_SPECIAL_RESULT
-	ToggleFollowingPokemonMovement 1
-	GetPartyMonSpecies 0, VAR_TEMP_x4001
-	SetStarterChoice VAR_TEMP_x4001
+	// Keep a canonical branch value for unrelated stock story scripts.
+	SetStarterChoice SPECIES_CHIKORITA
 	BufferPlayersName 0
-	BufferMonSpeciesName 1, 0
 	NPCMsg msg_0543_T20R0101_00007
 	PlayFanfare SEQ_ME_POKEGET
 	WaitFanfare
+	CloseMsg
 	TouchscreenMenuHide
-	BufferMonSpeciesName 1, 0
-	NPCMsg msg_0543_T20R0101_00008
-	GetMenuChoice VAR_SPECIAL_RESULT
-	CloseMsg
-	Compare VAR_SPECIAL_RESULT, 0
-	CallIfEq _02EE
+	SetVar VAR_TEMP_x4002, 0
+	Call _NicknameTrioMember
+	SetVar VAR_TEMP_x4002, 1
+	Call _NicknameTrioMember
+	SetVar VAR_TEMP_x4002, 2
+	Call _NicknameTrioMember
 	TouchscreenMenuShow
-	ToggleFollowingPokemonMovement 0
-	WaitFollowingPokemonMovement
-	FollowingPokemonMovement 55
-	ApplyMovement obj_player, _0370
-	ApplyMovement obj_T20R0101_doctor, _0388
-	WaitMovement
-	WaitFollowingPokemonMovement
-	ToggleFollowingPokemonMovement 1
-	FollowingPokemonMovement 48
 	NPCMsg msg_0543_T20R0101_00010
-	CloseMsg
-	ApplyMovement obj_T20R0101_doctor, _0380
-	WaitMovement
 	NPCMsg msg_0543_T20R0101_00011
 	CloseMsg
-	ApplyMovement obj_T20R0101_doctor, _0390
-	WaitMovement
 	BufferPlayersName 0
 	GenderMsgBox msg_0543_T20R0101_00012, msg_0543_T20R0101_00013
 	WaitButton
 	CloseMsg
+_StarterTrioDone:
 	SetVar VAR_SCENE_ELMS_LAB, 1
 	SetVar VAR_SCENE_NEW_BARK_TOWN_OW, 1
 	ClearFlag FLAG_ELMS_LAB_PREVENT_PLAYER_ESCAPE
 	ReleaseAll
 	End
 
+_NicknameTrioMember:
+	BufferMonSpeciesName 1, VAR_TEMP_x4002
+	NPCMsg msg_0543_T20R0101_00008
+	GetMenuChoice VAR_SPECIAL_RESULT
+	CloseMsg
+	Compare VAR_SPECIAL_RESULT, 0
+	CallIfEq _02EE
+	Return
+
 _02EE:
 	SetVar VAR_TEMP_x4000, 0
 	FadeScreen 6, 1, 0, RGB_BLACK
 	WaitFade
-	NicknameInput 0, VAR_TEMP_x4000
+	NicknameInput VAR_TEMP_x4002, VAR_TEMP_x4000
 	FadeScreen 6, 1, 1, RGB_BLACK
 	WaitFade
 	TouchscreenMenuHide
-	BufferPartyMonNick 1, 0
+	BufferPartyMonNick 1, VAR_TEMP_x4002
 	NPCMsg msg_0543_T20R0101_00009
 	GetMenuChoice VAR_SPECIAL_RESULT
 	CloseMsg

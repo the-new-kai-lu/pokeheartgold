@@ -4768,16 +4768,9 @@ BOOL ScrCmd_PlaceStarterBallsInElmsLab(ScriptContext *ctx) {
     };
     int n, i;
 
-    int partyCount = Party_GetCount(SaveArray_Party_Get(fieldSystem->saveData));
-    if (FieldSystem_FlagCheck(fieldSystem, FLAG_GOT_TM51_FROM_FALKNER)) {
-        n = 0;
-    } else if (FieldSystem_FlagCheck(fieldSystem, FLAG_MET_PASSERBY_BOY)) {
-        n = 1;
-    } else if (partyCount > 0) {
-        n = 2;
-    } else {
-        n = 3;
-    }
+    // Elm gives the player a separate Fakemon trio. Silver later takes all
+    // three Johto starters, so the display goes directly from three to zero.
+    n = FieldSystem_FlagCheck(fieldSystem, FLAG_MET_PASSERBY_BOY) ? 0 : 3;
     for (i = 0; i < n; i++) {
         MapPropManager_LoadOne(fieldSystem->mapPropManager, 0x8D, &ballCoords[i], 0, fieldSystem->mapPropAnimationManager);
     }

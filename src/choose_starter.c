@@ -5,100 +5,68 @@
 #include "constants/species.h"
 
 #include "field_system.h"
-#include "launch_application.h"
 #include "map_header.h"
-#include "pokedex.h"
-#include "screen_fade.h"
 #include "task.h"
+#include "unk_02055244.h"
+#include "unk_020552A4.h"
 #include "update_dex_received.h"
 
-struct ChooseStarterTaskData {
-    int state;
-    struct ChooseStarterArgs *args;
-};
+static BOOL GiveStarterTrio(TaskManager *taskManager);
 
-static BOOL CreateStarter(TaskManager *taskManager);
-
+// Keep the script command entry point, but this edition has no choice screen.
 void LaunchStarterChoiceScene(FieldSystem *fieldSystem) {
-    struct ChooseStarterTaskData *env = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(struct ChooseStarterTaskData));
-    env->state = 0;
-    TaskManager_Call(fieldSystem->taskman, CreateStarter, env);
+    TaskManager_Call(fieldSystem->taskman, GiveStarterTrio, NULL);
 }
 
-static BOOL CreateStarter(TaskManager *taskManager) {
+static BOOL GiveStarterTrio(TaskManager *taskManager) {
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
-    struct ChooseStarterTaskData *env = TaskManager_GetEnvironment(taskManager);
-    int i;
-    u32 mapsec;
-    Party *party;
+    u32 *state = TaskManager_GetStatePtr(taskManager);
 
-    switch (env->state) {
+    switch (*state) {
     case 0:
-        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
-        env->state = 1;
+        PaletteFadeUntilFinished(taskManager);
+        (*state)++;
         break;
     case 1:
-        if (!IsPaletteFadeFinished()) {
-            break;
-        }
-        {
-            const int species[] = {
-                SPECIES_CHIKORITA,
-                SPECIES_CYNDAQUIL,
-                SPECIES_TOTODILE,
-            };
-            mapsec = MapHeader_GetMapSec(fieldSystem->location->mapId); // sp14
+        CallTask_LeaveOverworld(taskManager);
+        (*state)++;
+        break;
+    case 2: {
+        static const int species[] = {
+            SPECIES_VOLTUFF,
+            SPECIES_EMBERNEWT,
+            SPECIES_SEDGLING,
+        };
+        Party *party = SaveArray_Party_Get(fieldSystem->saveData);
+        PlayerProfile *profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
+        u32 mapsec = MapHeader_GetMapSec(fieldSystem->location->mapId);
+        Pokemon *mon = AllocMonZeroed(HEAP_ID_FIELD2);
+        int i;
 
-            env->args = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(struct ChooseStarterArgs));
-            env->args->cursorPos = 0;
-            env->args->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
-            for (i = 0; i < (int)NELEMS(species); i++) {
-                Pokemon *mon = &env->args->starters[i];
-                PlayerProfile *profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
-                ZeroMonData(mon);
-                CreateMon(mon, species[i], 5, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
-                sub_020720FC(mon, profile, BALL_POKE, mapsec, 12, HEAP_ID_FIELD2);
-                {
-                    int item = ITEM_NONE;
-                    SetMonData(mon, MON_DATA_HELD_ITEM, &item);
-                }
+        // The initial Elm scene runs before the player can obtain any Pokemon.
+        GF_ASSERT(Party_GetCount(party) == 0);
+        for (i = 0; i < (int)NELEMS(species); i++) {
+            int item = ITEM_NONE;
+            ZeroMonData(mon);
+            CreateMon(mon, species[i], 5, 32, FALSE, 0, OT_ID_PLAYER_ID, 0);
+            // Preserve the original starter's trainer memo and encounter type.
+            sub_020720FC(mon, profile, BALL_POKE, mapsec, 12, HEAP_ID_FIELD2);
+            SetMonData(mon, MON_DATA_HELD_ITEM, &item);
+            if (Party_AddMon(party, mon)) {
+                UpdatePokedexWithReceivedSpecies(fieldSystem->saveData, mon);
             }
         }
-        ChooseStarter_LaunchApp(fieldSystem, env->args);
-        sub_0203E30C();
-        env->state = 2;
-        break;
-    case 2:
-        if (FieldSystem_ApplicationIsRunning(fieldSystem)) {
-            break;
-        }
-        env->state = 3;
-        break;
-    case 3: {
-        Pokedex *pokedex = Save_Pokedex_Get(fieldSystem->saveData);
-        party = SaveArray_Party_Get(fieldSystem->saveData);
-        Pokemon *myChoice = &env->args->starters[env->args->cursorPos];
-        if (Party_AddMon(party, myChoice)) {
-            UpdatePokedexWithReceivedSpecies(fieldSystem->saveData, myChoice);
-        }
-        Pokedex_SetMonCaughtFlag(pokedex, Party_GetMonByIndex(party, 0));
-        env->state = 4;
-        FieldSystem_LoadFieldOverlay(fieldSystem);
+        Heap_Free(mon);
+        // Reloading the field creates the lead Pokemon's follower map object.
+        CallTask_RestoreOverworld(taskManager);
+        (*state)++;
         break;
     }
-    case 4:
-        if (!sub_020505C8(fieldSystem)) {
-            break;
-        }
-        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
-        env->state = 5;
+    case 3:
+        CallTask_FadeFromBlack(taskManager);
+        (*state)++;
         break;
-    case 5:
-        if (!IsPaletteFadeFinished()) {
-            break;
-        }
-        Heap_Free(env->args);
-        Heap_Free(env);
+    case 4:
         return TRUE;
     }
 

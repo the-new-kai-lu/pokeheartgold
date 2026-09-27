@@ -1,0 +1,34 @@
+{
+  "checked_at_utc": "2026-09-27T02:51:57.030978+00:00",
+  "test": "Independent fresh-boot smoke of SoulSilver starter-trio variant",
+  "rom": "build/soulsilver.us/soulsilver-fakemon-starters.nds",
+  "rom_sha256": "8f05d94e30ccb0bd59091044d896bd16d61df75038df85e80585c9870e7506d2",
+  "rom_bytes": 134217728,
+  "emulator": "DeSmuME 0.9.12 git#0 x64 via py-desmume",
+  "method": {
+    "python": "/home/fredd/git/hg-engine/.venv/bin/python",
+    "isolated_workspace": "/tmp/ss-starter-trio-boot-vmwrbloc",
+    "unique_rom_basename": "ss-starter-trio-boot-vmwrbloc.nds",
+    "save_imported": false,
+    "save_exported": false,
+    "game_saved": false,
+    "steps": [
+      "Copy built ROM into fresh temporary directory with unique basename to avoid DeSmuME battery collisions.",
+      "Open ROM through DeSmuME API, mute audio, call cycle(False) for 900 frames.",
+      "Capture opening-animation screenshot.",
+      "Hold A for 3 frames, release A, advance 240 frames.",
+      "Capture SoulSilver title screenshot and visually inspect both images."
+    ],
+    "total_emulated_frames": 1143
+  },
+  "observed_result": "PASS: normal opening animation advances to rendered Pokemon SoulSilver title with Lugia and TOUCH TO START prompt after A input.",
+  "screenshots": [
+    "soulsilver-boot-intro.png",
+    "soulsilver-title.png"
+  ],
+  "limitations": [
+    "Boot/title smoke only; no new-game progression, starter acquisition, rival battle, save, or audio behavior exercised.",
+    "No desktop control used; frames and input driven through emulator API.",
+    "No assertion or heap hooks installed; success is supported by visible responsive title screen, not comprehensive runtime instrumentation."
+  ]
+}

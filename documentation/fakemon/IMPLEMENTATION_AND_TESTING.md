@@ -1,5 +1,7 @@
 # Stock-based Fakemon port: goal, implementation, and acceptance tests
 
+The separate **starter-trio edition** changes the opening gift and Silver’s teams; see [STARTER_TRIO.md](STARTER_TRIO.md). The goals and validation below describe the shared base port.
+
 ## Goal
 
 Add the eleven approved Fakemon and seven required newer moves to the source-built US HeartGold/SoulSilver games, preserving original gameplay for canonical species and moves. Keep the hg-engine build separate. Supply matching `fakemon-stock` branches of PKHeX and PKMDS. The additions remain normally unobtainable: no encounters, gifts, starters, trainer parties, or shop changes.
