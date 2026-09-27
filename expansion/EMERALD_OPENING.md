@@ -1,3 +1,21 @@
+# Archive staging checkpoint
+
+`scripts/stage_lab_archives.py --assets /path/to/aligned-export --output /new/path`
+produces an opt-in filesystem overlay: appended land member 676, texture member
+106, area member 106 and single-cell matrix 288. All original NARC members
+remain byte-identical after packing. Area parameters clone indoor member 1,
+retaining prop-list, lighting and flags while selecting the new texture.
+Tests validate real references and reject changed asset hashes.
+
+This overlay is **not installed or reachable**: no map header, event bank,
+entrance or return warp is attached. It writes only a fresh output directory,
+not source archives. The area template's native prop list remains, although the
+new land has no prop placements. Texture VRAM and transitions need runtime tests.
+The matrix loader takes a u16 index but caches it as u8; 288 becomes 32.
+Current special-matrix comparisons are 0 and 212, so neither is triggered.
+The sole assembly getter caller passes that value to `MapMatrix_GetMapAltitude`,
+which ignores it. No matrix-struct or save ABI change was made.
+
 # Aligned collision checkpoint
 
 Exporter bounds are now -112..96, aligning donor cells to native terrain
