@@ -99,3 +99,7 @@ The complete species/move/evolution acceptance checklist remains in [IMPLEMENTAT
 ## Early ice-branch items and menu portraits
 
 See [the item and artwork revision](secret-items/README.md) for the Route 46 Icicle Plate, Ethan/Lyra NeverMeltIce gift, older-save recovery, warmer electric icons, and validation.
+
+## Side-facing follower correction
+
+All eleven custom followers have revised alternating left/right foot poses. See [art, reproduction and validation](side-gait/README.md). Existing saves are compatible.

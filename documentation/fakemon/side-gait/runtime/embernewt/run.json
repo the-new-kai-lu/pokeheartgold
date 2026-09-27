@@ -71,6 +71,7 @@
       ]
     }
   ],
-  "status": "awaiting_visual_review",
-  "total_emulated_frames": 2406
+  "status": "visually_reviewed_horizontal_movement_and_step_changes",
+  "total_emulated_frames": 2406,
+  "review_limit": "Short gatehouse segments include initial delay and wall contact; review moving portions. Other species checked as native assets."
 }
