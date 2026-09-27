@@ -1,5 +1,33 @@
 # Candidate episode: Emerald's Birch rescue (gift foundation; episode not imported)
 
+## Reproducible lab donor graphics
+
+`python3 scripts/extract_emerald_lab.py --donor ../pokeemerald --output /tmp/emerald-lab`
+extracts the actual 13x13 lab layout (208x208 pixels), three RGBA background
+layers, composite preview, all 169 semantic cells and original event definitions.
+Output must be a fresh directory. The manifest fingerprints every input and
+output; it names the expected donor revision but does not assert an arbitrary
+checkout is clean. Building/Lab tilesets use primary tile/metatile cutoff 512,
+primary palette slots 0–5 and secondary slots 6–12. Extraction preserves GBA
+flips, transparent color zero, BGR555 quantization and background assignments
+from Emerald `src/field_camera.c:DrawMetatile`. The preview excludes NPCs and
+animation; separate layers retain occlusion information. Collision/elevation/
+behavior values are **donor semantics**, not HGSS terrain attributes. Generated
+graphics are not committed. Three new tests cover PNG filters/corruption,
+tile banks/flips and real donor extraction with lossless cell reconstruction.
+
+The conversion boundary is now concrete: HGSS land archive `files/a/0/6/5`
+(`NARC_fielddata_landdata_land_data = 65`) contains 676 members. Its first four
+little-endian words are section lengths (terrain, object section, BMD,
+collision); HGSS has a further four-byte header word. Member 1 is 15,858 bytes:
+lengths 2048/48/13676/66, BMD0 at offset 2116 and BDHC at 15792.
+`include/terrain_attributes.h` independently establishes terrain start 0x14
+and length 0x800 (32x32 u16 cells). These observations locate the template
+boundary, **not** a verified NSBMD/BDHC exporter. Material/texture references,
+geometry scale, height planes and collision behavior still need decoding and
+runtime validation before appending a playable land member/header. Do not wrap
+the PNG in a guessed DS container or rename Elm's lab as an imported map.
+
 ## NPC-ready lab interaction (not yet reachable)
 
 Bank 965 now has two entries: zero-based entry 0 retains the preselected claim
