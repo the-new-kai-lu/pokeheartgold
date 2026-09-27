@@ -1,0 +1,244 @@
+{
+  "voltuff": {
+    "family": "electric",
+    "row": 0,
+    "source_union": [
+      216,
+      186,
+      377,
+      380
+    ],
+    "destination": [
+      9,
+      9,
+      25,
+      30
+    ],
+    "leg_region": [
+      10,
+      25,
+      20,
+      30
+    ]
+  },
+  "surguenon": {
+    "family": "electric",
+    "row": 1,
+    "source_union": [
+      206,
+      148,
+      388,
+      370
+    ],
+    "destination": [
+      7,
+      5,
+      25,
+      30
+    ],
+    "leg_region": [
+      8,
+      23,
+      21,
+      30
+    ]
+  },
+  "raijinque": {
+    "family": "electric",
+    "row": 2,
+    "source_union": [
+      188,
+      68,
+      415,
+      369
+    ],
+    "destination": [
+      19,
+      28,
+      43,
+      62
+    ],
+    "leg_region": [
+      19,
+      54,
+      37,
+      62
+    ]
+  },
+  "embernewt": {
+    "family": "varan",
+    "row": 0,
+    "source_union": [
+      156,
+      188,
+      300,
+      300
+    ],
+    "destination": [
+      6,
+      15,
+      26,
+      30
+    ],
+    "leg_region": [
+      8,
+      26,
+      22,
+      30
+    ]
+  },
+  "pyrovaran": {
+    "family": "varan",
+    "row": 1,
+    "source_union": [
+      135,
+      159,
+      326,
+      304
+    ],
+    "destination": [
+      4,
+      11,
+      28,
+      30
+    ],
+    "leg_region": [
+      6,
+      25,
+      23,
+      30
+    ]
+  },
+  "magmalisk": {
+    "family": "varan",
+    "row": 2,
+    "source_union": [
+      96,
+      78,
+      364,
+      295
+    ],
+    "destination": [
+      15,
+      31,
+      51,
+      62
+    ],
+    "leg_region": [
+      18,
+      55,
+      42,
+      62
+    ]
+  },
+  "rimevaran": {
+    "family": "varan",
+    "row": 3,
+    "source_union": [
+      135,
+      161,
+      323,
+      300
+    ],
+    "destination": [
+      4,
+      11,
+      29,
+      30
+    ],
+    "leg_region": [
+      6,
+      25,
+      24,
+      30
+    ]
+  },
+  "fimbulisk": {
+    "family": "varan",
+    "row": 4,
+    "source_union": [
+      94,
+      97,
+      368,
+      296
+    ],
+    "destination": [
+      16,
+      34,
+      48,
+      62
+    ],
+    "leg_region": [
+      18,
+      55,
+      42,
+      62
+    ]
+  },
+  "sedgling": {
+    "family": "bird",
+    "row": 0,
+    "source_union": [
+      230,
+      233,
+      366,
+      390
+    ],
+    "destination": [
+      7,
+      14,
+      22,
+      30
+    ],
+    "leg_region": [
+      10,
+      26,
+      19,
+      30
+    ]
+  },
+  "cragaviar": {
+    "family": "bird",
+    "row": 1,
+    "source_union": [
+      208,
+      140,
+      384,
+      383
+    ],
+    "destination": [
+      5,
+      4,
+      24,
+      30
+    ],
+    "leg_region": [
+      9,
+      25,
+      20,
+      30
+    ]
+  },
+  "ragnaroc": {
+    "family": "bird",
+    "row": 2,
+    "source_union": [
+      179,
+      87,
+      414,
+      386
+    ],
+    "destination": [
+      13,
+      20,
+      47,
+      62
+    ],
+    "leg_region": [
+      17,
+      52,
+      35,
+      62
+    ]
+  }
+}

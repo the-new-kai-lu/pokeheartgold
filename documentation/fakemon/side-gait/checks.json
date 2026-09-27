@@ -1,0 +1,79 @@
+{
+  "voltuff": {
+    "changed_step_pixels": 26,
+    "sha256": "b4ab1e931ee8faed27e4a04d206ffcfe18725e083a73de7e70eaee847834df78",
+    "north_south_unchanged": true,
+    "palettes_unchanged": true,
+    "body_locked": true
+  },
+  "surguenon": {
+    "changed_step_pixels": 40,
+    "sha256": "cf8248754c97b0c79aeef09af49fe921ea57545fbc295cb34419f4e32895e39b",
+    "north_south_unchanged": true,
+    "palettes_unchanged": true,
+    "body_locked": true
+  },
+  "raijinque": {
+    "changed_step_pixels": 81,
+    "sha256": "c9778a96d009015088a9ae95ab980144e80f49bd241aa6ea0ad0b46b25a68ee2",
+    "north_south_unchanged": true,
+    "palettes_unchanged": true,
+    "body_locked": true
+  },
+  "embernewt": {
+    "changed_step_pixels": 23,
+    "sha256": "e2a1e3e2ede13eb166e9c409082f8f067d6e06cb9bd0990a413a74015a7a18a2",
+    "north_south_unchanged": true,
+    "palettes_unchanged": true,
+    "body_locked": true
+  },
+  "pyrovaran": {
+    "changed_step_pixels": 55,
+    "sha256": "0a2b8ebffd0cde9d35b1dedf749889941b19bc017b9ee2328f75b55826818755",
+    "north_south_unchanged": true,
+    "palettes_unchanged": true,
+    "body_locked": true
+  },
+  "magmalisk": {
+    "changed_step_pixels": 67,
+    "sha256": "fa6693fd36dd90a4542729889dcb1cfa4ec532bf567b98d9a31ace1f8dbbb293",
+    "north_south_unchanged": true,
+    "palettes_unchanged": true,
+    "body_locked": true
+  },
+  "rimevaran": {
+    "changed_step_pixels": 31,
+    "sha256": "7c7a1dc2ee2964f570c39ba21164c462f1488c2050f4a4d1d06cfdcf5db39a3c",
+    "north_south_unchanged": true,
+    "palettes_unchanged": true,
+    "body_locked": true
+  },
+  "fimbulisk": {
+    "changed_step_pixels": 98,
+    "sha256": "4a2e6722b1d9c2f6e6c1bb8d302529a6954afd2714233e4d78862e5e44b1272d",
+    "north_south_unchanged": true,
+    "palettes_unchanged": true,
+    "body_locked": true
+  },
+  "sedgling": {
+    "changed_step_pixels": 20,
+    "sha256": "a184bf98b2322f80bbaf95c93f67faca3d31eccdab05206a34345c056231b258",
+    "north_south_unchanged": true,
+    "palettes_unchanged": true,
+    "body_locked": true
+  },
+  "cragaviar": {
+    "changed_step_pixels": 23,
+    "sha256": "e3b33666995022b39b92f33bbf5abb2b1aaead75117fbe49c0b85773b0738400",
+    "north_south_unchanged": true,
+    "palettes_unchanged": true,
+    "body_locked": true
+  },
+  "ragnaroc": {
+    "changed_step_pixels": 97,
+    "sha256": "e1df5cf1a403df8be66a0f8fb42a86487ab26bf8a51dae032bdc6126f540925d",
+    "north_south_unchanged": true,
+    "palettes_unchanged": true,
+    "body_locked": true
+  }
+}
