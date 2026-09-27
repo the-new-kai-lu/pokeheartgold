@@ -1,5 +1,30 @@
 # Candidate episode: Emerald's Birch rescue (gift foundation; episode not imported)
 
+## NPC-ready lab interaction (not yet reachable)
+
+Bank 965 now has two entries: zero-based entry 0 retains the preselected claim
+API; entry 1 locks input, checks eligibility and receipt, offers Treecko,
+Torchic, Mudkip or Choose later (including B cancellation), and calls the same
+non-yielding receipt transaction. Separate dialogue handles party delivery, PC
+delivery, full storage, cancellation, ineligibility and prior receipt. Full
+storage leaves eligibility intact so the player may return and choose again.
+Selection does not change Johto starter flags or existing party slots.
+
+The future lab map must pair script bank 965 with message bank 829 and reference
+entry 1 using the host event-script numbering convention. No existing NPC or
+map is redirected. Appended `msg_0829_hoenn_reward.gmm` contains eleven original
+English messages. Nitroarc lexically sorts inputs; `msg.mk` generates otherwise
+absent bank 729 from trainer data, making the new archive member 829, not 828.
+Field scripts use the current map message bank, not a matching script-bank ID.
+All original message sources and original 965 script hashes remain unchanged.
+
+Both editions' assembled interaction branches pass the bounded interpreter
+tests; real msgenc encodes all messages. All 21 host tests and the baseline audit
+pass. Full native field rebuild: 966/966 hashes per edition match, with bank 965
+intentionally updated for this interaction. These tests do not validate DS menu
+rendering, NPC positioning, encrypted saves or emulator behavior. A real lab
+map/Birch object, rescue scene, travel and runtime tests remain required.
+
 ## Current implementation: appended claim bank
 
 This supersedes the historical allocation-blocked notes below. Bank 965,

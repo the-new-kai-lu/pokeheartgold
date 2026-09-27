@@ -3,15 +3,19 @@ import hashlib
 from pathlib import Path
 import shutil
 import struct
+import subprocess
 import tempfile
 import unittest
 
 from test_native_field_scripts import native, ROOT
 
 
-def execute(data, variables, delivery):
+def execute(data, variables, delivery, entry=0, choice=0, messages=None):
     """Bounded interpreter for the exact production opcodes in this bank."""
-    pc = 4 + struct.unpack_from("<I", data)[0]
+    pc = 4 * entry + 4 + struct.unpack_from("<I", data, 4 * entry)[0]
+    stack = []
+    menu_items = []
+    menu_var = None
     comparison = 0
     calls = []
     def value(v):
@@ -20,8 +24,32 @@ def execute(data, variables, delivery):
         opcode = struct.unpack_from("<H", data, pc)[0]
         pc += 2
         if opcode == 2:
-            return variables[0x800c], calls
-        if opcode in (17, 18, 41, 42):
+            return variables.get(0x800c), calls
+        if opcode in (22, 26):
+            relative = struct.unpack_from("<i", data, pc)[0]
+            pc += 4
+            if opcode == 26:
+                stack.append(pc)
+            pc += relative
+        elif opcode == 27:
+            pc = stack.pop()
+        elif opcode in (45,):
+            if messages is not None:
+                messages.append(data[pc])
+            pc += 1
+        elif opcode in (49, 53, 96, 97, 104):
+            pass
+        elif opcode == 750:
+            menu_var = struct.unpack_from("<H", data, pc + 4)[0]
+            pc += 6
+        elif opcode == 751:
+            message, unused, result = struct.unpack_from("<HHH", data, pc)
+            menu_items.append(result)
+            pc += 6
+        elif opcode == 752:
+            assert menu_items == [252, 255, 258, 0]
+            variables[menu_var] = choice
+        elif opcode in (17, 18, 41, 42):
             a, b = struct.unpack_from("<HH", data, pc)
             pc += 4
             if opcode in (17, 18):
@@ -47,6 +75,27 @@ def execute(data, variables, delivery):
 
 
 class HoennRewardTests(unittest.TestCase):
+    @unittest.skipUnless(shutil.which("g++"), "native message encoder needs g++")
+    def test_lab_messages_encode_and_append_without_reindexing(self):
+        banks = sorted((ROOT / "files/msgdata/msg").glob("*.gmm"))
+        # Bank 729 is generated from trainer data by msg.mk, not tracked.
+        names = sorted({p.name for p in banks} | {"msg_0729.gmm"})
+        self.assertEqual(len(names), 830)
+        self.assertEqual(names[829], "msg_0829_hoenn_reward.gmm")
+        with tempfile.TemporaryDirectory() as temp:
+            encoder = Path(temp) / "msgenc"
+            tools = ROOT / "tools/msgenc"
+            subprocess.run(["g++", "-std=c++17", "-O2", "-DNDEBUG", "-o", str(encoder),
+                            *[str(tools / name) for name in (
+                                "msgenc.cpp", "Options.cpp", "MessagesConverter.cpp",
+                                "MessagesDecoder.cpp", "MessagesEncoder.cpp",
+                                "Gmm.cpp", "pugixml.cpp")]], check=True)
+            output = Path(temp) / "lab.bin"
+            subprocess.run([str(encoder), "-e", "-c", str(ROOT / "charmap.txt"),
+                            "--gmm", "-k", "0xB461", str(banks[-1]),
+                            str(output)], check=True)
+            self.assertEqual(struct.unpack_from("<H", output.read_bytes())[0], 11)
+
     def test_frontier_archive_cannot_name_reserved_variables(self):
         # Loader: frontier_system.s ov80_0222AA40 loads NARC ID 0xb6.
         # filesystem_files_def.h maps it to a/1/8/2, shared by both editions.
@@ -93,6 +142,20 @@ class HoennRewardTests(unittest.TestCase):
                     directory, edition, includes)
                 self.assertIn(digest, (ROOT / "scr_seq.sha1").read_text())
                 data = (directory / bank).read_bytes()
+                for rescue, receipt, choice, delivery, message in (
+                    (0, 0, 252, 1, 9), (2, 0, 252, 1, 9),
+                    (1, 252, 255, 1, 10), (1, 999, 252, 1, 10),
+                    (1, 0, 0, 1, 8), (1, 0, 65534, 1, 8),
+                    (1, 0, 252, 0, 7), (1, 0, 255, 1, 5),
+                    (1, 0, 258, 2, 6),
+                ):
+                    state = {0x416e: rescue, 0x416f: receipt}
+                    messages = []
+                    execute(data, state, delivery, entry=1, choice=choice,
+                            messages=messages)
+                    self.assertEqual(messages[-1], message)
+                    self.assertEqual(state[0x416f],
+                                     choice if message in (5, 6) else receipt)
                 for species in (252, 255, 258):
                     for outcome in (0, 1, 2):
                         state = {0x416e: 1, 0x416f: 0, 0x8000: species}
