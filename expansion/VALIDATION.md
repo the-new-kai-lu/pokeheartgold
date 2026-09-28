@@ -2,6 +2,71 @@
 
 This is a partial implementation checkpoint, not Stage 1 completion.
 
+## Native SoulSilver starter, debug gift and real-save editor loop — 2026-09-28
+
+- A separate **private, opt-in SoulSilver debug ROM**, built from the pinned
+  `51e26be86a4239d7456301ae4e0a425a64e5a605` source and the same
+  runtime-verified solid lab assets, is
+  `/tmp/hg-vm-share/pokesoulsilver-solid-51e26be.us.nds` (128 MiB; SHA-256
+  `cd12c7da629337d3b4204a04a356425fb026b5b4264e2eb99fb84b014aa0bda4`).
+  Its native script build used `-DSOULSILVER`, with all 966 banks inventoried
+  in private `/tmp/hg-ss-native-51e26be/ss-bank-manifest.json`. This is not a
+  ROM from the later documentation/exterior commits and is not distributed.
+- Starting from **blank SoulSilver battery data**, not an HG-converted save,
+  boy trainer A proceeded through native New Game, chose Totodile and saved.
+  The immutable first-save copy
+  `/tmp/hg-retroarch/pre-save-backup/ss-native-after-johto-starter.dsv`
+  has SHA-256 `a6f2dcbcfdc7dccfe614882f813527cffb8c20f86fc5cc434a2ccbbe0414ebf1`.
+  At this first save **only partition 1 is populated**, with its two valid
+  native block CRCs; partition 0 is still erased (`FF`). Do not report all
+  four blocks as populated at this stage.
+- In a persistent native SS emulator session, the debug entrance reached the
+  filled-texture flat lab with both actors. The touchscreen menu worked;
+  cancellation awarded nothing; the subsequent Treecko choice added a
+  level-5 party member; immediate re-interaction gave the receipt guard.
+  The player completed a native save, used the return scientist to reach Elm,
+  ran the unchanged Johto assistant/Potion sequence and re-entered the lab;
+  the receipt guard persisted. The parent visually verified the private
+  lab/menu/cancel/gift/guard/save/return/Johto/revisit captures. Debug Elm
+  **simulates rescue eligibility**: authentic rescue entry 2 is not mapped or
+  proven in SS gameplay.
+- The separate immutable post-gift battery copy
+  `/tmp/hg-retroarch/pre-save-backup/ss-native-after-treecko.dsv` has SHA-256
+  `6003bd7b2235833dae7e8005c3602ed1ad6776001c233a4d83aa3e88f4a14bf9`.
+  **Both partitions are now populated**, all four native block CRCs valid.
+  Corrected PKHeX.Core and PKMDS.Core load it with zero load mutation as
+  `SAV4HGSS` **SoulSilver** (version 8, `IsHGEngine=false`). Both see
+  Totodile (158) then Treecko (252); all decrypted bytes of the original
+  Totodile and all 2,912 flags match the true SS starter save. Starter
+  `0x4030` remains 158; debug rescue/receipt `0x416e`/`0x416f` are 1/252.
+  Ordinary play also reset temporary variables `0x4000` 4→0 and `0x4001`
+  158→0, and advanced friendship steps `0x404b` 45→49. This is **not** a
+  claim of byte-for-byte preservation of the entire save.
+- Both editors' no-op and money-3000-to-3001 exports reopen with valid
+  checksums, preserving the **current** 368 variables, 2,912 flags, both
+  Pokémon, story values, map 540 and trainer A (ID32 3299343148, TID 64300,
+  SID 50343). The two editors' respective exports are identical, **but the
+  no-op output is not byte-identical to the input**: five bytes changed in
+  box content flags/checksum; the money edit changes eight bytes. Their
+  identical money-edited battery SHA-256 is
+  `e997f62b005cdef28495368b04495f1d2ed016bc5f8cf2f3d183c2e5e7793f39`.
+  A **true cold load** of an isolated edited copy under the SS ROM verified
+  trainer A at Continue, the textured lab and actors, both level-5 party
+  Pokémon (HP 21/21 and 19/19), trainer-card money 3001 / ID 64300 and
+  already-received dialogue. The parent inspected five private contact
+  panels at `/tmp/hg-real-save-validation/ss-native-treecko-edited-cold-contact.png`;
+  evidence JSON is under `/tmp/hg-real-save-validation/ss-native-treecko/`.
+  Original batteries remain unchanged. These are Core API editor checks,
+  **not** desktop/browser UI tests. Treecko fails retail encounter legality
+  (new origin/type); save compatibility does not confer retail legality.
+- The SS runtime daemon was stopped cleanly. This **SS one-party-slot gift**
+  does not establish full-party PC fallback/refusal/retry on SS; those native
+  capacity cases below used **HG synthetic disposable fixtures**. Neither
+  edition has authentic mapped rescue/exterior travel, full Hoenn/Sinnoh
+  campaigns or completed Stage 1. Historical SS-pending notes below are
+  superseded only by this specific native build/runtime/save-editor evidence.
+  No ROM, save, screenshot, SDK or key is committed.
+
 ## Native HG capacity and deferred gift — disposable fixtures, 2026-09-28
 
 The **same corrected private HG debug ROM** (SHA-256
@@ -38,11 +103,12 @@ SHA-256s are respectively `9213d44102fca0b63d26ff767cc7f6c55a3999788134ef8c2bf74
 and `a26e1f431a9ba4c119d57d2e3373534c915c0ddc4f2dd0f9c5574ff6248d383d`.
 The parent visually verified delivery, refusal, retry and guard panels in
 private `/tmp/hg-capacity-runtime/capacity-contact.png`; no private ROM,
-save or screenshot is published. This is **HG only**; no SoulSilver runtime
-or authentic rescue/battle/travel is established. An SS build is in progress
-elsewhere, not a completed build or runtime result. No full campaign or
-desktop/browser editor UI is claimed. Historical pending-capacity statements
-below apply only to their earlier checkpoints.
+save or screenshot is published. These **capacity cases are HG only**; no
+SS capacity result or authentic rescue/battle/travel is established here.
+At this earlier checkpoint, the SS build was still in progress; the separate
+completed SS starter/gift/real-save evidence is documented above. No full
+campaign or desktop/browser editor UI is claimed. Historical pending-capacity
+statements below apply only to their earlier checkpoints.
 
 ## Corrected debug HG runtime and real-save editor loop — 2026-09-28
 

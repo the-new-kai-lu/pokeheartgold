@@ -1,3 +1,45 @@
+# Native SoulSilver debug gift and real-save checkpoint (partial)
+
+The **private SoulSilver** debug ROM generated from pinned source `51e26be`
+and the runtime-verified solid lab assets is
+`/tmp/hg-vm-share/pokesoulsilver-solid-51e26be.us.nds`, SHA-256
+`cd12c7da629337d3b4204a04a356425fb026b5b4264e2eb99fb84b014aa0bda4`.
+Its native `-DSOULSILVER` script build inventoried 966 banks. From an
+entirely blank SS battery, with **no HG save conversion**, boy trainer A started
+New Game, chose Totodile and saved. That first authentic save has two valid
+CRCs for populated partition 1; partition 0 is still erased. The later
+post-gift save has both partitions populated and all four block CRCs valid.
+The two private immutable battery copies and their hashes are in
+`VALIDATION.md`; neither ROM nor battery is committed.
+
+In native SS gameplay the flat lab floor and scientists rendered, menu
+cancel did not grant a reward, Treecko joined the existing Totodile after
+selection, and the duplicate receipt guard held immediately and on revisit.
+Native save, return to Elm, untouched Johto assistant/Potion sequence, and
+debug lab re-entry were visually verified. The corrected PKHeX.Core and
+PKMDS.Core load the real post-gift SS save without load-time mutation as
+SS version 8 (`IsHGEngine=false`). Totodile's decrypted data, all 2,912
+flags, and Johto starter selection match the native starter save; receipt
+became Treecko (252). Temporary variables reset and friendship steps advanced
+during normal play, so no entire-save byte identity is claimed.
+
+Both editors' no-op and money-plus-one outputs reopen valid and preserve
+the current 368 variables, 2,912 flags, party and story. Their outputs match
+each other, but even no-op changes five box-content-flag/checksum bytes
+relative to the input; money-plus-one changes eight. A **true cold load**
+of an isolated money-3001 edited SS copy verified trainer A, textured lab,
+Totodile/Treecko party, card ID 64300 and money 3001, and receipt guard.
+Treecko's vanilla retail encounter legality still fails: native save/editor
+compatibility must not be represented as legal encounter origin.
+
+The debug entrance **simulates** Birch's rescue; the real rescue entry is
+not connected. SS full-party/PC capacity branches are **not** tested (the
+synthetic capacity fixtures below ran on HG only). Authentic exteriors,
+Route 101 rescue, full campaigns and desktop/browser editor UI remain
+unimplemented or unverified. Earlier SS-pending notes are historical
+checkpoints superseded only for this precise SS starter/gift/runtime/editor
+loop; Stage 1 remains incomplete.
+
 # Exterior asset authoring checkpoint (uninstalled flat prototypes)
 
 `scripts/export_emerald_outdoor_model.py --pack <extracted-pack> --output
@@ -80,9 +122,10 @@ saved evidence use `full/saved-complete`, not the unfinished `full/saved`
 capture. The parent visually verified gift, refusal, retry and guard panels
 in the private capacity contact sheet. Neither these synthetic inputs nor the
 ROM or screenshots are committed. The authentic real Totodile/Treecko battery
-save in the next checkpoint is separate, untouched. This is **native HG
-runtime behavior**, not a SoulSilver or authentic rescue/Route 101/campaign
-test. The separate SS build is still in progress; no SS runtime claim follows.
+save in the later HG checkpoint is separate, untouched. These capacity cases
+are **native HG runtime behavior**, not SS capacity or authentic rescue/
+Route 101/campaign tests. At that checkpoint the SS build was still in
+progress; see the separate completed SS starter/gift evidence above.
 See `VALIDATION.md` for exact battery hashes and qualifications.
 
 # Corrected debug HG runtime checkpoint (partial; not authentic rescue)
