@@ -357,12 +357,28 @@ storage; Pokemon Talk's iteration excludes this no-encounter map. Matrix 288
 does not alias special matrix IDs after the existing u8 cache truncation.
 No save layout, region bit width or default-game map count is changed.
 
-Generate a **separate disposable tree**:
+Generate a **separate disposable tree**. Use `native` for the real battle
+against level-2 Zigzagoon in this controlled flat lab (not the Route 101
+chase):
 
 ```sh
 python3 scripts/prepare_lab_debug.py \
-  --assets /tmp/emerald-lab-aligned --output /tmp/hg-lab-debug
+  --assets /tmp/emerald-lab-aligned --output /tmp/hg-lab-debug \
+  --rescue-mode native
 ```
+
+The default `--rescue-mode simulated` remains available for older reward-only
+diagnostics: Elm sets rescue eligibility without a battle. **Native mode never
+sets or clears that state on entry or revisit**. A third technical actor at
+(16,17), script ID 3, invokes the unchanged production rescue entry; victory
+or capture earns eligibility, while the gift scientist at (14,17) cannot
+offer a starter beforehand. The generated `lab-debug.json` records the mode
+and whether eligibility was injected. The native-mode gift prompt says
+`DEBUG LAB: Rescue completed` instead of the legacy simulated-rescue text.
+Both modes preserve the appended return actor and production script entries.
+The older private battle ROM documented above used an equivalent manually
+staged event; this new checked-in generator has passed host compilation and
+message encoding tests, **not a new ROM runtime test**.
 
 Install/link your existing authorized local toolchain into that generated tree
 as described in `INSTALL.md` (it is intentionally not copied with `git archive`).
@@ -371,15 +387,17 @@ Build there using `make COMPARE=0` for HG or
 The generator refuses an existing output directory and does not edit this
 checkout. A regular build of this checkout remains without the test entrance.
 
-In that debug build, talking to Elm **after obtaining the Johto starter**
-simulates rescue eligibility and warps to the flat lab at tile (16,19).
+In either debug mode, talking to Elm **after obtaining the Johto starter**
+warps to the flat lab at tile (16,19).
 Before obtaining the starter, his original script remains available.
 The left scientist at (14,17) is explicitly a technical Birch placeholder:
-dialogue says `DEBUG LAB: Simulated rescue`. It offers the tested reward menu.
+the simulated mode labels its reward menu `DEBUG LAB: Simulated rescue`;
+native mode requires winning the center actor's battle first.
 The right scientist at (18,17) warps back to Elm's lab at (6,12).
 Returning and re-entering does not clear the gift receipt. Both door tiles stay
 blocked; use the return scientist rather than an unfinished exterior warp.
-No authentic rescue battle, travel episode, or campaign is implied.
+Even native mode does not implement the authentic Route 101 chase, travel
+episode or full campaign.
 
 Tests assemble the generated entrance, reward/return bank and actual event JSON
 through the repository's native template renderer for both editions, check
