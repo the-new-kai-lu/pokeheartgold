@@ -101,7 +101,7 @@ def tile_pixel(word, x, y, sheets, palettes):
     return (*palettes[pal][index], 255 if index else 0)
 
 
-def extract(donor, output):
+def extract(donor, output, map_name=LAYOUT):
     sources = {}
 
     def read(relative):
@@ -110,20 +110,34 @@ def extract(donor, output):
         return data
 
     layouts = json.loads(read("data/layouts/layouts.json"))["layouts"]
-    layout = next(x for x in layouts if x["name"] == LAYOUT + "_Layout")
+    contracts = {
+        LAYOUT: (13, 13, "gTileset_Building", "gTileset_Lab",
+                 "data/tilesets/primary/building", "data/tilesets/secondary/lab"),
+        "LittlerootTown": (20, 20, "gTileset_General", "gTileset_Petalburg",
+                          "data/tilesets/primary/general", "data/tilesets/secondary/petalburg"),
+        "Route101": (20, 20, "gTileset_General", "gTileset_Petalburg",
+                     "data/tilesets/primary/general", "data/tilesets/secondary/petalburg"),
+    }
+    if map_name not in contracts:
+        raise ValueError("Unsupported episode map")
+    contract = contracts[map_name]
+    layout = next(x for x in layouts if x["name"] == map_name + "_Layout")
     if (layout["width"], layout["height"], layout["primary_tileset"], layout["secondary_tileset"]) != (
-            13, 13, "gTileset_Building", "gTileset_Lab"):
-        raise ValueError("Donor lab contract changed")
-    roots = ["data/tilesets/primary/building", "data/tilesets/secondary/lab"]
+            *contract[:4],):
+        raise ValueError("Donor map contract changed")
+    width, height = contract[:2]
+    pixel_width, pixel_height = width * 16, height * 16
+    roots = list(contract[4:])
     sheets = [indexed_png(read(root + "/tiles.png")) for root in roots]
     metatiles = [read(root + "/metatiles.bin") for root in roots]
     attributes = [read(root + "/metatile_attributes.bin") for root in roots]
     palettes = [palette(read(roots[0 if slot < 6 else 1] + f"/palettes/{slot:02}.pal")) for slot in range(13)]
     blocks = read(layout["blockdata_filepath"])
     border = read(layout["border_filepath"])
-    if len(blocks) != 13 * 13 * 2 or len(border) != 8:
-        raise ValueError("Invalid lab block/border length")
-    cells, layers = [], [bytearray(208 * 208 * 4) for _ in range(3)]
+    if len(blocks) != width * height * 2 or len(border) != 8:
+        raise ValueError("Invalid map block/border length")
+    cells, layers = [], [bytearray(pixel_width * pixel_height * 4) for _ in range(3)]
+    occluded_unavailable = []
     for cell, (block,) in enumerate(struct.iter_unpack("<H", blocks)):
         tile = block & 1023
         bank, local = (0, tile) if tile < 512 else (1, tile - 512)
@@ -134,7 +148,7 @@ def extract(donor, output):
         layer_type = attribute >> 12
         if layer_type not in (0, 1, 2):
             raise ValueError("Unsupported metatile layer type")
-        x, y = cell % 13, cell // 13
+        x, y = cell % width, cell // width
         cells.append(dict(x=x, y=y, raw=block, metatile=tile, collision=(block >> 10) & 3,
                           elevation=block >> 12, attribute=attribute, behavior=attribute & 255,
                           layer_type=layer_type, tile_words=list(words)))
@@ -144,29 +158,59 @@ def extract(donor, output):
             for quadrant in range(4):
                 for py in range(8):
                     for px in range(8):
-                        rgba = tile_pixel(words[half * 4 + quadrant], px, py, sheets, palettes)
+                        try:
+                            rgba = tile_pixel(words[half * 4 + quadrant], px, py, sheets, palettes)
+                        except ValueError:
+                            # Two outdoor source metatiles contain unavailable lower
+                            # tiles. Only omit pixels PROVEN fully covered by the
+                            # actual upper tile, and disclose that lower-layer hole.
+                            if (map_name == LAYOUT or half != 0
+                                    or tile_pixel(words[4 + quadrant], px, py, sheets, palettes)[3] != 255):
+                                raise
+                            reference = dict(x=x, y=y, quadrant=quadrant, word=words[quadrant])
+                            if reference not in occluded_unavailable:
+                                occluded_unavailable.append(reference)
+                            continue
                         dest_x, dest_y = x * 16 + quadrant % 2 * 8 + px, y * 16 + quadrant // 2 * 8 + py
-                        offset = (dest_y * 208 + dest_x) * 4
+                        offset = (dest_y * pixel_width + dest_x) * 4
                         layers[destinations[half]][offset:offset + 4] = bytes(rgba)
     # Transparent indices expose lower BGs; backdrop is palette slot 0 color 0.
-    composite = bytearray(bytes((*palettes[0][0], 255)) * (208 * 208))
+    composite = bytearray(bytes((*palettes[0][0], 255)) * (pixel_width * pixel_height))
     for layer in layers:
         for offset in range(0, len(layer), 4):
             if layer[offset + 3]:
                 composite[offset:offset + 4] = layer[offset:offset + 4]
-    events = json.loads(read(f"data/maps/{LAYOUT}/map.json"))
+    events = json.loads(read(f"data/maps/{map_name}/map.json"))
     artifacts = {
-        "preview.png": png_rgba(208, 208, composite),
-        **{f"bg{3 - i}.png": png_rgba(208, 208, layer) for i, layer in enumerate(layers)},
-        "cells.json": (json.dumps(dict(width=13, height=13, cells=cells,
+        "preview.png": png_rgba(pixel_width, pixel_height, composite),
+        **{f"bg{3 - i}.png": png_rgba(pixel_width, pixel_height, layer) for i, layer in enumerate(layers)},
+        "cells.json": (json.dumps(dict(width=width, height=height, cells=cells,
                                        border=list(struct.unpack("<4H", border))), indent=2) + "\n").encode(),
         "donor-events.json": (json.dumps(events, indent=2) + "\n").encode(),
     }
+    if map_name != LAYOUT:
+        # This is a coordinate plan, not DS terrain or authored map resources.
+        # Origin is donor (0,0), native grid (0,0), world boundary (-256,-256).
+        chunks = []
+        for cy in range((height + 31) // 32):
+            for cx in range((width + 31) // 32):
+                chunks.append(dict(matrix_x=cx, matrix_y=cy,
+                                   donor_origin=[cx * 32, cy * 32],
+                                   valid_size=[min(32, width - cx * 32), min(32, height - cy * 32)],
+                                   world_origin=[cx * 512 - 256, cy * 512 - 256]))
+        plan = dict(status="coordinate-plan-only", cell_units=16, chunk_cells=32,
+                    dimensions=[width, height], matrix_size=[(width + 31) // 32, (height + 31) // 32],
+                    chunks=chunks, padding="outside donor bounds; no inferred walkability",
+                    connections=events.get("connections"), warps=events.get("warp_events"),
+                    animation="Unanimated source tiles.png snapshot; runtime tile/palette updates not applied",
+                    occluded_unavailable_lower_tiles=occluded_unavailable,
+                    lower_layer_limitation="Unavailable lower pixels omitted ONLY under proven opaque upper pixels")
+        artifacts["chunk-plan.json"] = (json.dumps(plan, indent=2) + "\n").encode()
     # Refuse silently overwriting evidence from a previous extraction.
     output.mkdir(parents=True, exist_ok=False)
     for name, data in artifacts.items():
         (output / name).write_bytes(data)
-    manifest = dict(schema=1, expected_donor_revision=DONOR, layout=LAYOUT,
+    manifest = dict(schema=1, expected_donor_revision=DONOR, layout=map_name,
                     status="donor-extraction-only", sources=sources,
                     outputs={name: hashlib.sha256(data).hexdigest() for name, data in artifacts.items()},
                     limitations=["No DS model/collision conversion", "No NPC sprites or animation",
@@ -179,9 +223,10 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--donor", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--map", choices=[LAYOUT, "LittlerootTown", "Route101"], default=LAYOUT)
     args = parser.parse_args()
     try:
-        manifest = extract(args.donor, args.output)
+        manifest = extract(args.donor, args.output, args.map)
     except (ValueError, OSError, KeyError, struct.error, StopIteration) as error:
         parser.exit(1, f"Lab extraction failed: {error}\n")
     print(json.dumps(manifest, indent=2))

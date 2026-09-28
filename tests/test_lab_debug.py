@@ -1,4 +1,5 @@
 import os
+import re
 from pathlib import Path
 import shutil
 import struct
@@ -31,6 +32,16 @@ class LabDebugTests(unittest.TestCase):
             export(temp / "pack", temp / "assets")
             debug = temp / "debug"
             report = prepare(ROOT, temp / "assets", debug)
+            production = (debug / "files/fielddata/script/scr_seq/"
+                          "scr_seq_0965_hoenn_reward.s").read_text()
+            definitions = re.findall(r"^\s*ScrDef\s+(\w+)\s*$",
+                                     production.split("ScrDefEnd", 1)[0], re.M)
+            self.assertEqual(definitions[-1], "HoennDebug_Return")
+            self.assertEqual(report["return_entry"], len(definitions) - 1)
+            # The production rescue added after the claim/menu must remain
+            # distinct from the appended debug return.
+            self.assertGreaterEqual(report["return_entry"], 3)
+            self.assertEqual(report["reward_entry"], 1)
             self.assertEqual(report["map"], 540)
             self.assertEqual((ROOT / "include/constants/maps.h").read_bytes(), stock_maps)
             self.assertIn("#define MAP_ID_MAX 541",
@@ -85,13 +96,18 @@ class LabDebugTests(unittest.TestCase):
                 for index, x in ((0, 14), (1, 18)):
                     obj = struct.unpack_from("<14Hi", data, 8 + index * 32)
                     self.assertEqual((obj[0], obj[5], obj[12], obj[13]),
-                                     (index, index + 2, x, 17))
+                                      (index, (report["reward_entry"] if index == 0
+                                               else report["return_entry"]) + 1, x, 17))
                     self.assertFalse(struct.unpack_from("<H", terrain,
                                                        2 * (17 * 32 + x))[0] & 0x8000)
                 source = debug / "files/fielddata/script/scr_seq/scr_seq_0965_hoenn_reward.s"
                 name, _ = native.assemble_bank(source, output, edition, includes)
                 bank = (output / name).read_bytes()
-                pc = 12 + struct.unpack_from("<I", bank, 8)[0]
+                table_offset = 4 * report["return_entry"]
+                pc = table_offset + 4 + struct.unpack_from("<I", bank, table_offset)[0]
+                rescue_pc = 12 + struct.unpack_from("<I", bank, 8)[0]
+                self.assertNotEqual(rescue_pc, pc)
+                self.assertNotEqual(struct.unpack_from("<H", bank, rescue_pc)[0], 176)
                 # Return entry is real assembled Warp + End, and
                 # returns to safe Elm-lab coordinates rather than map zero.
                 self.assertEqual(struct.unpack_from("<6H", bank, pc),

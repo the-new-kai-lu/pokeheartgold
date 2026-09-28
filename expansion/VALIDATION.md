@@ -2,6 +2,34 @@
 
 This is a partial implementation checkpoint, not Stage 1 completion.
 
+## Debug return regression and exterior extraction — 2026-09-28
+
+- Adding production rescue entry 2 exposed a real debug-generation regression:
+  the right scientist still selected script ID 3, which now starts rescue
+  instead of returning. The generator now derives the appended return index
+  from the production entry table. Currently return is entry 3 / object script
+  ID 4; reward remains entry 1 / ID 2, and rescue entry 2 is preserved.
+  Both editions' compiled event/command tests check these actual bindings and
+  the return Warp to Elm's lab. Regenerate debug trees before a new ROM build;
+  the older `0db3ba85` ROM predates this regression and is not changed here.
+- All 38 host tests pass with the independent APICULA decoder enabled; the
+  baseline checker reports no errors and `git diff --check` passes. The
+  previously failing generated-return assertion is now fixed, not waived.
+- The shared donor extractor now supports Littleroot Town and Route 101 with
+  `--map LittlerootTown` or `--map Route101`. Each is 20 by 20 donor cells
+  (320 by 320 pixels). Tests check all 400 cells, source events/connections,
+  artifact hashes and a 32-cell-grid coordinate plan. Existing lab pixel
+  regression tests remain unchanged and pass.
+- These are donor extraction artifacts, **not imported DS exterior maps**.
+  Animated tiles/palettes are not replayed. Eight unavailable lower-quadrant
+  references in Littleroot are omitted only where every actual upper pixel
+  is proven opaque, and recorded in `chunk-plan.json`; the separated lower
+  layers are therefore incomplete. Visible missing pixels fail explicitly.
+  Collision/elevation fields retain donor semantics, not HGSS walkability.
+- No new ROM, lab gameplay, save/editor round trip or Stage 1 completion is
+  established by this checkpoint. Earlier sections below are historical
+  checkpoints and retain their narrower scope.
+
 ## Local ROM toolchain recovery and debug build — 2026-09-28
 
 - A private, opt-in debug **HeartGold** ROM built successfully with

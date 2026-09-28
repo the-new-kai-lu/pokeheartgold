@@ -54,6 +54,18 @@ def install(root, assets):
     if text.count("\n};") != 1:
         raise ValueError("Unexpected map table terminator")
     headers.write_text(text.replace("\n};", "\n    " + entry + "\n};"))
+    scripts = root / "files/fielddata/script/scr_seq"
+    reward = scripts / "scr_seq_0965_hoenn_reward.s"
+    reward_text = reward.read_text()
+    if reward_text.count("ScrDefEnd") != 1:
+        raise ValueError("Unexpected reward script entry table")
+    definitions = re.findall(r"^\s*ScrDef\s+([A-Za-z_]\w*)\s*$",
+                             reward_text.split("ScrDefEnd", 1)[0], re.M)
+    if len(definitions) < 2 or len(set(definitions)) != len(definitions):
+        raise ValueError("Invalid reward script entry table")
+    # Object script IDs are one-based, while archive entries are zero-based.
+    # Production entries (including the rescue) must never be reused for return.
+    return_entry = len(definitions)
     events = root / "files/fielddata/eventdata/zone_event"
     if len(list(events.glob("*.json"))) != 491:
         raise ValueError("Event archive index changed")
@@ -63,9 +75,8 @@ def install(root, assets):
                     param0=0, param1=0, param2=0, xRange=0, yRange=0,
                     x=x, z=17, y=0)
     (events / "491_HOENN_LAB_DEBUG.json").write_text(json.dumps(
-        dict(bgs=[], objects=[actor(0, 14, 2), actor(1, 18, 3)],
+        dict(bgs=[], objects=[actor(0, 14, 2), actor(1, 18, return_entry + 1)],
              warps=[], coords=[]), indent=2) + "\n")
-    scripts = root / "files/fielddata/script/scr_seq"
     entrance = scripts / "scr_seq_0843_T20R0101.s"
     replace_once(entrance, "scr_seq_T20R0101_000:",
                  "scr_seq_T20R0101_000:\n"
@@ -73,7 +84,6 @@ def install(root, assets):
                  "GoToIfUnset FLAG_GOT_STARTER, HoennDebug_ElmOriginal\n"
                  "SetVar 0x416e, 1\nWarp 540, 0, 16, 19, 0\nEnd\n"
                  "HoennDebug_ElmOriginal:\n")
-    reward = scripts / "scr_seq_0965_hoenn_reward.s"
     replace_once(reward, "ScrDefEnd", "ScrDef HoennDebug_Return\nScrDefEnd")
     with reward.open("a") as stream:
         stream.write("\n// DEBUG ONLY: return NPC (right scientist).\n"
@@ -89,6 +99,7 @@ def install(root, assets):
     data["capacities"]["map_count"] = 541
     baseline.write_text(json.dumps(data, indent=2) + "\n")
     return {"debug_only": True, "map": 540, "matrix": 288, "events": 491,
+            "reward_entry": 1, "return_entry": return_entry,
             "entrance": "Talk to Elm in his lab using a disposable post-starter save",
             "spawn": [16, 19], "reward_actor": [14, 17], "return_actor": [18, 17],
             "warnings": ["Rescue eligibility is simulated, not an implemented episode",
