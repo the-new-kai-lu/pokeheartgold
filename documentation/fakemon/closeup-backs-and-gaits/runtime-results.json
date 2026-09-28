@@ -1,0 +1,134 @@
+[
+  {
+    "kind": "battle",
+    "species": "voltuff",
+    "exit_code": 0,
+    "output": "/tmp/closeup-gaits/runtime-battle-voltuff"
+  },
+  {
+    "kind": "battle",
+    "species": "surguenon",
+    "exit_code": 0,
+    "output": "/tmp/closeup-gaits/runtime-battle-surguenon"
+  },
+  {
+    "kind": "battle",
+    "species": "raijinque",
+    "exit_code": 0,
+    "output": "/tmp/closeup-gaits/runtime-battle-raijinque"
+  },
+  {
+    "kind": "battle",
+    "species": "embernewt",
+    "exit_code": 0,
+    "output": "/tmp/closeup-gaits/runtime-battle-embernewt"
+  },
+  {
+    "kind": "battle",
+    "species": "pyrovaran",
+    "exit_code": 0,
+    "output": "/tmp/closeup-gaits/runtime-battle-pyrovaran"
+  },
+  {
+    "kind": "battle",
+    "species": "magmalisk",
+    "exit_code": 0,
+    "output": "/tmp/closeup-gaits/runtime-battle-magmalisk"
+  },
+  {
+    "kind": "battle",
+    "species": "rimevaran",
+    "exit_code": 0,
+    "output": "/tmp/closeup-gaits/runtime-battle-rimevaran"
+  },
+  {
+    "kind": "battle",
+    "species": "fimbulisk",
+    "exit_code": 0,
+    "output": "/tmp/closeup-gaits/runtime-battle-fimbulisk"
+  },
+  {
+    "kind": "battle",
+    "species": "sedgling",
+    "exit_code": 0,
+    "output": "/tmp/closeup-gaits/runtime-battle-sedgling"
+  },
+  {
+    "kind": "battle",
+    "species": "cragaviar",
+    "exit_code": 0,
+    "output": "/tmp/closeup-gaits/runtime-battle-cragaviar"
+  },
+  {
+    "kind": "battle",
+    "species": "ragnaroc",
+    "exit_code": 0,
+    "output": "/tmp/closeup-gaits/runtime-battle-ragnaroc"
+  },
+  {
+    "kind": "walk",
+    "species": "voltuff",
+    "exit_code": 0,
+    "output": "/tmp/closeup-gaits/runtime-walk-voltuff"
+  },
+  {
+    "kind": "walk",
+    "species": "surguenon",
+    "exit_code": 0,
+    "output": "/tmp/closeup-gaits/runtime-walk-surguenon"
+  },
+  {
+    "kind": "walk",
+    "species": "raijinque",
+    "exit_code": 0,
+    "output": "/tmp/closeup-gaits/runtime-walk-raijinque"
+  },
+  {
+    "kind": "walk",
+    "species": "embernewt",
+    "exit_code": 0,
+    "output": "/tmp/closeup-gaits/runtime-walk-embernewt"
+  },
+  {
+    "kind": "walk",
+    "species": "pyrovaran",
+    "exit_code": 0,
+    "output": "/tmp/closeup-gaits/runtime-walk-pyrovaran"
+  },
+  {
+    "kind": "walk",
+    "species": "magmalisk",
+    "exit_code": 0,
+    "output": "/tmp/closeup-gaits/runtime-walk-magmalisk"
+  },
+  {
+    "kind": "walk",
+    "species": "rimevaran",
+    "exit_code": 0,
+    "output": "/tmp/closeup-gaits/runtime-walk-rimevaran"
+  },
+  {
+    "kind": "walk",
+    "species": "fimbulisk",
+    "exit_code": 0,
+    "output": "/tmp/closeup-gaits/runtime-walk-fimbulisk"
+  },
+  {
+    "kind": "walk",
+    "species": "sedgling",
+    "exit_code": 0,
+    "output": "/tmp/closeup-gaits/runtime-walk-sedgling"
+  },
+  {
+    "kind": "walk",
+    "species": "cragaviar",
+    "exit_code": 0,
+    "output": "/tmp/closeup-gaits/runtime-walk-cragaviar"
+  },
+  {
+    "kind": "walk",
+    "species": "ragnaroc",
+    "exit_code": 0,
+    "output": "/tmp/closeup-gaits/runtime-walk-ragnaroc"
+  }
+]

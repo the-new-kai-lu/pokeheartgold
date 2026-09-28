@@ -6,12 +6,12 @@
       {
         "index": 2964,
         "file": "voltuff/battle-0.bin",
-        "sha256": "df7f86c8bf214d0e1599227470c54d97e1111cbf5d06bddcda01b4e43b20900c"
+        "sha256": "cd181be2d5fb25d0e62edcb13912069c8d1e41da6b5ec3d1a5f9765e7dd3fd73"
       },
       {
         "index": 2965,
         "file": "voltuff/battle-1.bin",
-        "sha256": "df7f86c8bf214d0e1599227470c54d97e1111cbf5d06bddcda01b4e43b20900c"
+        "sha256": "cd181be2d5fb25d0e62edcb13912069c8d1e41da6b5ec3d1a5f9765e7dd3fd73"
       },
       {
         "index": 2966,
@@ -36,12 +36,12 @@
       {
         "index": 2970,
         "file": "surguenon/battle-0.bin",
-        "sha256": "72a171cf0c55e89853cbaba33a613a255bd75f011902fc897b85a6ffa090d2fe"
+        "sha256": "67ace643e5d9b68d59dda09c1c18bbd9f54f829b392d5a5803c65e12420fe147"
       },
       {
         "index": 2971,
         "file": "surguenon/battle-1.bin",
-        "sha256": "72a171cf0c55e89853cbaba33a613a255bd75f011902fc897b85a6ffa090d2fe"
+        "sha256": "67ace643e5d9b68d59dda09c1c18bbd9f54f829b392d5a5803c65e12420fe147"
       },
       {
         "index": 2972,
@@ -66,12 +66,12 @@
       {
         "index": 2976,
         "file": "raijinque/battle-0.bin",
-        "sha256": "175a972634e51eff202c00d0007ad26d7ae4dec69fcc808afe2374b941e8aa41"
+        "sha256": "08a2a6a48b4f717e74f1d767cee98134261d947597bba6a0dbc928885a928f5a"
       },
       {
         "index": 2977,
         "file": "raijinque/battle-1.bin",
-        "sha256": "175a972634e51eff202c00d0007ad26d7ae4dec69fcc808afe2374b941e8aa41"
+        "sha256": "08a2a6a48b4f717e74f1d767cee98134261d947597bba6a0dbc928885a928f5a"
       },
       {
         "index": 2978,
@@ -96,12 +96,12 @@
       {
         "index": 2982,
         "file": "embernewt/battle-0.bin",
-        "sha256": "1c2e4853a157d72fa14ba49c7f7afb97ef8e2c81c5427701ee93ac0da11d6588"
+        "sha256": "ce1436ad4e5f0765c6862310792dbf3721e4f04db694d96abe6ae003c2edcbb4"
       },
       {
         "index": 2983,
         "file": "embernewt/battle-1.bin",
-        "sha256": "1c2e4853a157d72fa14ba49c7f7afb97ef8e2c81c5427701ee93ac0da11d6588"
+        "sha256": "ce1436ad4e5f0765c6862310792dbf3721e4f04db694d96abe6ae003c2edcbb4"
       },
       {
         "index": 2984,
@@ -126,12 +126,12 @@
       {
         "index": 2988,
         "file": "pyrovaran/battle-0.bin",
-        "sha256": "61bdd49c23cd3c97049f0f5925c3230853e445d65177e95ebe53c31c5af68cd9"
+        "sha256": "4309e2c7f4193999ab0091196f63bfd4c28d0173032b89e5477ddcc4bd98e46c"
       },
       {
         "index": 2989,
         "file": "pyrovaran/battle-1.bin",
-        "sha256": "61bdd49c23cd3c97049f0f5925c3230853e445d65177e95ebe53c31c5af68cd9"
+        "sha256": "4309e2c7f4193999ab0091196f63bfd4c28d0173032b89e5477ddcc4bd98e46c"
       },
       {
         "index": 2990,
@@ -156,12 +156,12 @@
       {
         "index": 2994,
         "file": "magmalisk/battle-0.bin",
-        "sha256": "11b0d510c363f2572281449a5e3b9433d10e468b8ec4e70f59c65db57eefba88"
+        "sha256": "85869a53320472ddcdcc9512952d86fe107355c43da300228b04be478eca341f"
       },
       {
         "index": 2995,
         "file": "magmalisk/battle-1.bin",
-        "sha256": "11b0d510c363f2572281449a5e3b9433d10e468b8ec4e70f59c65db57eefba88"
+        "sha256": "85869a53320472ddcdcc9512952d86fe107355c43da300228b04be478eca341f"
       },
       {
         "index": 2996,
@@ -186,12 +186,12 @@
       {
         "index": 3000,
         "file": "rimevaran/battle-0.bin",
-        "sha256": "7b94614d12496d260dc6444a8cb3da469830669a79d6b2296d72741fc1fface4"
+        "sha256": "2e3ad4bb336e554511c32d20535f42fdf8a7e20ccd3dd401d44d80ab744bf315"
       },
       {
         "index": 3001,
         "file": "rimevaran/battle-1.bin",
-        "sha256": "7b94614d12496d260dc6444a8cb3da469830669a79d6b2296d72741fc1fface4"
+        "sha256": "2e3ad4bb336e554511c32d20535f42fdf8a7e20ccd3dd401d44d80ab744bf315"
       },
       {
         "index": 3002,
@@ -216,12 +216,12 @@
       {
         "index": 3006,
         "file": "fimbulisk/battle-0.bin",
-        "sha256": "9aca81c68b2eff515921f04bf91e7a73fd0e233f30bf6f64840a8182b42596d5"
+        "sha256": "1800237a7dedee5b9217054972e98e419690ce7b6764fc4600490aad81b08ac4"
       },
       {
         "index": 3007,
         "file": "fimbulisk/battle-1.bin",
-        "sha256": "9aca81c68b2eff515921f04bf91e7a73fd0e233f30bf6f64840a8182b42596d5"
+        "sha256": "1800237a7dedee5b9217054972e98e419690ce7b6764fc4600490aad81b08ac4"
       },
       {
         "index": 3008,
@@ -246,12 +246,12 @@
       {
         "index": 3012,
         "file": "sedgling/battle-0.bin",
-        "sha256": "1246e1671e515479a59a9371c2363ab9074913f983a2294ae9cc72aee7410001"
+        "sha256": "6f7dfded828e2d45894f82dde65168d474ac7ae9261db0e853938148794dd65e"
       },
       {
         "index": 3013,
         "file": "sedgling/battle-1.bin",
-        "sha256": "1246e1671e515479a59a9371c2363ab9074913f983a2294ae9cc72aee7410001"
+        "sha256": "6f7dfded828e2d45894f82dde65168d474ac7ae9261db0e853938148794dd65e"
       },
       {
         "index": 3014,
@@ -276,12 +276,12 @@
       {
         "index": 3018,
         "file": "cragaviar/battle-0.bin",
-        "sha256": "1d3ae8b86a1422f445a2ffc91865c22eada6cb8b8e9a0f41e59065cab0b2d742"
+        "sha256": "f20af2aa9fea0a4513c84f2d54fd11705e47b8db707c6104632cb47a0a5ab72a"
       },
       {
         "index": 3019,
         "file": "cragaviar/battle-1.bin",
-        "sha256": "1d3ae8b86a1422f445a2ffc91865c22eada6cb8b8e9a0f41e59065cab0b2d742"
+        "sha256": "f20af2aa9fea0a4513c84f2d54fd11705e47b8db707c6104632cb47a0a5ab72a"
       },
       {
         "index": 3020,
@@ -306,12 +306,12 @@
       {
         "index": 3024,
         "file": "ragnaroc/battle-0.bin",
-        "sha256": "044cb294b83cc82f84d87fb98481530038f1ce92c3d8ac6343384e9c4c82f6a0"
+        "sha256": "f6c8a7267e9b140bb104603292b6aba73ba9d41e54867797ceb6498bef668354"
       },
       {
         "index": 3025,
         "file": "ragnaroc/battle-1.bin",
-        "sha256": "044cb294b83cc82f84d87fb98481530038f1ce92c3d8ac6343384e9c4c82f6a0"
+        "sha256": "f6c8a7267e9b140bb104603292b6aba73ba9d41e54867797ceb6498bef668354"
       },
       {
         "index": 3026,
@@ -617,57 +617,57 @@
       {
         "index": 863,
         "file": "voltuff/follower.bin",
-        "sha256": "64346c268f85d5d41cc0015242c4a26f42ac21bca78b45036394b88e9ef886c9"
+        "sha256": "cd4471357f51c71b55d75a7ce1b8c81004b6dc80a341c3dba2571f9466dfa0cc"
       },
       {
         "index": 864,
         "file": "surguenon/follower.bin",
-        "sha256": "8fa9802b4dc6b26ef8951f5b2c3836bf08b1ab1f0a1c8c80386ef02bae7e379f"
+        "sha256": "4e6bbe7e739be9d0345a0c1e1d9f2e1e9dfee74407e17cfed32177782f2db892"
       },
       {
         "index": 865,
         "file": "raijinque/follower.bin",
-        "sha256": "4e310014e794afc078deed5c439f56e7df4949ae9aa38c79aadf515c21803445"
+        "sha256": "51578d34c9ad2c8796f0db01bed3e2f7eb5b8e8730a548673d19c9c39dd80bf2"
       },
       {
         "index": 866,
         "file": "embernewt/follower.bin",
-        "sha256": "e7d36b754af5935bd5bd1c32bed28aea4af9cf42073ae26898cd818ecab93b63"
+        "sha256": "7d14ee10212e9117e5ab326ded482223d2452b173b9167d0411428ef55d247aa"
       },
       {
         "index": 867,
         "file": "pyrovaran/follower.bin",
-        "sha256": "8a3c54036e44b4a1087db061b6ef6b0041bf76996ac7c98cdc50380083e708b3"
+        "sha256": "9918caf0d28232d559b1a735e5c9efb1562dd93d6c8a30c7a7ceb0a01e73e126"
       },
       {
         "index": 868,
         "file": "magmalisk/follower.bin",
-        "sha256": "e1e2fd6e4e4d7daa3939fde9c6a6dd82615aebc5fea620fc8afa46d1fe37f31f"
+        "sha256": "eb2bdcd79ab66f9f2339ae96f46c8a07f92f140cf14cd18b0528fc1d843afa7f"
       },
       {
         "index": 869,
         "file": "rimevaran/follower.bin",
-        "sha256": "513bf1a7e135147441af2ffa5956682cdf9551218163a53d2d0f47374e5e0efc"
+        "sha256": "0d1fe15abba23947a1fa6167b416a1d40c58c407fecfbbdded4f137f97bd5ce5"
       },
       {
         "index": 870,
         "file": "fimbulisk/follower.bin",
-        "sha256": "ff9a5bfcb0b25d4203923d1f82f236f6de9303430bc93b12165d2d358a312bb1"
+        "sha256": "455afa74f4c3014e3d535631921975b70513e341d087eca24aa2789f0f27b0c5"
       },
       {
         "index": 871,
         "file": "sedgling/follower.bin",
-        "sha256": "db239c503f4829aaa7288d13bd65f5841465e78e5a441566de62c827e1bca6ce"
+        "sha256": "9cd1b84d21a250e59d101a577724b5d263fddb497430a63e364ad9260bd8116e"
       },
       {
         "index": 872,
         "file": "cragaviar/follower.bin",
-        "sha256": "4f135490b2db7f7589819d48a51772c0488fafe4b829072754a8319a43be10d3"
+        "sha256": "be39a3c3e56ca4f2bbbbb5312b5646677a59f30b1f87fd76ff6f4a59cc7ee302"
       },
       {
         "index": 873,
         "file": "ragnaroc/follower.bin",
-        "sha256": "c828192f56d59cd64d5043a0107bf0f51f4f1bb6114133ff1a9f2355c764143b"
+        "sha256": "8f006a9cd49309596f71e876bbfdfa552581ae95497ea22e5805a44bc0c5fe21"
       }
     ],
     "a/1/4/1": [

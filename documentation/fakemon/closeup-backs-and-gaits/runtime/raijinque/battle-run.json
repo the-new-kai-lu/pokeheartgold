@@ -1,0 +1,9 @@
+{
+  "rom_sha256": "812ac4d198c71e6243cea389175ccc0c4f6757f9dfad491ed5c881043a60b951",
+  "input_save": "/tmp/closeup-gaits/fixtures/raijinque.sav",
+  "input_save_sha256": "be1f135908bafb271a78438102b313aad4b14fa0de57d8bc653af58e7e54ab43",
+  "emulator": "py-desmume",
+  "captures": [],
+  "status": "awaiting_visual_review",
+  "total_emulated_frames": 5336
+}

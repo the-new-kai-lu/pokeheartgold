@@ -1,5 +1,7 @@
 # Native-pixel walking and battle-facing correction
 
+> The side-walking poses have since been revised. See [close-up backs and jointed walking](../closeup-backs-and-gaits/README.md) for the current assets and reproduction instructions.
+
 This revision replaces the earlier generated foot-strip edit, which made the side gaits stiff and failed to show clear alternate steps on the evolved forms. The user authorized direct pixel editing after reviewing that regression.
 
 ## Walking

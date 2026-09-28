@@ -1,0 +1,1527 @@
+{
+  "voltuff": {
+    "female": {
+      "roundtrip": true,
+      "camera": [
+        1.7,
+        40,
+        28
+      ],
+      "clipped_fragment_pixels_removed": [
+        0,
+        0
+      ]
+    },
+    "male": {
+      "roundtrip": true,
+      "camera": [
+        1.7,
+        40,
+        28
+      ],
+      "clipped_fragment_pixels_removed": [
+        0,
+        0
+      ]
+    },
+    "follower": {
+      "joints": [
+        [
+          {
+            "hip": [
+              16,
+              24
+            ],
+            "knee": [
+              19,
+              25
+            ],
+            "ankle": [
+              18,
+              26
+            ],
+            "lifted": true
+          },
+          {
+            "hip": [
+              15,
+              24
+            ],
+            "knee": [
+              13,
+              26
+            ],
+            "ankle": [
+              13,
+              28
+            ],
+            "lifted": false
+          }
+        ],
+        [
+          {
+            "hip": [
+              16,
+              24
+            ],
+            "knee": [
+              16,
+              26
+            ],
+            "ankle": [
+              15,
+              28
+            ],
+            "lifted": false
+          },
+          {
+            "hip": [
+              15,
+              24
+            ],
+            "knee": [
+              18,
+              25
+            ],
+            "ankle": [
+              17,
+              26
+            ],
+            "lifted": true
+          }
+        ]
+      ],
+      "north_south_palettes_metadata_unchanged": true,
+      "east_west_mirrored": true,
+      "bounds": [
+        [
+          8,
+          8,
+          26,
+          31
+        ],
+        [
+          8,
+          8,
+          26,
+          31
+        ]
+      ],
+      "silhouette_pixels_changed_between_phases": 18
+    }
+  },
+  "surguenon": {
+    "female": {
+      "roundtrip": true,
+      "camera": [
+        1.72,
+        41,
+        16
+      ],
+      "clipped_fragment_pixels_removed": [
+        480,
+        547
+      ]
+    },
+    "male": {
+      "roundtrip": true,
+      "camera": [
+        1.72,
+        41,
+        16
+      ],
+      "clipped_fragment_pixels_removed": [
+        480,
+        547
+      ]
+    },
+    "follower": {
+      "joints": [
+        [
+          {
+            "hip": [
+              15,
+              22
+            ],
+            "knee": [
+              19,
+              25
+            ],
+            "ankle": [
+              18,
+              26
+            ],
+            "lifted": true
+          },
+          {
+            "hip": [
+              14,
+              22
+            ],
+            "knee": [
+              11,
+              25
+            ],
+            "ankle": [
+              12,
+              28
+            ],
+            "lifted": false
+          }
+        ],
+        [
+          {
+            "hip": [
+              15,
+              22
+            ],
+            "knee": [
+              15,
+              25
+            ],
+            "ankle": [
+              14,
+              28
+            ],
+            "lifted": false
+          },
+          {
+            "hip": [
+              14,
+              22
+            ],
+            "knee": [
+              18,
+              25
+            ],
+            "ankle": [
+              17,
+              26
+            ],
+            "lifted": true
+          }
+        ]
+      ],
+      "north_south_palettes_metadata_unchanged": true,
+      "east_west_mirrored": true,
+      "bounds": [
+        [
+          6,
+          4,
+          26,
+          31
+        ],
+        [
+          6,
+          4,
+          26,
+          31
+        ]
+      ],
+      "silhouette_pixels_changed_between_phases": 34
+    }
+  },
+  "raijinque": {
+    "female": {
+      "roundtrip": true,
+      "camera": [
+        1.45,
+        40,
+        6
+      ],
+      "clipped_fragment_pixels_removed": [
+        0,
+        0
+      ]
+    },
+    "male": {
+      "roundtrip": true,
+      "camera": [
+        1.45,
+        40,
+        6
+      ],
+      "clipped_fragment_pixels_removed": [
+        0,
+        0
+      ]
+    },
+    "follower": {
+      "joints": [
+        [
+          {
+            "hip": [
+              30,
+              52
+            ],
+            "knee": [
+              35,
+              56
+            ],
+            "ankle": [
+              33,
+              57
+            ],
+            "lifted": true
+          },
+          {
+            "hip": [
+              29,
+              52
+            ],
+            "knee": [
+              24,
+              56
+            ],
+            "ankle": [
+              25,
+              60
+            ],
+            "lifted": false
+          }
+        ],
+        [
+          {
+            "hip": [
+              30,
+              52
+            ],
+            "knee": [
+              30,
+              56
+            ],
+            "ankle": [
+              29,
+              60
+            ],
+            "lifted": false
+          },
+          {
+            "hip": [
+              29,
+              52
+            ],
+            "knee": [
+              34,
+              56
+            ],
+            "ankle": [
+              32,
+              57
+            ],
+            "lifted": true
+          }
+        ]
+      ],
+      "north_south_palettes_metadata_unchanged": true,
+      "east_west_mirrored": true,
+      "bounds": [
+        [
+          20,
+          28,
+          44,
+          63
+        ],
+        [
+          20,
+          28,
+          44,
+          63
+        ]
+      ],
+      "silhouette_pixels_changed_between_phases": 69
+    }
+  },
+  "embernewt": {
+    "female": {
+      "roundtrip": true,
+      "camera": [
+        1.75,
+        43,
+        29
+      ],
+      "clipped_fragment_pixels_removed": [
+        0,
+        0
+      ]
+    },
+    "male": {
+      "roundtrip": true,
+      "camera": [
+        1.75,
+        43,
+        29
+      ],
+      "clipped_fragment_pixels_removed": [
+        0,
+        0
+      ]
+    },
+    "follower": {
+      "joints": [
+        [
+          {
+            "hip": [
+              12,
+              24
+            ],
+            "knee": [
+              14,
+              26
+            ],
+            "ankle": [
+              13,
+              27
+            ],
+            "lifted": true
+          },
+          {
+            "hip": [
+              20,
+              25
+            ],
+            "knee": [
+              18,
+              26
+            ],
+            "ankle": [
+              19,
+              28
+            ],
+            "lifted": false
+          },
+          {
+            "hip": [
+              11,
+              24
+            ],
+            "knee": [
+              10,
+              26
+            ],
+            "ankle": [
+              9,
+              28
+            ],
+            "lifted": false
+          },
+          {
+            "hip": [
+              19,
+              25
+            ],
+            "knee": [
+              21,
+              26
+            ],
+            "ankle": [
+              20,
+              27
+            ],
+            "lifted": true
+          }
+        ],
+        [
+          {
+            "hip": [
+              12,
+              24
+            ],
+            "knee": [
+              12,
+              26
+            ],
+            "ankle": [
+              12,
+              28
+            ],
+            "lifted": false
+          },
+          {
+            "hip": [
+              20,
+              25
+            ],
+            "knee": [
+              23,
+              26
+            ],
+            "ankle": [
+              23,
+              27
+            ],
+            "lifted": true
+          },
+          {
+            "hip": [
+              11,
+              24
+            ],
+            "knee": [
+              13,
+              26
+            ],
+            "ankle": [
+              12,
+              27
+            ],
+            "lifted": true
+          },
+          {
+            "hip": [
+              19,
+              25
+            ],
+            "knee": [
+              17,
+              26
+            ],
+            "ankle": [
+              18,
+              28
+            ],
+            "lifted": false
+          }
+        ]
+      ],
+      "north_south_palettes_metadata_unchanged": true,
+      "east_west_mirrored": true,
+      "bounds": [
+        [
+          5,
+          14,
+          27,
+          31
+        ],
+        [
+          5,
+          14,
+          27,
+          31
+        ]
+      ],
+      "silhouette_pixels_changed_between_phases": 27
+    }
+  },
+  "pyrovaran": {
+    "female": {
+      "roundtrip": true,
+      "camera": [
+        1.8,
+        49,
+        25
+      ],
+      "clipped_fragment_pixels_removed": [
+        13,
+        0
+      ]
+    },
+    "male": {
+      "roundtrip": true,
+      "camera": [
+        1.8,
+        49,
+        25
+      ],
+      "clipped_fragment_pixels_removed": [
+        13,
+        0
+      ]
+    },
+    "follower": {
+      "joints": [
+        [
+          {
+            "hip": [
+              12,
+              23
+            ],
+            "knee": [
+              15,
+              25
+            ],
+            "ankle": [
+              14,
+              27
+            ],
+            "lifted": true
+          },
+          {
+            "hip": [
+              22,
+              24
+            ],
+            "knee": [
+              19,
+              26
+            ],
+            "ankle": [
+              21,
+              28
+            ],
+            "lifted": false
+          },
+          {
+            "hip": [
+              11,
+              23
+            ],
+            "knee": [
+              11,
+              26
+            ],
+            "ankle": [
+              8,
+              28
+            ],
+            "lifted": false
+          },
+          {
+            "hip": [
+              21,
+              24
+            ],
+            "knee": [
+              24,
+              26
+            ],
+            "ankle": [
+              22,
+              27
+            ],
+            "lifted": true
+          }
+        ],
+        [
+          {
+            "hip": [
+              12,
+              23
+            ],
+            "knee": [
+              13,
+              26
+            ],
+            "ankle": [
+              11,
+              28
+            ],
+            "lifted": false
+          },
+          {
+            "hip": [
+              22,
+              24
+            ],
+            "knee": [
+              26,
+              26
+            ],
+            "ankle": [
+              25,
+              27
+            ],
+            "lifted": true
+          },
+          {
+            "hip": [
+              11,
+              23
+            ],
+            "knee": [
+              14,
+              25
+            ],
+            "ankle": [
+              13,
+              27
+            ],
+            "lifted": true
+          },
+          {
+            "hip": [
+              21,
+              24
+            ],
+            "knee": [
+              18,
+              26
+            ],
+            "ankle": [
+              20,
+              28
+            ],
+            "lifted": false
+          }
+        ]
+      ],
+      "north_south_palettes_metadata_unchanged": true,
+      "east_west_mirrored": true,
+      "bounds": [
+        [
+          3,
+          10,
+          29,
+          31
+        ],
+        [
+          3,
+          10,
+          30,
+          31
+        ]
+      ],
+      "silhouette_pixels_changed_between_phases": 33
+    }
+  },
+  "magmalisk": {
+    "female": {
+      "roundtrip": true,
+      "camera": [
+        1.7,
+        50,
+        17
+      ],
+      "clipped_fragment_pixels_removed": [
+        6,
+        13
+      ]
+    },
+    "male": {
+      "roundtrip": true,
+      "camera": [
+        1.7,
+        50,
+        17
+      ],
+      "clipped_fragment_pixels_removed": [
+        6,
+        13
+      ]
+    },
+    "follower": {
+      "joints": [
+        [
+          {
+            "hip": [
+              26,
+              53
+            ],
+            "knee": [
+              30,
+              56
+            ],
+            "ankle": [
+              28,
+              59
+            ],
+            "lifted": true
+          },
+          {
+            "hip": [
+              40,
+              54
+            ],
+            "knee": [
+              36,
+              57
+            ],
+            "ankle": [
+              38,
+              60
+            ],
+            "lifted": false
+          },
+          {
+            "hip": [
+              25,
+              53
+            ],
+            "knee": [
+              25,
+              57
+            ],
+            "ankle": [
+              21,
+              60
+            ],
+            "lifted": false
+          },
+          {
+            "hip": [
+              39,
+              54
+            ],
+            "knee": [
+              43,
+              57
+            ],
+            "ankle": [
+              40,
+              59
+            ],
+            "lifted": true
+          }
+        ],
+        [
+          {
+            "hip": [
+              26,
+              53
+            ],
+            "knee": [
+              27,
+              57
+            ],
+            "ankle": [
+              25,
+              60
+            ],
+            "lifted": false
+          },
+          {
+            "hip": [
+              40,
+              54
+            ],
+            "knee": [
+              45,
+              57
+            ],
+            "ankle": [
+              44,
+              59
+            ],
+            "lifted": true
+          },
+          {
+            "hip": [
+              25,
+              53
+            ],
+            "knee": [
+              29,
+              56
+            ],
+            "ankle": [
+              27,
+              59
+            ],
+            "lifted": true
+          },
+          {
+            "hip": [
+              39,
+              54
+            ],
+            "knee": [
+              35,
+              57
+            ],
+            "ankle": [
+              37,
+              60
+            ],
+            "lifted": false
+          }
+        ]
+      ],
+      "north_south_palettes_metadata_unchanged": true,
+      "east_west_mirrored": true,
+      "bounds": [
+        [
+          14,
+          30,
+          52,
+          63
+        ],
+        [
+          14,
+          30,
+          52,
+          63
+        ]
+      ],
+      "silhouette_pixels_changed_between_phases": 50
+    }
+  },
+  "rimevaran": {
+    "female": {
+      "roundtrip": true,
+      "camera": [
+        1.8,
+        47,
+        24
+      ],
+      "clipped_fragment_pixels_removed": [
+        66,
+        55
+      ]
+    },
+    "male": {
+      "roundtrip": true,
+      "camera": [
+        1.8,
+        47,
+        24
+      ],
+      "clipped_fragment_pixels_removed": [
+        66,
+        55
+      ]
+    },
+    "follower": {
+      "joints": [
+        [
+          {
+            "hip": [
+              12,
+              23
+            ],
+            "knee": [
+              15,
+              25
+            ],
+            "ankle": [
+              14,
+              27
+            ],
+            "lifted": true
+          },
+          {
+            "hip": [
+              23,
+              24
+            ],
+            "knee": [
+              20,
+              26
+            ],
+            "ankle": [
+              22,
+              28
+            ],
+            "lifted": false
+          },
+          {
+            "hip": [
+              11,
+              23
+            ],
+            "knee": [
+              11,
+              26
+            ],
+            "ankle": [
+              8,
+              28
+            ],
+            "lifted": false
+          },
+          {
+            "hip": [
+              22,
+              24
+            ],
+            "knee": [
+              25,
+              26
+            ],
+            "ankle": [
+              23,
+              27
+            ],
+            "lifted": true
+          }
+        ],
+        [
+          {
+            "hip": [
+              12,
+              23
+            ],
+            "knee": [
+              13,
+              26
+            ],
+            "ankle": [
+              11,
+              28
+            ],
+            "lifted": false
+          },
+          {
+            "hip": [
+              23,
+              24
+            ],
+            "knee": [
+              27,
+              26
+            ],
+            "ankle": [
+              26,
+              27
+            ],
+            "lifted": true
+          },
+          {
+            "hip": [
+              11,
+              23
+            ],
+            "knee": [
+              14,
+              25
+            ],
+            "ankle": [
+              13,
+              27
+            ],
+            "lifted": true
+          },
+          {
+            "hip": [
+              22,
+              24
+            ],
+            "knee": [
+              19,
+              26
+            ],
+            "ankle": [
+              21,
+              28
+            ],
+            "lifted": false
+          }
+        ]
+      ],
+      "north_south_palettes_metadata_unchanged": true,
+      "east_west_mirrored": true,
+      "bounds": [
+        [
+          3,
+          10,
+          30,
+          31
+        ],
+        [
+          3,
+          10,
+          31,
+          31
+        ]
+      ],
+      "silhouette_pixels_changed_between_phases": 35
+    }
+  },
+  "fimbulisk": {
+    "female": {
+      "roundtrip": true,
+      "camera": [
+        1.75,
+        49,
+        19
+      ],
+      "clipped_fragment_pixels_removed": [
+        23,
+        13
+      ]
+    },
+    "male": {
+      "roundtrip": true,
+      "camera": [
+        1.75,
+        49,
+        19
+      ],
+      "clipped_fragment_pixels_removed": [
+        23,
+        13
+      ]
+    },
+    "follower": {
+      "joints": [
+        [
+          {
+            "hip": [
+              25,
+              53
+            ],
+            "knee": [
+              29,
+              56
+            ],
+            "ankle": [
+              27,
+              59
+            ],
+            "lifted": true
+          },
+          {
+            "hip": [
+              39,
+              54
+            ],
+            "knee": [
+              35,
+              57
+            ],
+            "ankle": [
+              37,
+              60
+            ],
+            "lifted": false
+          },
+          {
+            "hip": [
+              24,
+              53
+            ],
+            "knee": [
+              24,
+              57
+            ],
+            "ankle": [
+              20,
+              60
+            ],
+            "lifted": false
+          },
+          {
+            "hip": [
+              38,
+              54
+            ],
+            "knee": [
+              42,
+              57
+            ],
+            "ankle": [
+              39,
+              59
+            ],
+            "lifted": true
+          }
+        ],
+        [
+          {
+            "hip": [
+              25,
+              53
+            ],
+            "knee": [
+              26,
+              57
+            ],
+            "ankle": [
+              24,
+              60
+            ],
+            "lifted": false
+          },
+          {
+            "hip": [
+              39,
+              54
+            ],
+            "knee": [
+              44,
+              57
+            ],
+            "ankle": [
+              43,
+              59
+            ],
+            "lifted": true
+          },
+          {
+            "hip": [
+              24,
+              53
+            ],
+            "knee": [
+              28,
+              56
+            ],
+            "ankle": [
+              26,
+              59
+            ],
+            "lifted": true
+          },
+          {
+            "hip": [
+              38,
+              54
+            ],
+            "knee": [
+              34,
+              57
+            ],
+            "ankle": [
+              36,
+              60
+            ],
+            "lifted": false
+          }
+        ]
+      ],
+      "north_south_palettes_metadata_unchanged": true,
+      "east_west_mirrored": true,
+      "bounds": [
+        [
+          15,
+          33,
+          49,
+          63
+        ],
+        [
+          15,
+          33,
+          49,
+          63
+        ]
+      ],
+      "silhouette_pixels_changed_between_phases": 53
+    }
+  },
+  "sedgling": {
+    "female": {
+      "roundtrip": true,
+      "camera": [
+        1.85,
+        40,
+        27
+      ],
+      "clipped_fragment_pixels_removed": [
+        0,
+        0
+      ]
+    },
+    "male": {
+      "roundtrip": true,
+      "camera": [
+        1.85,
+        40,
+        27
+      ],
+      "clipped_fragment_pixels_removed": [
+        0,
+        0
+      ]
+    },
+    "follower": {
+      "joints": [
+        [
+          {
+            "hip": [
+              16,
+              26
+            ],
+            "knee": [
+              18,
+              27
+            ],
+            "ankle": [
+              18,
+              27
+            ],
+            "lifted": true
+          },
+          {
+            "hip": [
+              14,
+              26
+            ],
+            "knee": [
+              13,
+              27
+            ],
+            "ankle": [
+              12,
+              28
+            ],
+            "lifted": false
+          }
+        ],
+        [
+          {
+            "hip": [
+              15,
+              26
+            ],
+            "knee": [
+              15,
+              27
+            ],
+            "ankle": [
+              14,
+              28
+            ],
+            "lifted": false
+          },
+          {
+            "hip": [
+              15,
+              26
+            ],
+            "knee": [
+              17,
+              27
+            ],
+            "ankle": [
+              17,
+              27
+            ],
+            "lifted": true
+          }
+        ]
+      ],
+      "north_south_palettes_metadata_unchanged": true,
+      "east_west_mirrored": true,
+      "bounds": [
+        [
+          7,
+          13,
+          23,
+          31
+        ],
+        [
+          7,
+          13,
+          23,
+          31
+        ]
+      ],
+      "silhouette_pixels_changed_between_phases": 14
+    }
+  },
+  "cragaviar": {
+    "female": {
+      "roundtrip": true,
+      "camera": [
+        1.75,
+        44,
+        11
+      ],
+      "clipped_fragment_pixels_removed": [
+        0,
+        0
+      ]
+    },
+    "male": {
+      "roundtrip": true,
+      "camera": [
+        1.75,
+        44,
+        11
+      ],
+      "clipped_fragment_pixels_removed": [
+        0,
+        0
+      ]
+    },
+    "follower": {
+      "joints": [
+        [
+          {
+            "hip": [
+              17,
+              24
+            ],
+            "knee": [
+              20,
+              26
+            ],
+            "ankle": [
+              20,
+              26
+            ],
+            "lifted": true
+          },
+          {
+            "hip": [
+              15,
+              24
+            ],
+            "knee": [
+              16,
+              26
+            ],
+            "ankle": [
+              12,
+              28
+            ],
+            "lifted": false
+          }
+        ],
+        [
+          {
+            "hip": [
+              16,
+              24
+            ],
+            "knee": [
+              16,
+              26
+            ],
+            "ankle": [
+              15,
+              28
+            ],
+            "lifted": false
+          },
+          {
+            "hip": [
+              16,
+              24
+            ],
+            "knee": [
+              19,
+              26
+            ],
+            "ankle": [
+              19,
+              26
+            ],
+            "lifted": true
+          }
+        ]
+      ],
+      "north_south_palettes_metadata_unchanged": true,
+      "east_west_mirrored": true,
+      "bounds": [
+        [
+          5,
+          4,
+          24,
+          31
+        ],
+        [
+          5,
+          4,
+          24,
+          31
+        ]
+      ],
+      "silhouette_pixels_changed_between_phases": 18
+    }
+  },
+  "ragnaroc": {
+    "female": {
+      "roundtrip": true,
+      "camera": [
+        1.65,
+        43,
+        4
+      ],
+      "clipped_fragment_pixels_removed": [
+        0,
+        0
+      ]
+    },
+    "male": {
+      "roundtrip": true,
+      "camera": [
+        1.65,
+        43,
+        4
+      ],
+      "clipped_fragment_pixels_removed": [
+        0,
+        0
+      ]
+    },
+    "follower": {
+      "joints": [
+        [
+          {
+            "hip": [
+              28,
+              52
+            ],
+            "knee": [
+              34,
+              55
+            ],
+            "ankle": [
+              33,
+              57
+            ],
+            "lifted": true
+          },
+          {
+            "hip": [
+              26,
+              52
+            ],
+            "knee": [
+              29,
+              55
+            ],
+            "ankle": [
+              24,
+              60
+            ],
+            "lifted": false
+          }
+        ],
+        [
+          {
+            "hip": [
+              27,
+              52
+            ],
+            "knee": [
+              27,
+              55
+            ],
+            "ankle": [
+              26,
+              60
+            ],
+            "lifted": false
+          },
+          {
+            "hip": [
+              27,
+              52
+            ],
+            "knee": [
+              33,
+              55
+            ],
+            "ankle": [
+              32,
+              57
+            ],
+            "lifted": true
+          }
+        ]
+      ],
+      "north_south_palettes_metadata_unchanged": true,
+      "east_west_mirrored": true,
+      "bounds": [
+        [
+          13,
+          20,
+          47,
+          63
+        ],
+        [
+          13,
+          20,
+          47,
+          63
+        ]
+      ],
+      "silhouette_pixels_changed_between_phases": 27
+    }
+  },
+  "_builds": {
+    "heartgold": "812ac4d198c71e6243cea389175ccc0c4f6757f9dfad491ed5c881043a60b951",
+    "soulsilver": "f2581160a2499dd004b2a95b65ba699c0a70a1fb197e4c8ec7c7be8e3ce03230"
+  }
+}

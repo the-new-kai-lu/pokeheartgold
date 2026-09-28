@@ -1,0 +1,9 @@
+{
+  "rom_sha256": "812ac4d198c71e6243cea389175ccc0c4f6757f9dfad491ed5c881043a60b951",
+  "input_save": "/tmp/closeup-gaits/fixtures/ragnaroc.sav",
+  "input_save_sha256": "a40f4367a7d8dc9bcee492f7241a441e4a01249a7f122712aa61cd4f4312dd87",
+  "emulator": "py-desmume",
+  "captures": [],
+  "status": "awaiting_visual_review",
+  "total_emulated_frames": 5336
+}

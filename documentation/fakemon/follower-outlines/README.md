@@ -1,5 +1,7 @@
 # Walking-sprite outline pass
 
+> The side-walking poses have since been revised. See [close-up backs and jointed walking](../closeup-backs-and-gaits/README.md) for the current assets and reproduction instructions.
+
 All eleven custom followers now have a consistent one-native-pixel dark outline across all four directions and both animation frames (88 frames). The same indexed outlines work with both existing normal and shiny palettes.
 
 [Before/after side views](before-after-side.png) | [All normal frames](all-frames-normal.png) | [All shiny frames](all-frames-shiny.png) | [Animated four-direction preview](walking.gif) | [In-game side steps](runtime-side-steps.png) | [Settled facings](settled-directions.png)

@@ -1,0 +1,9 @@
+{
+  "rom_sha256": "812ac4d198c71e6243cea389175ccc0c4f6757f9dfad491ed5c881043a60b951",
+  "input_save": "/tmp/closeup-gaits/fixtures/embernewt.sav",
+  "input_save_sha256": "613ee43364c792b301f614fc5daafc91802b0935a142f3d9c04223bbd3077fb8",
+  "emulator": "py-desmume",
+  "captures": [],
+  "status": "awaiting_visual_review",
+  "total_emulated_frames": 5336
+}

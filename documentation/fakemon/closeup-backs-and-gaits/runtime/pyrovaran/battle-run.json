@@ -1,0 +1,9 @@
+{
+  "rom_sha256": "812ac4d198c71e6243cea389175ccc0c4f6757f9dfad491ed5c881043a60b951",
+  "input_save": "/tmp/closeup-gaits/fixtures/pyrovaran.sav",
+  "input_save_sha256": "d8ea038bf7403fb9c09998d174fb4ac934d95bf64d42ea48f732546ec6ca62db",
+  "emulator": "py-desmume",
+  "captures": [],
+  "status": "awaiting_visual_review",
+  "total_emulated_frames": 5336
+}
