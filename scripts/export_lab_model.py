@@ -49,7 +49,7 @@ def dictionary(name=None, datum=b""):
             + struct.pack("<HH", len(datum), 4 + len(datum)) + datum + key)
 
 
-def rgba_preview(data):
+def rgba_preview(data, width=208, height=208):
     """Read only the CRC-checked, unfiltered RGBA extraction output."""
     if data[:8] != b"\x89PNG\r\n\x1a\n":
         raise ValueError("Not PNG")
@@ -69,30 +69,36 @@ def rgba_preview(data):
         elif tag == b"IEND":
             ended = True
             break
-    if header != (208, 208, 8, 6, 0, 0, 0) or not ended or pos != len(data):
-        raise ValueError("Expected 208x208 extractor RGBA PNG")
+    if header != (width, height, 8, 6, 0, 0, 0) or not ended or pos != len(data):
+        raise ValueError("Expected extractor RGBA PNG dimensions")
     rows = zlib.decompress(compressed)
-    if len(rows) != 208 * 833 or any(rows[y * 833] for y in range(208)):
+    stride = width * 4 + 1
+    if len(rows) != height * stride or any(rows[y * stride] for y in range(height)):
         raise ValueError("Expected unfiltered extraction rows")
-    pixels = b"".join(rows[y * 833 + 1:(y + 1) * 833] for y in range(208))
+    pixels = b"".join(rows[y * stride + 1:(y + 1) * stride] for y in range(height))
     if any(pixels[i] != 255 for i in range(3, len(pixels), 4)):
         raise ValueError("Composite must be opaque")
     return pixels
 
 
-def texture(pixels):
+def texture(pixels, width=208, height=208, size=256):
+    if size not in (256, 512) or not (0 < width <= size and 0 < height <= size):
+        raise ValueError("Unsupported texture dimensions")
+    if len(pixels) != width * height * 4:
+        raise ValueError("Texture pixel count mismatch")
     # Restore the exact original BGR555 values from extractor's expanded bytes.
     colors = [sum(round(pixels[i + c] * 31 / 255) << (5 * c)
                   for c in range(3)) for i in range(0, len(pixels), 4)]
     palette = sorted(set(colors))
     if len(palette) > 256:
-        raise ValueError("Lab exceeds lossless 256-color texture budget")
+        raise ValueError("Image exceeds lossless 256-color texture budget")
     lookup = {value: index for index, value in enumerate(palette)}
-    image = bytearray(256 * 256)
-    for y in range(208):
-        image[y * 256:y * 256 + 208] = bytes(lookup[c] for c in colors[y * 208:(y + 1) * 208])
+    image = bytearray(size * size)
+    for y in range(height):
+        image[y * size:y * size + width] = bytes(lookup[c] for c in colors[y * width:(y + 1) * width])
     palette += [0] * (256 - len(palette))
-    params = (5 << 20) | (5 << 23) | (4 << 26)
+    exponent = size.bit_length() - 4
+    params = (exponent << 20) | (exponent << 23) | (4 << 26)
     texdict = dictionary("lab", struct.pack("<II", params, 0))
     paldict = dictionary("lab", struct.pack("<HH", 0, 0))
     texoff = 60 + len(texdict) + len(paldict)
@@ -110,7 +116,9 @@ def gx_command(opcode, *params):
     return struct.pack("<" + "I" * (1 + len(params)), opcode, *params)
 
 
-def model(params):
+def model(params, lower=-112, upper=96, pixels=208, texture_size=256, name="emerald_lab"):
+    if not (-512 <= lower < upper <= 511) or upper - lower != pixels:
+        raise ValueError("Invalid flat model bounds")
     node = dictionary("root", struct.pack("<I", 40)) + struct.pack("<HH", 7, 0)
     sbc = bytes((0x26, 0, 0, 0, 0, 2, 0, 1, 0x0b, 4, 0, 5, 0, 1, 0, 0))
     # One material, one texture pairing and one palette pairing; material IDs
@@ -118,7 +126,7 @@ def model(params):
     mat_offset, tex_offset, pal_offset, pair_offset = 124, 44, 84, 168
     material = struct.pack("<HH6I4H2i", 0, 44, 0x7fffffff, 0,
                            0x1f00c0, 0xffffffff, params, 0xffffffff,
-                           0, FLOOR_MATERIAL_FLAGS, 256, 256, 4096, 4096)
+                           0, FLOOR_MATERIAL_FLAGS, texture_size, texture_size, 4096, 4096)
     mats = (struct.pack("<HH", tex_offset, pal_offset)
             + dictionary("labmat", struct.pack("<I", mat_offset))
             + dictionary("lab", struct.pack("<HBB", pair_offset, 1, 0))
@@ -128,8 +136,9 @@ def model(params):
     commands = gx_command(0x20, 0x7fff) + gx_command(0x40, 1)
     # A quad with explicit UV and fixed-point16 XYZ. Model scale 64 converts
     # [-1.75,1.5] vertex units to [-112,96] world units.
-    for x, z, u, v in ((-7168, -7168, 0, 0), (-7168, 6144, 0, 3328),
-                        (6144, 6144, 3328, 3328), (6144, -7168, 3328, 0)):
+    lo, hi, uv = lower * 64, upper * 64, pixels * 16
+    for x, z, u, v in ((lo, lo, 0, 0), (lo, hi, 0, uv),
+                       (hi, hi, uv, uv), (hi, lo, uv, 0)):
         commands += gx_command(0x22, u | (v << 16))
         commands += gx_command(0x23, x & 0xffff, z & 0xffff)
     commands += gx_command(0x41)
@@ -141,10 +150,10 @@ def model(params):
     size = shpoff + len(shapes)
     info = (bytes((0, 0, 0, 1, 1, 1, 1, 0))
             + struct.pack("<ii4H6hii", 64 * 4096, 64, 4, 1, 0, 1,
-                          -7168, 0, -7168, 13312, 0, 13312, 64 * 4096, 64))
+                          lo, 0, lo, hi - lo, 0, hi - lo, 64 * 4096, 64))
     data = struct.pack("<5I", size, sbcoff, matoff, shpoff, size) + info + node + sbc + mats + shapes
     assert len(data) == size
-    return b"MDL0" + struct.pack("<I", size + 48) + dictionary("emerald_lab", struct.pack("<I", 48)) + data
+    return b"MDL0" + struct.pack("<I", size + 48) + dictionary(name, struct.pack("<I", 48)) + data
 
 
 def container(signature, blocks):

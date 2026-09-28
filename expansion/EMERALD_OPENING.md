@@ -1,3 +1,44 @@
+# Exterior asset authoring checkpoint (uninstalled flat prototypes)
+
+`scripts/export_emerald_outdoor_model.py --pack <extracted-pack> --output
+<fresh-directory>` now exports the authentic 20x20 LittlerootTown and Route101
+composites into embedded NSBMD, separate NSBTX, and HGSS land containers. Produce
+the input with `extract_emerald_lab.py --map LittlerootTown` or `--map Route101`.
+No live map, archive entry, NPC, encounter or travel connection is installed.
+
+The shared lab binary builders gained optional dimensions/bounds; their default
+lab BMD, BTX and land outputs remain **byte-identical** to the runtime-verified
+solid lab assets. Exterior geometry spans world X/Z -256..64, donor/native
+terrain cells 0..19, with UVs 0..0.625 in a 512x512 texture. Materials retain
+the corrected non-wireframe SDK flags. Each texture consumes **262144 bytes
+(256 KiB)** plus 512 palette bytes: runtime VRAM allocation/binding is an
+explicit integration gate, not established by an offline decoder.
+
+The two authentic composites contain 46 and 25 visible colors respectively.
+Tests reconstruct every BGR555 pixel losslessly; excessive palette counts fail
+instead of silently quantizing. Independent apicula decoding of both embedded
+and external-texture variants verifies the vertices, UVs and texture binding.
+All 40 host tests pass with APICULA supplied (23.012 seconds), the baseline
+contract reports no errors, and the diff whitespace check passes.
+
+Terrain is deliberately conservative and **not a currently traversable port**:
+only interior donor cells with collision 0, elevation 3 and ordinary behavior 0
+become native ordinary floor. All outer perimeter cells and native padding are
+blocked. Unsupported behavior/elevation cells (5 in town, 104 on Route101,
+including its grass cells) are enumerated and blocked until native semantics
+are authored. GBA grass, ledges, doors and elevations are not copied into HGSS
+terrain bits. The eight occluded unavailable lower quadrants in town remain
+disclosed; a flat opaque composite cannot reproduce foreground occlusion,
+height, animated tiles, or NPCs. These are resource prototypes, not an authentic
+playable episode or Stage 1 completion.
+
+Private generated land SHA-256 evidence (no graphics or binaries committed):
+
+- LittlerootTown:
+  `bf9eaa06f8f084311c51d8e6b7a93f3214918c003695b085f5026aaef5db45ef`
+- Route101:
+  `c8f680ce36d1e2d192b80d27b6dcbcbb9f2f267bdc98f00cec700e6afef8674f`
+
 # Native HG capacity and deferred collection (synthetic disposable fixtures)
 
 Four separate editor-constructed **synthetic disposable** native HGSS battery
