@@ -107,3 +107,7 @@ All eleven custom followers have revised alternating left/right foot poses. See 
 ## Native-pixel gait and battle-facing revision
 
 The current [walking correction](pixel-gaits/README.md) replaces the earlier generated side steps with complete native-pixel leg poses for all eleven species. Surguenon's front/back battle facing is corrected as well. Both starter ROMs are rebuilt and remain compatible with existing game saves.
+
+## Menu icon outlines
+
+All eleven custom party/box icons now use consistent one-pixel dark outlines in both animation frames. See [previews and validation](icon-outlines/README.md) for the latest builds.

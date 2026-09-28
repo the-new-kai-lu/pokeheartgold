@@ -1,0 +1,19 @@
+{
+  "before_sha256": "9fd167dad29c1439ae6baee6c05c7e1c9c6c1c0e08499c94310bffde5b2747f2",
+  "after_sha256": "5c5c0cae6cab2ba94a96489a52c2b16b215eceb3d1f0ea4245914e982f0978d2",
+  "only_changed_archive": "a/0/2/0",
+  "only_changed_members": [
+    551,
+    552,
+    553,
+    554,
+    555,
+    556,
+    557,
+    558,
+    559,
+    560,
+    561
+  ],
+  "code_and_all_other_graphics_unchanged": true
+}

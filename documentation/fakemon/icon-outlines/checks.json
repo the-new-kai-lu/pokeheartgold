@@ -1,0 +1,140 @@
+{
+  "voltuff": {
+    "removed_stray_pixels": [],
+    "added_outline_pixels": 223,
+    "sha256": "9074106e1a85eadd77b4c24afebe3bafc0d296ca10e4fac75b050e041e27e5b5",
+    "interior_pixels_and_palette_preserved": true,
+    "idempotent": true,
+    "native_roundtrip": true
+  },
+  "surguenon": {
+    "removed_stray_pixels": [],
+    "added_outline_pixels": 260,
+    "sha256": "a09c37580d39b96d84f996c2e933e8f8f1094920267d65832529515396592315",
+    "interior_pixels_and_palette_preserved": true,
+    "idempotent": true,
+    "native_roundtrip": true
+  },
+  "raijinque": {
+    "removed_stray_pixels": [],
+    "added_outline_pixels": 343,
+    "sha256": "c72c342490933421d81f9cf3b0a5bdc3037f0908d68d98c442229df3369bbb30",
+    "interior_pixels_and_palette_preserved": true,
+    "idempotent": true,
+    "native_roundtrip": true
+  },
+  "embernewt": {
+    "removed_stray_pixels": [],
+    "added_outline_pixels": 234,
+    "sha256": "df6b3175b5e139fb6b8d76115d1a1704da727c2fd6b92926bcb2873e26d503f7",
+    "interior_pixels_and_palette_preserved": true,
+    "idempotent": true,
+    "native_roundtrip": true
+  },
+  "pyrovaran": {
+    "removed_stray_pixels": [],
+    "added_outline_pixels": 236,
+    "sha256": "3e3ef76aee044a8d25205240885148fded87a58abfa7600df43f4076666455e8",
+    "interior_pixels_and_palette_preserved": true,
+    "idempotent": true,
+    "native_roundtrip": true
+  },
+  "magmalisk": {
+    "removed_stray_pixels": [],
+    "added_outline_pixels": 246,
+    "sha256": "7396fb3e65e4f4ca66eeebc6fde862c2315af9dd201a8559c46fcedbe5d4e87a",
+    "interior_pixels_and_palette_preserved": true,
+    "idempotent": true,
+    "native_roundtrip": true
+  },
+  "rimevaran": {
+    "removed_stray_pixels": [],
+    "added_outline_pixels": 226,
+    "sha256": "a61f8f54201fb15780a6f528d89ded37b9f310989a446de8f27962edeb8e78fc",
+    "interior_pixels_and_palette_preserved": true,
+    "idempotent": true,
+    "native_roundtrip": true
+  },
+  "fimbulisk": {
+    "removed_stray_pixels": [],
+    "added_outline_pixels": 235,
+    "sha256": "5e557453f0cbd6601bde7cd59314af318c4170020e393058565b1503425ad5aa",
+    "interior_pixels_and_palette_preserved": true,
+    "idempotent": true,
+    "native_roundtrip": true
+  },
+  "sedgling": {
+    "removed_stray_pixels": [],
+    "added_outline_pixels": 188,
+    "sha256": "7cc69090b8d0e8b4385f2b612009888f6511a27717c12ac809d14e09263ee91a",
+    "interior_pixels_and_palette_preserved": true,
+    "idempotent": true,
+    "native_roundtrip": true
+  },
+  "cragaviar": {
+    "removed_stray_pixels": [
+      [
+        5,
+        54
+      ],
+      [
+        5,
+        55
+      ],
+      [
+        5,
+        57
+      ]
+    ],
+    "added_outline_pixels": 176,
+    "sha256": "8a93aebaf67fc402ec419118e0d155e038fa0c674ed063e0224b999a38feeef0",
+    "interior_pixels_and_palette_preserved": true,
+    "idempotent": true,
+    "native_roundtrip": true
+  },
+  "ragnaroc": {
+    "removed_stray_pixels": [
+      [
+        3,
+        35
+      ],
+      [
+        3,
+        36
+      ],
+      [
+        3,
+        38
+      ],
+      [
+        3,
+        39
+      ],
+      [
+        3,
+        40
+      ],
+      [
+        3,
+        41
+      ],
+      [
+        3,
+        42
+      ],
+      [
+        3,
+        55
+      ],
+      [
+        3,
+        56
+      ]
+    ],
+    "added_outline_pixels": 250,
+    "sha256": "89ee735e883d34ea168a09681fadf1af7b22f13a1cff1f91b572bfc506ee4a49",
+    "interior_pixels_and_palette_preserved": true,
+    "idempotent": true,
+    "native_roundtrip": true
+  }
+}

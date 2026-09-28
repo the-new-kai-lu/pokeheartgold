@@ -12,6 +12,7 @@ import json
 import subprocess
 from pathlib import Path
 from PIL import Image, ImageOps
+from outline_fakemon_icons import outline_icon
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE_COMMIT = "227b8d954"
@@ -34,6 +35,8 @@ def main():
         if key == "surguenon":
             image = ImageOps.mirror(image)  # Vertical frame order is unchanged.
             pixels = image.load()
+        image = outline_icon(image)
+        pixels = image.load()
         image.save(folder / "source/icon.png", transparency=0)
         path = folder / "icon.bin"
         native = bytearray(path.read_bytes())

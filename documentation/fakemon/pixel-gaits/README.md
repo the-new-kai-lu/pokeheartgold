@@ -51,3 +51,7 @@ The party icon is a separate 32x64, two-frame resource and was missed by the bat
 [Before/after](surguenon-icon-before-after.png) | [Actual battle party menu](surguenon-party-icon.png) | [Native checks](icon-facing-checks.json)
 
 Both rebuilt ROMs pass 413 asset checks: [HeartGold](icon-heartgold-validation.json), [SoulSilver](icon-soulsilver-validation.json). These icon reports supersede the prior final ROM hashes. The new HeartGold battle party-menu capture uses the exact rebuilt ROM ([runtime report](icon-runtime.json)). Compared with the preceding walking/battle build, only Surguenon's icon member 552 in `a/0/2/0` changes; battle graphics, followers, code and other files remain identical ([delta](icon-rom-delta.json)).
+
+## Later icon outline pass
+
+The current party/box icons also include [one-pixel stock-dark contours](../icon-outlines/README.md). That page contains the latest ROM hashes and party-screen evidence; the walking and battle-facing corrections here remain unchanged.

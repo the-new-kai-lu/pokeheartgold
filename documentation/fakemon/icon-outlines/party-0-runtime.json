@@ -1,0 +1,9 @@
+{
+  "rom_sha256": "5c5c0cae6cab2ba94a96489a52c2b16b215eceb3d1f0ea4245914e982f0978d2",
+  "input_save": "/tmp/icon-outline-fixtures/group-0.sav",
+  "input_save_sha256": "f01c174ced8565d4dfea5a3ec9aa4ff01781edaa257f349498103e97de7637b7",
+  "emulator": "py-desmume",
+  "captures": [],
+  "status": "visually_reviewed_party_icon_outlines",
+  "total_emulated_frames": 2433
+}
