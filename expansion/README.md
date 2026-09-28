@@ -1,7 +1,10 @@
 # ExpandedHeartGold — Stage 1 evidence
 
-This is **Stage 1A groundwork, not a four-region ROM**. No Hoenn/Sinnoh episode,
-new map, story flag, save format, species, or battle mechanic is implemented here.
+This remains **partial Stage 1 work, not a four-region ROM**. An opt-in
+technical debug build adds a flat Birch-lab test map and starter interaction,
+but it simulates the rescue and is not an imported playable Hoenn episode.
+The default source build does not contain that debug map. No full Hoenn or
+Sinnoh campaign, new save format, species, or battle mechanic is implemented.
 The host is pokeheartgold; hg-engine is reference-only. The owner’s vision
 v0.2 requires a complete imported episode and persistent return travel before
 scaling to either full campaign.
@@ -14,6 +17,8 @@ checkpoint `f699b3c01b769f95c07e7d802dd5b7369bb142b2`, not this expanded tree.
 For this tree use `make COMPARE=0` and `make soulsilver COMPARE=0`.
 Retail hashes and save-layout tripwires remain unchanged. See
 `EMERALD_OPENING.md` for the new command, host tests and remaining runtime gates.
+`VALIDATION.md` records the private Ubuntu 22.04 VM recovery and one successful
+debug HeartGold build, not a complete episode or SoulSilver debug build.
 
 `baseline.json` records exact starting revisions, expected retail ROM hashes,
 and SHA-256 hashes of the supplied toolchain archives. It is a baseline contract,
@@ -29,9 +34,10 @@ Keep archives, compiler binaries, licenses, ROMs, saves, and savestates out of G
 export LM_LICENSE_FILE="$PWD/tools/mwccarm/license.dat"
 python3 scripts/check_expansion_baseline.py
 python3 -m unittest discover -s tests -v
-make -j4
-make soulsilver -j4
-make compare_heartgold && make compare_soulsilver
+make -j4 COMPARE=0
+make soulsilver -j4 COMPARE=0
+# Retail comparisons apply only to the pinned vanilla checkpoint.
+# There, separately: make compare_heartgold && make compare_soulsilver
 python3 scripts/check_expansion_baseline.py \
   --rom build/heartgold.us/pokeheartgold.us.nds --game heartgold
 python3 scripts/check_expansion_baseline.py \

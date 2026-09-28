@@ -2,6 +2,45 @@
 
 This is a partial implementation checkpoint, not Stage 1 completion.
 
+## Local ROM toolchain recovery and debug build — 2026-09-28
+
+- A private, opt-in debug **HeartGold** ROM built successfully with
+  `make COMPARE=0` from the generated lab test tree at `0db3ba85`. This
+  tree adds test-only map 540, an Elm entrance, a technical scientist starter
+  interaction, and a return warp; it simulates Birch's rescue. The newer
+  real-rescue script at `abf724e` was **not** in the built snapshot. Neither
+  SoulSilver nor the default branch build is established by this run.
+- Private ROM: `/tmp/hg-vm-share/pokeheartgold.us.nds`, 128 MiB, SHA-256
+  `a41ba778bf085737f41faace92d0717fb96f5410cf4311d2718332a7a84a870f`.
+  The generated source archive was
+  `/tmp/hg-build-vm/debug-source.tar.gz`, SHA-256
+  `e241b1362502556492374836eb1384d992cf96c19064810a71bd92ba1caafc3d`.
+  These private local paths are evidence, **not** downloadable or committed
+  ROMs, saves, tools, or license files.
+- The sandbox's native ELF32 Wine loader fails with `Exec format error`;
+  default Wine64 still segfaults. This is a host execution limitation, not a
+  demonstrated game defect. A checksum-verified official Ubuntu 22.04 image
+  running in KVM with one vCPU, 512 MiB RAM and 2 GiB guest swap succeeded
+  with Ubuntu Wine 6 (32-bit packages), a win32 prefix and Xvfb. Four guest
+  vCPUs stalled in this environment. The guest received the locally
+  authorized Metrowerks/NitroSDK tools; no toolchain or license was published.
+- The reproducible local route was: prepare the isolated lab source with
+  `scripts/prepare_lab_debug.py`; assemble its 966 script banks for HG using
+  `scripts/build_native_field_scripts.py`; transfer the generated source and
+  banks into the Ubuntu 22.04 guest; place the authorized compiler/SDK in the
+  repository-prescribed `tools` paths; set `LM_LICENSE_FILE`, `WINEARCH=win32`
+  and a guest-private `WINEPREFIX`; run `xvfb-run -a make COMPARE=0`. The
+  generated debug Elm/reward banks 843/965 intentionally differ from their
+  retail hashes. VM disk, snapshot and session helper remain private under
+  `/tmp/hg-build-vm/`; that helper uses a local private SSH key and is not a
+  portable installation script. Use `INSTALL.md` and the pinned archive
+  hashes in `baseline.json` when reproducing in another authorized VM.
+- DeSmuME 0.9.13 at `/usr/games/desmume-cli` launched the debug ROM under
+  Xvfb with software rendering and dummy audio. A boot screenshot showed
+  the opening city scene. This is **not** proof of the debug lab's rendering,
+  travel, gift transaction, in-game saving, cold restart, editor round trip,
+  or completion of a Hoenn episode. Those runtime checks remain in progress.
+
 ## Appended reward transaction checkpoint
 
 - Supersedes earlier "no allocation/caller" notes below: two existing variable
@@ -58,17 +97,17 @@ This is a partial implementation checkpoint, not Stage 1 completion.
 
 ## Blocked / not demonstrated
 
-- Local ROM reproduction: `make -j4` first failed linking `floor`, fixed here.
-  Retrying reached asset conversion, where tools segfaulted after Wine assembly
-  invocations produced no expected object file (`files/tel/pmtel_book.o`).
-  Wine reports experimental WoW64 and no display driver in this Ubuntu 26.04
-  sandbox. Root cause is not established: do not attribute the segmentation fault
-  to game logic or assume installing a display driver alone will fix it.
+- Direct host ROM reproduction: `make -j4` first failed linking `floor`,
+  fixed here. Retrying reached asset conversion, where tools segfaulted after
+  Wine assembly invocations produced no expected object file
+  (`files/tel/pmtel_book.o`). A working Ubuntu 22.04 VM path for a private
+  debug HG build is now documented above; direct host Wine remains unusable.
 - The local sandbox has not produced matching HeartGold/SoulSilver hashes;
-  GitHub's successful comparison does not supply local ROM files.
+  GitHub's historical retail comparison does not supply local retail ROMs.
 - PKMDS Web Debug build is blocked by NETSDK1147: missing `wasm-tools`.
-- No emulator, Windows desktop UI, browser editing loop, real-hardware run,
-  versioned in-game milestone save, or imported episode has been tested.
+- The emulator only reached the opening city screen. No debug lab gameplay,
+  Windows desktop UI, browser editing loop, real-hardware run, versioned
+  in-game milestone save, or complete imported episode has been tested.
 - Earlier Git pushes were rejected with HTTP 403 despite confirmed collaborator
   write access; authenticated API code writes worked. The owner installed the
   Actions workflow separately; it is now present on the game PR branch.
