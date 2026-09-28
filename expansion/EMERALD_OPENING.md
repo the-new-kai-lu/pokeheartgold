@@ -256,6 +256,40 @@ Private generated land SHA-256 evidence (no graphics or binaries committed):
 - Route101:
   `e5e597c025fe5749cb174a826a87a0ccb6e1b61adc90055aef3650b9a881a2d8`
 
+## Private native-grass walk/effect authoring probe
+
+The default conservative exporter remains byte-identical, including its
+manifest. An explicit private probe profile can instead author native tall
+grass from only donor `(behavior=2, collision=0, elevation=3)`:
+
+```sh
+python3 scripts/export_emerald_outdoor_model.py \
+  --pack /private/Route101-pack --output /private/Route101-grass-probe \
+  --terrain-profile native-grass-probe \
+  --probe-encounter-bank 255 --probe-normal-field
+```
+
+Both probe prerequisites are mandatory declarations, **not verified runtime
+conditions**. Before loading this uninstalled resource in a private fixture,
+independently verify the destination header actually uses `ENCDATA_NA=255`
+and `FLAG_SYS_PAL_PARK` is clear. The normal encounter path short-circuits on
+that header; Pal Park uses a separate path. No header binding is changed here.
+No wild encounters are implemented or claimed.
+
+Route101 has 91 exact donor grass candidates: 87 interior cells become named
+native `TILE_BEHAVIOR_TALL_GRASS` (little-endian `02 00`); four perimeter grass
+cells remain sealed. All 13 donor ledges remain blocked, including donor
+behavior 62 (southeast jump), which must not be copied as native behavior 62
+(ladder down). Town's doors/unusual elevations remain blocked. Geometry,
+textures and shared palette remain unchanged at the compact 100-KiB budget.
+
+This is solely a private walk/effect authoring probe, not production-safe terrain
+or a finished traversable episode. `RuntimeVerified=false` and
+`requiresGrassEffectsRuntimeValidation=true` remain explicit: actual native
+grass effects/resources, concurrent allocation and transition behavior still
+need runtime validation. All 46 host tests pass with APICULA; those host checks
+do not establish native effect behavior.
+
 # Native HG capacity and deferred collection (synthetic disposable fixtures)
 
 Four separate editor-constructed **synthetic disposable** native HGSS battery
