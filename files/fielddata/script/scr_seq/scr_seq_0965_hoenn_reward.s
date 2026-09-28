@@ -53,6 +53,9 @@ Compare VAR_HOENN_RESCUE_STATE, HOENN_RESCUE_COMPLETE
 GoToIfNe HoennReward_NotEligible
 Compare VAR_HOENN_STARTER_RECEIVED, 0
 GoToIfNe HoennReward_AlreadyReceived
+// MenuInit/MenuExec require the native overlay-27 menu context (mode 3).
+// LockAll alone leaves the ordinary touchscreen field menu in mode 0.
+TouchscreenMenuHide
 NPCMsg 0
 MenuInit 1, 1, 0, 1, VAR_SPECIAL_x8000
 MenuItemAdd 1, 255, SPECIES_TREECKO
@@ -60,6 +63,7 @@ MenuItemAdd 2, 255, SPECIES_TORCHIC
 MenuItemAdd 3, 255, SPECIES_MUDKIP
 MenuItemAdd 4, 255, 0
 MenuExec
+TouchscreenMenuShow
 CloseMsg
 Call HoennReward_Transaction
 Compare VAR_SPECIAL_RESULT, GIVE_MON_PARTY
@@ -99,11 +103,13 @@ Compare VAR_HOENN_RESCUE_STATE, HOENN_RESCUE_COMPLETE
 GoToIfEq HoennRescue_AlreadyDone
 // Recover a saved/interrupted in-progress attempt without awarding anything.
 SetVar VAR_HOENN_RESCUE_STATE, HOENN_RESCUE_NOT_STARTED
+TouchscreenMenuHide
 NPCMsg 11
 MenuInit 1, 1, 0, 1, VAR_SPECIAL_x8000
 MenuItemAdd 12, 255, 1
 MenuItemAdd 13, 255, 0
 MenuExec
+TouchscreenMenuShow
 CloseMsg
 Compare VAR_SPECIAL_x8000, 1
 GoToIfNe HoennRescue_Leave

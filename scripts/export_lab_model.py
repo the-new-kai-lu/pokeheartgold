@@ -15,6 +15,24 @@ import zlib
 from hgss_land import Land, flat_bdhc
 
 
+# NNSG3dMatFlag, lib/include/nnsys/g3d/binres/res_struct.h.
+# Identity texture transform and explicitly supplied diffuse/ambient/vertex
+# colors. In particular, WIREFRAME (0x0020) is NOT a completeness flag: the
+# native material renderer clears polygon alpha when it is present.
+MATFLAG_TEXMTX_USE = 0x0001
+MATFLAG_TEXMTX_SCALEONE = 0x0002
+MATFLAG_TEXMTX_ROTZERO = 0x0004
+MATFLAG_TEXMTX_TRANSZERO = 0x0008
+MATFLAG_ORIGWH_SAME = 0x0010
+MATFLAG_DIFFUSE = 0x0040
+MATFLAG_AMBIENT = 0x0080
+MATFLAG_VTXCOLOR = 0x0100
+FLOOR_MATERIAL_FLAGS = (MATFLAG_TEXMTX_USE | MATFLAG_TEXMTX_SCALEONE
+                        | MATFLAG_TEXMTX_ROTZERO | MATFLAG_TEXMTX_TRANSZERO
+                        | MATFLAG_ORIGWH_SAME | MATFLAG_DIFFUSE
+                        | MATFLAG_AMBIENT | MATFLAG_VTXCOLOR)
+
+
 def dictionary(name=None, datum=b""):
     """NNS single-entry dictionary, including the runtime lookup tree."""
     if name is None:
@@ -100,7 +118,7 @@ def model(params):
     mat_offset, tex_offset, pal_offset, pair_offset = 124, 44, 84, 168
     material = struct.pack("<HH6I4H2i", 0, 44, 0x7fffffff, 0,
                            0x1f00c0, 0xffffffff, params, 0xffffffff,
-                           0, 0x1ff, 256, 256, 4096, 4096)
+                           0, FLOOR_MATERIAL_FLAGS, 256, 256, 4096, 4096)
     mats = (struct.pack("<HH", tex_offset, pal_offset)
             + dictionary("labmat", struct.pack("<I", mat_offset))
             + dictionary("lab", struct.pack("<HBB", pair_offset, 1, 0))

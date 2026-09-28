@@ -17,6 +17,7 @@ def execute(data, variables, delivery, entry=0, choice=0, messages=None,
     stack = []
     menu_items = []
     menu_var = None
+    menu_context = False
     comparison = 0
     calls = []
     def value(v):
@@ -25,6 +26,7 @@ def execute(data, variables, delivery, entry=0, choice=0, messages=None,
         opcode = struct.unpack_from("<H", data, pc)[0]
         pc += 2
         if opcode == 2:
+            assert not menu_context, "touchscreen menu context leaked on return"
             return variables.get(0x800c), calls
         if opcode in (22, 26):
             relative = struct.unpack_from("<i", data, pc)[0]
@@ -40,17 +42,26 @@ def execute(data, variables, delivery, entry=0, choice=0, messages=None,
             pc += 1
         elif opcode in (49, 53, 96, 97, 104):
             pass
+        elif opcode == 746:
+            menu_context = True
+        elif opcode == 747:
+            assert menu_context, "show without a hidden menu context"
+            menu_context = False
         elif opcode == 750:
+            assert menu_context, "MenuInit requires TouchscreenMenuHide context"
             menu_var = struct.unpack_from("<H", data, pc + 4)[0]
             pc += 6
         elif opcode == 751:
+            assert menu_context, "MenuItemAdd requires menu context"
             message, unused, result = struct.unpack_from("<HHH", data, pc)
             menu_items.append(result)
             pc += 6
         elif opcode == 752:
+            assert menu_context, "MenuExec requires native menu mode 3"
             assert menu_items in ([252, 255, 258, 0], [1, 0])
             variables[menu_var] = choice
         elif opcode == 589:
+            assert not menu_context, "menu context must close before battle"
             species, level, shiny = struct.unpack_from("<HHB", data, pc)
             pc += 5
             if battles is not None:
@@ -156,6 +167,15 @@ class HoennRewardTests(unittest.TestCase):
                     directory, edition, includes)
                 self.assertIn(digest, (ROOT / "scr_seq.sha1").read_text())
                 data = (directory / bank).read_bytes()
+                # A missing overlay transition was invisible to the original
+                # bounded interpreter, but froze the actual debug ROM menu.
+                # Replace one transition with a benign no-op opcode; preserve
+                # every relative offset while proving the regression is caught.
+                hide = data.index(struct.pack("<H", 746))
+                missing_hide = data[:hide] + struct.pack("<H", 104) + data[hide + 2:]
+                with self.assertRaisesRegex(AssertionError, "MenuInit requires"):
+                    execute(missing_hide, {0x416e: 1, 0x416f: 0}, 1,
+                            entry=1, choice=252)
                 for initial in (0, 2):
                     for outcome in range(8):
                         state = {0x416e: initial, 0x416f: 0, 0x4050: 123}

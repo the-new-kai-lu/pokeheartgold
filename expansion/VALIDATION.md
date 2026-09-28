@@ -2,6 +2,40 @@
 
 This is a partial implementation checkpoint, not Stage 1 completion.
 
+## Runtime-discovered floor material defect — 2026-09-28
+
+The older private debug ROM documented below reached map 540 in a persistent
+DeSmuME libretro session without savestate restoration. The player and two
+technical scientists appeared, but the lab background was black. Johto rooms
+rendered correctly in that same session. Reading the actual ROM confirmed
+appended area 106, texture 106 and land 676; its land model is byte-identical
+to the aligned exporter output. External model decoding did not establish
+successful native rendering.
+
+Material flags were incorrectly emitted as `0x1ff`, which includes
+`NNS_G3D_MATFLAG_WIREFRAME` (`0x20`) in the repository's SDK header.
+Native material handling in `lib/asm/nnsys.s` at `_020C03DC` and `_020C2204`
+clears polygon alpha for that flag, selecting wireframe instead of a filled
+floor. The exporter now explicitly combines the intended identity-texture
+and diffuse/ambient/vertex-color flags, excluding wireframe. A regression
+checks serialized flags and effective native alpha, including the historical
+failing flag combination.
+
+Focused model tests and independent apicula decoding pass. Regenerated private
+assets are `/tmp/emerald-lab-solid`, with archive overlay at
+`/tmp/emerald-lab-solid-overlay`. These are not committed assets. A new ROM and
+persistent-session lab rendering test remain required: this source correction
+does not establish that all runtime rendering/binding defects are fixed.
+
+The same older debug ROM also froze after the reward NPC's opening dialogue.
+Native `MenuInit`/`MenuExec` require the overlay-27 menu context established by
+`TouchscreenMenuHide`; `LockAll` does not establish it. Both gift and rescue
+menus now bracket menu construction/execution with hide/show, restoring the
+ordinary field menu before gift handling or battle. The compiled-byte test
+models this precondition and rejects a mutated script missing the transition.
+Only appended bank 965's hash changes. This is a source regression fix; the
+fixed reward menu still requires a rebuilt-ROM runtime check.
+
 ## Debug return regression and exterior extraction — 2026-09-28
 
 - Adding production rescue entry 2 exposed a real debug-generation regression:

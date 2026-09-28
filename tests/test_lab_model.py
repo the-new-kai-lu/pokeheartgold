@@ -64,6 +64,20 @@ class LabModelTests(unittest.TestCase):
             self.assertEqual((count, bound), (1, 0))
             self.assertEqual(mdl[start + mat + ids], 0)
         self.assertEqual(struct.unpack_from("<I", mdl, start + mat + material + 20)[0], params)
+        # Native NNS material handling (nnsys.s _020C03DC / _020C2204)
+        # clears polygon alpha for MATFLAG_WIREFRAME, regardless of the
+        # authored polygon alpha. A decoder-only geometry test missed this.
+        material_start = start + mat + material
+        mat_flags, = struct.unpack_from("<H", mdl, material_start + 0x1e)
+        polygon, = struct.unpack_from("<I", mdl, material_start + 0x0c)
+        self.assertEqual(mat_flags, exporter.FLOOR_MATERIAL_FLAGS)
+        self.assertFalse(mat_flags & 0x20)
+        effective_polygon = polygon & ~0x1f0000 if mat_flags & 0x20 else polygon
+        self.assertEqual((effective_polygon >> 16) & 31, 31)
+        # Historical 0x1ff must fail the same native-alpha contract.
+        old_flags = mat_flags | 0x20
+        old_polygon = polygon & ~0x1f0000 if old_flags & 0x20 else polygon
+        self.assertEqual((old_polygon >> 16) & 31, 0)
         shape, = struct.unpack("<I", entries(mdl, start + shp)["floor"])
         shape += start + shp
         _, header, flags, offset, length = struct.unpack_from("<HHIII", mdl, shape)
