@@ -1,3 +1,38 @@
+# Private HG compact Littleroot visual/traversal probe (not a campaign)
+
+An isolated **private HeartGold** ROM built successfully from pinned game
+source `51e26be` with compact exterior exporter `a08fad6`:
+`/tmp/hg-vm-share/pokeheartgold-town-probe-a08fad6.us.nds`, SHA-256
+`8579b8d4827f9cc8d35c1fbefe68e1397dd61d32bc41687f2c7567e901dc589b`.
+Only this ROM's disposable debug map 540 uses Littleroot land 676 and
+texture 106 (four compact textures: 100 KiB plus a 512-byte palette).
+Technical reward/return scientists stand near the spawn; they are **not**
+authentic town NPCs. The private overlay manifest is
+`/tmp/hg-town-probe-a08fad6-overlay/probe-manifest.json`.
+
+Using a **cold copy** of the real HG Johto starter battery, with no gift,
+in-game save or savestate restore in this run, the parent visually verified
+the filled composite town floor and technical actors. Input trajectories
+with audited conservative terrain connectivity crossed x 15/16 and z 15/16,
+visiting all four compact texture quadrants with no obvious seam or missing
+texture in the captured screens. Coordinates are inferred from event and
+input data, **not** read from game RAM. Two complete Town → Elm → Town
+return/re-entry cycles were visually verified; the first and two re-entry
+screenshots are byte-identical. The normal Johto assistant/Potion event
+progressed unsaved between transitions. Private captures are under
+`/tmp/hg-retroarch/town-seriesNNN/` (001–019), with contact sheets
+`town-quadrants.png` and `town-returns.png` under `/tmp/hg-retroarch/`.
+`VALIDATION.md` identifies hashes and specific captures.
+
+This **specific private HG probe** establishes a render/traversal/return
+slice, not production map installation. The generic exporter's
+`RuntimeVerified=false` manifest still describes uninstalled assets; the
+probe overlay itself was stamped before testing. Route 101 runtime,
+perimeter-negative collision checks, native allocator free-headroom and
+future prop/NPC allocation are unverified. The composite remains a flat
+prototype, not an authentic 3D town, real rescue, playable exterior
+campaign or Stage 1 completion. No ROM/save/screenshot is published.
+
 # Native SoulSilver debug gift and real-save checkpoint (partial)
 
 The **private SoulSilver** debug ROM generated from pinned source `51e26be`
@@ -69,9 +104,12 @@ The actual TEX0 encoded upload is now **102400 bytes (100 KiB)** and the exporte
 enforces that map budget. The field texture pool has 159744 bytes left before
 other allocations; that arithmetic is **not proof that props or NPCs fit**.
 `RuntimeVerified=false` remains explicit in the generated manifest. Before
-integration, a bounded native allocation probe must measure simultaneous
-area/map, props, NPCs, palette and transition allocations, including failure
-and cleanup paths. No ROM integration or runtime validation is claimed here.
+production integration, a bounded native allocation probe must measure
+simultaneous area/map, props, NPCs, palette and transition allocations,
+including failure and cleanup paths. At this **authoring checkpoint**, no
+ROM/runtime test was available; the later specific private HG Littleroot
+render/traversal probe above does not supply that allocator measurement or
+validate Route 101.
 
 The two authentic composites contain 46 and 25 visible colors respectively.
 Tests reconstruct every BGR555 pixel losslessly; excessive palette counts fail
@@ -83,7 +121,7 @@ checked independently against the enforced budget.
 All 41 host tests pass with APICULA supplied, the baseline
 contract reports no errors, and the diff whitespace check passes.
 
-Terrain is deliberately conservative and **not a currently traversable port**:
+Terrain is deliberately conservative and **not a production traversable port**:
 only interior donor cells with collision 0, elevation 3 and ordinary behavior 0
 become native ordinary floor. All outer perimeter cells and native padding are
 blocked. Unsupported behavior/elevation cells (5 in town, 104 on Route101,

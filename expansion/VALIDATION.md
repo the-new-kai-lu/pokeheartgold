@@ -2,6 +2,56 @@
 
 This is a partial implementation checkpoint, not Stage 1 completion.
 
+## Private HG compact Littleroot runtime probe — 2026-09-28
+
+- A **private HeartGold test ROM**, generated from pinned game source
+  `51e26be86a4239d7456301ae4e0a425a64e5a605` and the compact exterior
+  exporter at `a08fad6fc150f34878cae28e727e357d1056f14a`, built
+  successfully at `/tmp/hg-vm-share/pokeheartgold-town-probe-a08fad6.us.nds`
+  (128 MiB; SHA-256
+  `8579b8d4827f9cc8d35c1fbefe68e1397dd61d32bc41687f2c7567e901dc589b`).
+  Private guest source is `/root/debug-town-probe-a08fad6`; the overlay
+  provenance/bindings are recorded at
+  `/tmp/hg-town-probe-a08fad6-overlay/probe-manifest.json`. **Only this
+  disposable ROM's existing debug map 540** was changed to use compact
+  Littleroot texture member 106 and land member 676. Its debug spawn is
+  (13,12), reward scientist (12,12), return scientist (14,12). Route 101
+  was **not** installed or tested. The four distinct compact textures
+  total 102,400 bytes (100 KiB) plus a 512-byte palette.
+- The emulator **cold-loaded an isolated copy** of the authentic HG Johto
+  starter battery (SHA-256
+  `42b0d9f1722de15b552d293a4fae404adc82fd259bc5e582a23f8b3b9afc038b`);
+  the immutable original remains unchanged. No in-game save, gift, rescue,
+  state restoration or editor round trip was run on this town-probe ROM.
+  Parent visually verified the composite town floor and both technical
+  placeholder actors in private `town-series002`. Audited conservative
+  terrain connectivity and input trajectories across tiles with x 15/16
+  and z 15/16 reached all **four compact texture quadrants**, with no
+  obvious missing texture or seam in captures `town-series004`–`009`.
+  Coordinates derive from event data plus controller input, **not live
+  game-RAM telemetry**; do not claim pixel-perfect camera bounds or full
+  navigation coverage from these witnesses.
+- Two complete **Town → Elm → Town** return/re-entry cycles were visually
+  verified in private captures `town-series010`/`017` and
+  `town-series018`/`019`. Entry screenshots `002`, `017`, `019` are
+  byte-identical (SHA-256
+  `2de7cf3cb85046960eb052a3bc0cdd41b850bdc75d37de379226705f34db7f7e`).
+  The ordinary Johto assistant/Potion sequence progressed unsaved in
+  `town-series011`–`015`. Evidence is private at
+  `/tmp/hg-retroarch/town-seriesNNN/{screen.png,report.json}`
+  (NNN = 001–019), plus `town-quadrants.png` and `town-returns.png`.
+- The **specific private Littleroot probe** establishes rendered geometry,
+  cross-quadrant traversal and these two transitions; it does **not** make
+  the generic exporter's `RuntimeVerified=false` manifest inaccurate for
+  uninstalled production assets. No bounded native allocator/free-headroom
+  measurement, future prop/NPC allocations, perimeter-negative collision
+  validation or Route 101 runtime is established. This is a flat visual
+  prototype, not authentic multi-height 3D town, native exterior/episode
+  integration, real rescue, full campaign or completed Stage 1. Earlier
+  exterior authoring notes below are historical and superseded only for
+  this particular isolated HG test. No ROM, private assets or screenshots
+  are committed.
+
 ## Native SoulSilver starter, debug gift and real-save editor loop — 2026-09-28
 
 - A separate **private, opt-in SoulSilver debug ROM**, built from the pinned
