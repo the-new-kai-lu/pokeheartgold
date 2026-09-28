@@ -1,3 +1,37 @@
+# Birch actor texture authoring (uninstalled)
+
+```sh
+python3 scripts/export_birch_actor.py --root . \
+  --donor /path/to/pokeemerald --output /tmp/birch-actor
+```
+
+This writes only a private `birch.nsbtx` and provenance/limitations manifest,
+refusing existing output. Native DOCTOR54 and geometry266 are hash-locked;
+table280 must match all sixteen timing, dictionary-order and auxiliary rows.
+The manifest records these source hashes and declared descriptor flags0.
+All nine donor 16×32 frames are preserved, centered at x8 on 32×32 canvases,
+with transparent side padding and mirrored East frames. Native texture
+names, dictionary order and aliases remain intact.
+
+The palette is the actual NPC_3 runtime palette, not PNG preview colors:
+donor `src/data/object_events/object_event_graphics_info.h:1217–1233`
+declares `gObjectEventGraphicsInfo_ProfBirch`, with NPC_3 paletteTag at
+line1219; `src/event_object_movement.c:484` maps that tag to
+`gObjectEventPal_Npc3`, defined from `graphics/object_events/palettes/npc_3.pal`
+in `src/data/object_events/object_event_graphics.h:65`.
+
+The parent visually checked all sixteen N/S/W/E idle/walk/idle/walk frames.
+All 56 host tests passed with APICULA, including independent texture decoding
+and geometry/table drift rejection; baseline and whitespace checks passed.
+The candidate BTX SHA-256 remains
+`5c699d10d769574fa1a7c4e0b0c4e79eee301d56db3353c702de4ee9d069cfdf`.
+No donor binaries or screenshots are distributed.
+
+This is **not installed or runtime-verified**. It reserves neither sprite1050
+nor member863, and does not replace a stock actor. Consumer limits, allocation
+headroom, field animation and actual ground placement still require separate
+audits and private runtime probes. No map, story or actor hook is enabled.
+
 # Three-map Emerald resource staging (uninstalled)
 
 `scripts/stage_emerald_opening.py` stages the solid aligned lab, conservative
