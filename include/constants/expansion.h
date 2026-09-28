@@ -8,6 +8,8 @@
 #define VAR_HOENN_RESCUE_STATE     VAR_UNK_416E
 #define VAR_HOENN_STARTER_RECEIVED VAR_UNK_416F
 #define HOENN_RESCUE_COMPLETE      1
+#define HOENN_RESCUE_NOT_STARTED   0
+#define HOENN_RESCUE_IN_PROGRESS   2
 
 // Gift command results 0..2 retain their existing meanings.
 #define HOENN_GIFT_NOT_ELIGIBLE     3

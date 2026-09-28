@@ -1,3 +1,28 @@
+# Rescue encounter implementation (not yet mapped)
+
+Script bank 965 entry 2, paired with message bank 829, runs `WildBattle`
+against level-2 Zigzagoon using the existing party. The opponent matches
+Emerald `src/battle_controllers.c:70`; help/thanks dialogue is adapted from
+`data/maps/Route101/scripts.inc`. The player can decline/cancel before battle.
+State is 0 before acceptance, 2 during battle, and 1 only after native WIN
+or MON_CAUGHT. Capture counts as removing the threat, an adaptation for an
+established trainer. Fleeing and unknown outcomes do not grant eligibility.
+Loss/draw reset state before HGSS WhiteOut. An interrupted state 2 is reset
+on re-entry for a new attempt; state 1 never launches another battle.
+
+Native `CheckBattleWon` accepts fleeing, so this scene reads the exact result
+through `GetStaticEncounterOutcome` instead. The starter receipt is untouched.
+Party members undergo ordinary battle damage/EXP; no Johto flags, starter
+choice, or party replacement occurs. Completion is recorded before dialogue.
+
+Compiled-byte tests cover both editions, all native outcomes, unknown outcome,
+cancel, interruption/retry, completed guard, and no gift during rescue.
+Outcomes are injected: these tests do not execute the native battle engine.
+Route 101 chase movement, actor assets, map trigger, lab warp and scene
+choreography remain unimplemented. This is NPC-ready archive content, not
+a reachable authentic episode. The isolated debug lab still simulates
+eligibility explicitly; the running VM's older generated build is untouched.
+
 # Opt-in debug lab hookup
 
 The isolated debug-build generator now attaches map 540 to area/texture 106,

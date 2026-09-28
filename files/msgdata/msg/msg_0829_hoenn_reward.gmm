@@ -11,4 +11,10 @@
 <row id="msg_0829_00008" index="8"><attribute name="window_context_name">used</attribute><language name="English">Take your time.\nCome back when you’re ready.</language></row>
 <row id="msg_0829_00009" index="9"><attribute name="window_context_name">used</attribute><language name="English">Birch: I study the Pokémon\nthat live in Hoenn.</language></row>
 <row id="msg_0829_00010" index="10"><attribute name="window_context_name">used</attribute><language name="English">Birch: How is your Hoenn partner?\nI hope you’re enjoying your travels!</language></row>
+<row id="msg_0829_00011" index="11"><attribute name="window_context_name">used</attribute><language name="English">H-help me!\nPlease! Help!</language></row>
+<row id="msg_0829_00012" index="12"><attribute name="window_context_name">used</attribute><language name="English">Help Birch</language></row>
+<row id="msg_0829_00013" index="13"><attribute name="window_context_name">used</attribute><language name="English">Not yet</language></row>
+<row id="msg_0829_00014" index="14"><attribute name="window_context_name">used</attribute><language name="English">Whew... You saved me.\nThank you! Come visit my lab.</language></row>
+<row id="msg_0829_00015" index="15"><attribute name="window_context_name">used</attribute><language name="English">The wild Pokemon is still here!\nPlease come back when you are ready.</language></row>
+<row id="msg_0829_00016" index="16"><attribute name="window_context_name">used</attribute><language name="English">Thank you for helping me!\nPlease visit my lab in Littleroot.</language></row>
 </body>

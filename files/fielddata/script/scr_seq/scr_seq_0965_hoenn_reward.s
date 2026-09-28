@@ -1,11 +1,13 @@
 #include "constants/scrcmd.h"
 #include "constants/expansion.h"
+#include "constants/battle.h"
 .include "asm/macros/script.inc"
 
 .rodata
 
 ScrDef HoennReward_Claim
 ScrDef HoennReward_Interaction
+ScrDef HoennRescue_Interaction
 ScrDefEnd
 
 // Dedicated appended bank; no existing NPC or map is redirected here.
@@ -85,5 +87,54 @@ NPCMsg 10
 HoennReward_Close:
 WaitABPress
 CloseMsg
+ReleaseAll
+End
+
+// Entry 2: Route 101 encounter caller, paired with message bank 829.
+// Chasing actors/movements belong to the future map, not this transaction.
+HoennRescue_Interaction:
+LockAll
+FacePlayer
+Compare VAR_HOENN_RESCUE_STATE, HOENN_RESCUE_COMPLETE
+GoToIfEq HoennRescue_AlreadyDone
+// Recover a saved/interrupted in-progress attempt without awarding anything.
+SetVar VAR_HOENN_RESCUE_STATE, HOENN_RESCUE_NOT_STARTED
+NPCMsg 11
+MenuInit 1, 1, 0, 1, VAR_SPECIAL_x8000
+MenuItemAdd 12, 255, 1
+MenuItemAdd 13, 255, 0
+MenuExec
+CloseMsg
+Compare VAR_SPECIAL_x8000, 1
+GoToIfNe HoennRescue_Leave
+SetVar VAR_HOENN_RESCUE_STATE, HOENN_RESCUE_IN_PROGRESS
+WildBattle SPECIES_ZIGZAGOON, 2, 0
+// CheckBattleWon alone accepts fleeing! Inspect the exact native result.
+GetStaticEncounterOutcome VAR_SPECIAL_RESULT
+Compare VAR_SPECIAL_RESULT, BATTLE_OUTCOME_WIN
+GoToIfEq HoennRescue_Victory
+Compare VAR_SPECIAL_RESULT, BATTLE_OUTCOME_MON_CAUGHT
+GoToIfEq HoennRescue_Victory
+SetVar VAR_HOENN_RESCUE_STATE, HOENN_RESCUE_NOT_STARTED
+Compare VAR_SPECIAL_RESULT, BATTLE_OUTCOME_LOSE
+GoToIfEq HoennRescue_Blackout
+Compare VAR_SPECIAL_RESULT, BATTLE_OUTCOME_DRAW
+GoToIfEq HoennRescue_Blackout
+NPCMsg 15
+GoTo HoennRescue_Close
+HoennRescue_Victory:
+SetVar VAR_HOENN_RESCUE_STATE, HOENN_RESCUE_COMPLETE
+NPCMsg 14
+GoTo HoennRescue_Close
+HoennRescue_AlreadyDone:
+NPCMsg 16
+HoennRescue_Close:
+WaitABPress
+CloseMsg
+HoennRescue_Leave:
+ReleaseAll
+End
+HoennRescue_Blackout:
+WhiteOut
 ReleaseAll
 End
