@@ -109,7 +109,6 @@ def extract(donor, output, map_name=LAYOUT):
         sources[relative] = hashlib.sha256(data).hexdigest()
         return data
 
-    layouts = json.loads(read("data/layouts/layouts.json"))["layouts"]
     contracts = {
         LAYOUT: (13, 13, "gTileset_Building", "gTileset_Lab",
                  "data/tilesets/primary/building", "data/tilesets/secondary/lab"),
@@ -120,6 +119,7 @@ def extract(donor, output, map_name=LAYOUT):
     }
     if map_name not in contracts:
         raise ValueError("Unsupported episode map")
+    layouts = json.loads(read("data/layouts/layouts.json"))["layouts"]
     contract = contracts[map_name]
     layout = next(x for x in layouts if x["name"] == map_name + "_Layout")
     if (layout["width"], layout["height"], layout["primary_tileset"], layout["secondary_tileset"]) != (

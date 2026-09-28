@@ -58,4 +58,4 @@ class OutdoorExtractionTests(unittest.TestCase):
 
     def test_unknown_maps_rejected(self):
         with self.assertRaises(ValueError):
-            extractor.extract(ROOT.parent / "pokeemerald", Path("/unused"), "NotAMap")
+            extractor.extract(Path("/nonexistent-donor"), Path("/unused"), "NotAMap")
