@@ -1,3 +1,42 @@
+# Private HG compact Route 101 visual/traversal probe (not a rescue)
+
+A second **private HG** ROM built successfully from pinned game source
+`51e26be` and compact exporter `a08fad6`:
+`/tmp/hg-vm-share/pokeheartgold-route101-probe-a08fad6.us.nds`,
+SHA-256 `f0676f0b90bd01dd8e0b2a117970a13ee23335f13237d789f60695a40c2b7c56`.
+Its *disposable debug map 540* replaces the separate town probe's assets
+with Route 101 land/texture; it does not connect two production exterior
+maps. Private pre-build manifest:
+`/tmp/hg-route101-probe-a08fad6-overlay/probe-manifest.json`.
+The 20×20 composite is four compact textures (100 KiB total, 512-byte
+palette), with a technical spawn (9,15) and gift/return scientists (8,15)/
+(10,15), **not** a Zigzagoon chase or authentic rescue trigger.
+
+Conservative terrain has 132 safe cells in three components (72/33/27,
+with 70 safe spawn-component cells after excluding actors); 104
+grass/ledge/unsupported cells remain blocked. Parent visual inspection
+confirmed the textured floor and actors, movement across route tiles
+(9,14), (9,15), (9,16) with no obvious seam, and two complete
+**Route → Elm → Route** cycles. Entry and both re-entry screenshots
+are byte-identical. This trajectory covered **only left texture
+quadrants 0 and 2**: quadrants 1 and 3 are not safely reachable.
+Coordinates are inferred from event data/controller inputs, **not RAM
+telemetry**. The normal Johto assistant/Potion event progressed unsaved
+between transitions. The immutable real HG starter battery was not
+overwritten; the probe did not save, grant or restore emulator state.
+See `VALIDATION.md` for capture ranges and hashes.
+
+This private Route test and the town test below demonstrate specific
+**visual render, limited traversal, and return/re-entry** for both
+composites, not connected exterior travel, authentic gameplay, rescue or
+full campaign. The generic exporter's `RuntimeVerified=false` concerns
+**uninstalled production assets**; the private probe manifest was
+written before runtime. Neither test measured allocator free-headroom
+or validated future prop/NPC allocation, blocked grass/ledge semantics,
+perimeter-negative collision or inaccessible right-side quadrants.
+The episode and Stage 1 remain incomplete. No private ROM, save or
+screenshot is published.
+
 # Private HG compact Littleroot visual/traversal probe (not a campaign)
 
 An isolated **private HeartGold** ROM built successfully from pinned game
@@ -107,9 +146,9 @@ other allocations; that arithmetic is **not proof that props or NPCs fit**.
 production integration, a bounded native allocation probe must measure
 simultaneous area/map, props, NPCs, palette and transition allocations,
 including failure and cleanup paths. At this **authoring checkpoint**, no
-ROM/runtime test was available; the later specific private HG Littleroot
-render/traversal probe above does not supply that allocator measurement or
-validate Route 101.
+ROM/runtime test was available; later specific private HG Littleroot and
+Route 101 render/traversal probes above do not supply that allocator
+measurement or validate connected production exteriors.
 
 The two authentic composites contain 46 and 25 visible colors respectively.
 Tests reconstruct every BGR555 pixel losslessly; excessive palette counts fail

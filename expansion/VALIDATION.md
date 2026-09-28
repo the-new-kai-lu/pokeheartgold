@@ -2,6 +2,58 @@
 
 This is a partial implementation checkpoint, not Stage 1 completion.
 
+## Private HG compact Route 101 runtime probe — 2026-09-28
+
+- A second **private HeartGold test ROM** built successfully from pinned
+  game source `51e26be86a4239d7456301ae4e0a425a64e5a605` and the
+  compact exporter at `a08fad6fc150f34878cae28e727e357d1056f14a`:
+  `/tmp/hg-vm-share/pokeheartgold-route101-probe-a08fad6.us.nds`
+  (128 MiB, SHA-256
+  `f0676f0b90bd01dd8e0b2a117970a13ee23335f13237d789f60695a40c2b7c56`).
+  This isolated ROM swaps **only its existing debug map 540** to Route 101
+  in place of the separate private Littleroot test; see the pre-build
+  overlay manifest `/tmp/hg-route101-probe-a08fad6-overlay/probe-manifest.json`.
+  Spawn (9,15), technical reward scientist (8,15), and return scientist
+  (10,15) are test fixtures, **not** an authentic rescue scene. The
+  20×20 donor composite uses four compact textures totaling 102,400 bytes
+  (100 KiB) and a 512-byte palette.
+- The conservative terrain permits 132 safe cells in three disconnected
+  components of 72/33/27 cells, with 70 safe cells in the spawn component
+  after excluding actors. It deliberately blocks all 104 unsupported
+  grass/ledge/behavior/elevation cells rather than inventing DS behavior.
+  The parent visually verified the textured route floor and two test actors
+  in private `route101-series002`; captured traversal through tiles
+  (9,14), (9,15), (9,16) in `003`–`005` showed no obvious texture seam.
+  These witnesses span **only the connected left-side texture quadrants
+  0 and 2**, not all four: right-side quadrants 1 and 3 are unreachable
+  under these safe collision rules. Coordinates are inferred from event
+  data and controller inputs, **not measured in live game RAM**.
+- Two complete **Route → Elm → Route** cycles were parent-visually verified
+  in captures `006`/`013` and `014`/`015`. Entry screenshots `002`,
+  `013`, `015` are byte-identical (SHA-256
+  `d5c6b3645385a74b7727236d26535dcd54f3a5126134d3ccabaa9a3e8fee097e`).
+  The unchanged Johto assistant/Potion sequence progressed without saving
+  in `route101-series007`–`011`. Evidence remains private under
+  `/tmp/hg-retroarch/route101-seriesNNN/{screen.png,report.json}`
+  (NNN = 001–015), with `route101-seam-contact.png` and
+  `route101-transition-contact.png` in `/tmp/hg-retroarch/`.
+  The emulator used an **isolated copy** of the real HG Johto starter
+  battery (SHA-256
+  `42b0d9f1722de15b552d293a4fae404adc82fd259bc5e582a23f8b3b9afc038b`);
+  the immutable original remains unchanged. This probe did not save, grant
+  a gift, execute rescue or restore an emulator state.
+- Taken together, **both private compact exterior probes** now have
+  specific HG visual render/traversal/return evidence, but not a connected,
+  production-integrated Littleroot–Route 101 journey. The generic
+  exporter's `RuntimeVerified=false` still covers uninstalled production
+  resources, and the private overlay manifest's `runtime_verified: false`
+  was stamped **before** this probe ran; neither flag is a blanket runtime
+  gate passed by this test. Native allocator/free-headroom and future
+  prop/NPC allocation were **not measured**. Unreachable right quadrants,
+  blocked grass/ledges, perimeter-negative collision, authentic chase/
+  rescue, proper exteriors, full campaign and Stage 1 completion remain
+  unproven. No private ROM, donor binary, save or screenshot is committed.
+
 ## Private HG compact Littleroot runtime probe — 2026-09-28
 
 - A **private HeartGold test ROM**, generated from pinned game source
@@ -45,9 +97,11 @@ This is a partial implementation checkpoint, not Stage 1 completion.
   the generic exporter's `RuntimeVerified=false` manifest inaccurate for
   uninstalled production assets. No bounded native allocator/free-headroom
   measurement, future prop/NPC allocations, perimeter-negative collision
-  validation or Route 101 runtime is established. This is a flat visual
-  prototype, not authentic multi-height 3D town, native exterior/episode
-  integration, real rescue, full campaign or completed Stage 1. Earlier
+  validation or Route 101 runtime was established at this **Littleroot-only
+  checkpoint**; the separate Route 101 probe above now has limited runtime
+  evidence. This is a flat visual prototype, not authentic multi-height 3D
+  town, native exterior/episode integration, real rescue, full campaign or
+  completed Stage 1. Earlier
   exterior authoring notes below are historical and superseded only for
   this particular isolated HG test. No ROM, private assets or screenshots
   are committed.
