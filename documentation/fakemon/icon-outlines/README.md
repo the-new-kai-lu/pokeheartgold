@@ -26,3 +26,7 @@ All 22 frames passed checks for unchanged interior pixels (after the two documen
 Both rebuilt ROMs pass all 413 packaged-asset checks: [HeartGold](heartgold-validation.json), [SoulSilver](soulsilver-validation.json). These reports contain the current ROM hashes. All eleven custom icons were visually checked in the final HeartGold party screen, with stock comparison icons included in two of the three disposable fixtures. The fixture Pokémon's species/names were changed solely for graphics inspection; their displayed levels/HP are not balance tests. Runtime reports and input sequences accompany the screenshots. SoulSilver was checked at the packaged-asset level.
 
 The HeartGold ROM comparison proves that only the eleven custom icon members (551–561) of `a/0/2/0` changed. Stock icons and shared palettes, battle sprites, followers, game code and other ROM files are byte-identical to the previous delivered build. See [ROM delta](rom-delta.json). Existing saves remain compatible.
+
+## Later walking-sprite outlines
+
+The latest build also applies [one-pixel dark outlines to all walking frames](../follower-outlines/README.md). That page contains current ROM hashes and in-game evidence. The menu icons and battle-facing corrections are preserved.

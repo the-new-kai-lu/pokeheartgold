@@ -55,3 +55,7 @@ Both rebuilt ROMs pass 413 asset checks: [HeartGold](icon-heartgold-validation.j
 ## Later icon outline pass
 
 The current party/box icons also include [one-pixel stock-dark contours](../icon-outlines/README.md). That page contains the latest ROM hashes and party-screen evidence; the walking and battle-facing corrections here remain unchanged.
+
+## Later walking-sprite outlines
+
+The latest build also applies [one-pixel dark outlines to all walking frames](../follower-outlines/README.md). That page contains current ROM hashes and in-game evidence. The menu icons and battle-facing corrections are preserved.

@@ -1,0 +1,6 @@
+{"keys": [["A", 10, 400], ["A", 10, 400], ["A", 10, 400]], "name": "continue"}
+{"keys": [["RIGHT", 112, 400]], "name": "outside"}
+{"capture": {"direction": "RIGHT", "hold": 80, "sample_every": 2}, "name": "east"}
+{"capture": {"direction": "LEFT", "hold": 48, "sample_every": 2}, "name": "west"}
+{"capture": {"direction": "UP", "hold": 32, "sample_every": 2}, "name": "north"}
+{"capture": {"direction": "DOWN", "hold": 32, "sample_every": 2}, "name": "south"}

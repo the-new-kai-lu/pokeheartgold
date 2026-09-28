@@ -1,0 +1,200 @@
+{
+  "voltuff": {
+    "sha256": "64346c268f85d5d41cc0015242c4a26f42ac21bca78b45036394b88e9ef886c9",
+    "added_pixels_by_frame": [
+      45,
+      43,
+      43,
+      41,
+      52,
+      51,
+      52,
+      51
+    ],
+    "existing_pixels_unchanged": true,
+    "both_palettes_and_metadata_unchanged": true,
+    "no_outline_clipping": true,
+    "idempotent": true,
+    "east_west_mirrors": true
+  },
+  "surguenon": {
+    "sha256": "8fa9802b4dc6b26ef8951f5b2c3836bf08b1ab1f0a1c8c80386ef02bae7e379f",
+    "added_pixels_by_frame": [
+      58,
+      61,
+      61,
+      65,
+      73,
+      72,
+      73,
+      72
+    ],
+    "existing_pixels_unchanged": true,
+    "both_palettes_and_metadata_unchanged": true,
+    "no_outline_clipping": true,
+    "idempotent": true,
+    "east_west_mirrors": true
+  },
+  "raijinque": {
+    "sha256": "4e310014e794afc078deed5c439f56e7df4949ae9aa38c79aadf515c21803445",
+    "added_pixels_by_frame": [
+      78,
+      68,
+      68,
+      67,
+      87,
+      85,
+      87,
+      85
+    ],
+    "existing_pixels_unchanged": true,
+    "both_palettes_and_metadata_unchanged": true,
+    "no_outline_clipping": true,
+    "idempotent": true,
+    "east_west_mirrors": true
+  },
+  "embernewt": {
+    "sha256": "e7d36b754af5935bd5bd1c32bed28aea4af9cf42073ae26898cd818ecab93b63",
+    "added_pixels_by_frame": [
+      65,
+      64,
+      56,
+      50,
+      92,
+      87,
+      92,
+      87
+    ],
+    "existing_pixels_unchanged": true,
+    "both_palettes_and_metadata_unchanged": true,
+    "no_outline_clipping": true,
+    "idempotent": true,
+    "east_west_mirrors": true
+  },
+  "pyrovaran": {
+    "sha256": "8a3c54036e44b4a1087db061b6ef6b0041bf76996ac7c98cdc50380083e708b3",
+    "added_pixels_by_frame": [
+      76,
+      66,
+      67,
+      65,
+      96,
+      92,
+      96,
+      92
+    ],
+    "existing_pixels_unchanged": true,
+    "both_palettes_and_metadata_unchanged": true,
+    "no_outline_clipping": true,
+    "idempotent": true,
+    "east_west_mirrors": true
+  },
+  "magmalisk": {
+    "sha256": "e1e2fd6e4e4d7daa3939fde9c6a6dd82615aebc5fea620fc8afa46d1fe37f31f",
+    "added_pixels_by_frame": [
+      103,
+      104,
+      120,
+      104,
+      157,
+      154,
+      157,
+      154
+    ],
+    "existing_pixels_unchanged": true,
+    "both_palettes_and_metadata_unchanged": true,
+    "no_outline_clipping": true,
+    "idempotent": true,
+    "east_west_mirrors": true
+  },
+  "rimevaran": {
+    "sha256": "513bf1a7e135147441af2ffa5956682cdf9551218163a53d2d0f47374e5e0efc",
+    "added_pixels_by_frame": [
+      82,
+      87,
+      79,
+      77,
+      107,
+      103,
+      107,
+      103
+    ],
+    "existing_pixels_unchanged": true,
+    "both_palettes_and_metadata_unchanged": true,
+    "no_outline_clipping": true,
+    "idempotent": true,
+    "east_west_mirrors": true
+  },
+  "fimbulisk": {
+    "sha256": "ff9a5bfcb0b25d4203923d1f82f236f6de9303430bc93b12165d2d358a312bb1",
+    "added_pixels_by_frame": [
+      108,
+      108,
+      119,
+      119,
+      152,
+      150,
+      152,
+      150
+    ],
+    "existing_pixels_unchanged": true,
+    "both_palettes_and_metadata_unchanged": true,
+    "no_outline_clipping": true,
+    "idempotent": true,
+    "east_west_mirrors": true
+  },
+  "sedgling": {
+    "sha256": "db239c503f4829aaa7288d13bd65f5841465e78e5a441566de62c827e1bca6ce",
+    "added_pixels_by_frame": [
+      47,
+      44,
+      47,
+      45,
+      50,
+      50,
+      50,
+      50
+    ],
+    "existing_pixels_unchanged": true,
+    "both_palettes_and_metadata_unchanged": true,
+    "no_outline_clipping": true,
+    "idempotent": true,
+    "east_west_mirrors": true
+  },
+  "cragaviar": {
+    "sha256": "4f135490b2db7f7589819d48a51772c0488fafe4b829072754a8319a43be10d3",
+    "added_pixels_by_frame": [
+      59,
+      64,
+      63,
+      71,
+      69,
+      69,
+      69,
+      69
+    ],
+    "existing_pixels_unchanged": true,
+    "both_palettes_and_metadata_unchanged": true,
+    "no_outline_clipping": true,
+    "idempotent": true,
+    "east_west_mirrors": true
+  },
+  "ragnaroc": {
+    "sha256": "c828192f56d59cd64d5043a0107bf0f51f4f1bb6114133ff1a9f2355c764143b",
+    "added_pixels_by_frame": [
+      105,
+      113,
+      100,
+      111,
+      97,
+      96,
+      97,
+      96
+    ],
+    "existing_pixels_unchanged": true,
+    "both_palettes_and_metadata_unchanged": true,
+    "no_outline_clipping": true,
+    "idempotent": true,
+    "east_west_mirrors": true
+  }
+}

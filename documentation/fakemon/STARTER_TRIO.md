@@ -111,3 +111,7 @@ The current [walking correction](pixel-gaits/README.md) replaces the earlier gen
 ## Menu icon outlines
 
 All eleven custom party/box icons now use consistent one-pixel dark outlines in both animation frames. See [previews and validation](icon-outlines/README.md) for the latest builds.
+
+## Walking-sprite outlines
+
+All 88 custom follower frames now have [consistent one-pixel dark contours](follower-outlines/README.md), retaining the approved poses, facing and palettes. The linked reports contain the latest ROM hashes.
