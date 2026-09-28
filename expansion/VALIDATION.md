@@ -2,7 +2,7 @@
 
 This is a partial implementation checkpoint, not Stage 1 completion.
 
-## Native HG rescue WIN/FLEE and genuine-save reward — 2026-09-28
+## Native HG rescue WIN/FLEE, controlled LOSS and genuine-save reward — 2026-09-28
 
 - A **private controlled flat-lab HeartGold probe**, generated from pinned
   game source `51e26be86a4239d7456301ae4e0a425a64e5a605`, built as
@@ -86,9 +86,43 @@ This is a partial implementation checkpoint, not Stage 1 completion.
   `0x404b` 51→53; audit `/tmp/hg-rescue-outcomes/flee/audit.json`
   records these precisely. The rescue actor re-offered the fight; B
   cancellation left it unclaimed. This was **not** an injected battle
-  outcome. A LOSS exploration (29 Leers, HP 6, PP 1) was **inconclusive**,
-  not LOSS/WhiteOut validation. Neither loss/draw, caught, interrupted battle,
-  live state-2 observation nor SoulSilver native rescue is proven.
+  outcome. The separate natural-HP-6/PP-1, 29-Leer LOSS attempt was
+  **inconclusive** and remains so; the controlled LOSS test below
+  must not be mistaken for a loss from an unmodified starter save.
+- A **separate synthetic HP-only precondition** made native LOSS reachable
+  without injecting a battle outcome or changing runtime HP. A disposable
+  copy of the genuine starter battery (original SHA-256
+  `42b0d9f1722de15b552d293a4fae404adc82fd259bc5e582a23f8b3b9afc038b`)
+  was edited *before boot* with PKHeX: Totodile's current HP 21→1,
+  maximum HP still 21. The resulting input SHA-256 is
+  `c791a4cbc095b4d248ad5ed6173b5052de69277480a986cc21ca0ab363be17a4`.
+  `/tmp/hg-rescue-outcomes/loss-hp1/fixture-audit.json` records the
+  single decrypted Pokémon-byte change and exactly eight raw battery
+  differences (HP, save CRCs and editor dirty flags), with valid CRCs.
+  The original battery remains unchanged. From this fixture, native
+  Leer on the third turn let the wild Zigzagoon's Tackle defeat Totodile.
+  The parent visually verified the 1-HP HUD, out-of-usable-Pokémon
+  message, blackout, home respawn, Mom healing and subsequent native
+  save in the private six-panel
+  `/tmp/hg-rescue-outcomes/loss-hp1/contact.png`. This is evidence of
+  an **actual native blackout/recovery branch**, not an injected LOSS
+  result; unlike WIN/FLEE, it does **not** prove LOSS from a natural
+  unedited-HP starter.
+- The post-recovery native battery SHA-256 is
+  `bd11dc9c180f507bd18266c4202803c64944d08a3d9605a4d6f91403f8a84a2e`.
+  `/tmp/hg-rescue-outcomes/loss-hp1/audit.json` reports valid native
+  CRCs, home map 63, party count 1, rescue `0x416e=0`, receipt
+  `0x416f=0`, and retained Totodile species/PID/trainer, EXP 135,
+  level 5, zero EVs and Scratch/Leer PP 35/30; Mom restored HP to
+  21/21. Native consequences are money 3000→2960, friendship 70→69
+  and walking mood 0→-80. PC and all flags are unchanged; only work
+  variables `0x4000`, `0x4001` and `0x404b` changed. **The saved
+  post-recovery battle scratch `0x4013=0`, not 2**: although source
+  defines LOSS outcome 2 separately, this evidence does not measure
+  live battle-result 2 in RAM. The observed blackout/respawn establishes
+  the branch; do not claim a saved `0x4013=2` or transient rescue
+  state 2. Caught, interrupted battle, SoulSilver native rescue and
+  full campaigns remain unproven.
 - All original batteries remain private and unchanged. No real Route 101
   chase/scene choreography, production exterior integration, complete
   campaigns or Stage 1 completion follows from these **controlled HG

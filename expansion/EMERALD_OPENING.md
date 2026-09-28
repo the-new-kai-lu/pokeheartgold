@@ -1,4 +1,4 @@
-# Native HG controlled rescue WIN/FLEE and genuine-save gift (not Route 101)
+# Native HG controlled rescue WIN/FLEE/LOSS and genuine-save gift (not Route 101)
 
 A separate **private HG flat-lab probe ROM** from game source `51e26be`
 has SHA-256 `266f115debfa5019cbaf5762c12244ab2645ceda8a4a655e102d03928e305658`.
@@ -38,13 +38,39 @@ An independent **natural FLEE**, not outcome injection, set battle
 scratch `0x4013=5` (`PLAYER_FLED`) and produced a valid native save
 with rescue/receipt both 0. The original Totodile's decrypted bytes,
 flags and PC were unchanged; normal temporary/friendship variables
-progressed. Rescue was re-offered and could be cancelled again. This
-does **not** test LOSS: a bounded 29-Leer/HP-6/PP-1 attempt did not
-reach a conclusive loss. Caught, interrupted, transient state-2 in RAM
-and SoulSilver native rescue also remain untested.
+progressed. Rescue was re-offered and could be cancelled again. The
+separate natural-HP-6/PP-1, 29-Leer LOSS attempt remains **inconclusive**.
+
+A distinct **synthetic HP-only precondition** (PKHeX current Totodile
+HP 21→1 *before boot*, max HP 21) allowed a controlled native LOSS:
+original starter SHA-256
+`42b0d9f1722de15b552d293a4fae404adc82fd259bc5e582a23f8b3b9afc038b`,
+fixture SHA-256
+`c791a4cbc095b4d248ad5ed6173b5052de69277480a986cc21ca0ab363be17a4`.
+Only one decrypted Pokémon byte and eight raw save bytes (HP, CRCs,
+editor dirty flags) changed before play; original retained untouched.
+There was **no runtime HP or battle-outcome injection**. Native Leer on
+the third turn let wild Tackle knock Totodile out. The parent visually
+verified 1-HP HUD, out-of-usable-Pokémon text, blackout, home respawn,
+Mom healing and native saving (private six-panel
+`/tmp/hg-rescue-outcomes/loss-hp1/contact.png`). Native output SHA-256
+`bd11dc9c180f507bd18266c4202803c64944d08a3d9605a4d6f91403f8a84a2e`
+passes four CRCs; map 63, party count 1, eligibility/receipt 0, original
+Totodile identity, EXP 135, level 5, zero EVs, Scratch/Leer PP 35/30,
+and Mom-restored HP 21/21. Money fell 3000→2960, friendship 70→69,
+walking mood 0→-80; PC and flags remained unchanged and only work
+variables `0x4000`, `0x4001`, `0x404b` changed. The final saved
+`0x4013=0`, **not 2**: the source's LOSS outcome constant 2 is distinct
+but no live battle-result 2 or transient rescue state 2 was measured.
+This proves the observed native blackout/recovery branch **from an
+edited-HP input**, not natural LOSS from an unmodified starter. Fixture
+and output audits: `/tmp/hg-rescue-outcomes/loss-hp1/fixture-audit.json`
+and `/tmp/hg-rescue-outcomes/loss-hp1/audit.json`. Caught, interrupted
+and SoulSilver native rescue remain untested.
 
 This **controlled genuine-party HG test** validates WIN and FLEE native
-battle branches and the post-WIN gift/save/editor loop, **not** authentic
+battle branches, a separately HP-preconditioned native blackout, and
+the post-WIN gift/save/editor loop, **not** authentic
 Route 101 placement/chase, production warps, full campaign or Stage 1
 completion. Earlier notes that rescue entry 2 is unmapped are historical:
 only the isolated debug actor reaches it; production remains unmapped.
