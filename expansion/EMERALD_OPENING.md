@@ -1,3 +1,40 @@
+# Corrected debug HG runtime checkpoint (partial; not authentic rescue)
+
+An isolated, opt-in **HeartGold** debug ROM from source `51e26be` with the
+solid lab export was built locally at
+`/tmp/hg-vm-share/pokeheartgold-solid-51e26be.us.nds`
+(SHA-256 `cf98258b792fa57cc8a318274ac68488c85c0b6c51ddacbdbfbbb120341f3c07`).
+This private path is evidence, not a distributed ROM. A cold native battery
+save with Johto Totodile, driven through a persistent emulator core **without
+savestate restoration**, reached Elm's opt-in debug lab. The lab's donor
+texture now visibly covers its flat model, with both technical scientist
+actors present. After a cancellable touchscreen offer, a subsequent Treecko
+selection placed level-5 Treecko after Totodile; repeat dialogue guarded
+against a second gift. Native save, return via the right scientist to Elm,
+re-entry and the guarded lab dialogue were observed. The unchanged Johto
+assistant/Potion event ran normally on return.
+
+Both corrected PKHeX.Core and PKMDS.Core read that genuine HG battery save
+with four valid native block checksums and no load-time byte changes. Decrypted
+Totodile data was unchanged from the real pre-gift save; all 2,912 event flags
+agreed; Johto starter `0x4030` stayed 158, while rescue `0x416e` became 1 and
+received species `0x416f` became 252. Temporary variables and friendship-step
+progress also changed during normal play: this is **not** a claim that every
+story/save byte was unchanged. Both editors' no-op and money-edited exports
+reopen and preserve the current party/story fields. The identical editor
+money-3001 export was cold-loaded into the corrected ROM on an isolated save
+copy: textured lab, both Pokémon, trainer card and already-received dialogue
+were observed. Treecko has **no matching vanilla retail encounter legality**;
+valid HGSS save data is not the same as retail encounter legality. See
+`VALIDATION.md` for full hashes, scope and reproducibility constraints.
+
+The debug Elm entrance sets rescue eligibility **without** executing rescue
+battle entry 2. The latter remains unmapped and untested in-game. The model is
+a technical flat prototype; no Littleroot/Route 101 travel or full Hoenn/
+Sinnoh episode, SoulSilver runtime, full-party PC/no-space branch, desktop
+editor or browser UI is claimed. The historical checkpoints below are
+superseded only where this specific corrected build supplies runtime evidence.
+
 # Rescue encounter implementation (not yet mapped)
 
 Script bank 965 entry 2, paired with message bank 829, runs `WildBattle`

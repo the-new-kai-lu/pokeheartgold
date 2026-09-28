@@ -2,6 +2,67 @@
 
 This is a partial implementation checkpoint, not Stage 1 completion.
 
+## Corrected debug HG runtime and real-save editor loop — 2026-09-28
+
+- A **private, opt-in HeartGold debug ROM** built from generated source at
+  `51e26be86a4239d7456301ae4e0a425a64e5a605` with the solid lab assets:
+  `/tmp/hg-vm-share/pokeheartgold-solid-51e26be.us.nds`, 128 MiB,
+  SHA-256 `cf98258b792fa57cc8a318274ac68488c85c0b6c51ddacbdbfbbb120341f3c07`.
+  This is a local evidence path, not a committed or distributed ROM. The
+  separate earlier ROM (`a41ba778…`) and disposable saves were not overwritten.
+  The authorized Ubuntu 22.04 guest used its proven one-vCPU, 512-MiB/swap
+  configuration; the fresh build needed the private NitroSDK linker templates
+  at their prescribed locations and, with `NODEP=1`, an explicit
+  `PROJECT_ROOT_NT=Z:/root/debug-solid-51e26be` for the Windows linker
+  response template. The host sandbox's larger tier is not a ROM requirement.
+- A persistent DeSmuME libretro 0.9.11 session cold-loaded an **actual
+  in-game save** containing the original Johto Totodile. It does not restore
+  emulator savestates: repeated restore with this old core corrupted graphics,
+  whereas native battery cold loads rendered normally. The corrected debug
+  map 540 visibly renders its donor-textured **flat technical lab**, player
+  and both scientists, replacing the earlier black floor. The touchscreen
+  menu now responds. B cancellation gave no reward; a later Treecko choice
+  delivered a level-5 party member; immediate repeat interaction reported
+  already received, with no second grant. An in-game save completed; the
+  return scientist warped to Elm's lab; after an ordinary untouched Johto
+  assistant/Potion event, Elm re-entry returned to the same lab and the reward
+  guard still held. The debug entrance **simulates** rescue eligibility;
+  compiled rescue battle entry 2 was not entered or tested in gameplay.
+- The immutable post-gift battery copy is
+  `/tmp/hg-retroarch/pre-save-backup/after-solid-treecko-save.dsv`,
+  SHA-256 `6956efbca751e7bfaed3026e557f09f8a90f307da8809275bf8d3726869fb736`.
+  Its real HGSS save has all four native block checksums valid. With the
+  separate, corrected PKHeX loader (`the-new-kai-lu/PKHeX` draft PR 1,
+  `9a5ed35e0df1bc65c3900bcab03cddfa581aa1d7`), **both PKHeX.Core and
+  PKMDS.Core load without changing any bytes**. Both report party
+  Totodile (158) then Treecko (252); every decrypted byte of the original
+  Totodile agrees with the authentic pre-gift starter save. All 2,912
+  existing event flags agree, Johto starter variable `0x4030` remains 158,
+  and debug rescue/receipt variables `0x416e`/`0x416f` are 1/252. Do not
+  claim all save bytes stayed unchanged: temporary variables `0x4000/0x4001`
+  reset and friendship-step variable `0x404b` advanced 51 to 55 during real
+  play. Both editors' no-op and money-3000-to-3001 exports reopen with valid
+  checksums and preserve all **current** 368 variables, 2,912 flags, map 540,
+  trainer identity and both Pokémon's decrypted bytes.
+- An isolated copy of the editors' identical post-gift money-edited export
+  (`735cb8f5d14dd1e84f5ab06b8e15eb10e29b5fad63917536ba9d075e46fa83be`)
+  was **cold-loaded** by the corrected ROM without restoring an emulator
+  state. The Continue screen identified trainer A; the textured lab rendered;
+  the party UI showed Totodile and Treecko; the trainer card showed money
+  3001 and ID 45489; the scientist still gave the already-received dialogue.
+  The original battery copy remains unchanged. These are actual HG Core API
+  save/edit/export/cold-game checks, **not** desktop or browser UI tests.
+  Treecko fails vanilla retail encounter legality (new origin/encounter
+  type); save compatibility must not be misrepresented as retail legality.
+- SoulSilver has neither a corrected private ROM build nor real runtime/editor
+  evidence here. Full-party/PC fallback and no-space behavior have host tests
+  but no real runtime proof. The lab is a flat prototype without authentic
+  furniture, and Littleroot/Route 101 are donor extractions, not playable
+  exteriors. Actual rescue entry, travel, both full regional campaigns and
+  full Stage 1 completion remain unimplemented/unverified. Sections below
+  retain their historical checkpoint scope; their earlier pending-runtime
+  statements are superseded **only** by the specific evidence above.
+
 ## Runtime-discovered floor material defect — 2026-09-28
 
 The older private debug ROM documented below reached map 540 in a persistent
