@@ -9,16 +9,36 @@ No live map, archive entry, NPC, encounter or travel connection is installed.
 The shared lab binary builders gained optional dimensions/bounds; their default
 lab BMD, BTX and land outputs remain **byte-identical** to the runtime-verified
 solid lab assets. Exterior geometry spans world X/Z -256..64, donor/native
-terrain cells 0..19, with UVs 0..0.625 in a 512x512 texture. Materials retain
-the corrected non-wireframe SDK flags. Each texture consumes **262144 bytes
-(256 KiB)** plus 512 palette bytes: runtime VRAM allocation/binding is an
-explicit integration gate, not established by an offline decoder.
+terrain cells 0..19. The compact version uses **four distinct rectangles**,
+256x256 + 64x256 + 256x64 + 64x64, four materials and four precisely adjoining
+quads with UVs 0..1. This is not four padded 256x256 textures. Materials retain
+the corrected non-wireframe SDK flags and share one 512-byte palette.
+
+The previous 512x512 texture layout was **unsafe to install**, not just
+unmeasured: its 262144 bytes consumed the entire field texture budget. Native
+field setup uses banks A+B (`src/field/fieldmap.c:440-453`); render/VRAM
+initialization uses two 128-KiB slots (`src/gf_3d_render.c:42-43`,
+`src/gf_3d_vramman.c:7-8,22-25`) with the contiguous manager in
+`lib/asm/nnsys.s:2896-3027`. Area texture allocation precedes prop allocations
+in the same pool; allocating the entire pool to this map cannot leave room
+for them.
+
+The actual TEX0 encoded upload is now **102400 bytes (100 KiB)** and the exporter
+enforces that map budget. The field texture pool has 159744 bytes left before
+other allocations; that arithmetic is **not proof that props or NPCs fit**.
+`RuntimeVerified=false` remains explicit in the generated manifest. Before
+integration, a bounded native allocation probe must measure simultaneous
+area/map, props, NPCs, palette and transition allocations, including failure
+and cleanup paths. No ROM integration or runtime validation is claimed here.
 
 The two authentic composites contain 46 and 25 visible colors respectively.
 Tests reconstruct every BGR555 pixel losslessly; excessive palette counts fail
 instead of silently quantizing. Independent apicula decoding of both embedded
-and external-texture variants verifies the vertices, UVs and texture binding.
-All 40 host tests pass with APICULA supplied (23.012 seconds), the baseline
+and external-texture variants verifies all four material/texture bindings,
+per-quad world vertices, adjoining boundaries and UVs. Multi-entry dictionaries
+also pass runtime-style Patricia lookup tests; the decoded TEX0 upload size is
+checked independently against the enforced budget.
+All 41 host tests pass with APICULA supplied, the baseline
 contract reports no errors, and the diff whitespace check passes.
 
 Terrain is deliberately conservative and **not a currently traversable port**:
@@ -35,9 +55,9 @@ playable episode or Stage 1 completion.
 Private generated land SHA-256 evidence (no graphics or binaries committed):
 
 - LittlerootTown:
-  `bf9eaa06f8f084311c51d8e6b7a93f3214918c003695b085f5026aaef5db45ef`
+  `f27a2c4acc5b6af30c29e6622faad7dacbc6cb42c7308955353c38b84d5e4831`
 - Route101:
-  `c8f680ce36d1e2d192b80d27b6dcbcbb9f2f267bdc98f00cec700e6afef8674f`
+  `e5e597c025fe5749cb174a826a87a0ccb6e1b61adc90055aef3650b9a881a2d8`
 
 # Native HG capacity and deferred collection (synthetic disposable fixtures)
 

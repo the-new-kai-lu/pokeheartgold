@@ -6,8 +6,9 @@ import json
 from pathlib import Path
 import struct
 
-from export_lab_model import container, model, rgba_preview, texture
+from export_lab_model import container, rgba_preview
 from hgss_land import Land, flat_bdhc
+from outdoor_nitro import MAP_TEXTURE_BUDGET, RECTANGLES, model, textures
 
 
 def terrain(cells):
@@ -51,8 +52,8 @@ def export(pack, output):
         raise ValueError("Unexpected donor chunk plan")
     attributes, unsupported = terrain(json.loads(cell_data))
     pixels = rgba_preview(preview, 320, 320)
-    tex, params = texture(pixels, 320, 320, 512)
-    mdl = model(params, -256, 64, 320, 512, "emerald_outdoor")
+    tex, params = textures(pixels)
+    mdl = model(params)
     external = container(b"BMD0", (mdl,))
     artifacts = {
         "outdoor.nsbmd": container(b"BMD0", (mdl, tex)),
@@ -64,7 +65,9 @@ def export(pack, output):
         status="uninstalled-flat-exterior-prototype", layout=layout,
         expected_donor_revision=manifest["expected_donor_revision"],
         world_bounds=[-256, 64], terrain_origin=[0, 0], donor_dimensions=[20, 20],
-        texture_dimensions=[512, 512], texture_bytes=262144, palette_bytes=512,
+        texture_rectangles=RECTANGLES, texture_bytes=struct.unpack_from("<H", tex, 12)[0] * 8,
+        map_texture_budget=MAP_TEXTURE_BUDGET, remaining_field_texture_bytes=159744,
+        RuntimeVerified=False, palette_bytes=512,
         visible_colors=len({pixels[i:i + 3] for i in range(0, len(pixels), 4)}),
         source_outputs={name: manifest["outputs"][name]
                         for name in ("preview.png", "cells.json", "chunk-plan.json")},
@@ -73,7 +76,9 @@ def export(pack, output):
         outputs={name: hashlib.sha256(data).hexdigest() for name, data in artifacts.items()},
         limitations=[
             "No archive installation, map header, matrix binding or runtime VRAM validation",
-            "262144-byte texture requires runtime VRAM budget verification before integration",
+            "Old 262144-byte layout consumed entire field texture budget; unsafe to install",
+            "102400-byte layout requires bounded concurrent map/props/NPC/transition allocation probe",
+            "159744 bytes remaining in field texture budget is not proof other field allocations fit",
             "Flat composite loses height and foreground occlusion; no NPCs or animation",
             "Nonordinary behaviors (including grass, ledges, doors) blocked, not translated",
             "Nonordinary passable elevations blocked; no raw GBA elevation bits copied",
