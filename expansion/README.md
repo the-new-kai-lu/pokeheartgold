@@ -1,12 +1,15 @@
 # ExpandedHeartGold — Stage 1 evidence
 
-This remains **partial Stage 1 work, not a four-region ROM**. An opt-in
-technical debug build adds a flat Birch-lab test map and starter interaction,
-but it simulates the rescue and is not an imported playable Hoenn episode.
-The default source build does not contain that debug map. No full Hoenn or
-Sinnoh campaign, new save format, species, or battle mechanic is implemented.
-The host is pokeheartgold; hg-engine is reference-only. The owner’s vision
-v0.2 requires a complete imported episode and persistent return travel before
+This remains **partial Stage 1 work, not a four-region ROM**. Private, opt-in
+debug probes are separate from published resource-staging checkpoint `94020a8`;
+their generated overlays are not installed in the production-map baseline.
+The latest private SoulSilver probe verified a native rescue
+WIN, Treecko receipt, native save, Elm return/revisit, and real browser and
+Windows editor UI round trips; see `VALIDATION.md` for exact hashes and scope.
+This is not an imported playable Hoenn episode. No full Hoenn or Sinnoh
+campaign, new save format, species, or battle mechanic is implemented. The
+host is pokeheartgold; hg-engine is reference-only. The owner’s vision v0.2
+requires a complete imported episode and persistent return travel before
 scaling to either full campaign.
 
 ## Reproduce the baseline
@@ -17,8 +20,9 @@ checkpoint `f699b3c01b769f95c07e7d802dd5b7369bb142b2`, not this expanded tree.
 For this tree use `make COMPARE=0` and `make soulsilver COMPARE=0`.
 Retail hashes and save-layout tripwires remain unchanged. See
 `EMERALD_OPENING.md` for the new command, host tests and remaining runtime gates.
-`VALIDATION.md` records the private Ubuntu 22.04 VM recovery and one successful
-debug HeartGold build, not a complete episode or SoulSilver debug build.
+`VALIDATION.md` separates historical checkpoints from the latest private
+SoulSilver probe evidence. Neither establishes a complete imported episode or
+campaign.
 
 `baseline.json` records exact starting revisions, expected retail ROM hashes,
 and SHA-256 hashes of the supplied toolchain archives. It is a baseline contract,
@@ -73,13 +77,16 @@ Source entry points: `include/map_header.h`, `src/data/map_headers.h`,
 all map IDs. Widening a bitfield can shift every following field; do not widen
 `regionNo` in isolation.
 
-No new IDs are reserved yet. The catalogue/import inventory starts empty
-(`imported_episodes` in the manifest). Before importing, record donor repository
-and commit, edition, original/new map/resource IDs, every flag/variable/trainer
-remap, asset provenance, and any story omissions. The owner selected Emerald
-and Platinum. `EMERALD_OPENING.md` audits the proposed first Birch-rescue
-slice, not an import or a completed region. Do not replace recognizable plots
-with generic gym sequences.
+Two audited existing story-variable IDs, `0x416e` and `0x416f`, are named for
+rescue eligibility and gift receipt; this is not a full-campaign state
+allocation. No full campaign IDs or imported-episode inventory are established;
+the catalogue/import inventory starts empty (`imported_episodes` in the
+manifest). Before importing, record donor repository and commit, edition,
+original/new map/resource IDs, every flag/variable/trainer remap, asset
+provenance, and any story omissions. The owner selected Emerald and Platinum.
+`EMERALD_OPENING.md` audits the proposed first Birch-rescue slice, not an import
+or a completed region. Do not replace recognizable plots with generic gym
+sequences.
 
 ## Required manual ROM and editor loop
 
@@ -108,6 +115,11 @@ Use native in-game battery saves; savestates alone do not establish persistence.
    additionally execute the actual imported episode: exterior/interior travel,
    NPC interaction, battle, story transition, aftermath, return to Johto, save,
    cold restart, revisit. Debug state setup must not bypass the tested trigger.
+
+The latest SS proof covers an existing Totodile plus one earned Treecko and
+matching real save/editor loops, not the entire checklist: **nonempty-PC storage, nickname
+editing, and the manual loop for both editors/editions remain open**, as do
+full Stage 1 and full-campaign gates.
 
 Classify results separately: source checks, matching build, synthetic serializer
 tests, game/editor loop, visual review, hardware test. Do not claim a region or

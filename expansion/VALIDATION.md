@@ -2,6 +2,74 @@
 
 This is a partial implementation checkpoint, not Stage 1 completion.
 
+## Latest verified native SoulSilver rescue and editor UI proof — 2026-09-28
+
+- This is a **private opt-in test build**, not the production source baseline:
+  published native-helper commit `50f148da1912d03394c92b6e6a8a5b288400552b`,
+  private SoulSilver ROM SHA-256
+  `63b735e7af41d0072b26d1ca0ea226b9a0f8a5f06992235c6b2b53e2d28cbf7f`.
+  The genuine native path reached rescue **WIN**, selected Treecko, completed
+  a native battery save, returned to Elm, and revisited the rescue/gift area.
+  The native save was made **before** a later unsaved ordinary Potion dialogue.
+  No ROM, save, tool, license, or screenshot is published.
+- The genuine pre-gift save SHA-256 is
+  `cdbbb64d040dc2694a3177739742ff66a6340aab095b32eb7b0bab38fecbe52a`;
+  the post-gift save SHA-256 is
+  `4847827cabc2891acb634910460417c3ab635dc5b9a95ca1eda77172a48f277a`.
+  Across those saves, every decrypted byte of the original Totodile is
+  preserved (level 5, HP 21/21, EXP 152, Speed EV 1, Scratch PP 32).
+  Treecko is level 5, HP 19/19, PID `3382426445`. All 2,912 flags and all
+  540 PC slots are unchanged; the PC was empty, so this is **not** proof of
+  nonempty-PC behavior. Receipt changes 0→252 and friendship steps 51→55.
+  These details do not imply byte-for-byte preservation of the whole save.
+- The editor stack used pinned PKHeX.Core
+  `9a5ed35e0df1bc65c3900bcab03cddfa581aa1d7`; actual PKMDS
+  `d15390a` was built against that sibling Core, with Debug Core DLL SHA-256
+  `c67adb86decde3aabb64dcc5eb0e2fd7f7638726b94fa767512c6917eed53695`.
+  The Web build completed with wasm-tools installed and zero warnings/errors,
+  without `globalization-invariant`. Actual browser UI loaded both saves as
+  SoulSilver/TID 64300, edited money 3000→3001, and used real
+  `ExportSaveFile`/reopen. The browser pre/post export hashes are
+  `2b9b1a0bb6990cd003e33ef09a03707802ed510f5247f708c7c5f5fce29a93c6` and
+  `d59e07bb29c83f0a645f893e1c6c353b09062af5ae3ca9a17a24d4c74bf53749`.
+  Both are 524,410-byte DSVs with their 122-byte footer preserved. The
+  browser's native OS picker aborted with `AbortError`; a transparent capture
+  sink received the bytes from the real UI export, and those bytes were
+  re-imported in the UI. Native OS-picker success is **not** claimed.
+- Actual PKHeX WinForms was run from a .NET 10 self-contained executable
+  (SHA-256
+  `56699e8b1a7ec2d0f9cfd50e56abad017ed6597b4680dac503b4966f0ba3737e`)
+  under Wine/Xvfb. The real UI opened the post-gift save, changed money
+  3000→3001, saved as a new DSV, reopened that export, and verified the
+  trainer (TID 64300) and party sprites. The export is 524,410 bytes and is
+  byte-identical to both the browser export and generic Core export.
+   SHA-256, byte-for-byte comparison, and visual checks confirmed eight exact byte differences.
+  Differences in compact offset/old→new notation:
+   `0x40078: B8→B9`, `0x4F626: 39→F5`, `0x4F627: 21→D3`,
+  `0x61704/0x61705/0x61706: 00/00/00→FF/FF/03`,
+   `0x61A0E: 70→B8`, and `0x61A0F: D2→A7`. They comprise one money byte,
+  three existing box flags, and four checksum bytes; all other bytes,
+  including the footer, were preserved.
+  The UI hour field briefly misfocused but was restored to 0 **before** the
+   save dialog. The export diff contains no playtime change.
+- Both byte-identical pre- and post-gift editor outputs were independently
+  cold-booted under the SS ROM (no savestates) and parent-visually verified.
+  Pre-gift showed card money 3001/TID 64300, Totodile HP 21, the rescue guard,
+  and the unclaimed menu/B-cancel path. Post-gift showed money 3001/TID 64300,
+  Totodile HP 21 plus Treecko HP 19, and both guards. The same cold outputs
+  were reused for the editor UI checks; these were **not** separate emulator
+  sessions per editor. Private evidence is under
+  `/tmp/pkmds-ui-evidence-593*`, `/tmp/pkhex-ui-evidence`, and
+  `/tmp/ss-real-save-validation`; no evidence files are published.
+- Treecko's encounter is expected to fail the unmodified retail legality
+  database; it was not spoofed. This is save/editor compatibility, not a
+  retail-legality claim. It proves neither nonempty-PC handling nor nickname
+  editing, and does not complete the manual loop for all editors/editions.
+  Full Stage 1, full campaigns, full Stage 1B, and the PC/nonempty,
+  nickname, and manual-loop gates remain open. The older SS section below is
+  explicitly a **historical earlier checkpoint** and is superseded only where
+  this specific newer evidence applies.
+
 ## Native HG rescue WIN/FLEE, controlled LOSS and genuine-save reward — 2026-09-28
 
 - A **private controlled flat-lab HeartGold probe**, generated from pinned
@@ -121,8 +189,10 @@ This is a partial implementation checkpoint, not Stage 1 completion.
   defines LOSS outcome 2 separately, this evidence does not measure
   live battle-result 2 in RAM. The observed blackout/respawn establishes
   the branch; do not claim a saved `0x4013=2` or transient rescue
-  state 2. Caught, interrupted battle, SoulSilver native rescue and
-  full campaigns remain unproven.
+  state 2. At this earlier HG checkpoint, caught or interrupted battle,
+   SoulSilver native rescue, and full campaigns remained unproven. The newer
+   SS rescue proof is recorded above; caught/interrupted battle and full
+   campaigns remain unproven.
 - All original batteries remain private and unchanged. No real Route 101
   chase/scene choreography, production exterior integration, complete
   campaigns or Stage 1 completion follows from these **controlled HG
@@ -234,7 +304,7 @@ This is a partial implementation checkpoint, not Stage 1 completion.
   this particular isolated HG test. No ROM, private assets or screenshots
   are committed.
 
-## Native SoulSilver starter, debug gift and real-save editor loop — 2026-09-28
+## Historical earlier SoulSilver starter, debug gift and real-save editor loop — 2026-09-28
 
 - A separate **private, opt-in SoulSilver debug ROM**, built from the pinned
   `51e26be86a4239d7456301ae4e0a425a64e5a605` source and the same

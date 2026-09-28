@@ -1,4 +1,72 @@
-# Birch actor texture authoring (uninstalled)
+# Current scope: private probes, not completed campaigns
+
+The default production-map baseline still has 540 maps. The opt-in preparers
+below create disposable source trees outside the checkout; they do not install
+their maps or actors into that baseline. The latest earned SoulSilver save and
+actual browser/WinForms editor evidence is in `VALIDATION.md`. It supersedes
+earlier no-SS/no-UI limitations, not the remaining campaign and storage gates.
+
+## Private native actor and three-map travel preparation
+
+```sh
+python3 scripts/prepare_birch_actor_probe.py --root . \
+  --assets /private/lab-solid --actor /private/birch-actor/birch.nsbtx \
+  --output /private/new-birch-lab-tree
+
+python3 scripts/prepare_emerald_opening.py --root . \
+  --donor /private/pokeemerald --resources /private/opening-resource-overlay \
+  --lab-assets /private/lab-solid \
+  --actor /private/birch-actor/birch.nsbtx \
+  --output /private/new-opening-travel-tree
+```
+
+The second command's `--actor` is optional. Its resource input is the
+three-map output of `stage_emerald_opening.py`, not a grass-probe overlay.
+Both preparers refuse existing output; travel preparation also rejects output
+inside the source tree before opening its inputs.
+
+- **Actor:** pins the native consumers, packing inputs, events/scripts and all
+  863 original model members. It appends ordinary sprite ID 32 → member 863,
+  flags 0, reusing geometry 266/frame table 280. Only the private lab's gift
+  and rescue actors change graphics; the return scientist is unchanged.
+  Choosing 32 does not establish that previously considered ID 1050 is unsafe.
+- **Travel:** adds private maps 540–542, events 491–493, areas/textures 106–108,
+  lands 676–678 and matrices 288–290. Donor-derived lab/town doors use native
+  DOOR behavior 105. Two ordinary-floor lanes connect town and Route 101,
+  using north/south triggers and separate inert arrival anchors. Other borders,
+  doors, grass, ledges and unsupported cells remain sealed.
+- **Transition correction:** vanilla `sub_02055CD8` asserts on outdoor-to-outdoor
+  use. Only the generated tree adds an exact Town 541 ↔ Route 542 guard selecting
+  existing generic transition 6. Every other stock branch remains unchanged.
+  The native door callbacks' no-prop fallbacks and arrival clearance are
+  source-audited, not substitutes for a successful native round trip.
+- **Composition:** optional actor installation happens after travel events.
+  Live and archived native actor inputs are audited before mutation; tests
+  check preservation of the lab warp bytes, exterior events, original model
+  members/table rows and all non-graphics actor fields. The combined manifest
+  records its own final hashes rather than reusing the standalone manifest.
+
+All **67 host tests** passed together with APICULA and the private inputs;
+the unchanged production-map baseline audit reports no errors. The private
+combined example is `/tmp/emerald-opening-travel-birch-94020a8-v4`, manifest
+SHA-256 `e7290055fea9cf9508a665b8d84959acccac257a2acfa807fba82cc586d0a31b`.
+These are preparation/host checks, not native travel or campaign completion.
+
+The separate **standalone actor** HG ROM was built and independently inspected:
+SHA-256 `d89cb6c69b230a4a117cb26c0f4eef80610e6ff01398596292410cb7b38ff909`.
+Its actual model archive has 864 members with the original 863 preserved;
+overlay 1 contains the appended 32 → 863 row with flags 0, and original rows
+and sentinel preserved. It is the lab-only probe, **not the combined travel
+ROM**. Four-direction appearance, walking/feet, transitions and measured
+VRAM headroom require separately recorded runtime evidence.
+
+Elm ingress/return are still explicit debug access. The rescue remains in the
+isolated lab, not an authentic Route 101 chase; no complete episode or campaign
+is installed. Two assessed story-variable slots do not prove capacity for
+full Emerald plus Platinum persistence. No unproven flags or padding are
+allocated, and no new save layout is introduced.
+
+# Birch actor texture authoring (resource-only exporter)
 
 ```sh
 python3 scripts/export_birch_actor.py --root . \
