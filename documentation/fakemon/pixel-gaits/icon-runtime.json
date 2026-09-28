@@ -1,0 +1,9 @@
+{
+  "rom_sha256": "9fd167dad29c1439ae6baee6c05c7e1c9c6c1c0e08499c94310bffde5b2747f2",
+  "input_save": "/tmp/pixel-gait-fixtures/battle.sav",
+  "input_save_sha256": "f014423498e2fe7ccc77a532a8e720946c195eeb49bba782a031f54afdfe7325",
+  "emulator": "py-desmume",
+  "captures": [],
+  "status": "visually_reviewed_party_icon_faces_left",
+  "total_emulated_frames": 5639
+}

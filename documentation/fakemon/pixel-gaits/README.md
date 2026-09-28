@@ -43,3 +43,11 @@ Copy the four staged `battle-0.bin` through `battle-3.bin` files and four PNG sh
 - Compared with the previously delivered HeartGold ROM, code, overlay tables and every filesystem file except the battle/follower archives are byte-identical. Only Surguenon's four battle members and eleven follower members changed. [ROM delta](rom-delta.json). Story events, items, stats, moves and save layout remain intact.
 
 Build both editions with `./tools/build_starter_trio.sh`. Use an ordinary in-game save when checking replacement graphics; an emulator save state can restore cached old sprite data.
+
+## Follow-up: Surguenon party/box icon
+
+The party icon is a separate 32x64, two-frame resource and was missed by the battle-facing patch. Both frames now face left. The shared palette, warmed colors, transparency, frame order and NCGR header are unchanged. `warm_electric_icons.py` now includes this reflection after its color correction, so regeneration preserves the fix.
+
+[Before/after](surguenon-icon-before-after.png) | [Actual battle party menu](surguenon-party-icon.png) | [Native checks](icon-facing-checks.json)
+
+Both rebuilt ROMs pass 413 asset checks: [HeartGold](icon-heartgold-validation.json), [SoulSilver](icon-soulsilver-validation.json). These icon reports supersede the prior final ROM hashes. The new HeartGold battle party-menu capture uses the exact rebuilt ROM ([runtime report](icon-runtime.json)). Compared with the preceding walking/battle build, only Surguenon's icon member 552 in `a/0/2/0` changes; battle graphics, followers, code and other files remain identical ([delta](icon-rom-delta.json)).

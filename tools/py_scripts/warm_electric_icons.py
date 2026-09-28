@@ -11,7 +11,7 @@ import io
 import json
 import subprocess
 from pathlib import Path
-from PIL import Image
+from PIL import Image, ImageOps
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE_COMMIT = "227b8d954"
@@ -29,6 +29,11 @@ def main():
             for x in range(32):
                 if pixels[x, y] == 5 and (x + 3 * (y % 32)) % 12 < 7:
                     pixels[x, y] = 7
+        # Party/box icons have their own graphics, separate from battle art.
+        # Surguenon's original icon faces right; match HGSS's left-facing icons.
+        if key == "surguenon":
+            image = ImageOps.mirror(image)  # Vertical frame order is unchanged.
+            pixels = image.load()
         image.save(folder / "source/icon.png", transparency=0)
         path = folder / "icon.bin"
         native = bytearray(path.read_bytes())
