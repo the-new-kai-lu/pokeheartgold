@@ -1,3 +1,55 @@
+# Native HG controlled rescue WIN/FLEE and genuine-save gift (not Route 101)
+
+A separate **private HG flat-lab probe ROM** from game source `51e26be`
+has SHA-256 `266f115debfa5019cbaf5762c12244ab2645ceda8a4a655e102d03928e305658`.
+Its private manifest at
+`/tmp/hg-real-rescue-probe-b1ca40ad-overlay/probe-manifest.json`
+records the new center technical rescue actor (script ID 3); **only
+the test tree** removes Elm's simulated rescue eligibility assignment.
+The actor calls the unchanged native production bank 965 entry 2:
+`WildBattle` against level-2 Zigzagoon (263) using the existing Johto
+party. It does not create an authentic Route 101 chase or hook exterior
+maps. An old gift message still says `DEBUG LAB: Simulated rescue`;
+this **stale technical label** does not mean Elm set eligibility in
+this ROM. The parent visually verified gift blocking before battle,
+rescue cancellation, native battle **WIN**, receipt, Elm return and
+revisit with both gift and rescue guards.
+
+Starting from an unmodified genuine HG one-Totodile save, the real
+post-WIN, pre-gift native battery has valid four-block CRCs, rescue
+`0x416e=1`, receipt `0x416f=0`, battle result `0x4013=1` and Johto
+starter 158. Totodile retained its original identity but **ordinary
+battle** changed EXP +17, Speed EV +1, HP 21→20 and Scratch PP 35→32.
+The real post-gift native battery then contained Totodile and Treecko,
+rescue still 1, receipt 252; Totodile's **entire decrypted bytes match
+the pre-gift, post-battle save**, not the pre-battle original. All 2,912
+event flags remained unchanged; friendship steps and the receipt
+varied between pre-gift and post-gift. Both corrected editor cores load
+without mutation and no-op/money-plus-one exports reopen, preserving
+current party, story, flags and map. No-op rewrites five box-content
+flag/checksum bytes; money-plus-one changes eight. **True cold loads**
+of independent edited pre- and post-gift copies visually verified
+money 3001, injured Totodile, available menu before gift and guards
+after receipt. Treecko remains **retail encounter-illegal**, and Core
+tests do not establish desktop/browser UI behavior. The private saves,
+reports, hashes and capture scope are in `VALIDATION.md`.
+
+An independent **natural FLEE**, not outcome injection, set battle
+scratch `0x4013=5` (`PLAYER_FLED`) and produced a valid native save
+with rescue/receipt both 0. The original Totodile's decrypted bytes,
+flags and PC were unchanged; normal temporary/friendship variables
+progressed. Rescue was re-offered and could be cancelled again. This
+does **not** test LOSS: a bounded 29-Leer/HP-6/PP-1 attempt did not
+reach a conclusive loss. Caught, interrupted, transient state-2 in RAM
+and SoulSilver native rescue also remain untested.
+
+This **controlled genuine-party HG test** validates WIN and FLEE native
+battle branches and the post-WIN gift/save/editor loop, **not** authentic
+Route 101 placement/chase, production warps, full campaign or Stage 1
+completion. Earlier notes that rescue entry 2 is unmapped are historical:
+only the isolated debug actor reaches it; production remains unmapped.
+No private ROM, save or screenshot is distributed.
+
 # Private HG compact Route 101 visual/traversal probe (not a rescue)
 
 A second **private HG** ROM built successfully from pinned game source

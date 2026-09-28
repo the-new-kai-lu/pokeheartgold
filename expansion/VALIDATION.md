@@ -2,6 +2,100 @@
 
 This is a partial implementation checkpoint, not Stage 1 completion.
 
+## Native HG rescue WIN/FLEE and genuine-save reward — 2026-09-28
+
+- A **private controlled flat-lab HeartGold probe**, generated from pinned
+  game source `51e26be86a4239d7456301ae4e0a425a64e5a605`, built as
+  `/tmp/hg-vm-share/pokeheartgold-real-rescue-probe-b1ca40ad.us.nds`
+  (128 MiB; SHA-256
+  `266f115debfa5019cbaf5762c12244ab2645ceda8a4a655e102d03928e305658`).
+  See private `/tmp/hg-real-rescue-probe-b1ca40ad-overlay/probe-manifest.json`.
+  Only this test tree removes Elm's simulated rescue `SetVar` and adds a
+  **center technical actor** (script ID 3) on existing debug map 540,
+  calling unchanged production bank 965 rescue entry 2. Native
+  `WildBattle` is Zigzagoon (263), level 2, against the **real existing
+  Johto party**. The left gift and right return scientists remain debug
+  actors; this is **not** an authentic mapped Route 101 chase.
+- A disposable copy of the immutable genuine HG starter battery (SHA-256
+  `42b0d9f1722de15b552d293a4fae404adc82fd259bc5e582a23f8b3b9afc038b`)
+  started with one real Totodile, no eligibility and no receipt. Gift
+  interaction was blocked before battle; rescue offer cancellation did
+  not grant eligibility. The parent visually verified an actual native
+  battle and **WIN** followed by rescue-complete dialogue in private
+  `rescue-series007`/`013`, then the gift menu, Treecko receipt, return
+  to Elm and revisit with both rescue and gift guards. A script result
+  is measured **after** battle (scratch `0x4013=1` for WIN); transient
+  in-battle rescue state 2 was not observed in live RAM. The gift
+  dialogue still contains the stale `DEBUG LAB: Simulated rescue` label:
+  despite that text, this specific probe's Elm entrance does **not**
+  inject eligibility. It is a technical harness, not a finished scene.
+- The **immutable real post-WIN, pre-gift in-game save**
+  `/tmp/hg-retroarch/pre-save-backup/hg-real-rescue-before-gift.dsv`
+  has SHA-256
+  `4c53dfd1490cf3e270012c0057b59b0cc4dcbebd37eacdf0334d17fe17539de3`.
+  Both editors load it without mutation; all four native block CRCs
+  pass. Eligibility `0x416e=1`, receipt `0x416f=0`, battle result
+  `0x4013=1`, party count 1, Johto starter `0x4030=158` and all 2,912
+  flags are intact. The original Totodile identity is preserved, but
+  **legitimate combat changed its bytes**: EXP 135→152 (+17), Speed EV
+  0→1, HP 21/21→20/21 and Scratch PP 35→32. Normal temporary/friendship
+  variables also progressed; do **not** claim original Pokémon or entire
+  save byte identity across the battle.
+- The **immutable real post-gift in-game save**
+  `/tmp/hg-retroarch/pre-save-backup/hg-real-rescue-after-treecko.dsv`
+  has SHA-256
+  `2fe57e3ea6bd4633da575c261e7f6b6462d224732bd2b16d9715ba8974104844`.
+  Both editors load it without mutation, all four native CRCs pass,
+  party is Totodile (158) then Treecko (252), eligibility remains 1,
+  receipt becomes 252 and battle result remains 1. **Every decrypted
+  byte of the combat-altered Totodile matches the pre-gift save**;
+  between those saves the only story-variable differences are friendship
+  steps `0x404b` 57→59 and receipt `0x416f` 0→252, with all flags
+  unchanged. In this real WIN path the Hoenn gift did not overwrite
+  the Johto party member or starter choice.
+- PKHeX.Core and PKMDS.Core no-op and money-3000-to-3001 exports for
+  **both** genuine saves reopen with valid checksums, current story,
+  Pokémon and map 540 preserved; the editors' outputs agree. No-op
+  exports change five box-content-flag/checksum bytes and money edits
+  eight bytes: neither is asserted byte-identical to its input.
+  The two editors' identical money-edited battery SHA-256s are
+  `d58debb9dd2bf6a3f8b0b2f7b8a32b7093bfbea5f1201852872964d8bd19fc58`
+  (pre-gift) and
+  `8018b76302e469e63eb80ba238a82294c3706d41349dbe7d26b7d5e55405e297`
+  (post-gift). Parent visually verified **true cold loads** of separate edited
+  pre-gift (seven panels: Continue, lab, injured party, card money
+  3001, rescue guard, unclaimed gift menu, B cancel) and post-gift
+  (six panels: Continue, lab, both Pokémon, card money 3001,
+  gift guard, rescue guard) copies. See private
+  `/tmp/hg-real-save-validation/{real-rescue,real-rescue-treecko}/`
+  for exact editor reports/exports; the private seven- and six-panel
+  sheets are `real-rescue-pregift-edited-cold-contact.png` and
+  `real-rescue-treecko-edited-cold-contact.png` in their parent directory.
+  Runtime captures are `/tmp/hg-retroarch/rescue-seriesNNN/` (001–031).
+  Treecko still **fails retail encounter legality** for
+  its new origin/type; valid HGSS save/edit behavior is not retail
+  legality. Neither desktop nor browser editor UI was tested.
+- In an **independent natural FLEE** branch from the same genuine
+  unmodified starter battery, native `RUN` set `0x4013=5`
+  (`PLAYER_FLED`). The completed native save's SHA-256 is
+  `926e565e5040ec4cf89f98c07285029e6137397b152437c81ab47bf96f6d799b`;
+  all four CRCs pass, rescue and receipt remain 0, and the original
+  Totodile's decrypted bytes (HP 21/21 included), flags and PC remain
+  unchanged. Ordinary work changed: `0x4000` 1→0,
+  `0x4001` 158→0, battle scratch `0x4013` 0→5, friendship steps
+  `0x404b` 51→53; audit `/tmp/hg-rescue-outcomes/flee/audit.json`
+  records these precisely. The rescue actor re-offered the fight; B
+  cancellation left it unclaimed. This was **not** an injected battle
+  outcome. A LOSS exploration (29 Leers, HP 6, PP 1) was **inconclusive**,
+  not LOSS/WhiteOut validation. Neither loss/draw, caught, interrupted battle,
+  live state-2 observation nor SoulSilver native rescue is proven.
+- All original batteries remain private and unchanged. No real Route 101
+  chase/scene choreography, production exterior integration, complete
+  campaigns or Stage 1 completion follows from these **controlled HG
+  flat-lab** outcomes. Historical notes below saying rescue entry 2
+  is unmapped/untested refer to the earlier ROMs; this test actor is
+  **only in the separate private probe**, not a production map hookup.
+
 ## Private HG compact Route 101 runtime probe — 2026-09-28
 
 - A second **private HeartGold test ROM** built successfully from pinned
