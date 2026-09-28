@@ -1,3 +1,29 @@
+# Native HG capacity and deferred collection (synthetic disposable fixtures)
+
+Four separate editor-constructed **synthetic disposable** native HGSS battery
+fixtures, not real accumulated gameplay saves, each held six Totodile clones,
+rescue `0x416e=1` and no receipt (`0x416f=0`). In the same corrected private
+HG debug ROM, native gift handling put Treecko in the first empty PC slot:
+slot 0 with an empty PC, or slot 539 when the other 539 slots were occupied.
+The six existing party Pokémon were unchanged; the last-slot case preserved
+the other 539 box Pokémon. Each successful gift recorded receipt 252. With
+all 540 slots full, refusal left receipt 0 and all six party/540 box Pokémon
+unchanged in the **completed in-game save**. An isolated copy of that saved
+full-storage result, with only slot 539 freed, cold-loaded and delivered
+Treecko into exactly that slot on retry; the receipt then blocked a repeated
+grant. All four output batteries have valid native block CRCs.
+
+Private audit JSON and batteries are at
+`/tmp/hg-capacity-runtime/{empty,last,full,retry}/`; for the full-storage
+saved evidence use `full/saved-complete`, not the unfinished `full/saved`
+capture. The parent visually verified gift, refusal, retry and guard panels
+in the private capacity contact sheet. Neither these synthetic inputs nor the
+ROM or screenshots are committed. The authentic real Totodile/Treecko battery
+save in the next checkpoint is separate, untouched. This is **native HG
+runtime behavior**, not a SoulSilver or authentic rescue/Route 101/campaign
+test. The separate SS build is still in progress; no SS runtime claim follows.
+See `VALIDATION.md` for exact battery hashes and qualifications.
+
 # Corrected debug HG runtime checkpoint (partial; not authentic rescue)
 
 An isolated, opt-in **HeartGold** debug ROM from source `51e26be` with the
@@ -31,8 +57,9 @@ valid HGSS save data is not the same as retail encounter legality. See
 The debug Elm entrance sets rescue eligibility **without** executing rescue
 battle entry 2. The latter remains unmapped and untested in-game. The model is
 a technical flat prototype; no Littleroot/Route 101 travel or full Hoenn/
-Sinnoh episode, SoulSilver runtime, full-party PC/no-space branch, desktop
-editor or browser UI is claimed. The historical checkpoints below are
+Sinnoh episode, SoulSilver runtime, desktop editor or browser UI is claimed.
+The full-party PC/no-space branches were tested only in the subsequent
+HG capacity checkpoint documented above. The historical checkpoints below are
 superseded only where this specific corrected build supplies runtime evidence.
 
 # Rescue encounter implementation (not yet mapped)

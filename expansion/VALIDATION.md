@@ -2,6 +2,48 @@
 
 This is a partial implementation checkpoint, not Stage 1 completion.
 
+## Native HG capacity and deferred gift — disposable fixtures, 2026-09-28
+
+The **same corrected private HG debug ROM** (SHA-256
+`cf98258b792fa57cc8a318274ac68488c85c0b6c51ddacbdbfbbb120341f3c07`)
+ran four separate capacity cases. Their inputs are **synthetic disposable
+editor fixtures**, not naturally accumulated parties or authentic game
+progress: each starts with six Totodile clones, rescue variable `0x416e=1`
+and receipt `0x416f=0`. The first three inputs differ in PC occupancy (0,
+539, or 540); retry instead derives from the completed full-storage save.
+These cases test native gift/storage behavior; the genuine Totodile/Treecko
+post-gift save described below is separate and remains unchanged.
+
+- Full party, empty PC: Treecko went to box slot 0; PC occupancy became 1,
+  receipt became 252, and all six original party Pokémon were unchanged.
+- Full party, **last available PC slot 539**: Treecko went to that slot,
+  occupancy became 540, receipt became 252, and the six party Pokémon and
+  other 539 occupied box slots were unchanged.
+- Full party and all 540 PC slots occupied: the scientist displayed the
+  no-space refusal; **after completing the native save** the receipt was
+  still 0, with all six party Pokémon and all 540 box Pokémon unchanged.
+  The finished-save evidence is `full/saved-complete`, **not** the earlier
+  incomplete `full/saved` capture, which missed the second save-message page.
+- Deferred retry: a **copy of that saved full-storage result** was edited
+  to free only PC slot 539, then cold-loaded. The native gift filled exactly
+  that slot and recorded receipt 252; another interaction was guarded against
+  duplication. The original saved full-storage result was not overwritten.
+
+All four native output batteries pass all four HGSS block CRCs. Audits and
+private batteries are under `/tmp/hg-capacity-runtime/{empty,last,full,retry}/`;
+the exact audit JSON filenames are `audit.json` in each case. The output
+SHA-256s are respectively `9213d44102fca0b63d26ff767cc7f6c55a3999788134ef8c2bf744e9091535b6`,
+`61d33c009548a0ff45b70242e177da0d13fc0e72712ef6802abff891cf003307`,
+`6f10437082d77cbebc2d1eaed0de7713673ee6bc115ab812f57036b041872d55`
+and `a26e1f431a9ba4c119d57d2e3373534c915c0ddc4f2dd0f9c5574ff6248d383d`.
+The parent visually verified delivery, refusal, retry and guard panels in
+private `/tmp/hg-capacity-runtime/capacity-contact.png`; no private ROM,
+save or screenshot is published. This is **HG only**; no SoulSilver runtime
+or authentic rescue/battle/travel is established. An SS build is in progress
+elsewhere, not a completed build or runtime result. No full campaign or
+desktop/browser editor UI is claimed. Historical pending-capacity statements
+below apply only to their earlier checkpoints.
+
 ## Corrected debug HG runtime and real-save editor loop — 2026-09-28
 
 - A **private, opt-in HeartGold debug ROM** built from generated source at
@@ -54,9 +96,10 @@ This is a partial implementation checkpoint, not Stage 1 completion.
   save/edit/export/cold-game checks, **not** desktop or browser UI tests.
   Treecko fails vanilla retail encounter legality (new origin/encounter
   type); save compatibility must not be misrepresented as retail legality.
-- SoulSilver has neither a corrected private ROM build nor real runtime/editor
-  evidence here. Full-party/PC fallback and no-space behavior have host tests
-  but no real runtime proof. The lab is a flat prototype without authentic
+- At this earlier checkpoint, SoulSilver had no corrected private ROM build
+  or real runtime/editor evidence; full-party/PC fallback and no-space had
+  host tests but no real runtime proof (now superseded by the HG-only capacity
+  checkpoint above). The lab is a flat prototype without authentic
   furniture, and Littleroot/Route 101 are donor extractions, not playable
   exteriors. Actual rescue entry, travel, both full regional campaigns and
   full Stage 1 completion remain unimplemented/unverified. Sections below
