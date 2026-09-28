@@ -1,3 +1,42 @@
+# Three-map Emerald resource staging (uninstalled)
+
+`scripts/stage_emerald_opening.py` stages the solid aligned lab, conservative
+Littleroot Town and conservative Route 101 exports **together** in a fresh
+filesystem overlay. Supply the corresponding private exporter output directories:
+
+```sh
+python3 scripts/stage_emerald_opening.py --root . \
+  --lab-assets /private/lab-solid \
+  --town-assets /private/LittlerootTown-nitro \
+  --route-assets /private/Route101-nitro \
+  --output /private/new-opening-overlay
+```
+
+The stager checks pinned Emerald extraction provenance and export hashes, stock
+HGSS archive hashes/counts, Nitro containers, and conservative blocked terrain.
+It appends area/texture IDs 106–108 and land IDs 676–678 without changing any
+original NARC member; stock prop archive members remain untouched. It emits
+single-cell matrices 288–290, planned maps 540–542 and event IDs 491–493 in
+`manifest.json`. Only the lab has existing script/message references 965/829;
+these references and all planned IDs are **not installed**. Errors refuse the
+output or leave no partial overlay; native-grass probe assets are not accepted.
+
+This is **resource-only**, not three reachable maps or a playable episode: no
+headers, events, scripts, warps, encounters, rescue placement, NPCs, story
+changes, or travel links are installed. The lab's two exit cells and all exterior
+perimeters/unsupported terrain remain blocked. Exterior areas use an indoor
+template; outdoor behavior and transitions still need validation. Native matrix
+u8 cache aliases 288–290 to 32–34 and still needs consumer auditing. Each
+exterior texture's 100-KiB TEX0 upload is a size fact, **not measured allocator
+headroom**; combined props, NPCs and transitions remain unverified.
+
+The private example output manifest is
+`/tmp/emerald-opening-stage-aa4ce4e9-verified/manifest.json`
+(SHA-256 `6421b388f46e201ca0c05f1766736b225a8352dd0c34da04b0b513c453cb7fbb`);
+no binaries or saves are distributed. All 51 host tests passed with APICULA,
+the baseline source audit reported no errors, and the whitespace check passed;
+none of these constitutes a ROM build or in-game test of this overlay.
+
 # Native HG controlled rescue WIN/FLEE/LOSS and genuine-save gift (not Route 101)
 
 A separate **private HG flat-lab probe ROM** from game source `51e26be`
