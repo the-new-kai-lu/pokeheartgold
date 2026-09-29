@@ -22,12 +22,14 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 import episode_assets
 from episode_source_inventory import native_inputs, verify_compiled_inventory, EPISODE_SCRIPT_BANKS
+from export_lab_model import container
 from hgss_land import Land, narc_members
 from prepare_emerald_episode import (
     FINAL_ARCHIVES, LAND, TEXTURES, MODELS, guard_path, native_edits, sha,
     publish_directory, approved_contract, prepare,
 )
 from stage_emerald_episode import stage
+from stage_lab_archives import pack_narc
 
 
 class EpisodeUnitTests(unittest.TestCase):
@@ -84,6 +86,115 @@ class EpisodeUnitTests(unittest.TestCase):
         self.assertEqual(audit["begin_quads"], 1024)
         self.assertEqual(audit["vertices"], 4096)
         self.assertEqual(audit["actual_stream_bytes"], len(commands))
+        self.assertEqual(len(commands), 8 + 1024 * 52)
+        model = container(b"BMD0", (episode_assets.model(0, commands),))
+        self.assertEqual(len(model), 53676)
+        self.assertLessEqual(len(episode_assets.ensure_model_fits(model)),
+                             episode_assets.MAX_FIELD_MODEL_BYTES)
+
+    def test_independently_decode_packed_geometry_and_all_scene_pixels(self):
+        # An independent physical display-list parser, not episode_assets.decode_gx.
+        colors = [bytes((value * 255 // 31,) * 3 + (255,)) for value in range(31)]
+        source = bytearray(512 * 512 * 4)
+        for z in range(32):
+            for x in range(32):
+                identity = (x + z * 3) % 12
+                for py in range(16):
+                    for px in range(16):
+                        pixel = ((z * 16 + py) * 512 + x * 16 + px) * 4
+                        source[pixel:pixel + 4] = colors[(identity * 2 + px // 4 + py // 4) % 31]
+        image, palette, indices, unique = episode_assets.atlas_for(source)
+        self.assertEqual(len(unique), 12)
+        commands, geometry = episode_assets.commands_for(indices)
+        self.assertEqual(geometry["vertices"], 4096)
+        self.assertEqual(len(commands), 53256)
+        physical, offset, noop = [], 0, 0
+        nargs = {0: 0, 0x20: 1, 0x22: 1, 0x23: 2, 0x26: 1, 0x40: 1, 0x41: 0}
+        while offset < len(commands):
+            opword = struct.unpack_from("<I", commands, offset)[0]
+            offset += 4
+            for shift in (0, 8, 16, 24):
+                opcode = opword >> shift & 255
+                self.assertIn(opcode, nargs)
+                count = nargs[opcode]
+                self.assertLessEqual(offset + 4 * count, len(commands))
+                operands = struct.unpack_from("<" + "I" * count, commands, offset)
+                offset += 4 * count
+                if opcode:
+                    physical.append((opcode, operands))
+                else:
+                    noop += 1
+        self.assertEqual(offset, len(commands))
+        self.assertEqual(noop, 3 + 2 * 1024)
+        self.assertEqual(physical[0], (0x20, (0x7fff,)))
+        self.assertEqual(len(physical), 1 + 1024 * 10)
+        position = 1
+        for z in range(32):
+            for x in range(32):
+                self.assertEqual(physical[position], (0x40, (1,)))
+                position += 1
+                index = indices[z * 32 + x]
+                atlas_x = index % episode_assets.COLS * episode_assets.SLOT + 1
+                atlas_y = index // episode_assets.COLS * episode_assets.SLOT + 1
+                for vertex, (dx, dz) in enumerate(((0, 0), (0, 16), (16, 16), (16, 0))):
+                    uv = (atlas_x + dx) * 16 | ((atlas_y + dz) * 16 << 16)
+                    self.assertEqual(physical[position], (0x22, (uv,)))
+                    position += 1
+                    opcode, operands = physical[position]
+                    self.assertEqual(opcode, 0x23 if vertex == 0 else 0x26)
+                    if vertex == 0:
+                        self.assertEqual(operands[0] >> 16, 0)  # explicit y=0
+                        self.assertEqual(operands[1] >> 16, 0)
+                        raw_x, raw_z = operands
+                    else:
+                        raw_x, raw_z = operands[0] & 0xffff, operands[0] >> 16
+                    self.assertEqual(struct.unpack("<h", struct.pack("<H", raw_x))[0],
+                                     (x * 16 + dx - 256) * 64)
+                    self.assertEqual(struct.unpack("<h", struct.pack("<H", raw_z))[0],
+                                     (z * 16 + dz - 256) * 64)
+                    position += 1
+                self.assertEqual(physical[position], (0x41, ()))
+                position += 1
+                # Decode every pixel through the UV-selected atlas tile.
+                for py in range(16):
+                    for px in range(16):
+                        color = palette[image[(atlas_y + py) * episode_assets.ATLAS_W
+                                              + atlas_x + px]]
+                        decoded = bytes((((color >> (5 * c)) & 31) * 255 // 31
+                                         for c in range(3))) + b"\xff"
+                        pixel = ((z * 16 + py) * 512 + x * 16 + px) * 4
+                        self.assertEqual(source[pixel:pixel + 4], decoded)
+        self.assertEqual(position, len(physical))
+
+    def test_model_budget_fails_closed_on_oversize_or_truncated_stream(self):
+        with self.assertRaisesRegex(ValueError, "safe per-slot"):
+            episode_assets.model(0, b"\0" * episode_assets.MAX_FIELD_MODEL_BYTES)
+        with self.assertRaisesRegex(ValueError, "safe per-slot"):
+            episode_assets.ensure_model_fits(
+                container(b"BMD0", (b"MDL0" + b"\0" * episode_assets.MAX_FIELD_MODEL_BYTES,)))
+        with self.assertRaisesRegex(ValueError, "Truncated GX"):
+            list(episode_assets.decode_gx(struct.pack("<I", 0x23)))
+        with self.assertRaisesRegex(ValueError, "Unsupported GX"):
+            episode_assets.pack_gx([(0xff, ())])
+
+    def test_stage_rejects_oversize_actual_archive_despite_claimed_hash(self):
+        from prepare_emerald_episode import LAND
+        with tempfile.TemporaryDirectory() as tmp:
+            prepared, output = Path(tmp) / "prepared", Path(tmp) / "overlay"
+            (prepared / LAND).parent.mkdir(parents=True)
+            oversized = container(b"BMD0", (b"MDL0" + b"\0" * 0xe000,))
+            member = Land(0, b"", b"\0" * 2048, b"", oversized, b"").encode()
+            archive = pack_narc([b""] * 678 + [member])
+            (prepared / LAND).write_bytes(archive)
+            (prepared / "opening-episode.json").write_text(json.dumps({
+                "status": "source-only-full-opening-not-runtime-proof",
+                "native_input_sha256": {LAND: sha(archive)},
+                "episode_changes_sha256": {LAND: sha(archive)},
+                "compact": {"model_sha256": sha(oversized)},
+            }))
+            with self.assertRaisesRegex(ValueError, "safe per-slot"):
+                stage(ROOT, prepared, output)
+            self.assertFalse(output.exists())
 
     def test_no_private_dependency_or_graphics_in_templates(self):
         for file in (ROOT / "scripts/episode_templates").iterdir():
@@ -323,9 +434,19 @@ class EpisodeSourceTests(unittest.TestCase):
     def test_all_native_inputs_against_corrected_golden(self):
         golden = Path(os.environ["EPISODE_GOLDEN"])
         actual, expected = native_inputs(ROOT, self.tree), native_inputs(ROOT, golden)
+        # Historical R2 golden intentionally has the unsafe 94,636-byte model.
+        # R3 changes only that land archive; it does not change texture, terrain,
+        # script or save ABI. A newer golden may already contain R3's model.
+        self.assertEqual(actual[LAND], FINAL_ARCHIVES[LAND])
+        self.assertIn(expected[LAND], {
+            actual[LAND],
+            "9cfedfae00b15e1dfd5e1c7e4ca2d38e713e6b6b231b076e932802a110e0d3e5",
+        })
+        actual.pop(LAND)
+        expected.pop(LAND)
         # The current tracked matrix dependency repair postdates private V7/V8.
         # Preserve it: do not reintroduce the stale-cache bug just to match a
-        # historical Makefile. This is the ONLY allowed native-recipe difference.
+        # historical Makefile.
         recipe = "files/fielddata/mapmatrix/map_matrix.mk"
         self.assertEqual((self.tree / recipe).read_bytes(), (ROOT / recipe).read_bytes())
         self.assertIn(expected[recipe], {

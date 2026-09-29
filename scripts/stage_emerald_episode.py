@@ -11,9 +11,11 @@ from pathlib import Path
 import subprocess
 import tempfile
 
+from episode_assets import ensure_model_fits
 from episode_source_inventory import native_names, EPISODE_ADDITIONS
+from hgss_land import Land, narc_members
 from prepare_emerald_episode import (
-    guard_path, read, sha, write, publish_directory, verify_native_contract, approved_contract,
+    LAND, guard_path, read, sha, write, publish_directory, verify_native_contract, approved_contract,
 )
 
 
@@ -25,6 +27,12 @@ def stage(root, prepared, output):
     report = json.loads(read(prepared, "opening-episode.json"))
     if report.get("status") != "source-only-full-opening-not-runtime-proof":
         raise ValueError("Not an episode source manifest")
+    # Even a self-consistent forged manifest cannot authorize an oversized BMD:
+    # inspect the actual staged archive before accepting any source contract.
+    land_members = narc_members(read(prepared, LAND))
+    if len(land_members) != 679:
+        raise ValueError("Unexpected prepared land archive member inventory")
+    ensure_model_fits(Land.decode(land_members[678]).model)
     revision = subprocess.check_output(
         ["git", "-C", str(root), "rev-parse", "HEAD"], text=True).strip()
     if subprocess.run(

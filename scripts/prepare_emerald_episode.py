@@ -31,7 +31,7 @@ LAND = "files/a/0/6/5"
 TEXTURES = "files/a/0/4/4"
 MODELS = "files/data/mmodel/mmodel"
 FINAL_ARCHIVES = {
-    LAND: "9cfedfae00b15e1dfd5e1c7e4ca2d38e713e6b6b231b076e932802a110e0d3e5",
+    LAND: "92d7c1b6aeb0ac971acefd1f40e72654aee2cc1d171694645c046fdb428a0248",
     TEXTURES: "265746500ffdbcaebbc82bc82f949abbc7bfe24231815e4ef9e5500cfa46a5db",
 }
 ACTOR_HASHES = {
@@ -185,7 +185,7 @@ def make_compact(donor, packs, pins):
     image, palette, indices, unique = assets.atlas_for(pixels)
     tex, params = assets.texture(image, palette)
     commands, geometry = assets.commands_for(indices)
-    model = container(b"BMD0", (assets.model(params, commands),))
+    model = assets.ensure_model_fits(container(b"BMD0", (assets.model(params, commands),)))
     texture = container(b"BTX0", (tex,))
     if sha(texture) != "4c50532743e4f12faead826b2afdb09f58265db94d7859916cc4cb83c51e93fc":
         raise ValueError("Compact texture mismatch")
@@ -220,6 +220,7 @@ def make_actors(root, donor):
 
 
 def patch_archives(tree, model, texture):
+    assets.ensure_model_fits(model)
     old_land, old_tex = (narc_members(read(tree, name)) for name in (LAND, TEXTURES))
     if len(old_land) != 679 or len(old_tex) != 109:
         raise ValueError("Unexpected travel archive member inventory")
@@ -238,7 +239,12 @@ def patch_archives(tree, model, texture):
         changed[index] = replacement
         packed = pack_narc(changed)
         actual = narc_members(packed)
-        if len(actual) != len(members) or any(
+        if len(actual) != len(members):
+            raise ValueError(f"Archive member inventory changed: {name}")
+        if name == LAND:
+            # Recheck the real staged member, not a producer's size assertion.
+            assets.ensure_model_fits(Land.decode(actual[678]).model)
+        if any(
                 member != actual[i] for i, member in enumerate(members) if i != index):
             raise ValueError(f"Unrelated archive member changed: {name}")
         if sha(packed) != FINAL_ARCHIVES[name]:
@@ -295,8 +301,9 @@ def prepare(root, donor, resources, lab_assets, actor, packs, output):
         (tree / "opening-travel.json").unlink()
         report = {
             "format": 1, "status": "source-only-full-opening-not-runtime-proof",
-            "episode_definition": "route101-full-v8-r2-correct-map-texture-archive",
-            "reference_source_report_sha256":
+            "episode_definition": "route101-full-v8-r3-size-safe-geometry",
+            # R2 provenance is historical, NOT evidence for this R3 output.
+            "historical_r2_source_report_sha256":
                 "064ee01b0d4d1c90494c5202c5b37418fd7f39ec848b9fec8a3d27f9661d1cb7",
             "donor_commit": DONOR_COMMIT,
             "base_commit": subprocess.check_output(

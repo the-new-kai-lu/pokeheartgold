@@ -1,8 +1,9 @@
 # Opt-in Emerald opening episode: source reproduction
 
-**Source reproducibility is established for the corrected Route 101 opening
-candidate (V8r2). Native runtime verification is incomplete: the tested run froze
-after its first post-battle step. Full Stage 1 campaigns remain incomplete.**
+**Source reproducibility is established for the size-safe Route 101 opening
+candidate (V8r3). Native runtime verification is pending for this candidate.
+V8r2 froze because its model overwrote executable memory after battle.
+Full Stage 1 campaigns remain incomplete.**
 These tools do not build a ROM, launch a game, install into a build cache, or
 establish gameplay success.
 
@@ -14,15 +15,19 @@ and the [validation record](../expansion/VALIDATION.md).
 
 ## Current verification boundary
 
-Owner-local checks passed all 92 source tests without skips, the unchanged
-540-map default baseline, and the fresh compiled candidate's archive and script
-inventory audits. A cold native run reached the chase, a natural wild-battle
-victory, and Birch's thanks without savestates or gameplay-memory changes.
+Owner-local V8r3 checks passed all 99 source tests without skips and the unchanged
+540-map default baseline. Fresh preparation and staging reproduced the approved
+source hashes; an independent Nitro model reader decoded the compact model and
+texture. These are source/format checks, not native gameplay verification.
 
-That run then stopped responding after one field step. Its rendered images
-remained byte-identical across subsequent direction and menu inputs, and the
-emulator reported repeated empty-register-list instructions. This establishes
-frozen execution, **not** a diagnosed terrain collision or a proven cause.
+The earlier V8r2 compiled candidate passed archive and script inventory audits.
+A cold native run reached the chase, a natural wild-battle victory, and Birch's
+thanks without savestates or gameplay-memory changes. It then stopped responding
+after one field step: rendered images remained byte-identical across subsequent
+direction and menu inputs. Read-only frozen-memory comparison and an independent
+ROM allocator/overlay audit subsequently established that its oversized model
+overwrote overlay 2's repel-step routine. This was not a terrain collision or
+evidence requiring an anti-piracy workaround.
 The reward, nickname, duplicate-gift guard, and expanded-HeartGold editor
 export/cold-reload journey are not certified by this run. Earlier editor tests
 and earlier candidates must not be substituted for those missing checks.
@@ -30,6 +35,25 @@ and earlier candidates must not be substituted for those missing checks.
 The generated manifest deliberately retains `runtime_verified: false`.
 Reproducing candidate source bytes does not make this a completed opening or
 establish storage capacity for both complete imported campaigns.
+
+## Model slot safety
+
+The native allocator reserves four **61,440-byte (`0xF000`) model slots**.
+V8r2's 94,636-byte serialized Route 101 BMD exceeded its slot by 33,196 bytes.
+The loader's `0xE000` read-chunk size is not an aggregate model-size check.
+
+V8r3 packs four GX opcodes per command word and uses one explicit `VTX_16`
+followed by three `VTX_XZ` vertices per quad. The serialized BMD is **53,676
+bytes**, retaining all 1,024 quads, 4,096 vertices, exact XYZ/UV coordinates,
+and unchanged atlas pixels. Terrain, collision, props, scripts, and save layout
+are unchanged.
+
+Construction, archive preparation, and final staging enforce a conservative
+**57,344-byte (`0xE000`) authoring limit** on the actual serialized model.
+This leaves a 4,096-byte policy margin below native slot capacity. A claimed
+manifest hash or budget cannot bypass the final archive-member size check.
+Independent packed-stream decoding and pixel round-trip tests cover geometry;
+the native battle-to-field transition still needs its own runtime pass.
 
 ## Required owner-local inputs
 

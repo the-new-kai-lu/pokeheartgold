@@ -6,11 +6,71 @@ installation, native compilation or runtime operations are present here.
 import hashlib
 import struct
 from extract_emerald_lab import indexed_png, palette, tile_pixel
-from export_lab_model import dictionary, FLOOR_MATERIAL_FLAGS, gx_command
+from export_lab_model import dictionary, FLOOR_MATERIAL_FLAGS
 
 ATLAS_W, ATLAS_H = 128, 256
 SLOT, COLS = 18, 5
 MAX_MAP_TEXTURE = 102400
+# Four field-map slots of 0xF000 bytes each; leave a full 0x1000-byte margin.
+# The old 94,636-byte BMD ran into the next overlay's executable memory.
+MAX_FIELD_MODEL_BYTES = 0xE000
+BMD_CONTAINER_BYTES = 20
+GX_PARAMS = {0: 0, 0x20: 1, 0x22: 1, 0x23: 2, 0x26: 1, 0x40: 1, 0x41: 0}
+
+
+def pack_gx(commands):
+    """Four DS GX opcodes per word, followed by their arguments in opcode order."""
+    if not commands:
+        raise ValueError("Empty GX command group")
+    output = bytearray()
+    for start in range(0, len(commands), 4):
+        group = commands[start:start + 4]
+        opcodes, arguments = 0, []
+        for slot, (opcode, params) in enumerate(group):
+            if opcode not in GX_PARAMS or len(params) != GX_PARAMS[opcode]:
+                raise ValueError("Unsupported GX command/parameter count")
+            if any(type(value) is not int or not 0 <= value <= 0xffffffff for value in params):
+                raise ValueError("Invalid GX parameter word")
+            opcodes |= opcode << (8 * slot)
+            arguments.extend(params)
+        # Absent high opcodes are NOP (0); they take no argument words.
+        output.extend(struct.pack("<" + "I" * (1 + len(arguments)), opcodes, *arguments))
+    return bytes(output)
+
+
+def decode_gx(stream):
+    """Decode physical packed words; malformed/truncated streams fail closed."""
+    if len(stream) % 4:
+        raise ValueError("Unaligned GX display list")
+    position = 0
+    while position < len(stream):
+        opcodes = struct.unpack_from("<I", stream, position)[0]
+        position += 4
+        for slot in range(4):
+            opcode = (opcodes >> (slot * 8)) & 255
+            if opcode not in GX_PARAMS:
+                raise ValueError(f"Unsupported GX opcode: {opcode:#x}")
+            count = GX_PARAMS[opcode]
+            if position + 4 * count > len(stream):
+                raise ValueError("Truncated GX operands")
+            operands = struct.unpack_from("<" + "I" * count, stream, position)
+            position += 4 * count
+            if opcode:
+                yield opcode, operands
+    if position != len(stream):
+        raise ValueError("Unconsumed GX bytes")
+
+
+def ensure_model_fits(data):
+    """Inspect the serialized BMD, not a declared manifest/model budget."""
+    if (not isinstance(data, bytes) or len(data) < BMD_CONTAINER_BYTES
+            or data[:4] != b"BMD0" or struct.unpack_from("<I", data, 8)[0] != len(data)
+            or struct.unpack_from("<H", data, 14)[0] != 1
+            or struct.unpack_from("<I", data, 16)[0] != BMD_CONTAINER_BYTES):
+        raise ValueError("Invalid serialized field model")
+    if len(data) > MAX_FIELD_MODEL_BYTES:
+        raise ValueError(f"Field model exceeds safe per-slot limit {MAX_FIELD_MODEL_BYTES:#x}")
+    return data
 
 def sha(data):
     return hashlib.sha256(data).hexdigest()
@@ -77,49 +137,61 @@ def texture(image, palette):
 
 
 def commands_for(indices):
-    """Emit literal BEGIN QUADS, four TEXCOORD/VTX_XZ pairs, END per cell."""
-    commands = gx_command(0x20, 0x7fff)
+    """Pack exact UVs/XYZ for all 1024 quads without dropping map detail."""
+    if len(indices) != 1024:
+        raise ValueError("Expected all 1024 map tiles")
+    commands = bytearray(pack_gx([(0x20, (0x7fff,))]))
     audit = []
     for z in range(32):
         for x in range(32):
             index = indices[z * 32 + x]
+            if not 0 <= index < COLS * (ATLAS_H // SLOT):
+                raise ValueError("Atlas tile index exceeds fitted texture")
             u0, v0 = (index % COLS * SLOT + 1) * 16, (index // COLS * SLOT + 1) * 16
             x0, z0 = (x * 16 - 256) * 64, (z * 16 - 256) * 64
-            commands += gx_command(0x40, 1)
-            for dx, dz in ((0, 0), (0, 16), (16, 16), (16, 0)):
+            quad = [(0x40, (1,))]
+            for vertex, (dx, dz) in enumerate(((0, 0), (0, 16), (16, 16), (16, 0))):
                 u, v = u0 + dx * 16, v0 + dz * 16
                 vx, vz = x0 + dx * 64, z0 + dz * 64
-                assert 0 <= u <= 32767 and 0 <= v <= 32767
-                assert -32768 <= vx <= 32767 and -32768 <= vz <= 32767
-                commands += gx_command(0x22, u | (v << 16))
-                commands += gx_command(0x23, vx & 0xffff, vz & 0xffff)
-            commands += gx_command(0x41)
+                if (not 0 <= u <= 32767 or not 0 <= v <= 32767
+                        or not -32768 <= vx <= 32767 or not -32768 <= vz <= 32767):
+                    raise ValueError("Unrepresentable map vertex/UV")
+                quad.append((0x22, (u | (v << 16),)))
+                # VTX_16 establishes y=0; VTX_XZ keeps that exact y for
+                # this quad's three remaining vertices.
+                quad.append((0x23, (vx & 0xffff, vz & 0xffff)) if vertex == 0
+                            else (0x26, ((vx & 0xffff) | ((vz & 0xffff) << 16),)))
+            quad.append((0x41, ()))
+            commands.extend(pack_gx(quad))
             audit.append((x, z, index, u0, v0))
-    # Parse the actual command stream, not just the generator loop/counters.
-    cursor = 0
+    # Audit the *physical* packed stream, not only the generator's loop.
+    decoded = iter(decode_gx(commands))
     def take(opcode, nparams):
-        nonlocal cursor
-        words = struct.unpack_from("<" + "I" * (1 + nparams), commands, cursor)
-        assert words[0] == opcode, (cursor, words[0], opcode)
-        cursor += 4 * (1 + nparams)
-        return words[1:]
+        got, operands = next(decoded)
+        assert (got, len(operands)) == (opcode, nparams), (got, operands, opcode)
+        return operands
     assert take(0x20, 1) == (0x7fff,)
     begin = texcoord = vertex = end = 0
     for x, z, index, u0, v0 in audit:
         assert take(0x40, 1) == (1,)
         begin += 1
-        for dx, dz in ((0, 0), (0, 16), (16, 16), (16, 0)):
+        for i, (dx, dz) in enumerate(((0, 0), (0, 16), (16, 16), (16, 0))):
             assert take(0x22, 1) == ((u0 + dx * 16) | ((v0 + dz * 16) << 16),)
             texcoord += 1
-            actual_x, actual_z = take(0x23, 2)
+            if i == 0:
+                actual_x, actual_z = take(0x23, 2)
+                assert (actual_x >> 16, actual_z >> 16) == (0, 0)  # y=0
+            else:
+                xz, = take(0x26, 1)
+                actual_x, actual_z = xz & 0xffff, xz >> 16
             assert struct.unpack("<h", struct.pack("<H", actual_x))[0] == (x * 16 + dx - 256) * 64
             assert struct.unpack("<h", struct.pack("<H", actual_z))[0] == (z * 16 + dz - 256) * 64
             vertex += 1
         take(0x41, 0)
         end += 1
-    assert cursor == len(commands) and (begin, texcoord, vertex, end) == (1024, 4096, 4096, 1024)
+    assert next(decoded, None) is None and (begin, texcoord, vertex, end) == (1024, 4096, 4096, 1024)
     assert begin < 2048 and vertex < 6144
-    return commands, dict(actual_stream_bytes=cursor, begin_quads=begin,
+    return bytes(commands), dict(actual_stream_bytes=len(commands), begin_quads=begin,
                           texcoords=texcoord, vertices=vertex, end_quads=end,
                           available_polygons_before_2048=2048-begin,
                           available_vertices_before_6144=6144-vertex)
@@ -159,8 +231,11 @@ def model(params, commands):
                           -16384, 0, -16384, 16384, 0, 16384, 64 * 4096, 64))
     data = struct.pack("<5I", size, sbcoff, matoff, shpoff, size) + info + node + sbc + mats + shapes
     assert len(data) == size
-    return b"MDL0" + struct.pack("<I", size + 48) + dictionary(
+    result = b"MDL0" + struct.pack("<I", size + 48) + dictionary(
         "emerald_outdoor", struct.pack("<I", 48)) + data
+    if len(result) + BMD_CONTAINER_BYTES > MAX_FIELD_MODEL_BYTES:
+        raise ValueError(f"Field model exceeds safe per-slot limit {MAX_FIELD_MODEL_BYTES:#x}")
+    return result
 
 
 def border_pixels(border, sources, source):
