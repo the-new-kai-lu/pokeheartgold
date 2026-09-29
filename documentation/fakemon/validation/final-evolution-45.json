@@ -1,0 +1,72 @@
+{
+  "heartgold": {
+    "rom_sha256": "1320a5b7aba770dc2cec24057d001de3930ef0390310e7227e49d8233590a890",
+    "evolutions": [
+      {
+        "from_species": 1077,
+        "to_species": 1078,
+        "method": "EVO_LEVEL",
+        "minimum_level": 45
+      },
+      {
+        "from_species": 1080,
+        "to_species": 1081,
+        "method": "EVO_LEVEL",
+        "minimum_level": 45
+      },
+      {
+        "from_species": 1082,
+        "to_species": 1083,
+        "method": "EVO_LEVEL",
+        "minimum_level": 45
+      },
+      {
+        "from_species": 1085,
+        "to_species": 1086,
+        "method": "EVO_LEVEL",
+        "minimum_level": 45
+      }
+    ],
+    "changed_nitrofs_files": [
+      "a/0/3/4"
+    ],
+    "arm9_arm7_and_all_other_named_nitrofs_files_unchanged": true,
+    "only_four_level_parameters_changed": true,
+    "asset_checks_passed": 413
+  },
+  "soulsilver": {
+    "rom_sha256": "71b6af9882fd45544be56ea847312208380b3880899ff57b655ccad0d5b33e72",
+    "evolutions": [
+      {
+        "from_species": 1077,
+        "to_species": 1078,
+        "method": "EVO_LEVEL",
+        "minimum_level": 45
+      },
+      {
+        "from_species": 1080,
+        "to_species": 1081,
+        "method": "EVO_LEVEL",
+        "minimum_level": 45
+      },
+      {
+        "from_species": 1082,
+        "to_species": 1083,
+        "method": "EVO_LEVEL",
+        "minimum_level": 45
+      },
+      {
+        "from_species": 1085,
+        "to_species": 1086,
+        "method": "EVO_LEVEL",
+        "minimum_level": 45
+      }
+    ],
+    "changed_nitrofs_files": [
+      "a/0/3/4"
+    ],
+    "arm9_arm7_and_all_other_named_nitrofs_files_unchanged": true,
+    "only_four_level_parameters_changed": true,
+    "asset_checks_passed": 413
+  }
+}

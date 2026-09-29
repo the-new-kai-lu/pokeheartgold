@@ -34,7 +34,9 @@ while len(personal['baseStats'])<1087:
 wotbl=ndspy.narc.NARC(original('files/poketool/personal/wotbl.narc'))
 while len(wotbl.files)<1087: wotbl.files.append(b'\xff\xff\x00\x00')
 evo=json.loads(original('files/poketool/personal/evo.json'))
-evolutions={'voltuff':('surguenon',16),'surguenon':('raijinque',49),'embernewt':('pyrovaran',16),'pyrovaran':('magmalisk',49),'rimevaran':('fimbulisk',49),'sedgling':('cragaviar',16),'cragaviar':('ragnaroc',49)}
+# Keep future imports aligned with the current port's approved evolution level.
+final_level=json.loads((ROOT/'files/fakemon/species.json').read_text())['confirmed_balance_constraints']['final_evolution_level']
+evolutions={'voltuff':('surguenon',16),'surguenon':('raijinque',final_level),'embernewt':('pyrovaran',16),'pyrovaran':('magmalisk',final_level),'rimevaran':('fimbulisk',final_level),'sedgling':('cragaviar',16),'cragaviar':('ragnaroc',final_level)}
 report={'scope':'stock HGSS machines/tutors; seven additional level-up moves', 'species':[]}
 ctutor=[]; cegg=[]; chatch=[]
 for m in mons:

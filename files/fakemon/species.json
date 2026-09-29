@@ -45,7 +45,7 @@
         "fimbulisk"
       ]
     ],
-    "final_evolution_level": 49,
+    "final_evolution_level": 45,
     "approved_spreads_and_guidelines": "DATA-WORKSHEET.md"
   },
   "unset_gameplay_fields": [],
@@ -285,7 +285,7 @@
           "from": "surguenon",
           "to": "raijinque",
           "method": "level",
-          "level": 49
+          "level": 45
         }
       ],
       "notes": [
@@ -673,13 +673,13 @@
           "from": "pyrovaran",
           "to": "magmalisk",
           "method": "level",
-          "level": 49
+          "level": 45
         },
         {
           "from": "rimevaran",
           "to": "fimbulisk",
           "method": "level",
-          "level": 49
+          "level": 45
         }
       ],
       "future_mechanic": {
@@ -957,7 +957,7 @@
           "from": "cragaviar",
           "to": "ragnaroc",
           "method": "level",
-          "level": 49
+          "level": 45
         }
       ],
       "notes": [

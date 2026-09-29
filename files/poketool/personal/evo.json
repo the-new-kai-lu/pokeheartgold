@@ -2400,7 +2400,7 @@
       "evos": [
         {
           "method": "EVO_LEVEL",
-          "param": 49,
+          "param": 45,
           "target": "SPECIES_RAIJINQUE"
         }
       ]
@@ -2420,7 +2420,7 @@
       "evos": [
         {
           "method": "EVO_LEVEL",
-          "param": 49,
+          "param": 45,
           "target": "SPECIES_MAGMALISK"
         }
       ]
@@ -2430,7 +2430,7 @@
       "evos": [
         {
           "method": "EVO_LEVEL",
-          "param": 49,
+          "param": 45,
           "target": "SPECIES_FIMBULISK"
         }
       ]
@@ -2450,7 +2450,7 @@
       "evos": [
         {
           "method": "EVO_LEVEL",
-          "param": 49,
+          "param": 45,
           "target": "SPECIES_RAGNAROC"
         }
       ]
