@@ -81,6 +81,44 @@ class EpisodeUnitTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 native_edits(root, recipe)
 
+    def test_actor_repair_header_uses_resume_not_early_load(self):
+        name = "files/fielddata/script/scr_seq/scr_seq_0966_route101_opening_hdr.s"
+        recipe = json.loads((ROOT / "scripts/episode_templates/native_edits.json").read_text())
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            native_edits(root, {name: recipe[name]})
+            header = (root / name).read_text()
+            self.assertEqual(header.count("InitScriptEntry_OnResume 5\n"), 1)
+            self.assertNotIn("InitScriptEntry_OnLoad ", header)
+            self.assertLess(header.index("InitScriptEntry_OnResume 5\n"),
+                            header.index("InitScriptEntry_OnFrameTable "))
+            self.assertEqual(sha((root / name).read_bytes()),
+                             approved_contract()[name]["after"])
+
+    def test_native_resume_follows_terrain_manager_initialization(self):
+        # Source-order regression guard, not a substitute for native menu tests.
+        # MovePersonFacing in script 5 consults the terrain manager. OnLoad can
+        # see its old freed pointer after returning from a party/menu overlay.
+        source = (ROOT / "src/field/fieldmap.c").read_text()
+        initializer = source.split("BOOL FieldMap_Init(", 1)[1].split(
+            "BOOL FieldMap_Main(", 1)[0]
+        anchors = (
+            "case FIELD_MAP_INIT_STATE_RESET:",
+            "TryStartMapScriptByType(fieldSystem, INIT_SCRIPT_ON_LOAD);",
+            "case FIELD_MAP_INIT_STATE_LOAD:",
+            "FieldSystem_InitMapLoadManager(fieldSystem);",
+            "TryStartMapScriptByType(fieldSystem, INIT_SCRIPT_ON_RESUME);",
+            "case FIELD_MAP_INIT_STATE_BOTTOM_SCREEN:",
+        )
+        positions = [initializer.index(anchor) for anchor in anchors]
+        self.assertEqual(positions, sorted(positions))
+        manager_init = source.split(
+            "static void FieldSystem_InitMapLoadManager(FieldSystem *fieldSystem) {", 1
+        )[1].split("\n}", 1)[0]
+        self.assertIn(
+            "fieldSystem->dynamicTerrainHeightManager = "
+            "DynamicTerrainHeightManager_New(8, HEAP_ID_FIELD1);", manager_init)
+
     def test_compact_geometry_budget(self):
         commands, audit = episode_assets.commands_for([0] * 1024)
         self.assertEqual(audit["begin_quads"], 1024)
@@ -256,13 +294,45 @@ class EpisodeSourceTests(unittest.TestCase):
         gmm = ET.fromstring(self.text("files/msgdata/msg/msg_0829_hoenn_reward.gmm"))
         self.assertEqual(len(gmm.findall(".//row")), 22)
         header = self.text("files/fielddata/script/scr_seq/scr_seq_0966_route101_opening_hdr.s")
-        self.assertIn("InitScriptEntry_OnLoad 5", header)
+        self.assertIn("InitScriptEntry_OnResume 5", header)
+        self.assertNotIn("InitScriptEntry_OnLoad ", header)
         self.assertIn("InitScriptGoToIfEqual VAR_TEMP_x4000, 3, 7", header)
         self.assertIn("EnsureRoute101Actors VAR_TEMP_x4003", self.bank)
         ensure = self.text("src/scrcmd_c.c").split("BOOL ScrCmd_EnsureRoute101Actors", 1)[1]
         self.assertIn("MapObject_CreateFromObjectEventWithId", ensure)
         self.assertIn("activeCount + missing >= 64", ensure)
         self.assertIn("MapObject_GetMapID(object) != MAP_ROUTE_101_TRAVEL", ensure)
+
+    @unittest.skipUnless(all(shutil.which(tool) for tool in (
+        "gcc", "arm-none-eabi-as", "arm-none-eabi-objcopy")),
+        "Native ARM script regression requires gcc and binutils-arm-none-eabi")
+    def test_compiled_resume_header_changes_only_init_type_in_both_editions(self):
+        from test_native_field_scripts import native
+        text = self.text("files/fielddata/script/scr_seq/scr_seq_0966_route101_opening_hdr.s")
+        self.assertEqual(text.count("InitScriptEntry_OnResume 5\n"), 1)
+        includes = [self.tree / name for name in ("include", "files", "asm", "lib/include")]
+        includes.append(self.tree)
+        with tempfile.TemporaryDirectory() as tmp:
+            for edition in ("HEARTGOLD", "SOULSILVER"):
+                directory = Path(tmp) / edition
+                macro = directory / "asm/macros/script.inc"
+                macro.parent.mkdir(parents=True)
+                macro.write_text(native.preprocess(
+                    self.tree / "asm/macros/script.inc", edition, includes))
+                data = []
+                for label, source_text in (
+                    ("early", text.replace("InitScriptEntry_OnResume 5\n",
+                                           "InitScriptEntry_OnLoad 5\n")),
+                    ("resume", text),
+                ):
+                    source = Path(tmp) / (label + ".s")
+                    source.write_text(source_text)
+                    bank, _ = native.assemble_bank(source, directory, edition, includes)
+                    data.append((directory / bank).read_bytes())
+                before, after = data
+                self.assertEqual(len(before), len(after))
+                self.assertEqual((before[0], after[0]), (4, 3))
+                self.assertEqual(before[1:], after[1:])
 
     def test_reward_transaction_and_party_only_nickname(self):
         transaction = self.bank.split("HoennReward_Transaction:\n", 1)[1].split(
@@ -435,8 +505,9 @@ class EpisodeSourceTests(unittest.TestCase):
         golden = Path(os.environ["EPISODE_GOLDEN"])
         actual, expected = native_inputs(ROOT, self.tree), native_inputs(ROOT, golden)
         # Historical R2 golden intentionally has the unsafe 94,636-byte model.
-        # R3 changes only that land archive; it does not change texture, terrain,
-        # script or save ABI. A newer golden may already contain R3's model.
+        # R3 changes only that land archive; a newer golden may have its model.
+        # R4 additionally changes only the init header's actor-repair phase,
+        # checked independently below. Texture, terrain and save ABI stay fixed.
         self.assertEqual(actual[LAND], FINAL_ARCHIVES[LAND])
         self.assertIn(expected[LAND], {
             actual[LAND],
@@ -455,6 +526,14 @@ class EpisodeSourceTests(unittest.TestCase):
         })
         actual.pop(recipe)
         expected.pop(recipe)
+        header = "files/fielddata/script/scr_seq/scr_seq_0966_route101_opening_hdr.s"
+        self.assertEqual(actual[header], approved_contract()[header]["after"])
+        self.assertIn(expected[header], {
+            actual[header],
+            "98212b940e22f915ef61805740e909ab7e457096634fb6ede4d92f8fa6cdf344",
+        })
+        actual.pop(header)
+        expected.pop(header)
         self.assertEqual(actual, expected)
 
 

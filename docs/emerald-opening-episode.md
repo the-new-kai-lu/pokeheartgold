@@ -1,8 +1,9 @@
 # Opt-in Emerald opening episode: source reproduction
 
-**Source reproducibility is established for the size-safe Route 101 opening
-candidate (V8r3). Native runtime verification is pending for this candidate.
-V8r2 froze because its model overwrote executable memory after battle.
+**The size-safe Route 101 candidate (V8r3) passed natural battle victory,
+warm field return, and walking, but hung when leaving the party screen.
+The current source moves actor repair to the later OnResume phase; its revised
+native build and end-to-end verification are pending.
 Full Stage 1 campaigns remain incomplete.**
 These tools do not build a ROM, launch a game, install into a build cache, or
 establish gameplay success.
@@ -15,10 +16,23 @@ and the [validation record](../expansion/VALIDATION.md).
 
 ## Current verification boundary
 
+The resume-safe V8r4 source passed all 102 owner-local tests without skips and
+the unchanged 540-map default baseline. Fresh preparation and staging matched
+all 14,882 native inputs against V8r3, with only the reviewed init-header delta.
+Actual assembled HG and SS headers differ only in the init-type byte (4 to 3).
+These checks do not establish native gameplay success for V8r4.
+
 Owner-local V8r3 checks passed all 99 source tests without skips and the unchanged
 540-map default baseline. Fresh preparation and staging reproduced the approved
 source hashes; an independent Nitro model reader decoded the compact model and
 texture. These are source/format checks, not native gameplay verification.
+
+The continuous V8r3 native run subsequently passed the chase, ordinary Scratch
+victory, Birch's thanks, and three post-battle field steps. Opening the real party
+screen worked, but closing it hung before the field returned. Read-only diagnosis
+identified an early actor-repair script using a freed terrain manager; normal
+party-menu graphics had reused that memory. This is separate from V8r2's model
+overrun, and does not justify changing graphics budgets or native allocators.
 
 The earlier V8r2 compiled candidate passed archive and script inventory audits.
 A cold native run reached the chase, a natural wild-battle victory, and Birch's
@@ -53,7 +67,23 @@ Construction, archive preparation, and final staging enforce a conservative
 This leaves a 4,096-byte policy margin below native slot capacity. A claimed
 manifest hash or budget cannot bypass the final archive-member size check.
 Independent packed-stream decoding and pixel round-trip tests cover geometry;
-the native battle-to-field transition still needs its own runtime pass.
+V8r3 also passed the continuous native battle-to-field transition and walking.
+
+## Actor repair lifecycle
+
+Script 5 repairs Route 101's actors and uses `MovePersonFacing`, which consults
+the dynamic terrain-height manager. Native `FieldMap_Init` invokes OnLoad in
+its RESET state, before `FieldSystem_InitMapLoadManager` recreates that manager
+in the LOAD state. Returning from a menu can therefore leave OnLoad looking at
+freed, reused memory.
+
+The episode init header now selects **OnResume**, after the native manager
+initialization and before the first frame-table check. The legacy script label
+`Route101_OnLoad` is unchanged; the header selects its actual lifecycle phase.
+Regression tests check both the generated header and the native initialization
+order. No native allocator, graphics, save format, state allocation, or map
+footprint is changed by this correction. A fresh continuous party-return and
+save/editor journey is still required; static checks alone do not certify it.
 
 ## Required owner-local inputs
 

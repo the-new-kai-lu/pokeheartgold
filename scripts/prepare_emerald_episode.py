@@ -104,7 +104,7 @@ def publish_directory(source, destination):
 
 
 def approved_contract():
-    """Reviewed R2 outputs/preimages, independent of any prepared-tree manifest."""
+    """Reviewed episode outputs/preimages, independent of any prepared-tree manifest."""
     return json.loads(read(TEMPLATES, "approved_deltas.json"))
 
 
@@ -301,7 +301,7 @@ def prepare(root, donor, resources, lab_assets, actor, packs, output):
         (tree / "opening-travel.json").unlink()
         report = {
             "format": 1, "status": "source-only-full-opening-not-runtime-proof",
-            "episode_definition": "route101-full-v8-r3-size-safe-geometry",
+            "episode_definition": "route101-full-v8-r4-resume-safe-actors",
             # R2 provenance is historical, NOT evidence for this R3 output.
             "historical_r2_source_report_sha256":
                 "064ee01b0d4d1c90494c5202c5b37418fd7f39ec848b9fec8a3d27f9661d1cb7",

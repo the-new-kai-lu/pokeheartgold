@@ -607,7 +607,7 @@
     ]
   },
   "files/fielddata/script/scr_seq/scr_seq_0966_route101_opening_hdr.s": {
-    "after": "98212b940e22f915ef61805740e909ab7e457096634fb6ede4d92f8fa6cdf344",
+    "after": "f9751037d4ff916269f90d825516e1954c19e637452dff95a4d8a4335b5c475a",
     "before": null,
     "edits": [
       {
@@ -619,7 +619,8 @@
           ".rodata\n",
           ".option alignment off\n",
           "// Script IDs are one-based, unlike bank entry indices.\n",
-          "InitScriptEntry_OnLoad 5\n",
+          "// Actor repair needs the terrain managers; OnLoad is too early after a menu.\n",
+          "InitScriptEntry_OnResume 5\n",
           "InitScriptEntry_OnFrameTable Route101_FrameTable\n",
           "InitScriptEntryEnd\n",
           "Route101_FrameTable:\n",
