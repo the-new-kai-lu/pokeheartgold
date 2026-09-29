@@ -1,0 +1,118 @@
+{
+  "asm/macros/script.inc": {
+    "after": "887f9d48d14f3b3b29ad27f9fa6483998c5124a8a8e977d4644e2b60e64f76e3",
+    "before": "ec7ff5446d6320632d6bba2f3cf7630341b38974e740ac6e0d34448e2254c03c"
+  },
+  "asm/overlay_01_sprite_data.s": {
+    "after": "2196735e154480cbc44d93cba08dc84ae05a6dd3a589df7d85373e7310b49c56",
+    "before": "947a43efcdb57b7c6074cdc03da5015b582aa92001b0c738620ff18451100126"
+  },
+  "expansion/baseline.json": {
+    "after": "bd09a584614e651d8387e034872d4f921a5b555ad4631663548ec5a650569a00",
+    "before": "7a09bf41c5d437b1717ebc104495f44b0381250f843cd15ebead605b56828c7a"
+  },
+  "files/a/0/4/2": {
+    "after": "3b1f65249ba7d32f2469e3fa3c65e338ffe8abb4bd8d740f935ee3666ee1afb1",
+    "before": "991506d5626fee587e4bf27042ae7b2945e167b89d6ec9f2d834d29e7476d58f"
+  },
+  "files/a/0/4/4": {
+    "after": "265746500ffdbcaebbc82bc82f949abbc7bfe24231815e4ef9e5500cfa46a5db",
+    "before": "6385837c11139c543884434a54768e7279b485214b7ca309cf8a670d8f98d647"
+  },
+  "files/a/0/6/5": {
+    "after": "9cfedfae00b15e1dfd5e1c7e4ca2d38e713e6b6b231b076e932802a110e0d3e5",
+    "before": "0817bd81cc30342bc40dd6ce829121e9a8be4e9d04d0b790f8d9d99688c4bebe"
+  },
+  "files/data/mmodel/mmodel/mmodel_00000863.NSBTX": {
+    "after": "5c699d10d769574fa1a7c4e0b0c4e79eee301d56db3353c702de4ee9d069cfdf",
+    "before": null
+  },
+  "files/data/mmodel/mmodel/mmodel_00000864.NSBTX": {
+    "after": "f965cad0757a835c11361a016a833d527fc677824196ee6268e3c0b37b246aac",
+    "before": null
+  },
+  "files/data/mmodel/mmodel/mmodel_00000865.NSBTX": {
+    "after": "c5a57ab65630bf23ac3bd269b449befda86c8ffc900751f468fe8e5e05016ce7",
+    "before": null
+  },
+  "files/fielddata/eventdata/zone_event/491_HOENN_LAB_DEBUG.json": {
+    "after": "34627d8ab15a9689da0d40289dcca106df05ad13d3ce47782c1c02ff0236ca71",
+    "before": null
+  },
+  "files/fielddata/eventdata/zone_event/492_LITTLEROOT_TOWN_TRAVEL.json": {
+    "after": "2271355908353d03078fd0d9117be1e5ce7baf0cc04087e000d15ea8b86a8099",
+    "before": null
+  },
+  "files/fielddata/eventdata/zone_event/493_ROUTE_101_TRAVEL.json": {
+    "after": "312bc873bd61b0f8afa6be243f0baeed496e87188b2abfb15a4b4c3d83a5635a",
+    "before": null
+  },
+  "files/fielddata/mapmatrix/map_matrix/map_matrix_0288_HOENN_LAB.bin": {
+    "after": "20a8f72308db2e7e56fc9c63a81c50e052900eb80d6484dfb706c60a821e9f4a",
+    "before": null
+  },
+  "files/fielddata/mapmatrix/map_matrix/map_matrix_0289_LITTLEROOT_TOWN.bin": {
+    "after": "2c11536e6ce73c83a8d06b3feb07ec7c814e6b8f013d091aae12bb61a69a3ad9",
+    "before": null
+  },
+  "files/fielddata/mapmatrix/map_matrix/map_matrix_0290_ROUTE_101.bin": {
+    "after": "7b167dbe42343268555a4db8c4bd72f421a7f12494ca05e51db8dd35bd935a4b",
+    "before": null
+  },
+  "files/fielddata/script/scr_seq/scr_seq_0843_T20R0101.s": {
+    "after": "db0fb0009036fd1ba9cf9bf11179b3f113a4d16fad93b6335a327142eb7f68b0",
+    "before": "dc71aa1bd469f53cc343855ddebfd93688550ba22d122e62b2a8bcd7795f7b24"
+  },
+  "files/fielddata/script/scr_seq/scr_seq_0965_hoenn_reward.s": {
+    "after": "71630c0bce4f39d3932431c0fc4853f05d7d10445d8c8f30ad4c80d8fa081a28",
+    "before": "492302362203461f6353391d20b894e2ea032892b2cd02f1fdaf3d5880dc810b"
+  },
+  "files/fielddata/script/scr_seq/scr_seq_0966_route101_opening_hdr.s": {
+    "after": "98212b940e22f915ef61805740e909ab7e457096634fb6ede4d92f8fa6cdf344",
+    "before": null
+  },
+  "files/msgdata/msg/msg_0279.gmm": {
+    "after": "7f0010eace73ac342cb759c63581c155b0c0dd1981c532605e9cdf5f72e7ec8e",
+    "before": "efa38ec626c3d9b43c05fcd7c03aca49ecba66970c089664ea7a933cc2f2060a"
+  },
+  "files/msgdata/msg/msg_0829_hoenn_reward.gmm": {
+    "after": "b532a21dfc42a8ca0fea8e46d88719bf454a65a05c3de50baa60f77af3b1e34a",
+    "before": "e351619e35574da46b7d36898ed8e31bb01fdae82c115dd53a6a90de12920d74"
+  },
+  "include/constants/map_sections.h": {
+    "after": "3eb1c092bb1810c5515584a9bc553e6f2f6a2c8e02c5dde64f19155ecebe32d2",
+    "before": "1102c63c2637718fa28aeb57038c78c5d614f6c8cca0018ca1d199a07613431a"
+  },
+  "include/constants/maps.h": {
+    "after": "3e69780e8b424f8cdbf08036d273a2bae4d4940d9fcf66295c96fd12bd4da478",
+    "before": "9ebf1f2f6110af509b830cc33f271d4b5d257f309212345a6bb4557321634adb"
+  },
+  "include/constants/sprites.h": {
+    "after": "4df3470006d05c8f7e62f8beca6eb78366ab19fadcf8f6c4b633cc4a873c4dca",
+    "before": "f794bad6114be6671f03fc3a80ba9d743e8b7106e1f2678c4f7f3514d75b10ed"
+  },
+  "include/scrcmd.h": {
+    "after": "9b88d84517eeefc1e622c0e3580e2f2b95da50cca64fdd24d4bdd3e257b2acf2",
+    "before": "d932d931826e52b537ee8c4b9b5a14bdc605a9b09b686a58ae2ec59bae59395f"
+  },
+  "src/data/fieldmap/script_cmd_table.h": {
+    "after": "8ff51f0ebc03e6956068a1f55d5bfebe265865986062f7b632c922ee3c9563ae",
+    "before": "08d398b612bc1fed5cc5f4c2e082ffc7da2728a911f086bca0e883f6b96b3779"
+  },
+  "src/data/map_headers.h": {
+    "after": "e0bb65b21df7663914cc15ee57e9550006466ce391c386ed1f0976208ed6c279",
+    "before": "737c837b717749df464dde7e6989f2c1da98d94ce31072fa2ef7918476ec7b05"
+  },
+  "src/map_events.c": {
+    "after": "f5c7ee8c70e604d7dbe7f0f390baec9088e4b21f706b3655da8cb5367b528b61",
+    "before": "ca7ae292989ee6ee51888b56acc73848a3842c83a86ac9da02e18c08a609fa3b"
+  },
+  "src/scrcmd_c.c": {
+    "after": "bee2bdfa063249eb821343a8de70bfcc6002f34da558b219b8c1eb381d8c691e",
+    "before": "8da03cfda1f5471acf543d358917371d1d7ce598717895a6661bfbe177f6d293"
+  },
+  "src/unk_02055BF0.c": {
+    "after": "c29be4c1e74811e042e4c40d06cb914692859ee73b9238b5ca834004b649d657",
+    "before": "1df48bdbb6d231e815daf40aeb0477ed3364e49abef54bf7db1d1f542f1810d8"
+  }
+}
