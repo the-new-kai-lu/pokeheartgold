@@ -17,6 +17,38 @@ For earlier probes and their distinct evidence boundaries, see
 [current scope and travel preparation](../expansion/EMERALD_OPENING.md#current-scope-private-probes-not-completed-campaigns)
 and the [validation record](../expansion/VALIDATION.md).
 
+## V8r5 candidate: stock met-location encoding
+
+The opt-in producer now translates the opening's custom map-section IDs 235
+(Littleroot) and 236 (Route101) to the stock met-location **Hoenn, 2005**, only
+when the native trainer-memo helper assigns a location. Map headers and map
+display names retain 235/236. This changes newly assigned met/egg locations,
+not the save layout, getters, low-level Pokémon codec, or existing saved records.
+Detailed town/route names are therefore not stored in those new Pokémon memos.
+
+The translation is deliberately inside `BoxMon_SetMetDateAndLocation`, after
+the caller's normal-location clamp. Translating before that clamp would turn
+2005 into Faraway Place (or Mystery Zone for hatching). The native codec stores
+DP-compatible 2005 in both DP and extended fields.
+
+A host-compiled test exercises the production helper across every 16-bit
+location for both met and egg writes, plus gift/wild strategies 0/7 and hatch
+strategy 6, including legacy-location copying. A separate owner-local,
+in-memory test against pinned PKHeX Core confirms 2005 is listed as Hoenn for
+HG/SS and reassignment preserves both raw fields. These are **source/property
+checks, not a native-created fixture or an actual Main-form export**.
+
+All 103 source checks passed: the donor-anchor case was run separately after
+supplying its two owner-local donor paths. The default 540-map baseline check
+also passed. Comparing all 14,882 prepared native inputs against R4 found only
+the reviewed `src/trainer_memo.c` change.
+
+The rejected R4 PKHeX nickname export remains rejected. No legacy save rewrite,
+legality normalization, or relaxed nickname-only gate is part of this change.
+A new R5 native build, fresh runtime binding, native creation/save, actual
+editor export, strict comparison, and game reload/resave are still required.
+Earlier R4 runtime evidence does not certify this changed candidate.
+
 ## Current verification boundary
 
 The resume-safe V8r4 source passed all 102 owner-local tests without skips and

@@ -925,6 +925,24 @@
       }
     ]
   },
+  "src/trainer_memo.c": {
+    "after": "8a8374504736e61fd2e2a9446edb3da15fbe62f40deb19c9182a8e0a2a176b9b",
+    "before": "a10055077a4084e94bfd3d003c6db7405a15ce6a2f2a9bc893a4defdb17c9827",
+    "edits": [
+      {
+        "end": 816,
+        "lines": [
+          "    // Keep custom map labels out of stored Pokemon metadata.\n",
+          "    // Translate after the native strategy clamps, only on a new memo write.\n",
+          "    if (mapsec == MAPSEC_LITTLEROOT_TOWN || mapsec == MAPSEC_ROUTE_101) {\n",
+          "        mapsec = METLOC_HOENN;\n",
+          "    }\n",
+          "\n"
+        ],
+        "start": 816
+      }
+    ]
+  },
   "src/unk_02055BF0.c": {
     "after": "c29be4c1e74811e042e4c40d06cb914692859ee73b9238b5ca834004b649d657",
     "before": "e27b2b195d2a77819dc18d7fe49ea8001e877bbcc7123667ddc373bbde874a63",

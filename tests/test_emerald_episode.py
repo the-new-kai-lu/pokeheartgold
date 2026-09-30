@@ -534,6 +534,16 @@ class EpisodeSourceTests(unittest.TestCase):
         })
         actual.pop(header)
         expected.pop(header)
+        # Reviewed opt-in memo write postdates historical golden trees; no
+        # other trainer-memo digest is accepted.
+        memo = "src/trainer_memo.c"
+        reviewed = "8a8374504736e61fd2e2a9446edb3da15fbe62f40deb19c9182a8e0a2a176b9b"
+        baseline = "a10055077a4084e94bfd3d003c6db7405a15ce6a2f2a9bc893a4defdb17c9827"
+        self.assertEqual(actual[memo], reviewed)
+        self.assertEqual(actual[memo], approved_contract()[memo]["after"])
+        self.assertIn(expected[memo], {baseline, reviewed})
+        actual.pop(memo)
+        expected.pop(memo)
         self.assertEqual(actual, expected)
 
 

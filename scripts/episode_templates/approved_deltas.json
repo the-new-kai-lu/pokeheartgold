@@ -111,6 +111,10 @@
     "after": "bee2bdfa063249eb821343a8de70bfcc6002f34da558b219b8c1eb381d8c691e",
     "before": "8da03cfda1f5471acf543d358917371d1d7ce598717895a6661bfbe177f6d293"
   },
+  "src/trainer_memo.c": {
+    "after": "8a8374504736e61fd2e2a9446edb3da15fbe62f40deb19c9182a8e0a2a176b9b",
+    "before": "a10055077a4084e94bfd3d003c6db7405a15ce6a2f2a9bc893a4defdb17c9827"
+  },
   "src/unk_02055BF0.c": {
     "after": "c29be4c1e74811e042e4c40d06cb914692859ee73b9238b5ca834004b649d657",
     "before": "1df48bdbb6d231e815daf40aeb0477ed3364e49abef54bf7db1d1f542f1810d8"
