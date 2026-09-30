@@ -4,7 +4,9 @@
 journey through natural rescue victory, party-menu return, Treecko gift,
 the in-game nickname LEAF, native save and cold reload. Actual PKHeX and PKMDS
 money edits also survived a shared-byte game reload, native Johto resave,
-and another cold restart/revisit.
+and another cold restart/revisit. A later populated-PC PKMDS nickname edit
+passed native readback/resave; the corresponding PKHeX Main-form edit failed
+strict met-location preservation and remains unresolved.
 Full Stage 1 campaigns remain incomplete.**
 These tools do not build a ROM, launch a game, install into a build cache, or
 establish gameplay success.
@@ -36,10 +38,22 @@ Those static checks are separate from the recorded native HeartGold checks:
   a genuine native save. A fresh cold restart of that game-written save
   verified money 3001, TOTODILE and LEAF, then walked to Elm, revisited Hoenn
   and verified the duplicate-gift guard again.
+- A later native travel/heal/PC-deposit/save run established one boxed
+  Treecko/LEAF and one party Totodile. Actual PKMDS GUI changed only the boxed
+  nickname to LEAF2, exported and reopened it. The strict byte comparison
+  passed; a fresh 49-capture native run displayed LEAF2 in Box 1 and saved.
+  The game-written file retained all Pokémon data, work and flags with valid
+  CRCs, unchanged footer/PC geometry and advancing native save counters.
+- The corresponding actual PKHeX Main-form nickname edit was rejected:
+  custom met location extended 235 / DP 3002 became 0/0. Its checksums and
+  other save data passing do not override that failure. It was not accepted
+  or native-tested as a successful export; the comparison gate is unchanged.
 
 See the [validation record](../expansion/VALIDATION.md) for build/save hashes
-and the precise scope. This is not two separate game runs per editor, an
-editor nickname-change test, a V8r4 SoulSilver result, or a full campaign.
+and the precise scope. The money-only native run covers identical exports,
+not two independent game runs. The boxed nickname/native-resave pass is
+PKMDS-only; it is not a PKHeX nickname pass, a V8r4 SoulSilver result, or a
+full campaign.
 
 Owner-local V8r3 checks passed all 99 source tests without skips and the unchanged
 540-map default baseline. Fresh preparation and staging reproduced the approved

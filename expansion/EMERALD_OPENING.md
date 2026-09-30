@@ -3,8 +3,10 @@
 The default production-map baseline still has 540 maps. The opt-in preparers
 below create disposable source trees outside the checkout; they do not install
 their maps or actors into that baseline. The latest resume-safe HeartGold
-Route 101 journey, actual browser/WinForms money-edit evidence, and earlier
-earned SoulSilver probe are recorded in `VALIDATION.md`. These supersede
+Route 101 journey, actual browser/WinForms money-edit evidence, populated-PC
+deposit, PKMDS boxed-nickname/native-resave pass, PKHeX boxed-nickname
+metadata-loss failure, and earlier earned SoulSilver probe are recorded in
+`VALIDATION.md`. These supersede
 only the corresponding earlier limitations, not the campaign and storage
 gates. For the current opt-in episode candidate, see
 [source reproduction and verification](../docs/emerald-opening-episode.md).

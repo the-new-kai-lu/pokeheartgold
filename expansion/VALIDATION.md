@@ -2,6 +2,55 @@
 
 This is a partial implementation checkpoint, not Stage 1 completion.
 
+## Populated PC and boxed nickname checks — 2026-09-30
+
+- These checks use the same private V8r4 HeartGold build and published source
+  `f70134ea40b9f3db0bb6228308a3c26da6c9bd20`, not a new ROM or edition.
+  A physical-input native journey completed ordinary travel, healing, PC
+  deposit and Save: 416 captures / 64,880 frames. Its immutable 524,410-byte
+  DSV SHA-256 is
+  `b5e21f1133bed39033581a5e788de4c4efcbd25caaa685d5df8b6826eecc6955`.
+  Stock HGSS detection, all four block CRCs, map 69 at (11,13), money 3001,
+  one party Totodile, one boxed Treecko/LEAF in Box 1 slot 1, and rescue/
+  receipt 1/252 were independently verified.
+- Actual PKMDS GUI changed only that boxed nickname LEAF→LEAF2, exported
+  through the native Save chooser, reopened the export and verified the
+  Pokémon and Save Info. The exported DSV SHA-256 is
+  `f298191ec4bda45cd45c9bb59488b29592b171690f9622b572781bde4bdf222e`.
+  The unchanged strict nickname-only comparator passes: 135 raw byte
+  differences, zero unexpected changes, all four CRCs valid. This is an
+  actual application export, not a harness-generated save.
+- A fresh native cold run from an exact copy of that PKMDS export displayed
+  TREECKO/LEAF2 in Box 1 slot 1 without withdrawing it, exited the PC and
+  used the ordinary field Save/overwrite flow on the working copy.
+  The run completed 49 captures / 6,152 frames, returning to the field menu.
+  An earlier restart-interrupted 12-capture session is not counted.
+  The frozen game-written DSV SHA-256 is
+  `06ae08475a66ed2eecc622d8e62aeab1d6632a16ba058784bd5547f14e9d39a2`.
+  Independent read-only verification passes: general/storage counters 8→9,
+  all four CRCs valid, identical footer, all 540 decoded PC slots and the
+  entire active Totodile data preserved, all 368 work values and 2,912 flags
+  unchanged, same location/money/18×30 PC geometry, and box-change bitmap zero.
+  The working battery still matched that frozen file after core shutdown.
+- **PKHeX's normal Main-form nickname edit fails this case.** Actual Ctrl-slot
+  View, nickname LEAF→LEAF2, Shift-slot Set and Save As produced DSV SHA-256
+  `cf172bd61ae518a9ac52cb1f684a41b19ee7ea1f1bc0a54a5a0d78bae74f356d`.
+  The same strict comparator rejects it: decrypted offsets `0x46`, `0x80`
+  and `0x81` changed outside nickname/checksum bytes. Met location
+  extended 235 / DP placeholder 3002 became 0/0. Other save bytes and CRCs
+  passed, but that does not excuse the metadata loss. This rejected export
+  was not native-tested as a successful round trip; no gate was relaxed.
+- Every native request used ordinary physical input, the interpreter core,
+  zero state bytes and no backup/restore requests. Original fixtures and
+  accepted/rejected exports remain immutable and private. The known retail
+  encounter warning remains unchanged; no legalization was performed.
+  No ROM, save, proprietary tool/license or screenshot is published.
+- This closes only the recorded HG populated-PC deposit and PKMDS boxed
+  nickname/native-resave case. PKHeX nickname preservation, R4 SoulSilver,
+  other edit types/opening branches and both complete campaigns remain open.
+  Additional proven durable story capacity is still zero. Stage 1 remains
+  incomplete; the earlier money-only results below remain separate evidence.
+
 ## Latest resume-safe HeartGold opening and real-editor money roundtrip — 2026-09-29
 
 - The private opt-in V8r4 build uses published source commit
