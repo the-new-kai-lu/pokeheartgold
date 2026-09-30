@@ -1,9 +1,10 @@
 # Opt-in Emerald opening episode: source reproduction
 
-**The size-safe Route 101 candidate (V8r3) passed natural battle victory,
-warm field return, and walking, but hung when leaving the party screen.
-The current source moves actor repair to the later OnResume phase; its revised
-native build and end-to-end verification are pending.
+**The resume-safe Route 101 candidate (V8r4) passed one owner-local HeartGold
+journey through natural rescue victory, party-menu return, Treecko gift,
+the in-game nickname LEAF, native save and cold reload. Actual PKHeX and PKMDS
+money edits also survived a shared-byte game reload, native Johto resave,
+and another cold restart/revisit.
 Full Stage 1 campaigns remain incomplete.**
 These tools do not build a ROM, launch a game, install into a build cache, or
 establish gameplay success.
@@ -20,7 +21,25 @@ The resume-safe V8r4 source passed all 102 owner-local tests without skips and
 the unchanged 540-map default baseline. Fresh preparation and staging matched
 all 14,882 native inputs against V8r3, with only the reviewed init-header delta.
 Actual assembled HG and SS headers differ only in the init-type byte (4 to 3).
-These checks do not establish native gameplay success for V8r4.
+Those static checks are separate from the recorded native HeartGold checks:
+
+- The matching native build passed natural rescue victory, Birch's thanks,
+  field walking, opening and closing the party screen, the Treecko gift,
+  native LEAF nickname entry and in-game Save. An untouched-save cold run
+  then verified party, walking and the already-received gift guard.
+- Actual PKHeX and PKMDS each independently changed only money 3000→3001,
+  exported a new DSV and reopened it. The outputs were byte-identical.
+  Read-only comparison preserved identity, position, party, all 540 PC slots,
+  all work/flags, both partition story ranges and the DSV footer. The PC was
+  empty; this is not a populated-PC test.
+- One cold game run of those shared bytes returned normally to Elm and made
+  a genuine native save. A fresh cold restart of that game-written save
+  verified money 3001, TOTODILE and LEAF, then walked to Elm, revisited Hoenn
+  and verified the duplicate-gift guard again.
+
+See the [validation record](../expansion/VALIDATION.md) for build/save hashes
+and the precise scope. This is not two separate game runs per editor, an
+editor nickname-change test, a V8r4 SoulSilver result, or a full campaign.
 
 Owner-local V8r3 checks passed all 99 source tests without skips and the unchanged
 540-map default baseline. Fresh preparation and staging reproduced the approved
@@ -47,8 +66,9 @@ export/cold-reload journey are not certified by this run. Earlier editor tests
 and earlier candidates must not be substituted for those missing checks.
 
 The generated manifest deliberately retains `runtime_verified: false`.
-Reproducing candidate source bytes does not make this a completed opening or
-establish storage capacity for both complete imported campaigns.
+It describes source reproduction, not automatic sign-off for newly generated
+outputs. The recorded HeartGold journey does not certify every opening branch
+or establish storage capacity for both complete imported campaigns.
 
 ## Model slot safety
 
@@ -82,8 +102,10 @@ initialization and before the first frame-table check. The legacy script label
 `Route101_OnLoad` is unchanged; the header selects its actual lifecycle phase.
 Regression tests check both the generated header and the native initialization
 order. No native allocator, graphics, save format, state allocation, or map
-footprint is changed by this correction. A fresh continuous party-return and
-save/editor journey is still required; static checks alone do not certify it.
+footprint is changed by this correction. The recorded HeartGold build passed
+the continuous battle-to-party-return check and the separate save/editor/cold-
+reload journey. Static checks alone, and the older separate SoulSilver probe,
+do not certify other builds.
 
 ## Required owner-local inputs
 

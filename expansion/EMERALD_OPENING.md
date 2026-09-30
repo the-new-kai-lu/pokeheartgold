@@ -2,9 +2,12 @@
 
 The default production-map baseline still has 540 maps. The opt-in preparers
 below create disposable source trees outside the checkout; they do not install
-their maps or actors into that baseline. The latest earned SoulSilver save and
-actual browser/WinForms editor evidence is in `VALIDATION.md`. It supersedes
-earlier no-SS/no-UI limitations, not the remaining campaign and storage gates.
+their maps or actors into that baseline. The latest resume-safe HeartGold
+Route 101 journey, actual browser/WinForms money-edit evidence, and earlier
+earned SoulSilver probe are recorded in `VALIDATION.md`. These supersede
+only the corresponding earlier limitations, not the campaign and storage
+gates. For the current opt-in episode candidate, see
+[source reproduction and verification](../docs/emerald-opening-episode.md).
 
 ## Private native actor and three-map travel preparation
 
@@ -46,7 +49,8 @@ inside the source tree before opening its inputs.
   members/table rows and all non-graphics actor fields. The combined manifest
   records its own final hashes rather than reusing the standalone manifest.
 
-All **67 host tests** passed together with APICULA and the private inputs;
+At this earlier three-map preparation checkpoint, all **67 host tests**
+passed together with APICULA and the private inputs;
 the unchanged production-map baseline audit reports no errors. The private
 combined example is `/tmp/emerald-opening-travel-birch-94020a8-v4`, manifest
 SHA-256 `e7290055fea9cf9508a665b8d84959acccac257a2acfa807fba82cc586d0a31b`.
@@ -60,9 +64,11 @@ and sentinel preserved. It is the lab-only probe, **not the combined travel
 ROM**. Four-direction appearance, walking/feet, transitions and measured
 VRAM headroom require separately recorded runtime evidence.
 
-Elm ingress/return are still explicit debug access. The rescue remains in the
-isolated lab, not an authentic Route 101 chase; no complete episode or campaign
-is installed. Two assessed story-variable slots do not prove capacity for
+Elm ingress/return are still explicit debug access. In these standalone
+preparations the rescue remains in the isolated lab, not an authentic Route
+101 chase. The separate V8r4 episode candidate has the recorded HeartGold
+journey above; no complete campaign is installed in the default baseline.
+Two assessed story-variable slots do not prove capacity for
 full Emerald plus Platinum persistence. No unproven flags or padding are
 allocated, and no new save layout is introduced.
 
