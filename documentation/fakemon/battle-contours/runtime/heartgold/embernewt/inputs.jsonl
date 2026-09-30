@@ -1,0 +1,7 @@
+{"keys": ["A", "A", "A", "A"], "frames": 400, "name": "relocated-field"}
+{"keys": [["RIGHT", 8, 180]], "name": "rival-approach"}
+{"frames": 400, "name": "rival-intro"}
+{"keys": ["A", "A", "A", "A"], "name": "rival-stolen-three"}
+{"keys": ["A", "A", "A"], "frames": 700, "name": "battle-start"}
+{"keys": ["A", "A", "A", "A"], "frames": 600, "name": "battle-challenge"}
+{"keys": ["A"], "frames": 180, "name": "battle-command"}

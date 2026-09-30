@@ -1,5 +1,7 @@
 # Close-up battle backs and revised side walking
 
+> Battle art has since received [contour and anatomy repairs](../battle-contours/README.md), including complete Ragnaroc wings and repaired Fimbulisk/Rimevaran heads. Use the newer battle-art script when reproducing current sprites. This revision remains the source for the follower poses.
+
 The custom battle backs previously fit nearly the entire Pokemon into an 80 x 80 frame. Stock HGSS backs commonly devote that space to the head and upper body. This revision enlarges and reframes all eleven backs individually, and replaces the straight follower leg strokes with shaped, bent legs and a distinct passing step.
 
 [Before/after backs](back-before-after.png) | [Both frames, normal and shiny](back-frames-normal-shiny.png) | [Actual battle captures](runtime-battles.png) | [Before/after walking animation](walking-before-after.gif) | [Actual walking steps](runtime-walking-steps.png)

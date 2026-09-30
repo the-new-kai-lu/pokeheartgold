@@ -1,0 +1,80 @@
+[
+  {
+    "game": "heartgold",
+    "species": "voltuff",
+    "exit_code": 0,
+    "output": "/tmp/battle-outline-repair/runtime-heartgold-voltuff"
+  },
+  {
+    "game": "heartgold",
+    "species": "surguenon",
+    "exit_code": 0,
+    "output": "/tmp/battle-outline-repair/runtime-heartgold-surguenon"
+  },
+  {
+    "game": "heartgold",
+    "species": "raijinque",
+    "exit_code": 0,
+    "output": "/tmp/battle-outline-repair/runtime-heartgold-raijinque"
+  },
+  {
+    "game": "heartgold",
+    "species": "embernewt",
+    "exit_code": 0,
+    "output": "/tmp/battle-outline-repair/runtime-heartgold-embernewt"
+  },
+  {
+    "game": "heartgold",
+    "species": "pyrovaran",
+    "exit_code": 0,
+    "output": "/tmp/battle-outline-repair/runtime-heartgold-pyrovaran"
+  },
+  {
+    "game": "heartgold",
+    "species": "magmalisk",
+    "exit_code": 0,
+    "output": "/tmp/battle-outline-repair/runtime-heartgold-magmalisk"
+  },
+  {
+    "game": "heartgold",
+    "species": "rimevaran",
+    "exit_code": 0,
+    "output": "/tmp/battle-outline-repair/runtime-heartgold-rimevaran"
+  },
+  {
+    "game": "heartgold",
+    "species": "fimbulisk",
+    "exit_code": 0,
+    "output": "/tmp/battle-outline-repair/runtime-heartgold-fimbulisk"
+  },
+  {
+    "game": "heartgold",
+    "species": "sedgling",
+    "exit_code": 0,
+    "output": "/tmp/battle-outline-repair/runtime-heartgold-sedgling"
+  },
+  {
+    "game": "heartgold",
+    "species": "cragaviar",
+    "exit_code": 0,
+    "output": "/tmp/battle-outline-repair/runtime-heartgold-cragaviar"
+  },
+  {
+    "game": "heartgold",
+    "species": "ragnaroc",
+    "exit_code": 0,
+    "output": "/tmp/battle-outline-repair/runtime-heartgold-ragnaroc"
+  },
+  {
+    "game": "soulsilver",
+    "species": "fimbulisk",
+    "exit_code": 0,
+    "output": "/tmp/battle-outline-repair/runtime-soulsilver-fimbulisk"
+  },
+  {
+    "game": "soulsilver",
+    "species": "ragnaroc",
+    "exit_code": 0,
+    "output": "/tmp/battle-outline-repair/runtime-soulsilver-ragnaroc"
+  }
+]

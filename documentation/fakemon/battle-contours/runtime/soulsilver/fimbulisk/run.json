@@ -1,0 +1,9 @@
+{
+  "rom_sha256": "de5a61bbddbaaf198e25fb320d7839d060284e111cff459ea0e7e9972fbacf3c",
+  "input_save": "/tmp/closeup-gaits/fixtures/fimbulisk.sav",
+  "input_save_sha256": "3715caa58187d6eec4364e05d99565f44c0dce6f79524bae045cb7bb7aab3140",
+  "emulator": "py-desmume",
+  "captures": [],
+  "status": "awaiting_visual_review",
+  "total_emulated_frames": 5336
+}

@@ -1,0 +1,9 @@
+{
+  "rom_sha256": "43d87b8e01dcd74abd9a6ab501448626ae009a32d80424395f3e501a28003eec",
+  "input_save": "/tmp/closeup-gaits/fixtures/magmalisk.sav",
+  "input_save_sha256": "e4ef8f60b0f146eb5c00c5b17facfe69f93843ed545ae4243704a424e1bfefc6",
+  "emulator": "py-desmume",
+  "captures": [],
+  "status": "awaiting_visual_review",
+  "total_emulated_frames": 5336
+}

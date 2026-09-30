@@ -6,22 +6,22 @@
       {
         "index": 2964,
         "file": "voltuff/battle-0.bin",
-        "sha256": "cd181be2d5fb25d0e62edcb13912069c8d1e41da6b5ec3d1a5f9765e7dd3fd73"
+        "sha256": "32f5a6eeeff1616ee633234c4fcf52fa5bbf9d7445345a94341e9dfa862e61ae"
       },
       {
         "index": 2965,
         "file": "voltuff/battle-1.bin",
-        "sha256": "cd181be2d5fb25d0e62edcb13912069c8d1e41da6b5ec3d1a5f9765e7dd3fd73"
+        "sha256": "32f5a6eeeff1616ee633234c4fcf52fa5bbf9d7445345a94341e9dfa862e61ae"
       },
       {
         "index": 2966,
         "file": "voltuff/battle-2.bin",
-        "sha256": "fbf9b830089cb2cf5101e065bb54e13dee47d7ea5ebf47a3ddeb02da3cda0266"
+        "sha256": "8807343c6e6748bc0237b007e4bc259fd2ad082c7d4b8c120a247942163d175d"
       },
       {
         "index": 2967,
         "file": "voltuff/battle-3.bin",
-        "sha256": "fbf9b830089cb2cf5101e065bb54e13dee47d7ea5ebf47a3ddeb02da3cda0266"
+        "sha256": "8807343c6e6748bc0237b007e4bc259fd2ad082c7d4b8c120a247942163d175d"
       },
       {
         "index": 2968,
@@ -36,22 +36,22 @@
       {
         "index": 2970,
         "file": "surguenon/battle-0.bin",
-        "sha256": "67ace643e5d9b68d59dda09c1c18bbd9f54f829b392d5a5803c65e12420fe147"
+        "sha256": "a5a36726c55775b348ea1be3feb27de0f6fed9816d3773482b82fd029e71fcbe"
       },
       {
         "index": 2971,
         "file": "surguenon/battle-1.bin",
-        "sha256": "67ace643e5d9b68d59dda09c1c18bbd9f54f829b392d5a5803c65e12420fe147"
+        "sha256": "a5a36726c55775b348ea1be3feb27de0f6fed9816d3773482b82fd029e71fcbe"
       },
       {
         "index": 2972,
         "file": "surguenon/battle-2.bin",
-        "sha256": "1390ec754143ab0730728acf4e5f716028d83455175af7f01af5267822dcb43b"
+        "sha256": "8b4e45cf4ab0397e87db8326d1f9df2e0cbc1182b3b197f4edc7c77c1d3a3fb4"
       },
       {
         "index": 2973,
         "file": "surguenon/battle-3.bin",
-        "sha256": "1390ec754143ab0730728acf4e5f716028d83455175af7f01af5267822dcb43b"
+        "sha256": "8b4e45cf4ab0397e87db8326d1f9df2e0cbc1182b3b197f4edc7c77c1d3a3fb4"
       },
       {
         "index": 2974,
@@ -66,22 +66,22 @@
       {
         "index": 2976,
         "file": "raijinque/battle-0.bin",
-        "sha256": "08a2a6a48b4f717e74f1d767cee98134261d947597bba6a0dbc928885a928f5a"
+        "sha256": "10d5742227df71b2f1351d8ea201d72372f840c83ba11282d6fe22faa480607b"
       },
       {
         "index": 2977,
         "file": "raijinque/battle-1.bin",
-        "sha256": "08a2a6a48b4f717e74f1d767cee98134261d947597bba6a0dbc928885a928f5a"
+        "sha256": "10d5742227df71b2f1351d8ea201d72372f840c83ba11282d6fe22faa480607b"
       },
       {
         "index": 2978,
         "file": "raijinque/battle-2.bin",
-        "sha256": "1680841c764600973814751dc1383d86f5d9b4d5341a5c8b5dfa24bb2476b362"
+        "sha256": "7ea95930ceeb44c0708c2133269a537d5d1b94be99164483b079187af08ced7c"
       },
       {
         "index": 2979,
         "file": "raijinque/battle-3.bin",
-        "sha256": "1680841c764600973814751dc1383d86f5d9b4d5341a5c8b5dfa24bb2476b362"
+        "sha256": "7ea95930ceeb44c0708c2133269a537d5d1b94be99164483b079187af08ced7c"
       },
       {
         "index": 2980,
@@ -96,22 +96,22 @@
       {
         "index": 2982,
         "file": "embernewt/battle-0.bin",
-        "sha256": "ce1436ad4e5f0765c6862310792dbf3721e4f04db694d96abe6ae003c2edcbb4"
+        "sha256": "f15441e29bc71fe496ddddafab0eaff914176b08b3bedcf2dc0542252299a53d"
       },
       {
         "index": 2983,
         "file": "embernewt/battle-1.bin",
-        "sha256": "ce1436ad4e5f0765c6862310792dbf3721e4f04db694d96abe6ae003c2edcbb4"
+        "sha256": "f15441e29bc71fe496ddddafab0eaff914176b08b3bedcf2dc0542252299a53d"
       },
       {
         "index": 2984,
         "file": "embernewt/battle-2.bin",
-        "sha256": "0f73fe1f7806cb4d0bdc3e044b5fee8e390cfd302070ec105da820edb1fb7b86"
+        "sha256": "86c8f97b2c9ec85026a496634ba058d6bf36b94ed0a3668348d1265858790127"
       },
       {
         "index": 2985,
         "file": "embernewt/battle-3.bin",
-        "sha256": "0f73fe1f7806cb4d0bdc3e044b5fee8e390cfd302070ec105da820edb1fb7b86"
+        "sha256": "86c8f97b2c9ec85026a496634ba058d6bf36b94ed0a3668348d1265858790127"
       },
       {
         "index": 2986,
@@ -126,22 +126,22 @@
       {
         "index": 2988,
         "file": "pyrovaran/battle-0.bin",
-        "sha256": "4309e2c7f4193999ab0091196f63bfd4c28d0173032b89e5477ddcc4bd98e46c"
+        "sha256": "6f334f1272c93e689afe96343bf5cc373e3123dfc424636b7bf015c901155bff"
       },
       {
         "index": 2989,
         "file": "pyrovaran/battle-1.bin",
-        "sha256": "4309e2c7f4193999ab0091196f63bfd4c28d0173032b89e5477ddcc4bd98e46c"
+        "sha256": "6f334f1272c93e689afe96343bf5cc373e3123dfc424636b7bf015c901155bff"
       },
       {
         "index": 2990,
         "file": "pyrovaran/battle-2.bin",
-        "sha256": "71af98f4d74fbaf4c4b56adf0f7b9471380c87a1521b8ea50f041af25a6bad0e"
+        "sha256": "2b9b624fdcc39dfcd7239300e89b851e7d74a927989c3c43b77588e7726fd826"
       },
       {
         "index": 2991,
         "file": "pyrovaran/battle-3.bin",
-        "sha256": "71af98f4d74fbaf4c4b56adf0f7b9471380c87a1521b8ea50f041af25a6bad0e"
+        "sha256": "2b9b624fdcc39dfcd7239300e89b851e7d74a927989c3c43b77588e7726fd826"
       },
       {
         "index": 2992,
@@ -156,22 +156,22 @@
       {
         "index": 2994,
         "file": "magmalisk/battle-0.bin",
-        "sha256": "85869a53320472ddcdcc9512952d86fe107355c43da300228b04be478eca341f"
+        "sha256": "5334beadc558936f3ba11af223aade4566e1a1774b0214974bf67d6c72e1cad2"
       },
       {
         "index": 2995,
         "file": "magmalisk/battle-1.bin",
-        "sha256": "85869a53320472ddcdcc9512952d86fe107355c43da300228b04be478eca341f"
+        "sha256": "5334beadc558936f3ba11af223aade4566e1a1774b0214974bf67d6c72e1cad2"
       },
       {
         "index": 2996,
         "file": "magmalisk/battle-2.bin",
-        "sha256": "ce5a7e817dabdfdf15d2a95023935e6929d76398ec439e2fd014d4600dcb6318"
+        "sha256": "37c6d6c719c843e8060a99fd958e8c583da0ae683540920cd9f76e56ba61f46e"
       },
       {
         "index": 2997,
         "file": "magmalisk/battle-3.bin",
-        "sha256": "ce5a7e817dabdfdf15d2a95023935e6929d76398ec439e2fd014d4600dcb6318"
+        "sha256": "37c6d6c719c843e8060a99fd958e8c583da0ae683540920cd9f76e56ba61f46e"
       },
       {
         "index": 2998,
@@ -186,22 +186,22 @@
       {
         "index": 3000,
         "file": "rimevaran/battle-0.bin",
-        "sha256": "2e3ad4bb336e554511c32d20535f42fdf8a7e20ccd3dd401d44d80ab744bf315"
+        "sha256": "46729688274492ccd2e65ad6d311e35357f2967febfe3e1933b899676167422b"
       },
       {
         "index": 3001,
         "file": "rimevaran/battle-1.bin",
-        "sha256": "2e3ad4bb336e554511c32d20535f42fdf8a7e20ccd3dd401d44d80ab744bf315"
+        "sha256": "46729688274492ccd2e65ad6d311e35357f2967febfe3e1933b899676167422b"
       },
       {
         "index": 3002,
         "file": "rimevaran/battle-2.bin",
-        "sha256": "17f735125f861a772389839c76e5a3eb3d973c919245e4ea26db3b93a4e1d9c2"
+        "sha256": "a1c77e55927692e416f494330c2da5ab8231761d707d215b0d2f6e2a49180f5d"
       },
       {
         "index": 3003,
         "file": "rimevaran/battle-3.bin",
-        "sha256": "17f735125f861a772389839c76e5a3eb3d973c919245e4ea26db3b93a4e1d9c2"
+        "sha256": "a1c77e55927692e416f494330c2da5ab8231761d707d215b0d2f6e2a49180f5d"
       },
       {
         "index": 3004,
@@ -216,22 +216,22 @@
       {
         "index": 3006,
         "file": "fimbulisk/battle-0.bin",
-        "sha256": "1800237a7dedee5b9217054972e98e419690ce7b6764fc4600490aad81b08ac4"
+        "sha256": "57674de0afe8b06ccf721f12c53902685a1151741137fe54f72dd5fe8b29272d"
       },
       {
         "index": 3007,
         "file": "fimbulisk/battle-1.bin",
-        "sha256": "1800237a7dedee5b9217054972e98e419690ce7b6764fc4600490aad81b08ac4"
+        "sha256": "57674de0afe8b06ccf721f12c53902685a1151741137fe54f72dd5fe8b29272d"
       },
       {
         "index": 3008,
         "file": "fimbulisk/battle-2.bin",
-        "sha256": "39bde7c27242ca6bedd44453869daeed1c848d90ddb00bcdcd4ae6bd9d52337f"
+        "sha256": "04ebe1cd90b51f27b3b081ce2cd187023078090aae767000b729303a24043b39"
       },
       {
         "index": 3009,
         "file": "fimbulisk/battle-3.bin",
-        "sha256": "39bde7c27242ca6bedd44453869daeed1c848d90ddb00bcdcd4ae6bd9d52337f"
+        "sha256": "04ebe1cd90b51f27b3b081ce2cd187023078090aae767000b729303a24043b39"
       },
       {
         "index": 3010,
@@ -246,22 +246,22 @@
       {
         "index": 3012,
         "file": "sedgling/battle-0.bin",
-        "sha256": "6f7dfded828e2d45894f82dde65168d474ac7ae9261db0e853938148794dd65e"
+        "sha256": "886f556f0c88a4be35f5f75c5755ec8040d6781d0f35fedc2a85167c771398a9"
       },
       {
         "index": 3013,
         "file": "sedgling/battle-1.bin",
-        "sha256": "6f7dfded828e2d45894f82dde65168d474ac7ae9261db0e853938148794dd65e"
+        "sha256": "886f556f0c88a4be35f5f75c5755ec8040d6781d0f35fedc2a85167c771398a9"
       },
       {
         "index": 3014,
         "file": "sedgling/battle-2.bin",
-        "sha256": "c68f3b92801181a91cd01e619c47d676aec107d1ffd06cf365e48196e7c51ba1"
+        "sha256": "14e0f14d16bca20a7c84c9b560d8c98c4bdaccefa0e4da84641d43e82c0754df"
       },
       {
         "index": 3015,
         "file": "sedgling/battle-3.bin",
-        "sha256": "c68f3b92801181a91cd01e619c47d676aec107d1ffd06cf365e48196e7c51ba1"
+        "sha256": "14e0f14d16bca20a7c84c9b560d8c98c4bdaccefa0e4da84641d43e82c0754df"
       },
       {
         "index": 3016,
@@ -276,22 +276,22 @@
       {
         "index": 3018,
         "file": "cragaviar/battle-0.bin",
-        "sha256": "f20af2aa9fea0a4513c84f2d54fd11705e47b8db707c6104632cb47a0a5ab72a"
+        "sha256": "57f21ef75e5dbce90234ac90f4b959b9b2f445f95ca9940ae280737d4f0df74b"
       },
       {
         "index": 3019,
         "file": "cragaviar/battle-1.bin",
-        "sha256": "f20af2aa9fea0a4513c84f2d54fd11705e47b8db707c6104632cb47a0a5ab72a"
+        "sha256": "57f21ef75e5dbce90234ac90f4b959b9b2f445f95ca9940ae280737d4f0df74b"
       },
       {
         "index": 3020,
         "file": "cragaviar/battle-2.bin",
-        "sha256": "58d8af22bea3ff1ab24a00f98d8b9061bd649b6a3288d8bb832c4004c68f75c9"
+        "sha256": "ea2d101f2b558d3b95b2aa1143ef6279901a5a8d6e088c1533bdf698ccf25c9c"
       },
       {
         "index": 3021,
         "file": "cragaviar/battle-3.bin",
-        "sha256": "58d8af22bea3ff1ab24a00f98d8b9061bd649b6a3288d8bb832c4004c68f75c9"
+        "sha256": "ea2d101f2b558d3b95b2aa1143ef6279901a5a8d6e088c1533bdf698ccf25c9c"
       },
       {
         "index": 3022,
@@ -306,22 +306,22 @@
       {
         "index": 3024,
         "file": "ragnaroc/battle-0.bin",
-        "sha256": "f6c8a7267e9b140bb104603292b6aba73ba9d41e54867797ceb6498bef668354"
+        "sha256": "d29c7a662a77bf4f5ecd01ce888b7f8d7ca8de9604f07dae7c5f215ca916bfbd"
       },
       {
         "index": 3025,
         "file": "ragnaroc/battle-1.bin",
-        "sha256": "f6c8a7267e9b140bb104603292b6aba73ba9d41e54867797ceb6498bef668354"
+        "sha256": "d29c7a662a77bf4f5ecd01ce888b7f8d7ca8de9604f07dae7c5f215ca916bfbd"
       },
       {
         "index": 3026,
         "file": "ragnaroc/battle-2.bin",
-        "sha256": "4df586e4c14146e432ca87cae139cf517f1da975c9529bddf59867316fa86381"
+        "sha256": "7155eeed525fe798f9b69d93ff451a07f4c53cc8f7b4248d80834924fc710684"
       },
       {
         "index": 3027,
         "file": "ragnaroc/battle-3.bin",
-        "sha256": "4df586e4c14146e432ca87cae139cf517f1da975c9529bddf59867316fa86381"
+        "sha256": "7155eeed525fe798f9b69d93ff451a07f4c53cc8f7b4248d80834924fc710684"
       },
       {
         "index": 3028,

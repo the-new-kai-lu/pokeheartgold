@@ -1,0 +1,9 @@
+{
+  "rom_sha256": "43d87b8e01dcd74abd9a6ab501448626ae009a32d80424395f3e501a28003eec",
+  "input_save": "/tmp/closeup-gaits/fixtures/sedgling.sav",
+  "input_save_sha256": "ccec2727f851367f3c112399952c804841e28f0ca178031fba47d98980eee6bb",
+  "emulator": "py-desmume",
+  "captures": [],
+  "status": "awaiting_visual_review",
+  "total_emulated_frames": 5336
+}

@@ -1,0 +1,9 @@
+{
+  "rom_sha256": "43d87b8e01dcd74abd9a6ab501448626ae009a32d80424395f3e501a28003eec",
+  "input_save": "/tmp/closeup-gaits/fixtures/voltuff.sav",
+  "input_save_sha256": "646684f03ee8b4e19db59063ba68f08f73b3fda9dc468147bacc163802040869",
+  "emulator": "py-desmume",
+  "captures": [],
+  "status": "awaiting_visual_review",
+  "total_emulated_frames": 5336
+}

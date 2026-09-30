@@ -1,0 +1,9 @@
+{
+  "rom_sha256": "43d87b8e01dcd74abd9a6ab501448626ae009a32d80424395f3e501a28003eec",
+  "input_save": "/tmp/closeup-gaits/fixtures/rimevaran.sav",
+  "input_save_sha256": "7956e6a3c1ee6cd55896ad51aee99beed6060710ee606d92eb40e4560f8c91d1",
+  "emulator": "py-desmume",
+  "captures": [],
+  "status": "awaiting_visual_review",
+  "total_emulated_frames": 5336
+}

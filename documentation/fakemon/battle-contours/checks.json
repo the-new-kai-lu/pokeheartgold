@@ -1,0 +1,860 @@
+{
+  "voltuff": {
+    "female_back": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          3,
+          6,
+          77,
+          78
+        ],
+        [
+          2,
+          6,
+          78,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "female_front": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          14,
+          29,
+          66,
+          78
+        ],
+        [
+          16,
+          30,
+          65,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "male_back": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          3,
+          6,
+          77,
+          78
+        ],
+        [
+          2,
+          6,
+          78,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "male_front": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          14,
+          29,
+          66,
+          78
+        ],
+        [
+          16,
+          30,
+          65,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    }
+  },
+  "surguenon": {
+    "female_back": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          13,
+          12,
+          74,
+          78
+        ],
+        [
+          16,
+          7,
+          74,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "female_front": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          14,
+          11,
+          68,
+          77
+        ],
+        [
+          14,
+          11,
+          67,
+          77
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "male_back": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          13,
+          12,
+          74,
+          78
+        ],
+        [
+          16,
+          7,
+          74,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "male_front": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          14,
+          11,
+          68,
+          77
+        ],
+        [
+          14,
+          11,
+          67,
+          77
+        ]
+      ],
+      "restored_throat_pixels": 0
+    }
+  },
+  "raijinque": {
+    "female_back": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          3,
+          8,
+          76,
+          78
+        ],
+        [
+          4,
+          6,
+          76,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "female_front": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          8,
+          2,
+          71,
+          78
+        ],
+        [
+          9,
+          2,
+          71,
+          77
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "male_back": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          3,
+          8,
+          76,
+          78
+        ],
+        [
+          4,
+          6,
+          76,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "male_front": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          8,
+          2,
+          71,
+          78
+        ],
+        [
+          9,
+          2,
+          71,
+          77
+        ]
+      ],
+      "restored_throat_pixels": 0
+    }
+  },
+  "embernewt": {
+    "female_back": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          2,
+          5,
+          75,
+          78
+        ],
+        [
+          2,
+          5,
+          77,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "female_front": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          15,
+          29,
+          65,
+          78
+        ],
+        [
+          14,
+          28,
+          66,
+          77
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "male_back": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          2,
+          5,
+          75,
+          78
+        ],
+        [
+          2,
+          5,
+          77,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "male_front": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          15,
+          29,
+          65,
+          78
+        ],
+        [
+          14,
+          28,
+          66,
+          77
+        ]
+      ],
+      "restored_throat_pixels": 0
+    }
+  },
+  "pyrovaran": {
+    "female_back": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          0,
+          5,
+          75,
+          78
+        ],
+        [
+          0,
+          5,
+          75,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "female_front": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          6,
+          22,
+          73,
+          77
+        ],
+        [
+          7,
+          24,
+          74,
+          77
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "male_back": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          0,
+          5,
+          75,
+          78
+        ],
+        [
+          0,
+          5,
+          75,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "male_front": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          6,
+          22,
+          73,
+          77
+        ],
+        [
+          7,
+          24,
+          74,
+          77
+        ]
+      ],
+      "restored_throat_pixels": 0
+    }
+  },
+  "magmalisk": {
+    "female_back": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          0,
+          5,
+          75,
+          78
+        ],
+        [
+          0,
+          5,
+          75,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "female_front": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          3,
+          14,
+          78,
+          77
+        ],
+        [
+          3,
+          15,
+          78,
+          77
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "male_back": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          0,
+          5,
+          75,
+          78
+        ],
+        [
+          0,
+          5,
+          75,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "male_front": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          3,
+          14,
+          78,
+          77
+        ],
+        [
+          3,
+          15,
+          78,
+          77
+        ]
+      ],
+      "restored_throat_pixels": 0
+    }
+  },
+  "rimevaran": {
+    "female_back": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          1,
+          5,
+          77,
+          78
+        ],
+        [
+          1,
+          5,
+          79,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 78
+    },
+    "female_front": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          6,
+          23,
+          74,
+          78
+        ],
+        [
+          6,
+          23,
+          73,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "male_back": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          1,
+          5,
+          77,
+          78
+        ],
+        [
+          1,
+          5,
+          79,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 78
+    },
+    "male_front": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          6,
+          23,
+          74,
+          78
+        ],
+        [
+          6,
+          23,
+          73,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    }
+  },
+  "fimbulisk": {
+    "female_back": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          5,
+          5,
+          79,
+          78
+        ],
+        [
+          0,
+          5,
+          79,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 69
+    },
+    "female_front": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          3,
+          17,
+          78,
+          77
+        ],
+        [
+          2,
+          17,
+          77,
+          77
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "male_back": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          5,
+          5,
+          79,
+          78
+        ],
+        [
+          0,
+          5,
+          79,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 69
+    },
+    "male_front": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          3,
+          17,
+          78,
+          77
+        ],
+        [
+          2,
+          17,
+          77,
+          77
+        ]
+      ],
+      "restored_throat_pixels": 0
+    }
+  },
+  "sedgling": {
+    "female_back": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          4,
+          5,
+          76,
+          78
+        ],
+        [
+          6,
+          5,
+          72,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "female_front": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          20,
+          26,
+          59,
+          78
+        ],
+        [
+          19,
+          27,
+          60,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "male_back": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          4,
+          5,
+          76,
+          78
+        ],
+        [
+          6,
+          5,
+          72,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "male_front": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          20,
+          26,
+          59,
+          78
+        ],
+        [
+          19,
+          27,
+          60,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    }
+  },
+  "cragaviar": {
+    "female_back": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          7,
+          5,
+          76,
+          78
+        ],
+        [
+          7,
+          5,
+          74,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "female_front": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          13,
+          10,
+          66,
+          78
+        ],
+        [
+          13,
+          10,
+          67,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "male_back": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          7,
+          5,
+          76,
+          78
+        ],
+        [
+          7,
+          5,
+          74,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "male_front": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          13,
+          10,
+          66,
+          78
+        ],
+        [
+          13,
+          10,
+          67,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    }
+  },
+  "ragnaroc": {
+    "female_back": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          3,
+          6,
+          77,
+          78
+        ],
+        [
+          4,
+          5,
+          76,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "female_front": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          3,
+          4,
+          77,
+          78
+        ],
+        [
+          2,
+          4,
+          77,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "male_back": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          3,
+          6,
+          77,
+          78
+        ],
+        [
+          4,
+          5,
+          76,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    },
+    "male_front": {
+      "native_roundtrip": true,
+      "header_and_key_unchanged": true,
+      "bounds": [
+        [
+          3,
+          4,
+          77,
+          78
+        ],
+        [
+          2,
+          4,
+          77,
+          78
+        ]
+      ],
+      "restored_throat_pixels": 0
+    }
+  }
+}
