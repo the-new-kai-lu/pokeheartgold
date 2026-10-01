@@ -70,3 +70,7 @@ progression. The current segment can keep its existing allocated state while a
 versioned campaign allocation is designed. Do not change the format merely to
 demonstrate that changing it is allowed, and do not block campaign work on further
 unchanged-vanilla-format compatibility cases.
+
+The first opt-in implementation is described in
+[campaign-state format v1](CAMPAIGN_SAVE_V1.md). Its source and host tests do not
+enable it in the tested Oldale build or constitute native-runtime acceptance.

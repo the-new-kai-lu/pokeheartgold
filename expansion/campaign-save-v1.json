@@ -1,0 +1,85 @@
+{
+  "format": "expanded-hgss-campaign",
+  "version": 1,
+  "status": "implementation-in-progress-not-runtime-verified",
+  "endianness": "little",
+  "file_bytes": 524288,
+  "partition_bytes": 262144,
+  "native_allocation": {
+    "strategy": "extend-last-general-entry-after-aligned-TrainerHouse-payload",
+    "entry_id": 40,
+    "entry_count": 42,
+    "footer_magic": 537265699,
+    "extension_bytes": 2048,
+    "extension_offset": 62996,
+    "general_size": 65064,
+    "storage_start": 65280,
+    "storage_size": 74512,
+    "main_region_limit": 143360,
+    "native_page_bytes": 4096,
+    "native_page_count": 35,
+    "extra_blocks_start": 143360,
+    "trainer_house_payload_preserved": true,
+    "pokemon_record_format_unchanged": true
+  },
+  "header": {
+    "magic_ascii": "EHGSCAMP",
+    "magic_offset": 0,
+    "version_offset": 8,
+    "length_offset": 10,
+    "header_size_offset": 12,
+    "header_bytes": 32,
+    "reserved_offset": 14,
+    "reserved_bytes": 18,
+    "reserved_policy": "zero only at explicit initialization; preserve when loaded"
+  },
+  "regions": [
+    {
+      "id": 0,
+      "name": "Hoenn",
+      "donor": "Emerald",
+      "variable_id_start": 16384,
+      "variable_count": 256,
+      "variable_offset": 32,
+      "variable_bytes": 512,
+      "flag_count": 2400,
+      "flag_offset": 544,
+      "flag_bytes": 300
+    },
+    {
+      "id": 1,
+      "name": "Sinnoh",
+      "donor": "Platinum",
+      "variable_id_start": 16384,
+      "variable_count": 288,
+      "variable_offset": 844,
+      "variable_bytes": 576,
+      "flag_count": 2912,
+      "flag_offset": 1420,
+      "flag_bytes": 364
+    }
+  ],
+  "reserved_tail": {
+    "offset": 1784,
+    "bytes": 264,
+    "policy": "unallocated, zero at initialization, preserve during unrelated edits"
+  },
+  "legacy_view": {
+    "general_size": 63016,
+    "storage_start": 63232,
+    "unchanged_general_prefix_bytes": 62996,
+    "relocated_general_trailer_bytes": 20
+  },
+  "transaction_selection": {
+    "unit": "same-partition general/storage pair",
+    "required": "both native block CRCs and footer schemas valid, supported campaign header, equal native counters",
+    "selection": "newest complete pair using native SaveCounterCompare; equal valid counters choose partition 0",
+    "rollover": "0 is newer than 4294967295; otherwise unsigned comparison",
+    "split_partition_recovery": false,
+    "incomplete_partition_policy": "retain its original bytes; never merge its newer general data with another partition's PC data"
+  },
+  "scope": "Primary persistent donor flag/variable namespaces, not a complete port of every donor save subsystem.",
+  "unsupported_policy": "Refuse unsupported tagged versions and incompatible legacy files in an activated native build; do not silently initialize or overwrite them. Editor forks retain their separate vanilla parsing path.",
+  "migration_policy": "Never automatic or in-place. A separately requested migration must preserve existing gameplay records and initialize only the new allocation; it must not invent campaign progress.",
+  "stage1_complete": false
+}
