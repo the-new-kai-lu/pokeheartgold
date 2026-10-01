@@ -11,6 +11,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 import xml.etree.ElementTree as ET
 
 
@@ -241,6 +242,87 @@ class OldalePotionAssets(unittest.TestCase):
         self.assertEqual([int(r.attrib["index"]) for r in rows], list(range(11)))
         self.assertIn("{STRVAR_1 3, 0, 0}", rows[10].find("language").text)
 
+    def test_donor_normalization_changes_only_pagination_and_apostrophe_typography(self):
+        source = 'Text::\n    .string "I\'d say it\'s a POKéMON…\\p"\n    .string "Hi!\\lBye.$"\n'
+        self.assertEqual(P.donor_dialogue(source, "Text"), "I’d say it’s a POKéMON…\\rHi!\\nBye.")
+        self.assertIn("I'd say it's", source)
+        with self.assertRaisesRegex(ValueError, "Missing Emerald dialogue"):
+            P.donor_dialogue(source, "Missing")
+
+    def test_all_composed_message_tokens_are_supported_by_unmodified_native_charmap(self):
+        # Runs even without a compiler; preserve spaces on the RHS as msgenc does.
+        charmap = {}
+        for line in (ROOT / "charmap.txt").read_text(encoding="utf-8").splitlines():
+            line = line.split("//", 1)[0].lstrip(" \t")
+            if line.strip():
+                value, token = line.split("=", 1)
+                charmap[token] = int(value, 16)
+        self.assertEqual(charmap["’"], 0x01B3)
+        self.assertNotIn("'", charmap)
+        self.assertEqual(charmap["{STRVAR_1}"], 0x0100)
+        edits = P.asset_changes(reader(fixture()))
+        rows = ET.fromstring(edits[P.MESSAGE]).findall("row")
+        self.assertEqual([int(row.attrib["index"]) for row in rows], list(range(11)))
+        for row in rows:
+            text = row.find("language").text
+            tokens = re.findall(r"\{[^{}]*\}|\\.|.", text)
+            self.assertEqual("".join(tokens), text)
+            for token in tokens:
+                if token.startswith("{"):
+                    self.assertEqual(token, "{STRVAR_1 3, 0, 0}")
+                else:
+                    self.assertIn(token, charmap, f"row {row.attrib['index']}: {token!r}")
+        self.assertIn("I’d", rows[2].find("language").text)
+        self.assertIn("it’s", rows[3].find("language").text)
+
+    @unittest.skipUnless(shutil.which("g++") or shutil.which("c++"), "host C++ compiler unavailable")
+    def test_real_source_msgenc_round_trips_all_rows_and_rejects_ascii_apostrophes(self):
+        # Build only the repository's open-source host tool, never SDK/native code.
+        tool = ROOT / "tools/msgenc"
+        makefile = (tool / "Makefile").read_text()
+        sources = re.findall(r"^\s*(\w+\.cpp)\s*\\?$", makefile, re.M)
+        self.assertEqual(set(sources), {path.name for path in tool.glob("*.cpp")})
+        self.assertIn("-std=c++17", makefile)
+        composed = P.asset_changes(reader(fixture()))[P.MESSAGE]
+        expected = [(row.attrib["index"], row.find("language").text)
+                    for row in ET.fromstring(composed).findall("row")]
+        self.assertEqual(len(expected), 11)
+        with tempfile.TemporaryDirectory(prefix="oldale-msgenc-host-") as tmp:
+            base = Path(tmp)
+            encoder = base / "msgenc"
+            compile_result = subprocess.run(
+                [shutil.which("g++") or shutil.which("c++"), "-std=c++17", "-O2", "-Wall",
+                 "-Wno-switch", "-Wno-unused-but-set-variable", "-DNDEBUG",
+                 *(str(tool / source) for source in sources), "-o", str(encoder)],
+                capture_output=True, text=True, timeout=120)
+            self.assertEqual(compile_result.returncode, 0, compile_result.stderr)
+            source, binary, decoded = base / "messages.gmm", base / "messages.bin", base / "decoded.gmm"
+            source.write_bytes(composed)
+            encode = [str(encoder), "-e", "--gmm", "-k", "0", "-c", str(ROOT / "charmap.txt")]
+            result = subprocess.run([*encode, str(source), str(binary)],
+                                    capture_output=True, text=True, timeout=30)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            result = subprocess.run(
+                [str(encoder), "-d", "--gmm", "-c", str(ROOT / "charmap.txt"), str(binary), str(decoded)],
+                capture_output=True, text=True, timeout=30)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            actual = [(row.attrib["index"], row.find("language").text)
+                      for row in ET.fromstring(decoded.read_bytes()).findall("row")]
+            self.assertEqual(actual, expected)
+            # One failure at a time: row2 must not mask the separate row3 defect.
+            for curly, ascii_text, encoder_line in (("I’d", "I'd", 3), ("it’s", "it's", 4)):
+                with self.subTest(apostrophe=ascii_text):
+                    negative = base / f"ascii-row{encoder_line - 1}.gmm"
+                    rejected = negative.with_suffix(".bin")
+                    self.assertEqual(composed.count(curly.encode()), 1)
+                    negative.write_bytes(composed.replace(curly.encode(), ascii_text.encode()))
+                    result = subprocess.run([*encode, str(negative), str(rejected)],
+                                            capture_output=True, text=True, timeout=30)
+                    self.assertNotEqual(result.returncode, 0)
+                    self.assertIn("unrecognized character", result.stderr)
+                    self.assertIn(f"line {encoder_line} ", result.stderr)
+                    self.assertFalse(rejected.exists())
+
     def test_negative_preimages_append_collision_and_out_of_scope_delta(self):
         for name in (P.EVENT, P.SCRIPT, P.MESSAGE, P.CONTINUE, P.MAP_HEADERS):
             f = fixture()
@@ -352,6 +434,18 @@ class OldalePotionAssets(unittest.TestCase):
     @unittest.skipUnless(DONOR.is_dir(), "Emerald source not provided")
     def test_actual_donor_flag_item_employee_dialogue_and_movements(self):
         self.assertEqual(len(P.verify_donor(DONOR)), 5)
+        template_path = P.TEMPLATES / "oldale_potion_messages.xml"
+        template = P.campaign.read(template_path)
+        real_read = P.campaign.read
+        for old, new in (("I’d", "I'd"), ("it’s", "it's"), ("I’d", "I‘d"),
+                         ("a promotional item.", "a different item.")):
+            with self.subTest(dialogue=new):
+                changed = template.replace(old.encode(), new.encode())
+                self.assertNotEqual(changed, template)
+                with patch.object(P.campaign, "read",
+                                  side_effect=lambda path: changed if path == template_path else real_read(path)):
+                    with self.assertRaisesRegex(ValueError, "Employee dialogue differs from Emerald"):
+                        P.verify_donor(DONOR)
         source = (DONOR / "data/maps/OldaleTown/scripts.inc").read_text()
         translation = {"walk_up": "WalkNormalNorth", "walk_down": "WalkNormalSouth",
                        "walk_left": "WalkNormalWest", "walk_right": "WalkNormalEast",

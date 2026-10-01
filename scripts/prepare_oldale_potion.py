@@ -49,6 +49,7 @@ CONTINUE_REPLACEMENT = (
     "        }\n"
 )
 LIMITS = [
+    "Donor ASCII apostrophes are rendered as native U+2019 (charmap01B3); wording is unchanged.",
     "Native SPRITE_SHOPM1 (24/model23) is the walking Mart-clerk equivalent, not Emerald pixels.",
     "Native follow sequence SEQ_GS_E_TSURETEKE2 (1087), used by Cherrygrove's guide, is not Emerald MUS_FOLLOW_ME audio.",
     "Native movement speeds, sprite turn timing and message pagination require runtime review; donor walk/delay paths are preserved.",
@@ -112,12 +113,14 @@ def verify_r7(episode):
 
 
 def donor_dialogue(source, label):
+    """Preserve donor wording with native pagination and encodable apostrophes."""
     block = re.search(r"^" + re.escape(label) + r"::?[ \t]*\n((?:[ \t]*\.string .*\n?)+)",
                       source, re.M)
     if not block:
         raise ValueError(f"Missing Emerald dialogue: {label}")
     pieces = re.findall(r'^[ \t]*\.string "(.*)"$', block.group(1), re.M)
-    return "".join(pieces).removesuffix("$").replace(r"\p", r"\r").replace(r"\l", r"\n")
+    return ("".join(pieces).removesuffix("$").replace(r"\p", r"\r")
+            .replace(r"\l", r"\n").replace("'", "’"))
 
 
 def verify_donor(donor):
