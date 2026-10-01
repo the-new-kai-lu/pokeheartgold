@@ -119,8 +119,9 @@ def donor_dialogue(source, label):
     if not block:
         raise ValueError(f"Missing Emerald dialogue: {label}")
     pieces = re.findall(r'^[ \t]*\.string "(.*)"$', block.group(1), re.M)
+    # Emerald \l waits/scrolls; another newline would clip the third line.
     return ("".join(pieces).removesuffix("$").replace(r"\p", r"\r")
-            .replace(r"\l", r"\n").replace("'", "’"))
+            .replace(r"\l", r"\f").replace("'", "’"))
 
 
 def verify_donor(donor):

@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import re
 import shutil
+import struct
 import subprocess
 import sys
 import tempfile
@@ -37,6 +38,11 @@ GIRL_MESSAGE = (
     '<row id="msg_0830_00000" index="0"><attribute name="window_context_name">used</attribute>'
     '<language name="English">I want to take a rest, so I’m saving my\\nprogress.</language></row>\n'
     '</body>\n'
+)
+POTION_EXPLANATION = (
+    "A POTION can be used anytime, so it’s\\n"
+    "even more useful than a POKéMON CENTER\\f"
+    "in certain situations."
 )
 
 
@@ -199,6 +205,19 @@ class ScriptHost:
 
 
 class OldalePotionAssets(unittest.TestCase):
+    def assert_potion_explanation(self, text):
+        self.assertEqual(text, POTION_EXPLANATION)
+        self.assertEqual(re.findall(r"\\[nrf]", text), [r"\n", r"\f"])
+
+    def assert_potion_explanation_codes(self, dump):
+        # msgenc -D emits the actual unencrypted allocation table and u16 codes.
+        count, _ = struct.unpack_from("<HH", dump)
+        self.assertEqual(count, 11)
+        offset, length = struct.unpack_from("<II", dump, 4 + 3 * 8)
+        codes = struct.unpack_from(f"<{length}H", dump, offset)
+        self.assertEqual([code for code in codes if code in (0xE000, 0x25BC, 0x25BD)],
+                         [0xE000, 0x25BD])
+
     def test_dedicated_templates_are_exact_public_text_sources(self):
         self.assertEqual(P.TEMPLATES, ROOT / "scripts/oldale_potion_templates")
         expected = {
@@ -244,10 +263,28 @@ class OldalePotionAssets(unittest.TestCase):
 
     def test_donor_normalization_changes_only_pagination_and_apostrophe_typography(self):
         source = 'Text::\n    .string "I\'d say it\'s a POKéMON…\\p"\n    .string "Hi!\\lBye.$"\n'
-        self.assertEqual(P.donor_dialogue(source, "Text"), "I’d say it’s a POKéMON…\\rHi!\\nBye.")
+        self.assertEqual(P.donor_dialogue(source, "Text"), "I’d say it’s a POKéMON…\\rHi!\\fBye.")
         self.assertIn("I'd say it's", source)
         with self.assertRaisesRegex(ValueError, "Missing Emerald dialogue"):
             P.donor_dialogue(source, "Missing")
+
+    def test_potion_explanation_preserves_first_newline_scroll_and_final_words(self):
+        template_path = P.TEMPLATES / "oldale_potion_messages.xml"
+        template = P.campaign.read(template_path)
+        rows = ET.fromstring(P.asset_changes(reader(fixture()))[P.MESSAGE]).findall("row")
+        self.assert_potion_explanation(rows[3].find("language").text)
+        donor = ('Text::\n    .string "A POTION can be used anytime, so it\'s\\n"\n'
+                 '    .string "even more useful than a POKéMON CENTER\\l"\n'
+                 '    .string "in certain situations.$"\n')
+        self.assert_potion_explanation(P.donor_dialogue(donor, "Text"))
+        broken = template.replace(b"CENTER\\f", b"CENTER\\n")
+        self.assertNotEqual(broken, template)
+        real_read = P.campaign.read
+        with patch.object(P.campaign, "read",
+                          side_effect=lambda path: broken if path == template_path else real_read(path)):
+            rows = ET.fromstring(P.asset_changes(reader(fixture()))[P.MESSAGE]).findall("row")
+            with self.assertRaises(AssertionError):
+                self.assert_potion_explanation(rows[3].find("language").text)
 
     def test_all_composed_message_tokens_are_supported_by_unmodified_native_charmap(self):
         # Runs even without a compiler; preserve spaces on the RHS as msgenc does.
@@ -260,6 +297,8 @@ class OldalePotionAssets(unittest.TestCase):
         self.assertEqual(charmap["’"], 0x01B3)
         self.assertNotIn("'", charmap)
         self.assertEqual(charmap["{STRVAR_1}"], 0x0100)
+        self.assertEqual([charmap[token] for token in (r"\n", r"\r", r"\f")],
+                         [0xE000, 0x25BC, 0x25BD])
         edits = P.asset_changes(reader(fixture()))
         rows = ET.fromstring(edits[P.MESSAGE]).findall("row")
         self.assertEqual([int(row.attrib["index"]) for row in rows], list(range(11)))
@@ -274,6 +313,7 @@ class OldalePotionAssets(unittest.TestCase):
                     self.assertIn(token, charmap, f"row {row.attrib['index']}: {token!r}")
         self.assertIn("I’d", rows[2].find("language").text)
         self.assertIn("it’s", rows[3].find("language").text)
+        self.assert_potion_explanation(rows[3].find("language").text)
 
     @unittest.skipUnless(shutil.which("g++") or shutil.which("c++"), "host C++ compiler unavailable")
     def test_real_source_msgenc_round_trips_all_rows_and_rejects_ascii_apostrophes(self):
@@ -299,7 +339,8 @@ class OldalePotionAssets(unittest.TestCase):
             source, binary, decoded = base / "messages.gmm", base / "messages.bin", base / "decoded.gmm"
             source.write_bytes(composed)
             encode = [str(encoder), "-e", "--gmm", "-k", "0", "-c", str(ROOT / "charmap.txt")]
-            result = subprocess.run([*encode, str(source), str(binary)],
+            dump = base / "messages.raw"
+            result = subprocess.run([*encode, "-D", str(dump), str(source), str(binary)],
                                     capture_output=True, text=True, timeout=30)
             self.assertEqual(result.returncode, 0, result.stderr)
             result = subprocess.run(
@@ -309,6 +350,27 @@ class OldalePotionAssets(unittest.TestCase):
             actual = [(row.attrib["index"], row.find("language").text)
                       for row in ET.fromstring(decoded.read_bytes()).findall("row")]
             self.assertEqual(actual, expected)
+            self.assert_potion_explanation(actual[3][1])
+            self.assert_potion_explanation_codes(dump.read_bytes())
+            # The clipped variant is encodable, but must fail semantic/control checks.
+            broken = base / "broken-newline.gmm"
+            broken_binary, broken_dump = broken.with_suffix(".bin"), broken.with_suffix(".raw")
+            broken_decoded = base / "broken-newline-decoded.gmm"
+            self.assertEqual(composed.count(b"CENTER\\f"), 1)
+            broken.write_bytes(composed.replace(b"CENTER\\f", b"CENTER\\n"))
+            result = subprocess.run([*encode, "-D", str(broken_dump), str(broken), str(broken_binary)],
+                                    capture_output=True, text=True, timeout=30)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            result = subprocess.run(
+                [str(encoder), "-d", "--gmm", "-c", str(ROOT / "charmap.txt"),
+                 str(broken_binary), str(broken_decoded)],
+                capture_output=True, text=True, timeout=30)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            broken_text = ET.fromstring(broken_decoded.read_bytes()).findall("row")[3].find("language").text
+            with self.assertRaises(AssertionError):
+                self.assert_potion_explanation(broken_text)
+            with self.assertRaises(AssertionError):
+                self.assert_potion_explanation_codes(broken_dump.read_bytes())
             # One failure at a time: row2 must not mask the separate row3 defect.
             for curly, ascii_text, encoder_line in (("I’d", "I'd", 3), ("it’s", "it's", 4)):
                 with self.subTest(apostrophe=ascii_text):
@@ -438,6 +500,7 @@ class OldalePotionAssets(unittest.TestCase):
         template = P.campaign.read(template_path)
         real_read = P.campaign.read
         for old, new in (("I’d", "I'd"), ("it’s", "it's"), ("I’d", "I‘d"),
+                         (r"POKéMON CENTER\f", r"POKéMON CENTER\n"),
                          ("a promotional item.", "a different item.")):
             with self.subTest(dialogue=new):
                 changed = template.replace(old.encode(), new.encode())
