@@ -1,0 +1,822 @@
+# Stage 1A validation — 2026-09-26 (America/Los_Angeles)
+
+This is a partial implementation checkpoint, not Stage 1 completion.
+
+## Populated PC and boxed nickname checks — 2026-09-30
+
+- These checks use the same private V8r4 HeartGold build and published source
+  `f70134ea40b9f3db0bb6228308a3c26da6c9bd20`, not a new ROM or edition.
+  A physical-input native journey completed ordinary travel, healing, PC
+  deposit and Save: 416 captures / 64,880 frames. Its immutable 524,410-byte
+  DSV SHA-256 is
+  `b5e21f1133bed39033581a5e788de4c4efcbd25caaa685d5df8b6826eecc6955`.
+  Stock HGSS detection, all four block CRCs, map 69 at (11,13), money 3001,
+  one party Totodile, one boxed Treecko/LEAF in Box 1 slot 1, and rescue/
+  receipt 1/252 were independently verified.
+- Actual PKMDS GUI changed only that boxed nickname LEAF→LEAF2, exported
+  through the native Save chooser, reopened the export and verified the
+  Pokémon and Save Info. The exported DSV SHA-256 is
+  `f298191ec4bda45cd45c9bb59488b29592b171690f9622b572781bde4bdf222e`.
+  The unchanged strict nickname-only comparator passes: 135 raw byte
+  differences, zero unexpected changes, all four CRCs valid. This is an
+  actual application export, not a harness-generated save.
+- A fresh native cold run from an exact copy of that PKMDS export displayed
+  TREECKO/LEAF2 in Box 1 slot 1 without withdrawing it, exited the PC and
+  used the ordinary field Save/overwrite flow on the working copy.
+  The run completed 49 captures / 6,152 frames, returning to the field menu.
+  An earlier restart-interrupted 12-capture session is not counted.
+  The frozen game-written DSV SHA-256 is
+  `06ae08475a66ed2eecc622d8e62aeab1d6632a16ba058784bd5547f14e9d39a2`.
+  Independent read-only verification passes: general/storage counters 8→9,
+  all four CRCs valid, identical footer, all 540 decoded PC slots and the
+  entire active Totodile data preserved, all 368 work values and 2,912 flags
+  unchanged, same location/money/18×30 PC geometry, and box-change bitmap zero.
+  The working battery still matched that frozen file after core shutdown.
+- **PKHeX's normal Main-form nickname edit fails this case.** Actual Ctrl-slot
+  View, nickname LEAF→LEAF2, Shift-slot Set and Save As produced DSV SHA-256
+  `cf172bd61ae518a9ac52cb1f684a41b19ee7ea1f1bc0a54a5a0d78bae74f356d`.
+  The same strict comparator rejects it: decrypted offsets `0x46`, `0x80`
+  and `0x81` changed outside nickname/checksum bytes. Met location
+  extended 235 / DP placeholder 3002 became 0/0. Other save bytes and CRCs
+  passed, but that does not excuse the metadata loss. This rejected export
+  was not native-tested as a successful round trip; no gate was relaxed.
+- Every native request used ordinary physical input, the interpreter core,
+  zero state bytes and no backup/restore requests. Original fixtures and
+  accepted/rejected exports remain immutable and private. The known retail
+  encounter warning remains unchanged; no legalization was performed.
+  No ROM, save, proprietary tool/license or screenshot is published.
+- This closes only the recorded HG populated-PC deposit and PKMDS boxed
+  nickname/native-resave case. PKHeX nickname preservation, R4 SoulSilver,
+  other edit types/opening branches and both complete campaigns remain open.
+  Additional proven durable story capacity is still zero. Stage 1 remains
+  incomplete; the earlier money-only results below remain separate evidence.
+
+## Latest resume-safe HeartGold opening and real-editor money roundtrip — 2026-09-29
+
+- The private opt-in V8r4 build uses published source commit
+  `f70134ea40b9f3db0bb6228308a3c26da6c9bd20` and native HeartGold ROM SHA-256
+  `6d31c8643092dadb58c4f2ef4d2b870f7f63be3b63821fa8ea1a40c93c764761`.
+  Its actor-repair header selects OnResume instead of OnLoad; the native ROM
+  differs from V8r3 in that one byte. All 102 owner-local source tests passed
+  without skips, alongside the unchanged 540-map default baseline. The
+  matching native build and gameplay were subsequently tested, not inferred
+  from those static checks.
+- A continuous physical-input run passed natural rescue victory, Birch's
+  thanks, field walking, party-screen entry and return, Treecko selection,
+  the native nickname LEAF and actual in-game Save. The immutable native DSV
+  is 524,410 bytes, SHA-256
+  `c168fc7d43215d1dfea1ad3db830cfbdb76ec49c22ff291d9cfc44e250461482`.
+  A separate cold run passed 17 captures / 2,264 frames: Continue at lab
+  540(14,18), TOTODILE and LEAF at level 5 with HP 20/21 and 20/20, menu-return
+  walking, and the already-received partner dialogue without a duplicate.
+- Actual PKHeX WinForms and headed PKMDS independently opened that native
+  file, changed only money 3000→3001, exported new DSVs and reopened their
+  exports. PKMDS used the real native Save chooser for export and the actual
+  web-dialog file input/OK for successful reopening; failed native Open-picker
+  navigation was not counted as success. These were real application UI
+  exports, not substitute files generated by a comparison harness.
+  Both exports are byte-identical, 524,410 bytes, SHA-256
+  `2fcc507acb37bf1a4595e364c2c136750b4d44ea9a484d349e122111e7ee22e1`.
+  PKMDS Save Info reported SAV4HGSS/HeartGold, valid checksums, 512 KiB plus
+  footer, Modified No, party 2 and 18 boxes.
+- Independent read-only comparisons passed for both exports: identity,
+  location, all party and 540 PC slot data, all work/flags, both partition
+  story ranges and the footer were preserved. Eight changed bytes represent
+  money, the ordinary box-change bitmap and checksums. All four block CRCs
+  were also checked independently. The PC was empty; preservation of these
+  bytes is **not populated-PC evidence**.
+- One shared-byte cold game run covered the identical exports: 40 captures /
+  5,248 frames, correct party, menu-return walking, duplicate-gift guard,
+  normal right-scientist return to Elm 61(6,12), and genuine native Save.
+  The full-data save completed after nine additional neutral 120-frame
+  waits; it was not a hang. The actual Trainer Card displayed money 3001.
+  The game-written Johto resave SHA-256 is
+  `e6fb54ebc33ebdb68fa1ae9021f970d98cc06476e04f4ba15d697235b873f6a8`.
+  All four CRCs pass, counters are 6/6 and 7/7, and rescue/receipt remain
+  1/252. All six raw party slots and PC contents/names/wallpapers are
+  preserved. Only work 0x4000 changes 1→0 and 0x404B changes 35→41; no flags
+  change. The ordinary box-change bitmap returns from 0x03FFFF to zero.
+  Graceful core shutdown did not change this saved battery.
+- A new cold restart from an exact copy of that game-written resave passed
+  27 captures / 3,624 frames: Continue at Elm 61(6,12), actual Trainer money
+  3001, TOTODILE/LEAF level 5 with HP 20/21 and 20/20, six ordinary steps to
+  Elm, the prepared warp back to lab 540(16,19), and the saved-gift guard at
+  540(14,18). No Save occurred in this leg; its battery remained byte-identical
+  through graceful shutdown. Both actual editor UIs also reopened the native
+  Johto resave and verified save-level Trainer money 3001 and map 61 at
+  (6,12). PKMDS additionally showed two party members, valid checksums and
+  Modified No. No further edit or export was made during these read-backs.
+- All these game checks used physical input with the interpreter core;
+  state bytes were zero. No savestate, gameplay-RAM/HP/outcome injection or
+  diagnostic restoration was used. One game run covered the identical
+  editor exports, **not separate runs per editor**. LEAF was entered through
+  the game, not an editor nickname change. The custom Treecko's retail
+  encounter warning was left unchanged; no legalization was performed.
+  No ROMs, saves, proprietary tools/licenses or screenshots are published.
+- This closes the recorded V8r4 HeartGold party-return regression and the
+  narrow money-edit/reload/native-resave/revisit checks. It does not certify
+  every opening branch, V8r4 SoulSilver, editor nickname changes, nonempty-PC
+  behavior, the full editor/edition checklist, or either complete campaign.
+  Additional proven durable story capacity remains zero; no new slots or
+  padding are allocated. Stage 1 remains incomplete. The earlier SoulSilver
+  proof below belongs to its separate build and must not substitute for R4.
+
+## Earlier native SoulSilver rescue and editor UI proof — 2026-09-28
+
+- This is a **private opt-in test build**, not the production source baseline:
+  published native-helper commit `50f148da1912d03394c92b6e6a8a5b288400552b`,
+  private SoulSilver ROM SHA-256
+  `63b735e7af41d0072b26d1ca0ea226b9a0f8a5f06992235c6b2b53e2d28cbf7f`.
+  The genuine native path reached rescue **WIN**, selected Treecko, completed
+  a native battery save, returned to Elm, and revisited the rescue/gift area.
+  The native save was made **before** a later unsaved ordinary Potion dialogue.
+  No ROM, save, tool, license, or screenshot is published.
+- The genuine pre-gift save SHA-256 is
+  `cdbbb64d040dc2694a3177739742ff66a6340aab095b32eb7b0bab38fecbe52a`;
+  the post-gift save SHA-256 is
+  `4847827cabc2891acb634910460417c3ab635dc5b9a95ca1eda77172a48f277a`.
+  Across those saves, every decrypted byte of the original Totodile is
+  preserved (level 5, HP 21/21, EXP 152, Speed EV 1, Scratch PP 32).
+  Treecko is level 5, HP 19/19, PID `3382426445`. All 2,912 flags and all
+  540 PC slots are unchanged; the PC was empty, so this is **not** proof of
+  nonempty-PC behavior. Receipt changes 0→252 and friendship steps 51→55.
+  These details do not imply byte-for-byte preservation of the whole save.
+- The editor stack used pinned PKHeX.Core
+  `9a5ed35e0df1bc65c3900bcab03cddfa581aa1d7`; actual PKMDS
+  `d15390a` was built against that sibling Core, with Debug Core DLL SHA-256
+  `c67adb86decde3aabb64dcc5eb0e2fd7f7638726b94fa767512c6917eed53695`.
+  The Web build completed with wasm-tools installed and zero warnings/errors,
+  without `globalization-invariant`. Actual browser UI loaded both saves as
+  SoulSilver/TID 64300, edited money 3000→3001, and used real
+  `ExportSaveFile`/reopen. The browser pre/post export hashes are
+  `2b9b1a0bb6990cd003e33ef09a03707802ed510f5247f708c7c5f5fce29a93c6` and
+  `d59e07bb29c83f0a645f893e1c6c353b09062af5ae3ca9a17a24d4c74bf53749`.
+  Both are 524,410-byte DSVs with their 122-byte footer preserved. The
+  browser's native OS picker aborted with `AbortError`; a transparent capture
+  sink received the bytes from the real UI export, and those bytes were
+  re-imported in the UI. Native OS-picker success is **not** claimed.
+- Actual PKHeX WinForms was run from a .NET 10 self-contained executable
+  (SHA-256
+  `56699e8b1a7ec2d0f9cfd50e56abad017ed6597b4680dac503b4966f0ba3737e`)
+  under Wine/Xvfb. The real UI opened the post-gift save, changed money
+  3000→3001, saved as a new DSV, reopened that export, and verified the
+  trainer (TID 64300) and party sprites. The export is 524,410 bytes and is
+  byte-identical to both the browser export and generic Core export.
+   SHA-256, byte-for-byte comparison, and visual checks confirmed eight exact byte differences.
+  Differences in compact offset/old→new notation:
+   `0x40078: B8→B9`, `0x4F626: 39→F5`, `0x4F627: 21→D3`,
+  `0x61704/0x61705/0x61706: 00/00/00→FF/FF/03`,
+   `0x61A0E: 70→B8`, and `0x61A0F: D2→A7`. They comprise one money byte,
+  three existing box flags, and four checksum bytes; all other bytes,
+  including the footer, were preserved.
+  The UI hour field briefly misfocused but was restored to 0 **before** the
+   save dialog. The export diff contains no playtime change.
+- Both byte-identical pre- and post-gift editor outputs were independently
+  cold-booted under the SS ROM (no savestates) and parent-visually verified.
+  Pre-gift showed card money 3001/TID 64300, Totodile HP 21, the rescue guard,
+  and the unclaimed menu/B-cancel path. Post-gift showed money 3001/TID 64300,
+  Totodile HP 21 plus Treecko HP 19, and both guards. The same cold outputs
+  were reused for the editor UI checks; these were **not** separate emulator
+  sessions per editor. Private evidence is under
+  `/tmp/pkmds-ui-evidence-593*`, `/tmp/pkhex-ui-evidence`, and
+  `/tmp/ss-real-save-validation`; no evidence files are published.
+- Treecko's encounter is expected to fail the unmodified retail legality
+  database; it was not spoofed. This is save/editor compatibility, not a
+  retail-legality claim. It proves neither nonempty-PC handling nor nickname
+  editing, and does not complete the manual loop for all editors/editions.
+  Full Stage 1, full campaigns, full Stage 1B, and the PC/nonempty,
+  nickname, and manual-loop gates remain open. The older SS section below is
+  explicitly a **historical earlier checkpoint** and is superseded only where
+  this specific newer evidence applies.
+
+## Native HG rescue WIN/FLEE, controlled LOSS and genuine-save reward — 2026-09-28
+
+- A **private controlled flat-lab HeartGold probe**, generated from pinned
+  game source `51e26be86a4239d7456301ae4e0a425a64e5a605`, built as
+  `/tmp/hg-vm-share/pokeheartgold-real-rescue-probe-b1ca40ad.us.nds`
+  (128 MiB; SHA-256
+  `266f115debfa5019cbaf5762c12244ab2645ceda8a4a655e102d03928e305658`).
+  See private `/tmp/hg-real-rescue-probe-b1ca40ad-overlay/probe-manifest.json`.
+  Only this test tree removes Elm's simulated rescue `SetVar` and adds a
+  **center technical actor** (script ID 3) on existing debug map 540,
+  calling unchanged production bank 965 rescue entry 2. Native
+  `WildBattle` is Zigzagoon (263), level 2, against the **real existing
+  Johto party**. The left gift and right return scientists remain debug
+  actors; this is **not** an authentic mapped Route 101 chase.
+- A disposable copy of the immutable genuine HG starter battery (SHA-256
+  `42b0d9f1722de15b552d293a4fae404adc82fd259bc5e582a23f8b3b9afc038b`)
+  started with one real Totodile, no eligibility and no receipt. Gift
+  interaction was blocked before battle; rescue offer cancellation did
+  not grant eligibility. The parent visually verified an actual native
+  battle and **WIN** followed by rescue-complete dialogue in private
+  `rescue-series007`/`013`, then the gift menu, Treecko receipt, return
+  to Elm and revisit with both rescue and gift guards. A script result
+  is measured **after** battle (scratch `0x4013=1` for WIN); transient
+  in-battle rescue state 2 was not observed in live RAM. The gift
+  dialogue still contains the stale `DEBUG LAB: Simulated rescue` label:
+  despite that text, this specific probe's Elm entrance does **not**
+  inject eligibility. It is a technical harness, not a finished scene.
+- The **immutable real post-WIN, pre-gift in-game save**
+  `/tmp/hg-retroarch/pre-save-backup/hg-real-rescue-before-gift.dsv`
+  has SHA-256
+  `4c53dfd1490cf3e270012c0057b59b0cc4dcbebd37eacdf0334d17fe17539de3`.
+  Both editors load it without mutation; all four native block CRCs
+  pass. Eligibility `0x416e=1`, receipt `0x416f=0`, battle result
+  `0x4013=1`, party count 1, Johto starter `0x4030=158` and all 2,912
+  flags are intact. The original Totodile identity is preserved, but
+  **legitimate combat changed its bytes**: EXP 135→152 (+17), Speed EV
+  0→1, HP 21/21→20/21 and Scratch PP 35→32. Normal temporary/friendship
+  variables also progressed; do **not** claim original Pokémon or entire
+  save byte identity across the battle.
+- The **immutable real post-gift in-game save**
+  `/tmp/hg-retroarch/pre-save-backup/hg-real-rescue-after-treecko.dsv`
+  has SHA-256
+  `2fe57e3ea6bd4633da575c261e7f6b6462d224732bd2b16d9715ba8974104844`.
+  Both editors load it without mutation, all four native CRCs pass,
+  party is Totodile (158) then Treecko (252), eligibility remains 1,
+  receipt becomes 252 and battle result remains 1. **Every decrypted
+  byte of the combat-altered Totodile matches the pre-gift save**;
+  between those saves the only story-variable differences are friendship
+  steps `0x404b` 57→59 and receipt `0x416f` 0→252, with all flags
+  unchanged. In this real WIN path the Hoenn gift did not overwrite
+  the Johto party member or starter choice.
+- PKHeX.Core and PKMDS.Core no-op and money-3000-to-3001 exports for
+  **both** genuine saves reopen with valid checksums, current story,
+  Pokémon and map 540 preserved; the editors' outputs agree. No-op
+  exports change five box-content-flag/checksum bytes and money edits
+  eight bytes: neither is asserted byte-identical to its input.
+  The two editors' identical money-edited battery SHA-256s are
+  `d58debb9dd2bf6a3f8b0b2f7b8a32b7093bfbea5f1201852872964d8bd19fc58`
+  (pre-gift) and
+  `8018b76302e469e63eb80ba238a82294c3706d41349dbe7d26b7d5e55405e297`
+  (post-gift). Parent visually verified **true cold loads** of separate edited
+  pre-gift (seven panels: Continue, lab, injured party, card money
+  3001, rescue guard, unclaimed gift menu, B cancel) and post-gift
+  (six panels: Continue, lab, both Pokémon, card money 3001,
+  gift guard, rescue guard) copies. See private
+  `/tmp/hg-real-save-validation/{real-rescue,real-rescue-treecko}/`
+  for exact editor reports/exports; the private seven- and six-panel
+  sheets are `real-rescue-pregift-edited-cold-contact.png` and
+  `real-rescue-treecko-edited-cold-contact.png` in their parent directory.
+  Runtime captures are `/tmp/hg-retroarch/rescue-seriesNNN/` (001–031).
+  Treecko still **fails retail encounter legality** for
+  its new origin/type; valid HGSS save/edit behavior is not retail
+  legality. Neither desktop nor browser editor UI was tested.
+- In an **independent natural FLEE** branch from the same genuine
+  unmodified starter battery, native `RUN` set `0x4013=5`
+  (`PLAYER_FLED`). The completed native save's SHA-256 is
+  `926e565e5040ec4cf89f98c07285029e6137397b152437c81ab47bf96f6d799b`;
+  all four CRCs pass, rescue and receipt remain 0, and the original
+  Totodile's decrypted bytes (HP 21/21 included), flags and PC remain
+  unchanged. Ordinary work changed: `0x4000` 1→0,
+  `0x4001` 158→0, battle scratch `0x4013` 0→5, friendship steps
+  `0x404b` 51→53; audit `/tmp/hg-rescue-outcomes/flee/audit.json`
+  records these precisely. The rescue actor re-offered the fight; B
+  cancellation left it unclaimed. This was **not** an injected battle
+  outcome. The separate natural-HP-6/PP-1, 29-Leer LOSS attempt was
+  **inconclusive** and remains so; the controlled LOSS test below
+  must not be mistaken for a loss from an unmodified starter save.
+- A **separate synthetic HP-only precondition** made native LOSS reachable
+  without injecting a battle outcome or changing runtime HP. A disposable
+  copy of the genuine starter battery (original SHA-256
+  `42b0d9f1722de15b552d293a4fae404adc82fd259bc5e582a23f8b3b9afc038b`)
+  was edited *before boot* with PKHeX: Totodile's current HP 21→1,
+  maximum HP still 21. The resulting input SHA-256 is
+  `c791a4cbc095b4d248ad5ed6173b5052de69277480a986cc21ca0ab363be17a4`.
+  `/tmp/hg-rescue-outcomes/loss-hp1/fixture-audit.json` records the
+  single decrypted Pokémon-byte change and exactly eight raw battery
+  differences (HP, save CRCs and editor dirty flags), with valid CRCs.
+  The original battery remains unchanged. From this fixture, native
+  Leer on the third turn let the wild Zigzagoon's Tackle defeat Totodile.
+  The parent visually verified the 1-HP HUD, out-of-usable-Pokémon
+  message, blackout, home respawn, Mom healing and subsequent native
+  save in the private six-panel
+  `/tmp/hg-rescue-outcomes/loss-hp1/contact.png`. This is evidence of
+  an **actual native blackout/recovery branch**, not an injected LOSS
+  result; unlike WIN/FLEE, it does **not** prove LOSS from a natural
+  unedited-HP starter.
+- The post-recovery native battery SHA-256 is
+  `bd11dc9c180f507bd18266c4202803c64944d08a3d9605a4d6f91403f8a84a2e`.
+  `/tmp/hg-rescue-outcomes/loss-hp1/audit.json` reports valid native
+  CRCs, home map 63, party count 1, rescue `0x416e=0`, receipt
+  `0x416f=0`, and retained Totodile species/PID/trainer, EXP 135,
+  level 5, zero EVs and Scratch/Leer PP 35/30; Mom restored HP to
+  21/21. Native consequences are money 3000→2960, friendship 70→69
+  and walking mood 0→-80. PC and all flags are unchanged; only work
+  variables `0x4000`, `0x4001` and `0x404b` changed. **The saved
+  post-recovery battle scratch `0x4013=0`, not 2**: although source
+  defines LOSS outcome 2 separately, this evidence does not measure
+  live battle-result 2 in RAM. The observed blackout/respawn establishes
+  the branch; do not claim a saved `0x4013=2` or transient rescue
+  state 2. At this earlier HG checkpoint, caught or interrupted battle,
+   SoulSilver native rescue, and full campaigns remained unproven. The newer
+   SS rescue proof is recorded above; caught/interrupted battle and full
+   campaigns remain unproven.
+- All original batteries remain private and unchanged. No real Route 101
+  chase/scene choreography, production exterior integration, complete
+  campaigns or Stage 1 completion follows from these **controlled HG
+  flat-lab** outcomes. Historical notes below saying rescue entry 2
+  is unmapped/untested refer to the earlier ROMs; this test actor is
+  **only in the separate private probe**, not a production map hookup.
+
+## Private HG compact Route 101 runtime probe — 2026-09-28
+
+- A second **private HeartGold test ROM** built successfully from pinned
+  game source `51e26be86a4239d7456301ae4e0a425a64e5a605` and the
+  compact exporter at `a08fad6fc150f34878cae28e727e357d1056f14a`:
+  `/tmp/hg-vm-share/pokeheartgold-route101-probe-a08fad6.us.nds`
+  (128 MiB, SHA-256
+  `f0676f0b90bd01dd8e0b2a117970a13ee23335f13237d789f60695a40c2b7c56`).
+  This isolated ROM swaps **only its existing debug map 540** to Route 101
+  in place of the separate private Littleroot test; see the pre-build
+  overlay manifest `/tmp/hg-route101-probe-a08fad6-overlay/probe-manifest.json`.
+  Spawn (9,15), technical reward scientist (8,15), and return scientist
+  (10,15) are test fixtures, **not** an authentic rescue scene. The
+  20×20 donor composite uses four compact textures totaling 102,400 bytes
+  (100 KiB) and a 512-byte palette.
+- The conservative terrain permits 132 safe cells in three disconnected
+  components of 72/33/27 cells, with 70 safe cells in the spawn component
+  after excluding actors. It deliberately blocks all 104 unsupported
+  grass/ledge/behavior/elevation cells rather than inventing DS behavior.
+  The parent visually verified the textured route floor and two test actors
+  in private `route101-series002`; captured traversal through tiles
+  (9,14), (9,15), (9,16) in `003`–`005` showed no obvious texture seam.
+  These witnesses span **only the connected left-side texture quadrants
+  0 and 2**, not all four: right-side quadrants 1 and 3 are unreachable
+  under these safe collision rules. Coordinates are inferred from event
+  data and controller inputs, **not measured in live game RAM**.
+- Two complete **Route → Elm → Route** cycles were parent-visually verified
+  in captures `006`/`013` and `014`/`015`. Entry screenshots `002`,
+  `013`, `015` are byte-identical (SHA-256
+  `d5c6b3645385a74b7727236d26535dcd54f3a5126134d3ccabaa9a3e8fee097e`).
+  The unchanged Johto assistant/Potion sequence progressed without saving
+  in `route101-series007`–`011`. Evidence remains private under
+  `/tmp/hg-retroarch/route101-seriesNNN/{screen.png,report.json}`
+  (NNN = 001–015), with `route101-seam-contact.png` and
+  `route101-transition-contact.png` in `/tmp/hg-retroarch/`.
+  The emulator used an **isolated copy** of the real HG Johto starter
+  battery (SHA-256
+  `42b0d9f1722de15b552d293a4fae404adc82fd259bc5e582a23f8b3b9afc038b`);
+  the immutable original remains unchanged. This probe did not save, grant
+  a gift, execute rescue or restore an emulator state.
+- Taken together, **both private compact exterior probes** now have
+  specific HG visual render/traversal/return evidence, but not a connected,
+  production-integrated Littleroot–Route 101 journey. The generic
+  exporter's `RuntimeVerified=false` still covers uninstalled production
+  resources, and the private overlay manifest's `runtime_verified: false`
+  was stamped **before** this probe ran; neither flag is a blanket runtime
+  gate passed by this test. Native allocator/free-headroom and future
+  prop/NPC allocation were **not measured**. Unreachable right quadrants,
+  blocked grass/ledges, perimeter-negative collision, authentic chase/
+  rescue, proper exteriors, full campaign and Stage 1 completion remain
+  unproven. No private ROM, donor binary, save or screenshot is committed.
+
+## Private HG compact Littleroot runtime probe — 2026-09-28
+
+- A **private HeartGold test ROM**, generated from pinned game source
+  `51e26be86a4239d7456301ae4e0a425a64e5a605` and the compact exterior
+  exporter at `a08fad6fc150f34878cae28e727e357d1056f14a`, built
+  successfully at `/tmp/hg-vm-share/pokeheartgold-town-probe-a08fad6.us.nds`
+  (128 MiB; SHA-256
+  `8579b8d4827f9cc8d35c1fbefe68e1397dd61d32bc41687f2c7567e901dc589b`).
+  Private guest source is `/root/debug-town-probe-a08fad6`; the overlay
+  provenance/bindings are recorded at
+  `/tmp/hg-town-probe-a08fad6-overlay/probe-manifest.json`. **Only this
+  disposable ROM's existing debug map 540** was changed to use compact
+  Littleroot texture member 106 and land member 676. Its debug spawn is
+  (13,12), reward scientist (12,12), return scientist (14,12). Route 101
+  was **not** installed or tested. The four distinct compact textures
+  total 102,400 bytes (100 KiB) plus a 512-byte palette.
+- The emulator **cold-loaded an isolated copy** of the authentic HG Johto
+  starter battery (SHA-256
+  `42b0d9f1722de15b552d293a4fae404adc82fd259bc5e582a23f8b3b9afc038b`);
+  the immutable original remains unchanged. No in-game save, gift, rescue,
+  state restoration or editor round trip was run on this town-probe ROM.
+  Parent visually verified the composite town floor and both technical
+  placeholder actors in private `town-series002`. Audited conservative
+  terrain connectivity and input trajectories across tiles with x 15/16
+  and z 15/16 reached all **four compact texture quadrants**, with no
+  obvious missing texture or seam in captures `town-series004`–`009`.
+  Coordinates derive from event data plus controller input, **not live
+  game-RAM telemetry**; do not claim pixel-perfect camera bounds or full
+  navigation coverage from these witnesses.
+- Two complete **Town → Elm → Town** return/re-entry cycles were visually
+  verified in private captures `town-series010`/`017` and
+  `town-series018`/`019`. Entry screenshots `002`, `017`, `019` are
+  byte-identical (SHA-256
+  `2de7cf3cb85046960eb052a3bc0cdd41b850bdc75d37de379226705f34db7f7e`).
+  The ordinary Johto assistant/Potion sequence progressed unsaved in
+  `town-series011`–`015`. Evidence is private at
+  `/tmp/hg-retroarch/town-seriesNNN/{screen.png,report.json}`
+  (NNN = 001–019), plus `town-quadrants.png` and `town-returns.png`.
+- The **specific private Littleroot probe** establishes rendered geometry,
+  cross-quadrant traversal and these two transitions; it does **not** make
+  the generic exporter's `RuntimeVerified=false` manifest inaccurate for
+  uninstalled production assets. No bounded native allocator/free-headroom
+  measurement, future prop/NPC allocations, perimeter-negative collision
+  validation or Route 101 runtime was established at this **Littleroot-only
+  checkpoint**; the separate Route 101 probe above now has limited runtime
+  evidence. This is a flat visual prototype, not authentic multi-height 3D
+  town, native exterior/episode integration, real rescue, full campaign or
+  completed Stage 1. Earlier
+  exterior authoring notes below are historical and superseded only for
+  this particular isolated HG test. No ROM, private assets or screenshots
+  are committed.
+
+## Historical earlier SoulSilver starter, debug gift and real-save editor loop — 2026-09-28
+
+- A separate **private, opt-in SoulSilver debug ROM**, built from the pinned
+  `51e26be86a4239d7456301ae4e0a425a64e5a605` source and the same
+  runtime-verified solid lab assets, is
+  `/tmp/hg-vm-share/pokesoulsilver-solid-51e26be.us.nds` (128 MiB; SHA-256
+  `cd12c7da629337d3b4204a04a356425fb026b5b4264e2eb99fb84b014aa0bda4`).
+  Its native script build used `-DSOULSILVER`, with all 966 banks inventoried
+  in private `/tmp/hg-ss-native-51e26be/ss-bank-manifest.json`. This is not a
+  ROM from the later documentation/exterior commits and is not distributed.
+- Starting from **blank SoulSilver battery data**, not an HG-converted save,
+  boy trainer A proceeded through native New Game, chose Totodile and saved.
+  The immutable first-save copy
+  `/tmp/hg-retroarch/pre-save-backup/ss-native-after-johto-starter.dsv`
+  has SHA-256 `a6f2dcbcfdc7dccfe614882f813527cffb8c20f86fc5cc434a2ccbbe0414ebf1`.
+  At this first save **only partition 1 is populated**, with its two valid
+  native block CRCs; partition 0 is still erased (`FF`). Do not report all
+  four blocks as populated at this stage.
+- In a persistent native SS emulator session, the debug entrance reached the
+  filled-texture flat lab with both actors. The touchscreen menu worked;
+  cancellation awarded nothing; the subsequent Treecko choice added a
+  level-5 party member; immediate re-interaction gave the receipt guard.
+  The player completed a native save, used the return scientist to reach Elm,
+  ran the unchanged Johto assistant/Potion sequence and re-entered the lab;
+  the receipt guard persisted. The parent visually verified the private
+  lab/menu/cancel/gift/guard/save/return/Johto/revisit captures. Debug Elm
+  **simulates rescue eligibility**: authentic rescue entry 2 is not mapped or
+  proven in SS gameplay.
+- The separate immutable post-gift battery copy
+  `/tmp/hg-retroarch/pre-save-backup/ss-native-after-treecko.dsv` has SHA-256
+  `6003bd7b2235833dae7e8005c3602ed1ad6776001c233a4d83aa3e88f4a14bf9`.
+  **Both partitions are now populated**, all four native block CRCs valid.
+  Corrected PKHeX.Core and PKMDS.Core load it with zero load mutation as
+  `SAV4HGSS` **SoulSilver** (version 8, `IsHGEngine=false`). Both see
+  Totodile (158) then Treecko (252); all decrypted bytes of the original
+  Totodile and all 2,912 flags match the true SS starter save. Starter
+  `0x4030` remains 158; debug rescue/receipt `0x416e`/`0x416f` are 1/252.
+  Ordinary play also reset temporary variables `0x4000` 4→0 and `0x4001`
+  158→0, and advanced friendship steps `0x404b` 45→49. This is **not** a
+  claim of byte-for-byte preservation of the entire save.
+- Both editors' no-op and money-3000-to-3001 exports reopen with valid
+  checksums, preserving the **current** 368 variables, 2,912 flags, both
+  Pokémon, story values, map 540 and trainer A (ID32 3299343148, TID 64300,
+  SID 50343). The two editors' respective exports are identical, **but the
+  no-op output is not byte-identical to the input**: five bytes changed in
+  box content flags/checksum; the money edit changes eight bytes. Their
+  identical money-edited battery SHA-256 is
+  `e997f62b005cdef28495368b04495f1d2ed016bc5f8cf2f3d183c2e5e7793f39`.
+  A **true cold load** of an isolated edited copy under the SS ROM verified
+  trainer A at Continue, the textured lab and actors, both level-5 party
+  Pokémon (HP 21/21 and 19/19), trainer-card money 3001 / ID 64300 and
+  already-received dialogue. The parent inspected five private contact
+  panels at `/tmp/hg-real-save-validation/ss-native-treecko-edited-cold-contact.png`;
+  evidence JSON is under `/tmp/hg-real-save-validation/ss-native-treecko/`.
+  Original batteries remain unchanged. These are Core API editor checks,
+  **not** desktop/browser UI tests. Treecko fails retail encounter legality
+  (new origin/type); save compatibility does not confer retail legality.
+- The SS runtime daemon was stopped cleanly. This **SS one-party-slot gift**
+  does not establish full-party PC fallback/refusal/retry on SS; those native
+  capacity cases below used **HG synthetic disposable fixtures**. Neither
+  edition has authentic mapped rescue/exterior travel, full Hoenn/Sinnoh
+  campaigns or completed Stage 1. Historical SS-pending notes below are
+  superseded only by this specific native build/runtime/save-editor evidence.
+  No ROM, save, screenshot, SDK or key is committed.
+
+## Native HG capacity and deferred gift — disposable fixtures, 2026-09-28
+
+The **same corrected private HG debug ROM** (SHA-256
+`cf98258b792fa57cc8a318274ac68488c85c0b6c51ddacbdbfbbb120341f3c07`)
+ran four separate capacity cases. Their inputs are **synthetic disposable
+editor fixtures**, not naturally accumulated parties or authentic game
+progress: each starts with six Totodile clones, rescue variable `0x416e=1`
+and receipt `0x416f=0`. The first three inputs differ in PC occupancy (0,
+539, or 540); retry instead derives from the completed full-storage save.
+These cases test native gift/storage behavior; the genuine Totodile/Treecko
+post-gift save described below is separate and remains unchanged.
+
+- Full party, empty PC: Treecko went to box slot 0; PC occupancy became 1,
+  receipt became 252, and all six original party Pokémon were unchanged.
+- Full party, **last available PC slot 539**: Treecko went to that slot,
+  occupancy became 540, receipt became 252, and the six party Pokémon and
+  other 539 occupied box slots were unchanged.
+- Full party and all 540 PC slots occupied: the scientist displayed the
+  no-space refusal; **after completing the native save** the receipt was
+  still 0, with all six party Pokémon and all 540 box Pokémon unchanged.
+  The finished-save evidence is `full/saved-complete`, **not** the earlier
+  incomplete `full/saved` capture, which missed the second save-message page.
+- Deferred retry: a **copy of that saved full-storage result** was edited
+  to free only PC slot 539, then cold-loaded. The native gift filled exactly
+  that slot and recorded receipt 252; another interaction was guarded against
+  duplication. The original saved full-storage result was not overwritten.
+
+All four native output batteries pass all four HGSS block CRCs. Audits and
+private batteries are under `/tmp/hg-capacity-runtime/{empty,last,full,retry}/`;
+the exact audit JSON filenames are `audit.json` in each case. The output
+SHA-256s are respectively `9213d44102fca0b63d26ff767cc7f6c55a3999788134ef8c2bf744e9091535b6`,
+`61d33c009548a0ff45b70242e177da0d13fc0e72712ef6802abff891cf003307`,
+`6f10437082d77cbebc2d1eaed0de7713673ee6bc115ab812f57036b041872d55`
+and `a26e1f431a9ba4c119d57d2e3373534c915c0ddc4f2dd0f9c5574ff6248d383d`.
+The parent visually verified delivery, refusal, retry and guard panels in
+private `/tmp/hg-capacity-runtime/capacity-contact.png`; no private ROM,
+save or screenshot is published. These **capacity cases are HG only**; no
+SS capacity result or authentic rescue/battle/travel is established here.
+At this earlier checkpoint, the SS build was still in progress; the separate
+completed SS starter/gift/real-save evidence is documented above. No full
+campaign or desktop/browser editor UI is claimed. Historical pending-capacity
+statements below apply only to their earlier checkpoints.
+
+## Corrected debug HG runtime and real-save editor loop — 2026-09-28
+
+- A **private, opt-in HeartGold debug ROM** built from generated source at
+  `51e26be86a4239d7456301ae4e0a425a64e5a605` with the solid lab assets:
+  `/tmp/hg-vm-share/pokeheartgold-solid-51e26be.us.nds`, 128 MiB,
+  SHA-256 `cf98258b792fa57cc8a318274ac68488c85c0b6c51ddacbdbfbbb120341f3c07`.
+  This is a local evidence path, not a committed or distributed ROM. The
+  separate earlier ROM (`a41ba778…`) and disposable saves were not overwritten.
+  The authorized Ubuntu 22.04 guest used its proven one-vCPU, 512-MiB/swap
+  configuration; the fresh build needed the private NitroSDK linker templates
+  at their prescribed locations and, with `NODEP=1`, an explicit
+  `PROJECT_ROOT_NT=Z:/root/debug-solid-51e26be` for the Windows linker
+  response template. The host sandbox's larger tier is not a ROM requirement.
+- A persistent DeSmuME libretro 0.9.11 session cold-loaded an **actual
+  in-game save** containing the original Johto Totodile. It does not restore
+  emulator savestates: repeated restore with this old core corrupted graphics,
+  whereas native battery cold loads rendered normally. The corrected debug
+  map 540 visibly renders its donor-textured **flat technical lab**, player
+  and both scientists, replacing the earlier black floor. The touchscreen
+  menu now responds. B cancellation gave no reward; a later Treecko choice
+  delivered a level-5 party member; immediate repeat interaction reported
+  already received, with no second grant. An in-game save completed; the
+  return scientist warped to Elm's lab; after an ordinary untouched Johto
+  assistant/Potion event, Elm re-entry returned to the same lab and the reward
+  guard still held. The debug entrance **simulates** rescue eligibility;
+  compiled rescue battle entry 2 was not entered or tested in gameplay.
+- The immutable post-gift battery copy is
+  `/tmp/hg-retroarch/pre-save-backup/after-solid-treecko-save.dsv`,
+  SHA-256 `6956efbca751e7bfaed3026e557f09f8a90f307da8809275bf8d3726869fb736`.
+  Its real HGSS save has all four native block checksums valid. With the
+  separate, corrected PKHeX loader (`the-new-kai-lu/PKHeX` draft PR 1,
+  `9a5ed35e0df1bc65c3900bcab03cddfa581aa1d7`), **both PKHeX.Core and
+  PKMDS.Core load without changing any bytes**. Both report party
+  Totodile (158) then Treecko (252); every decrypted byte of the original
+  Totodile agrees with the authentic pre-gift starter save. All 2,912
+  existing event flags agree, Johto starter variable `0x4030` remains 158,
+  and debug rescue/receipt variables `0x416e`/`0x416f` are 1/252. Do not
+  claim all save bytes stayed unchanged: temporary variables `0x4000/0x4001`
+  reset and friendship-step variable `0x404b` advanced 51 to 55 during real
+  play. Both editors' no-op and money-3000-to-3001 exports reopen with valid
+  checksums and preserve all **current** 368 variables, 2,912 flags, map 540,
+  trainer identity and both Pokémon's decrypted bytes.
+- An isolated copy of the editors' identical post-gift money-edited export
+  (`735cb8f5d14dd1e84f5ab06b8e15eb10e29b5fad63917536ba9d075e46fa83be`)
+  was **cold-loaded** by the corrected ROM without restoring an emulator
+  state. The Continue screen identified trainer A; the textured lab rendered;
+  the party UI showed Totodile and Treecko; the trainer card showed money
+  3001 and ID 45489; the scientist still gave the already-received dialogue.
+  The original battery copy remains unchanged. These are actual HG Core API
+  save/edit/export/cold-game checks, **not** desktop or browser UI tests.
+  Treecko fails vanilla retail encounter legality (new origin/encounter
+  type); save compatibility must not be misrepresented as retail legality.
+- At this earlier checkpoint, SoulSilver had no corrected private ROM build
+  or real runtime/editor evidence; full-party/PC fallback and no-space had
+  host tests but no real runtime proof (now superseded by the HG-only capacity
+  checkpoint above). The lab is a flat prototype without authentic
+  furniture, and Littleroot/Route 101 are donor extractions, not playable
+  exteriors. Actual rescue entry, travel, both full regional campaigns and
+  full Stage 1 completion remain unimplemented/unverified. Sections below
+  retain their historical checkpoint scope; their earlier pending-runtime
+  statements are superseded **only** by the specific evidence above.
+
+## Runtime-discovered floor material defect — 2026-09-28
+
+The older private debug ROM documented below reached map 540 in a persistent
+DeSmuME libretro session without savestate restoration. The player and two
+technical scientists appeared, but the lab background was black. Johto rooms
+rendered correctly in that same session. Reading the actual ROM confirmed
+appended area 106, texture 106 and land 676; its land model is byte-identical
+to the aligned exporter output. External model decoding did not establish
+successful native rendering.
+
+Material flags were incorrectly emitted as `0x1ff`, which includes
+`NNS_G3D_MATFLAG_WIREFRAME` (`0x20`) in the repository's SDK header.
+Native material handling in `lib/asm/nnsys.s` at `_020C03DC` and `_020C2204`
+clears polygon alpha for that flag, selecting wireframe instead of a filled
+floor. The exporter now explicitly combines the intended identity-texture
+and diffuse/ambient/vertex-color flags, excluding wireframe. A regression
+checks serialized flags and effective native alpha, including the historical
+failing flag combination.
+
+Focused model tests and independent apicula decoding pass. Regenerated private
+assets are `/tmp/emerald-lab-solid`, with archive overlay at
+`/tmp/emerald-lab-solid-overlay`. These are not committed assets. A new ROM and
+persistent-session lab rendering test remain required: this source correction
+does not establish that all runtime rendering/binding defects are fixed.
+
+The same older debug ROM also froze after the reward NPC's opening dialogue.
+Native `MenuInit`/`MenuExec` require the overlay-27 menu context established by
+`TouchscreenMenuHide`; `LockAll` does not establish it. Both gift and rescue
+menus now bracket menu construction/execution with hide/show, restoring the
+ordinary field menu before gift handling or battle. The compiled-byte test
+models this precondition and rejects a mutated script missing the transition.
+Only appended bank 965's hash changes. This is a source regression fix; the
+fixed reward menu still requires a rebuilt-ROM runtime check.
+
+## Debug return regression and exterior extraction — 2026-09-28
+
+- Adding production rescue entry 2 exposed a real debug-generation regression:
+  the right scientist still selected script ID 3, which now starts rescue
+  instead of returning. The generator now derives the appended return index
+  from the production entry table. Currently return is entry 3 / object script
+  ID 4; reward remains entry 1 / ID 2, and rescue entry 2 is preserved.
+  Both editions' compiled event/command tests check these actual bindings and
+  the return Warp to Elm's lab. Regenerate debug trees before a new ROM build;
+  the older `0db3ba85` ROM predates this regression and is not changed here.
+- All 38 host tests pass with the independent APICULA decoder enabled; the
+  baseline checker reports no errors and `git diff --check` passes. The
+  previously failing generated-return assertion is now fixed, not waived.
+- The shared donor extractor now supports Littleroot Town and Route 101 with
+  `--map LittlerootTown` or `--map Route101`. Each is 20 by 20 donor cells
+  (320 by 320 pixels). Tests check all 400 cells, source events/connections,
+  artifact hashes and a 32-cell-grid coordinate plan. Existing lab pixel
+  regression tests remain unchanged and pass.
+- These are donor extraction artifacts, **not imported DS exterior maps**.
+  Animated tiles/palettes are not replayed. Eight unavailable lower-quadrant
+  references in Littleroot are omitted only where every actual upper pixel
+  is proven opaque, and recorded in `chunk-plan.json`; the separated lower
+  layers are therefore incomplete. Visible missing pixels fail explicitly.
+  Collision/elevation fields retain donor semantics, not HGSS walkability.
+- No new ROM, lab gameplay, save/editor round trip or Stage 1 completion is
+  established by this checkpoint. Earlier sections below are historical
+  checkpoints and retain their narrower scope.
+
+## Local ROM toolchain recovery and debug build — 2026-09-28
+
+- A private, opt-in debug **HeartGold** ROM built successfully with
+  `make COMPARE=0` from the generated lab test tree at `0db3ba85`. This
+  tree adds test-only map 540, an Elm entrance, a technical scientist starter
+  interaction, and a return warp; it simulates Birch's rescue. The newer
+  real-rescue script at `abf724e` was **not** in the built snapshot. Neither
+  SoulSilver nor the default branch build is established by this run.
+- Private ROM: `/tmp/hg-vm-share/pokeheartgold.us.nds`, 128 MiB, SHA-256
+  `a41ba778bf085737f41faace92d0717fb96f5410cf4311d2718332a7a84a870f`.
+  The generated source archive was
+  `/tmp/hg-build-vm/debug-source.tar.gz`, SHA-256
+  `e241b1362502556492374836eb1384d992cf96c19064810a71bd92ba1caafc3d`.
+  These private local paths are evidence, **not** downloadable or committed
+  ROMs, saves, tools, or license files.
+- The sandbox's native ELF32 Wine loader fails with `Exec format error`;
+  default Wine64 still segfaults. This is a host execution limitation, not a
+  demonstrated game defect. A checksum-verified official Ubuntu 22.04 image
+  running in KVM with one vCPU, 512 MiB RAM and 2 GiB guest swap succeeded
+  with Ubuntu Wine 6 (32-bit packages), a win32 prefix and Xvfb. Four guest
+  vCPUs stalled in this environment. The guest received the locally
+  authorized Metrowerks/NitroSDK tools; no toolchain or license was published.
+- The reproducible local route was: prepare the isolated lab source with
+  `scripts/prepare_lab_debug.py`; assemble its 966 script banks for HG using
+  `scripts/build_native_field_scripts.py`; transfer the generated source and
+  banks into the Ubuntu 22.04 guest; place the authorized compiler/SDK in the
+  repository-prescribed `tools` paths; set `LM_LICENSE_FILE`, `WINEARCH=win32`
+  and a guest-private `WINEPREFIX`; run `xvfb-run -a make COMPARE=0`. The
+  generated debug Elm/reward banks 843/965 intentionally differ from their
+  retail hashes. VM disk, snapshot and session helper remain private under
+  `/tmp/hg-build-vm/`; that helper uses a local private SSH key and is not a
+  portable installation script. Use `INSTALL.md` and the pinned archive
+  hashes in `baseline.json` when reproducing in another authorized VM.
+- DeSmuME 0.9.13 at `/usr/games/desmume-cli` launched the debug ROM under
+  Xvfb with software rendering and dummy audio. A boot screenshot showed
+  the opening city scene. This is **not** proof of the debug lab's rendering,
+  travel, gift transaction, in-game saving, cold restart, editor round trip,
+  or completion of a Hoenn episode. Those runtime checks remain in progress.
+
+## Appended reward transaction checkpoint
+
+- Supersedes earlier "no allocation/caller" notes below: two existing variable
+  slots are now named for Hoenn rescue and reward receipt; native range review
+  and the 11-member Frontier script archive check are recorded in
+  `EMERALD_OPENING.md`. No save-size/layout change.
+- Appended bank 965 implements guarded starter receipt and retry, with no
+  existing script index or NPC overwritten. It is not connected to a map yet.
+- Twenty host tests pass, including actual compiled claim-byte execution for
+  HG/SS, existing production gift-helper tests, native range tests, Frontier
+  archive checks, and all baseline/mutation tests.
+- Full native script rebuild: 966/966 tracked hashes match separately for
+  HeartGold and SoulSilver (1,932 outputs). The appended bank has a new pinned
+  hash; original 965 hashes remain unchanged.
+- No selection UI, rescue battle, imported map, emulator or save/editor
+  round trip is claimed. Full Stage 1 campaigns remain unimplemented.
+
+## Gift-command extension checkpoint
+
+- Appended opcode 853 (`GiveMonToPartyOrPC`); existing opcodes, `GiveMon`,
+  save storage and retail-baseline hashes are unchanged.
+- Baseline source audit and all nine host tests pass: seven original mutation
+  tests, compiled gift/adapter logic against storage doubles, and actual
+  macro/decompiler/reassembly round trip. These do not validate ARM execution,
+  encrypted Pokémon data, real save serialization, or a playable episode.
+- This is intentionally no longer a retail-matching ROM. Existing CI uses
+  `COMPARE=1` and will reject changed ROM hashes; the workflow was not edited.
+  Historical matching-build success below applies only to its stated commit.
+- A complete expanded ROM build and in-game/editor testing remain unverified.
+
+## Passed
+
+- Supplied compiler and NitroSDK archive SHA-256 hashes exactly match the
+  archives referenced by the host's devcontainer setup; see `baseline.json`.
+- Seven Python baseline/mutation tests and the live source contract audit.
+- Native host utilities compile after correcting `gen_fx_consts` libm link order.
+- GitHub Actions on PR head `f699b3c01b769f95c07e7d802dd5b7369bb142b2`:
+  expansion-baseline contract passed on push and PR; build run
+  `36337502454` passed both HeartGold and SoulSilver steps. The build
+  workflow sets `COMPARE=1`, and the Makefile checks each ROM against its
+  pinned SHA-1 when that variable is set. Raw run-log retrieval returned
+  HTTP 403, so individual hash output was not inspected. No ROM artifacts
+  were retained by that run.
+- PKHeX: nine focused HGSSBaselineTests/HGEngineTests pass. Four new cases cover
+  vanilla HG/SS-origin Pokémon, independent general/storage partition selection,
+  checksums, every story variable/flag byte, and isolated box EXP/ability edits.
+  The other five are existing hg-engine tests.
+- PKMDS.Core Debug build against the sibling PKHeX fork succeeds with zero
+  warnings/errors after installing `libicu78`.
+- Full PKHeX suite with ICU: 605 passed, one skipped, one failed out of 607.
+  `EffortExpLegalityTests.ZeroEVs_ReturnsZero` also fails on untouched commit
+  `94033cce0caf90dcc04bbacdbe991233bb3bef9f` in a separate worktree. It was
+  not changed as part of this save-compatibility work.
+
+## Blocked / not demonstrated
+
+- Direct host ROM reproduction: `make -j4` first failed linking `floor`,
+  fixed here. Retrying reached asset conversion, where tools segfaulted after
+  Wine assembly invocations produced no expected object file
+  (`files/tel/pmtel_book.o`). A working Ubuntu 22.04 VM path for a private
+  debug HG build is now documented above; direct host Wine remains unusable.
+- The local sandbox has not produced matching HeartGold/SoulSilver hashes;
+  GitHub's historical retail comparison does not supply local retail ROMs.
+- PKMDS Web Debug build is blocked by NETSDK1147: missing `wasm-tools`.
+- The emulator only reached the opening city screen. No debug lab gameplay,
+  Windows desktop UI, browser editing loop, real-hardware run, versioned
+  in-game milestone save, or complete imported episode has been tested.
+- Earlier Git pushes were rejected with HTTP 403 despite confirmed collaborator
+  write access; authenticated API code writes worked. The owner installed the
+  Actions workflow separately; it is now present on the game PR branch.
+
+## State-allocation inventory checkpoint
+
+- Added a fail-closed candidate-variable inventory over tracked C/header,
+  assembly, script sources and event JSON, with optional independently built
+  HG/SS script-bank directories. It fingerprints inputs and reports missing,
+  empty or unexpected banks and conservative unaligned halfword matches.
+- Six new host tests cover assembled binary evidence in either edition,
+  missing/empty/stale banks, decimal and alias references, computed accesses
+  and evidence fingerprint changes. Together with existing tests, 15 pass.
+- Probes `0x416e`/`0x416f` found no literal source uses outside definitions;
+  they are **not allocated or certified free**. Subsequent native builds now
+  provide both editions' compiled banks; native/dynamic accesses require review. No Birch caller or
+  runtime story transition is claimed implemented.
+- The owner's `COMPARE=0` workflow change at `7411b883` is preserved.
+
+## Reproduce focused checks
+
+### Native field-script evidence checkpoint
+
+- `scripts/build_native_field_scripts.py` independently preprocesses/assembles
+  965 field banks for HG and 965 for SS without Wine. All 1,930 outputs match
+  the existing tracked SHA-1 manifest. No ROM or message asset is committed.
+- Uses actual native `msgenc` and GNU ARM tools; the output report records tool
+  versions, edition defines and bank hashes. Existing-output refusal prevents
+  stale-bank reuse. Header-bank regression tests exercise real assembly and
+  hashes, including the MW/GNU surplus-argument compatibility case; an
+  edition-sensitive test ensures the two define paths are actually distinct.
+- All 17 host tests passed locally. The native ARM regression explicitly skips
+  when GNU ARM binutils are absent (for example in the Python-only CI job);
+  the full script-build helper instead fails on missing tools.
+- State audit now has complete binary coverage: probes `0x416e` and `0x416f`
+  have no literal hits in either edition. Exit 2 remains intentional, with
+  1,565 native/dynamic access sites inventoried for manual/dataflow review.
+  No persistent IDs are allocated and no reachable Birch interaction exists.
+
+### Editor checks
+
+Clone the editor forks alongside the game fork. In PKHeX, using .NET 10.0.401:
+
+```sh
+dotnet test Tests/PKHeX.Core.Tests/PKHeX.Core.Tests.csproj \
+  --filter 'FullyQualifiedName~HGSSBaselineTests|FullyQualifiedName~HGEngineTests'
+```
+
+The initial focused tests used `DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1` because
+ICU was absent. After installing `libicu78`, the full suite ran without that
+override, including all nine focused cases. The initial full invariant run had
+one additional culture-dependent learnability failure, resolved by ICU.
+This does not validate browser behavior. No serializer production code was changed. These fixtures
+are synthetic and do not substitute for the in-game/editor loop in `README.md`.
+
+Before claiming an imported episode works, obtain disposable real game saves
+for both variants and perform the ROM/editor round trip. The owner selected
+Emerald and Platinum donors; the Birch-rescue design audit is
+`EMERALD_OPENING.md`, not an implemented episode.

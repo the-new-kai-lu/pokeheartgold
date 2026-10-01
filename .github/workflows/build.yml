@@ -10,7 +10,7 @@ env:
   LM_LICENSE_FILE: "$GITHUB_WORKSPACE/tools/mwccarm/license.dat"
   CC: gcc-10
   CXX: g++-10
-  COMPARE: 1
+  COMPARE: 0
 
 jobs:
   build:
@@ -89,18 +89,8 @@ jobs:
           avatar-url: https://i.imgur.com/38BQHdd.png
         continue-on-error: true
 
-      - name: Post error archive
-        if: failure()
-        continue-on-error: true
-        run: find . -maxdepth 2 -type d \( -name build -or -name files \) -exec tar -czvhf failure.tar.gz {} +
-
-      - name: Post error upload
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: pokeheartgold-failure-${{ github.run_id }}
-          path: failure.tar.gz
-          retention-days: 1
+      # Keep compiler diagnostics in the Actions log. Do not upload build/files
+      # archives: this fork publishes source, not compiled game/SDK artifacts.
 
       - name: Checkout xMAP
         if: ${{ github.event_name == 'push' && github.repository == 'pret/pokeheartgold' }}

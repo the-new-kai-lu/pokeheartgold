@@ -34,6 +34,20 @@ BOOL ScrCmd_GiveMon(ScriptContext *ctx) {
     return FALSE;
 }
 
+BOOL ScrCmd_GiveMonToPartyOrPC(ScriptContext *ctx) {
+    FieldSystem *fieldSystem = ctx->fieldSystem;
+    u32 map = MapHeader_GetMapSec(fieldSystem->location->mapId);
+    u16 species = ScriptGetVar(ctx);
+    u8 level = ScriptGetVar(ctx);
+    u16 heldItem = ScriptGetVar(ctx);
+    u8 form = ScriptGetVar(ctx);
+    u16 ability = ScriptGetVar(ctx);
+    u16 *retPtr = ScriptGetVarPointer(ctx);
+
+    *retPtr = GiveMonToPartyOrPC(HEAP_ID_FIELD2, fieldSystem->saveData, species, level, form, ability, heldItem, map, 24);
+    return FALSE;
+}
+
 BOOL ScrCmd_ReturnLoanMon(ScriptContext *ctx) {
     u8 slot = ScriptGetVar(ctx);
     Party *party = SaveArray_Party_Get(ctx->fieldSystem->saveData);

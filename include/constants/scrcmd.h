@@ -65,4 +65,9 @@
 #define MAPSIGNCOMMAND_WIPE_IN  3
 #define MAPSIGNCOMMAND_HIDE     4
 
+// GiveMonToPartyOrPC delivery result; callers must test explicitly.
+#define GIVE_MON_NO_SPACE 0
+#define GIVE_MON_PARTY    1
+#define GIVE_MON_PC       2
+
 #endif // POKEHEARTGOLD_CONSTANTS_SCRCMD_H

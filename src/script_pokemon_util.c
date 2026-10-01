@@ -4,10 +4,13 @@
 
 #include "constants/battle.h"
 #include "constants/items.h"
+#include "constants/scrcmd.h"
 
 #include "get_egg.h"
 #include "party.h"
 #include "pokemon_mood.h"
+#include "pokemon_storage_system.h"
+#include "save_arrays.h"
 #include "unk_0206979C.h"
 #include "update_dex_received.h"
 
@@ -44,6 +47,43 @@ BOOL GiveMon(enum HeapID heapID, SaveData *saveData, int species, int level, int
         }
         Heap_Free(mon);
     }
+    return result;
+}
+
+u16 GiveMonToPartyOrPC(enum HeapID heapID, SaveData *saveData, int species, int level, int form, u8 ability, u16 heldItem, int mapSec, int encounterType) {
+    Pokemon *mon;
+    PlayerProfile *profile = Save_PlayerData_GetProfile(saveData);
+    Party *party = SaveArray_Party_Get(saveData);
+    u32 item = heldItem;
+    u16 result = GIVE_MON_NO_SPACE;
+
+    // Do not generate/discard a random gift while Birch is holding the offer.
+    // The insertion results below, not this preflight, determine receipt.
+    if (Party_GetCount(party) >= Party_GetMaxCount(party)
+        && PCStorage_FindFirstBoxWithEmptySlot(SaveArray_PCStorage_Get(saveData)) == NUM_BOXES) {
+        return GIVE_MON_NO_SPACE;
+    }
+    mon = AllocMonZeroed(heapID);
+    // Match GiveMon's construction and gift encounter metadata, not Elm's
+    // new-game starter flow. Never change the existing party's slot zero.
+    ZeroMonData(mon);
+    CreateMon(mon, species, level, 32, FALSE, 0, 0, 0);
+    sub_020720FC(mon, profile, ITEM_POKE_BALL, mapSec, encounterType, heapID);
+    SetMonData(mon, MON_DATA_HELD_ITEM, &item);
+    SetMonData(mon, MON_DATA_FORM, &form);
+    if (ability != 0) {
+        SetMonData(mon, MON_DATA_ABILITY, &ability);
+    }
+
+    if (Party_AddMon(party, mon)) {
+        result = GIVE_MON_PARTY;
+    } else if (PCStorage_PlaceMonInFirstEmptySlotInAnyBox(SaveArray_PCStorage_Get(saveData), Mon_GetBoxMon(mon))) {
+        result = GIVE_MON_PC;
+    }
+    if (result != GIVE_MON_NO_SPACE) {
+        UpdatePokedexWithReceivedSpecies(saveData, mon);
+    }
+    Heap_Free(mon);
     return result;
 }
 

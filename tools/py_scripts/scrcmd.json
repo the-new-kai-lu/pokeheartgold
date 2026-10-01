@@ -5339,6 +5339,17 @@
         1,
         1
       ]
+    },
+    {
+      "name": "GiveMonToPartyOrPC",
+      "args": [
+        "species",
+        "var",
+        "var",
+        "var",
+        "var",
+        "var"
+      ]
     }
   ],
   "argtypes": {
