@@ -20,7 +20,8 @@ from hgss_land import Land, narc_members
 
 
 ROOT = Path(__file__).resolve().parents[1]
-TEMPLATES = ROOT / "scripts/episode_templates"
+EPISODE_TEMPLATES = ROOT / "scripts/episode_templates"
+TEMPLATES = ROOT / "scripts/oldale_potion_templates"
 EVENT = "files/fielddata/eventdata/zone_event/494_OLDALE_TOWN_TRAVEL.json"
 SCRIPT = "files/fielddata/script/scr_seq/scr_seq_0967_oldale_arrival.s"
 MESSAGE = "files/msgdata/msg/msg_0830_oldale_arrival.gmm"
@@ -89,9 +90,9 @@ def once(data, old, new, label):
 def verify_r7(episode):
     """Actual R7 anchors, not a synthetic stock-only episode profile."""
     p = profile()
-    if campaign.sha(campaign.read(TEMPLATES / "native_edits.json")) != p["native_edits_sha256"]:
+    if campaign.sha(campaign.read(EPISODE_TEMPLATES / "native_edits.json")) != p["native_edits_sha256"]:
         raise ValueError("Published episode native-edits recipe changed")
-    recipe = json.loads(campaign.read(TEMPLATES / "native_edits.json"))
+    recipe = json.loads(campaign.read(EPISODE_TEMPLATES / "native_edits.json"))
     for name, digest in p["native_sha256"].items():
         pinned(lambda n: campaign.read(episode / n), name, digest)
     # In particular 854 remains the actual actor command, not a bridge reservation.

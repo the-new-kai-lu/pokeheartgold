@@ -198,6 +198,22 @@ class ScriptHost:
 
 
 class OldalePotionAssets(unittest.TestCase):
+    def test_dedicated_templates_are_exact_public_text_sources(self):
+        self.assertEqual(P.TEMPLATES, ROOT / "scripts/oldale_potion_templates")
+        expected = {
+            "oldale_potion_header.s", "oldale_potion_messages.xml",
+            "oldale_potion_profile.json", "oldale_potion_script.s",
+        }
+        self.assertEqual({p.name for p in P.TEMPLATES.iterdir()}, expected)
+        for path in P.TEMPLATES.iterdir():
+            self.assertTrue(path.is_file() and not path.is_symlink())
+            data = path.read_text(encoding="utf-8")
+            self.assertNotIn("\0", data)
+            self.assertNotIn("/tmp/", data)
+            self.assertNotIn("/workspace/", data)
+        json.loads((P.TEMPLATES / "oldale_potion_profile.json").read_text())
+        ET.fromstring("<body>" + (P.TEMPLATES / "oldale_potion_messages.xml").read_text() + "</body>")
+
     def test_authentic_fixture_uses_real_r7_preimages_and_exact_scope(self):
         f = fixture()
         for n in (P.EVENT, P.SCRIPT, P.MESSAGE, P.CONTINUE):
