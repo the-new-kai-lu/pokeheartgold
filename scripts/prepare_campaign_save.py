@@ -30,6 +30,18 @@ TRANSACTION_SELECTION = {
     "split_partition_recovery": False,
     "incomplete_partition_policy": "retain its original bytes; never merge its newer general data with another partition's PC data",
 }
+BRIDGE_COMMANDS = ("CampaignGetFlag", "CampaignSetFlag", "CampaignGetVar", "CampaignSetVar")
+BRIDGE_INPUT_PROFILE = "opt-in-R7-episode-EnsureRoute101Actors-854"
+BRIDGE_PREIMAGES = {
+    "include/scrcmd.h": "9b88d84517eeefc1e622c0e3580e2f2b95da50cca64fdd24d4bdd3e257b2acf2",
+    "src/data/fieldmap/script_cmd_table.h": "8ff51f0ebc03e6956068a1f55d5bfebe265865986062f7b632c922ee3c9563ae",
+    "asm/macros/script.inc": "887f9d48d14f3b3b29ad27f9fa6483998c5124a8a8e977d4644e2b60e64f76e3",
+    "tools/py_scripts/scrcmd.json": "66c45d14179c7ad442a53301176f076a008de7617c20ed52a699ffc8039e5a8a",
+    "src/script.c": "9bf1939c18fffacdf4923bc28bb793255633eff43d554523a8b8efea72b1e8e0",
+    "src/script_manager.c": "c0dda954282e03fc806f81c154375ad95e3916b05d8415b34f4171805ef1ef2d",
+    "include/script.h": "adac6442b7d37e84c0893e03976c255334e7b9ee1de83b03349a19c762869af9",
+    "include/constants/vars.h": "35a4bed10d8596a389af1efb761ea577141ea81f42b092cc2bf4a8ca08363caa",
+}
 
 # Narrow safety preimages, not new acceptance pins for any historical build.
 PREIMAGES = {
@@ -122,7 +134,7 @@ def check_contract():
     return contract
 
 
-def source_edits(root):
+def source_edits(root, script_bridge=False):
     """Validate all guard/registration preimages before producing any output."""
     baseline = {}
     for name, expected in PREIMAGES.items():
@@ -244,22 +256,89 @@ def source_edits(root):
     linker = replace_once(linker, "    Object src/save_trainer_house.o\n",
                           "    Object src/save_trainer_house.o\n"
                           "    Object src/save_campaign.o\n", "native linker object")
-    return {
+    changes = {
         "src/save.c": save.encode(),
         "src/save_arrays.c": arrays.encode(),
         "main.lsf": linker.encode(),
         "include/save_campaign.h": read(TEMPLATES / "save_campaign.h"),
         "src/save_campaign.c": read(TEMPLATES / "save_campaign.c"),
     }
+    return bridge_edits(root, changes) if script_bridge else changes
 
 
-def verify_candidate(candidate, root):
+def bridge_edits(root, changes):
+    """Append four bridge opcodes after the R7 episode's real actor opcode 854."""
+    baseline = {}
+    for name, expected in BRIDGE_PREIMAGES.items():
+        data = read(root / name)
+        if sha(data) != expected:
+            if name == "include/scrcmd.h" and b"ScrCmd_EnsureRoute101Actors" not in data:
+                raise ValueError("Script bridge requires the known opt-in R7 episode source profile; "
+                                 "stock input is refused, not assigned/reserved opcode 854")
+            raise ValueError(f"Script bridge safety preimage mismatch for known R7 episode profile: {name}")
+        baseline[name] = data
+    for name in ("src/scrcmd_campaign.c", "include/scrcmd_campaign.h"):
+        if (root / name).exists() or (root / name).is_symlink():
+            raise ValueError(f"Append-only script bridge file already exists: {name}")
+
+    table = baseline["src/data/fieldmap/script_cmd_table.h"].decode()
+    handlers = "".join(f"    ScrCmd_{name},\n" for name in BRIDGE_COMMANDS)
+    table = replace_once(table, "    ScrCmd_EnsureRoute101Actors,\n};\n",
+                         "    ScrCmd_EnsureRoute101Actors,\n" + handlers + "};\n",
+                         "bridge handlers after existing episode opcode 854")
+    declarations = "".join(f"BOOL ScrCmd_{name}(ScriptContext *ctx);\n" for name in BRIDGE_COMMANDS)
+    header = replace_once(baseline["include/scrcmd.h"].decode(),
+                          "BOOL ScrCmd_BufferDeptStoreFloorNo(ScriptContext *ctx);\n",
+                          "BOOL ScrCmd_BufferDeptStoreFloorNo(ScriptContext *ctx);\n" + declarations,
+                          "bridge declarations")
+    macros = []
+    for opcode, name in enumerate(BRIDGE_COMMANDS, 855):
+        third = "out" if "Get" in name else "value"
+        macros.append(f".macro {name} region, id, {third}, status\n.short {opcode}\n"
+                      f".short \\region\n.short \\id\n.short \\{third}\n.short \\status\n.endm\n\n")
+    assembly = replace_once(baseline["asm/macros/script.inc"].decode(),
+                            "; Script headers\n", "".join(macros) + "; Script headers\n",
+                            "bridge macros before Script headers")
+    schema = json.loads(baseline["tools/py_scripts/scrcmd.json"])
+    if len(schema["commands"]) != 854 or schema["commands"][-1]["name"] != "GiveMonToPartyOrPC":
+        raise ValueError("R7 script bridge requires the unchanged stock 0..853 metadata before reconciliation")
+    metadata_additions = [{"name": "EnsureRoute101Actors", "args": [2]}]
+    metadata_additions.extend({"name": name, "args": [2, 2, 2, 2]} for name in BRIDGE_COMMANDS)
+    records = ",\n".join("\n".join("    " + line for line in json.dumps(
+        record, indent=2).splitlines()) for record in metadata_additions)
+    json_text = replace_once(baseline["tools/py_scripts/scrcmd.json"].decode(),
+                             "    }\n  ],\n  \"argtypes\": {",
+                             "    },\n" + records + "\n  ],\n  \"argtypes\": {",
+                             "existing actor metadata then bridge commands, not argtypes")
+    appended = json.loads(json_text)
+    if (appended["commands"][:-5] != schema["commands"]
+            or appended["commands"][854:] != metadata_additions
+            or appended["argtypes"] != schema["argtypes"]):
+        raise ValueError("Script bridge altered unrelated command metadata")
+    linker = replace_once(changes["main.lsf"].decode(),
+                          "    Object src/save_campaign.o\n",
+                          "    Object src/save_campaign.o\n    Object src/scrcmd_campaign.o\n",
+                          "bridge native linker object")
+    return {
+        **changes,
+        "main.lsf": linker.encode(),
+        "src/data/fieldmap/script_cmd_table.h": table.encode(),
+        "include/scrcmd.h": header.encode(),
+        "asm/macros/script.inc": assembly.encode(),
+        "tools/py_scripts/scrcmd.json": json_text.encode(),
+        "include/scrcmd_campaign.h": read(TEMPLATES / "scrcmd_campaign.h"),
+        "src/scrcmd_campaign.c": read(TEMPLATES / "scrcmd_campaign.c"),
+    }
+
+
+def verify_candidate(candidate, root, script_bridge=False):
     """Reject missing/altered guards, callback swaps, or linker registration."""
-    expected = source_edits(guard_path(root))
+    expected = source_edits(guard_path(root), script_bridge=script_bridge)
     for name, data in expected.items():
         if read(candidate / name) != data:
             raise ValueError(f"Candidate guard/registration/template mismatch: {name}")
-    for name, expected_hash in PREIMAGES.items():
+    protected = {**PREIMAGES, **(BRIDGE_PREIMAGES if script_bridge else {})}
+    for name, expected_hash in protected.items():
         if name not in expected and sha(read(candidate / name)) != expected_hash:
             raise ValueError(f"Candidate changed protected layout/control flow: {name}")
     return {name: sha(data) for name, data in expected.items()}
@@ -331,7 +410,7 @@ def publish(source, output):
         raise OSError(error, os.strerror(error), str(output))
 
 
-def prepare(root, output):
+def prepare(root, output, script_bridge=False):
     root, output = map(guard_path, (root, output))
     if not root.is_dir():
         raise ValueError("Source root must be a real directory")
@@ -341,7 +420,7 @@ def prepare(root, output):
         if output.is_relative_to(source) or source.is_relative_to(output):
             raise ValueError("Campaign source output overlaps an input/template checkout")
     check_contract()
-    changes = source_edits(root)
+    changes = source_edits(root, script_bridge=script_bridge)
     output.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix=".campaign-source-", dir=output.parent) as tmp:
         tree = Path(tmp) / "tree"
@@ -351,7 +430,7 @@ def prepare(root, output):
             target = tree / name
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_bytes(data)
-        verify_candidate(tree, root)
+        verify_candidate(tree, root, script_bridge=script_bridge)
         # Verify preserved assets and every unrelated copied source, not just edits.
         for name, before in inventory.items():
             if sha(read(tree / name)) != (sha(changes[name]) if name in changes else before):
@@ -397,6 +476,37 @@ def prepare(root, output):
                 "No donor script integration or migration is supplied.",
             ],
         }
+        if script_bridge:
+            report["script_bridge"] = {
+                "enabled": True, "runtime_verified": False,
+                "input_profile": BRIDGE_INPUT_PROFILE,
+                "native_command_count_before": 855, "native_command_count_after": 859,
+                "command_metadata_count_before": 854, "command_metadata_count_after": 859,
+                "actor_opcode_reconciliation": {
+                    "opcode": 854, "name": "EnsureRoute101Actors", "args": [2],
+                    "metadata_added": True, "native_source_preserved": True,
+                },
+                "commands": [
+                    {"opcode": opcode, "name": name,
+                     "operands": ["region_raw_u16", "donor_id_raw_u16",
+                                  "output_scratch_u16" if "Get" in name else "value_native_immediate_or_scratch_u16",
+                                  "status_scratch_u16"]}
+                    for opcode, name in enumerate(BRIDGE_COMMANDS, 855)
+                ],
+                "scratch_destination_range": [0x8000, 0x800C],
+                "set_value_operands": "native immediate below 0x4000 or scratch 0x8000..0x800C; resolved before status",
+                "status": {"success": 1, "error": 0},
+                "get_output_must_differ_from_status": True,
+                "invalid_status_policy": "StopScript(ctx); return FALSE; cannot continue to a reward",
+                "bool_return_is_vm_yield_not_operation_success": True,
+                "new_linker_object": "src/scrcmd_campaign.o",
+                "native_change_paths": sorted(changes),
+                "template_sha256": {
+                    name: sha(read(TEMPLATES / name))
+                    for name in ("scrcmd_campaign.h", "scrcmd_campaign.c")
+                },
+                "limits": "No gameplay scripts, rewards, map-local-state translation, SDK build, or runtime proof supplied.",
+            }
         (tree / "campaign-save-source.json").write_text(json.dumps(report, indent=2, sort_keys=True) + "\n")
         publish(tree, output)
     return report
@@ -406,9 +516,11 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=ROOT)
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--script-bridge", action="store_true",
+                        help="R7 episode profile only: append campaign opcodes 855..858 after existing actor 854; source only")
     args = parser.parse_args()
     try:
-        report = prepare(args.root, args.output)
+        report = prepare(args.root, args.output, script_bridge=args.script_bridge)
     except (ValueError, OSError) as error:
         parser.exit(1, f"Campaign source preparation refused: {error}\n")
     print(json.dumps({"status": report["status"], "changes": report["changes"]},

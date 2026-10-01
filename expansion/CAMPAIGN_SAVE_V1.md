@@ -75,6 +75,10 @@ preserve the original gameplay records without manufacturing progress.
 
 ## Opt-in source preparation and current checks
 
+An additional source-only [script bridge](CAMPAIGN_SCRIPT_BRIDGE.md) can be
+selected with `--script-bridge` for the known Oldale/R7 episode input. It preserves
+the existing actor-restoration opcode and does not itself add gameplay scripts.
+
 The default game sources remain unchanged. Prepare a separate candidate from
 the owner-local Oldale source tree:
 
