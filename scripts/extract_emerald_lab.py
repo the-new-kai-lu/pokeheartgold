@@ -9,6 +9,7 @@ import hashlib
 import json
 from pathlib import Path
 import struct
+import subprocess
 import zlib
 
 
@@ -103,9 +104,23 @@ def tile_pixel(word, x, y, sheets, palettes):
 
 def extract(donor, output, map_name=LAYOUT):
     sources = {}
+    if map_name == "OldaleTown":
+        revision = subprocess.check_output(
+            ["git", "-C", str(donor), "rev-parse", "HEAD"], text=True).strip()
+        if revision != DONOR:
+            raise ValueError("Oldale donor revision mismatch")
 
     def read(relative):
         data = (donor / relative).read_bytes()
+        if map_name == "OldaleTown":
+            # The pinned donor uses CRLF palette checkouts. Compare that exact
+            # representation without executing configurable Git content filters.
+            pinned = subprocess.check_output(
+                ["git", "-C", str(donor), "show", f"{DONOR}:{relative}"])
+            if relative.endswith(".pal"):
+                pinned = pinned.replace(b"\n", b"\r\n")
+            if data != pinned:
+                raise ValueError(f"Oldale donor source drift: {relative}")
         sources[relative] = hashlib.sha256(data).hexdigest()
         return data
 
@@ -116,6 +131,8 @@ def extract(donor, output, map_name=LAYOUT):
                           "data/tilesets/primary/general", "data/tilesets/secondary/petalburg"),
         "Route101": (20, 20, "gTileset_General", "gTileset_Petalburg",
                      "data/tilesets/primary/general", "data/tilesets/secondary/petalburg"),
+        "OldaleTown": (20, 20, "gTileset_General", "gTileset_Petalburg",
+                       "data/tilesets/primary/general", "data/tilesets/secondary/petalburg"),
     }
     if map_name not in contracts:
         raise ValueError("Unsupported episode map")
@@ -206,6 +223,40 @@ def extract(donor, output, map_name=LAYOUT):
                     occluded_unavailable_lower_tiles=occluded_unavailable,
                     lower_layer_limitation="Unavailable lower pixels omitted ONLY under proven opaque upper pixels")
         artifacts["chunk-plan.json"] = (json.dumps(plan, indent=2) + "\n").encode()
+    if map_name == "OldaleTown":
+        route = json.loads(read("data/maps/Route101/map.json"))
+        scripts = read("data/maps/OldaleTown/scripts.inc").decode()
+        route_connection = dict(map="MAP_OLDALE_TOWN", offset=0, direction="up")
+        town_connection = dict(map="MAP_ROUTE101", offset=0, direction="down")
+        girl = next(event for event in events["object_events"]
+                    if event["script"] == "OldaleTown_EventScript_Girl")
+        script = ("OldaleTown_EventScript_Girl::\n"
+                  "\tmsgbox OldaleTown_Text_SavingMyProgress, MSGBOX_NPC\n\tend\n")
+        text = ('OldaleTown_Text_SavingMyProgress:\n'
+                '\t.string "I want to take a rest, so I\'m saving my\\n"\n'
+                '\t.string "progress.$"\n')
+        if (route_connection not in route["connections"] or
+                town_connection not in events["connections"] or
+                girl["flag"] != "0" or (girl["x"], girl["y"]) != (16, 11) or
+                script not in scripts or text not in scripts):
+            raise ValueError("Oldale stateless arrival donor anchor changed")
+        candidate = dict(
+            status="CANDIDATE_PENDING_INDEPENDENT_PARENT_REVIEW",
+            native_staging=False, native_play_verified=False,
+            additional_save_allocation=0,
+            interaction=dict(donor_event=girl, donor_script=script, donor_text=text),
+            boundary=dict(route=route_connection, town=town_connection,
+                          donor_pairs=[dict(route=[x, 0], oldale=[x, 19])
+                                       for x in range(20)],
+                          explanation="Zero horizontal offset preserves x. North of Route101 "
+                          "row 0 is Oldale row 19; south of Oldale row 19 is Route101 row 0. "
+                          "These are donor coordinates, NOT approved walkable DS warp tiles."),
+            unresolved=["Native map/header/event/resource IDs and reciprocal warp tiles",
+                        "DS terrain/collision and model/archive integration",
+                        "Town transition, rival, Mart reward and other interactions not imported",
+                        "Independent native-output contract review and runtime verification"])
+        artifacts["arrival-candidate.json"] = (
+            json.dumps(candidate, indent=2) + "\n").encode()
     # Refuse silently overwriting evidence from a previous extraction.
     output.mkdir(parents=True, exist_ok=False)
     for name, data in artifacts.items():
@@ -223,7 +274,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--donor", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
-    parser.add_argument("--map", choices=[LAYOUT, "LittlerootTown", "Route101"], default=LAYOUT)
+    parser.add_argument("--map", choices=[LAYOUT, "LittlerootTown", "Route101", "OldaleTown"], default=LAYOUT)
     args = parser.parse_args()
     try:
         manifest = extract(args.donor, args.output, args.map)

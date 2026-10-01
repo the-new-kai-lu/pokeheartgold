@@ -6,6 +6,7 @@ from pathlib import Path
 import struct
 import tempfile
 import unittest
+from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location("extractor", ROOT / "scripts/extract_emerald_lab.py")
@@ -18,7 +19,7 @@ class OutdoorExtractionTests(unittest.TestCase):
         donor = ROOT.parent / "pokeemerald"
         if not donor.exists():
             self.skipTest("Pinned donor checkout required")
-        for name in ("LittlerootTown", "Route101"):
+        for name in ("LittlerootTown", "Route101", "OldaleTown"):
             with self.subTest(name=name), tempfile.TemporaryDirectory() as temp:
                 out = Path(temp) / name
                 manifest = extractor.extract(donor, out, name)
@@ -59,3 +60,40 @@ class OutdoorExtractionTests(unittest.TestCase):
     def test_unknown_maps_rejected(self):
         with self.assertRaises(ValueError):
             extractor.extract(Path("/nonexistent-donor"), Path("/unused"), "NotAMap")
+
+    def test_oldale_candidate_is_stateless_and_not_native_approval(self):
+        donor = ROOT.parent / "pokeemerald"
+        if not donor.exists():
+            self.skipTest("Pinned donor checkout required")
+        with tempfile.TemporaryDirectory() as temp:
+            out = Path(temp) / "oldale"
+            manifest = extractor.extract(donor, out, "OldaleTown")
+            candidate = json.loads((out / "arrival-candidate.json").read_text())
+            self.assertFalse(candidate["native_staging"])
+            self.assertFalse(candidate["native_play_verified"])
+            self.assertEqual(candidate["additional_save_allocation"], 0)
+            self.assertEqual(candidate["status"], "CANDIDATE_PENDING_INDEPENDENT_PARENT_REVIEW")
+            self.assertEqual(candidate["interaction"]["donor_event"]["flag"], "0")
+            self.assertEqual(candidate["interaction"]["donor_script"].splitlines()[1:],
+                             ["\tmsgbox OldaleTown_Text_SavingMyProgress, MSGBOX_NPC", "\tend"])
+            self.assertEqual(candidate["boundary"]["donor_pairs"],
+                             [dict(route=[x, 0], oldale=[x, 19]) for x in range(20)])
+            for name in ("data/maps/OldaleTown/scripts.inc", "data/maps/Route101/map.json"):
+                self.assertEqual(manifest["sources"][name],
+                                 hashlib.sha256((donor / name).read_bytes()).hexdigest())
+
+    def test_oldale_revision_and_dirty_source_fail_before_output(self):
+        donor = ROOT.parent / "pokeemerald"
+        if not donor.exists():
+            self.skipTest("Pinned donor checkout required")
+        with tempfile.TemporaryDirectory() as temp:
+            out = Path(temp) / "oldale"
+            with mock.patch.object(extractor.subprocess, "check_output", return_value="wrong"):
+                with self.assertRaisesRegex(ValueError, "revision mismatch"):
+                    extractor.extract(donor, out, "OldaleTown")
+            self.assertFalse(out.exists())
+            with mock.patch.object(extractor.subprocess, "check_output",
+                                   side_effect=[extractor.DONOR, b"wrong source"]):
+                with self.assertRaisesRegex(ValueError, "source drift"):
+                    extractor.extract(donor, out, "OldaleTown")
+            self.assertFalse(out.exists())

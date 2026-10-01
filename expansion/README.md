@@ -9,13 +9,17 @@ focused validation requirements. The older stock-format procedure below is
 historical evidence, not a prerequisite for continuing campaign development.
 No new binary save format or completed campaign is implied by this policy change.
 
+The next opt-in slice now includes an [Oldale outdoor candidate](../docs/oldale-arrival.md),
+with a native-tested correction to its south exit. It remains a partial segment;
+the linked record separates source tests, observed gameplay, and missing content.
+
 This remains **partial Stage 1 work, not a four-region ROM**. Private, opt-in
 debug probes are separate from published resource-staging checkpoint `94020a8`;
 their generated overlays are not installed in the production-map baseline.
 The latest private SoulSilver probe verified a native rescue
 WIN, Treecko receipt, native save, Elm return/revisit, and real browser and
 Windows editor UI round trips; see `VALIDATION.md` for exact hashes and scope.
-This is not an imported playable Hoenn episode. No full Hoenn or Sinnoh
+These baseline probes do not constitute a complete imported Hoenn episode. No full Hoenn or Sinnoh
 campaign, new save format, species, or battle mechanic is implemented. The
 host is pokeheartgold; hg-engine is reference-only. The owner’s vision v0.2
 requires a complete imported episode and persistent return travel before
