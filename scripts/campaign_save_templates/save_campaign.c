@@ -1,9 +1,9 @@
 #include "save_campaign.h"
 
+#include <stddef.h>
+
 #include "math_util.h"
 #include "save_trainer_house.h"
-
-#include <stddef.h>
 
 typedef char CampaignSizeCheck[sizeof(CampaignSave) == CAMPAIGN_BYTES ? 1 : -1];
 typedef char CampaignHoennVarsCheck[offsetof(CampaignSave, hoennVars) == 32 ? 1 : -1];
@@ -215,7 +215,8 @@ enum CampaignPartitionFormat CampaignSave_ClassifyPartition(const void *data, u3
     }
     if (CampaignSave_GeneralFooterValid(bytes, CAMPAIGN_GENERAL_BYTES)) {
         return CampaignSave_HeaderSupported(state)
-            ? CAMPAIGN_PARTITION_SUPPORTED : CAMPAIGN_PARTITION_UNSUPPORTED;
+            ? CAMPAIGN_PARTITION_SUPPORTED
+            : CAMPAIGN_PARTITION_UNSUPPORTED;
     }
     for (i = 0; i < size; i++) {
         allZero = allZero && bytes[i] == 0;
