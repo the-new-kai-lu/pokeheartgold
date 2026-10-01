@@ -1,5 +1,14 @@
 # ExpandedHeartGold — Stage 1 evidence
 
+## Current compatibility requirement
+
+The owner approved **expanded saves supported by the game and our PKHeX/PKMDS
+forks**, replacing the unchanged-vanilla-layout requirement. See
+[the expanded save contract](SAVE_FORMAT.md) for preservation, versioning, and
+focused validation requirements. The older stock-format procedure below is
+historical evidence, not a prerequisite for continuing campaign development.
+No new binary save format or completed campaign is implied by this policy change.
+
 This remains **partial Stage 1 work, not a four-region ROM**. Private, opt-in
 debug probes are separate from published resource-staging checkpoint `94020a8`;
 their generated overlays are not installed in the production-map baseline.
@@ -88,7 +97,12 @@ provenance, and any story omissions. The owner selected Emerald and Platinum.
 or a completed region. Do not replace recognizable plots with generic gym
 sequences.
 
-## Required manual ROM and editor loop
+## Historical stock-format ROM and editor loop
+
+This procedure records the earlier unchanged-layout contract. It is superseded
+as a development gate by [the focused expanded-save validation](SAVE_FORMAT.md#focused-validation).
+Keep its existing results and failures as evidence; do not rerun the entire
+matrix merely to satisfy the retired vanilla-compatibility requirement.
 
 Run separately for HeartGold and SoulSilver, on **copies**, not a valuable save.
 Record ROM SHA-1, game/editor commits, emulator version, platform, and settings.
@@ -130,6 +144,9 @@ Expanded-ROM legality checks will need an explicit project policy later.
 
 Finish the selected episode's resource, story-ID and battle/return-state audit.
 Then implement a reproducible import and test it alongside
-one high-risk scene/traversal mechanic. Keep stock save storage until an explicit
-capacity requirement justifies a migration. Stage 1 completion still requires
+one high-risk scene/traversal mechanic. Use explicitly allocated, versioned
+campaign storage when needed, with matching support in the editor forks.
+The current slice may retain its already allocated state; further stock-format
+compatibility cases must not block the next playable segment.
+Stage 1 completion still requires
 the full chosen campaigns and a documented end-to-end completion record.
