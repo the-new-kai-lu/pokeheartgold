@@ -75,5 +75,6 @@ unchanged-vanilla-format compatibility cases. Reuse passing checks when the
 relevant code and inputs have not changed.
 
 The first opt-in implementation is described in
-[campaign-state format v1](CAMPAIGN_SAVE_V1.md). Its source and host tests do not
-enable it in the tested Oldale build or constitute native-runtime acceptance.
+[campaign-state format v1](CAMPAIGN_SAVE_V1.md). Source and host tests alone are
+not native-runtime acceptance. The later bounded HeartGold/native-save/editor
+evidence and its remaining coverage limits are recorded in [STAGE1.md](STAGE1.md).

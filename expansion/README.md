@@ -8,6 +8,10 @@ or the later integrated cross-region storyline. The
 [current scope and lean completion checklist](STAGE1.md) supersede broader
 Stage 1 gates in the historical records below.
 
+The bounded **HeartGold prototype is complete** under that scope. Start with
+the [build and play guide](STAGE1_GUIDE.md). This does not claim a full region,
+current SoulSilver qualification, physical-hardware support or a polished release.
+
 ## Current compatibility requirement
 
 The owner approved **expanded saves supported by the game and our PKHeX/PKMDS
@@ -21,17 +25,14 @@ The next opt-in slice now includes an [Oldale outdoor candidate](../docs/oldale-
 with a native-tested correction to its south exit. It remains a partial segment;
 the linked record separates source tests, observed gameplay, and missing content.
 
-This remains **partial Stage 1 work, not a four-region ROM**. Private, opt-in
-debug probes are separate from published resource-staging checkpoint `94020a8`;
-their generated overlays are not installed in the production-map baseline.
-The latest private SoulSilver probe verified a native rescue
+The default production-map baseline remains separate from the opt-in episode.
+The current milestone evidence is in [STAGE1.md](STAGE1.md); the earlier private
+SoulSilver probe verified a native rescue
 WIN, Treecko receipt, native save, Elm return/revisit, and real browser and
 Windows editor UI round trips; see `VALIDATION.md` for exact hashes and scope.
-These baseline probes do not constitute a complete imported Hoenn episode. No full Hoenn or Sinnoh
-campaign, new save format, species, or battle mechanic is implemented. The
-host is pokeheartgold; hg-engine is reference-only. The owner’s vision v0.2
-requires a complete imported episode and persistent return travel before
-scaling to either full campaign.
+Those earlier baseline probes are not the current expanded-format acceptance.
+No full Hoenn or Sinnoh campaign, new species, or new battle mechanic is
+implemented. The host is pokeheartgold; hg-engine is reference-only.
 
 ## Reproduce the baseline
 
@@ -154,11 +155,6 @@ Expanded-ROM legality checks will need an explicit project policy later.
 
 ## Next gate
 
-Finish the selected episode's resource, story-ID and battle/return-state audit.
-Then implement a reproducible import and test it alongside
-one high-risk scene/traversal mechanic. Use explicitly allocated, versioned
-campaign storage when needed, with matching support in the editor forks.
-The current slice may retain its already allocated state; further stock-format
-compatibility cases must not block the next playable segment.
-Stage 1 completion requires the bounded opening episode, working expanded-save
-support and the focused checks in [STAGE1.md](STAGE1.md), not both full campaigns.
+Agree the next phase's scope before adding more regional content or integrated
+story work. Keep the bounded episode as a regression checkpoint, and apply the
+lean checks in [STAGE1.md](STAGE1.md) only when relevant inputs change.

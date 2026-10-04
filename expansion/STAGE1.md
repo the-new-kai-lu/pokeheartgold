@@ -4,6 +4,10 @@ The owner confirmed this boundary: **engine/save foundation plus one playable
 imported episode**. This supersedes older statements that Stage 1 requires the
 full Emerald and Platinum campaigns.
 
+**Status: complete for the bounded, opt-in HeartGold prototype described here.**
+This is not a four-region release, a polished town, or qualification of every
+editor workflow/edition. See the [build and play guide](STAGE1_GUIDE.md).
+
 Full original regional story imports and the new integrated cross-region
 storyline are later work. Their phase numbers are not established by this
 document. "Campaign state" in the implementation means persistent story flags
@@ -45,17 +49,51 @@ physical hardware.
 - [x] The Potion survived native saving and fresh Continue; repeat interaction
   did not grant another. These are retained R3 results, not a claim that R5's
   corrected dialogue was already observed.
-- [ ] Check the corrected dialogue's advance/scroll/dismiss behavior once in R5.
-- [ ] Close the episode's return/revisit check with expanded progress, reusing
+- [x] Check the corrected dialogue's advance/scroll/dismiss behavior once in R5.
+- [x] Close the episode's return/revisit check with expanded progress, reusing
   already-passing steps whose relevant code and inputs are unchanged.
-- [ ] Confirm a representative editor round trip preserves nonzero episode
+- [x] Confirm a representative editor round trip preserves nonzero episode
   progress. Reuse the existing frontend evidence where applicable; identify
   shared-byte native readback explicitly rather than replaying identical exports.
-- [ ] Finish the owner-facing reproduction/entry/exit instructions and list
+- [x] Finish the owner-facing reproduction/entry/exit instructions and list
   remaining prototype and edition limitations.
 
-These unchecked items remain completion gates. Reducing scope or test overhead
-does not turn an untested behavior into a pass.
+## Focused completion evidence
+
+The corrected R5 build completed with all 15 required new outputs. Its actual
+ROM ARM9 bytes equal the previously checked R3 code, so unchanged gameplay/save
+checks were reused rather than replayed. In a fresh process, the genuine saved
+Oldale checkpoint loaded; one deliberate dialogue advance displayed the final
+clause, and a separate advance dismissed it normally.
+
+That same session walked back through Route 101 and Littleroot, used the lab's
+prototype return NPC to reach Johto, then revisited Hoenn through Elm. Birch
+gave the already-received partner response. A normal in-game save completed,
+followed by normal emulator shutdown. The original checkpoint was untouched.
+The ordinary Johto lab assistant also gave his Potions during this journey;
+that is not a duplicate Oldale reward.
+
+The resulting genuine save had nonzero Hoenn progress, Cyndaquil and Treecko,
+and native counters 4/3. A focused check through the retained shared editor
+codec covered load, no-edit export, trainer-name-only edit, clone/copy, export
+and reopen. Both campaign allocations, the entire inactive bank, all Pokemon
+bytes and the DSV footer were preserved; only the requested name and ordinary
+dirty-mask/checksum bytes changed. Potion flag 132 remained set.
+
+A separate fresh game process loaded that edited export as `V1TEST`, continued
+at the saved Birch-lab location and retained the already-received response.
+Normal shutdown left the whole editor export unchanged.
+
+This last regression exercised the shared codec, **not new browser and desktop
+GUI runs**. The earlier independent real frontend import/edit/export/reopen
+checks are reused alongside it. The current native fixture has two party
+Pokemon and an empty PC; populated-PC codec coverage remains the separately
+labelled synthetic tests, not a new native populated-PC journey.
+
+The current source/build/player instructions were checked against the tracked
+producers and the completed build. No additional full build or unchanged
+source-test suite was run for these documentation-only changes. Private ROMs,
+saves and captures remain outside the repositories.
 
 ## Lean verification policy
 
