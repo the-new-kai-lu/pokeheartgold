@@ -1,5 +1,9 @@
 # Opt-in Emerald opening episode: source reproduction
 
+The owner-confirmed [Stage 1 boundary](../expansion/STAGE1.md) is the foundation
+plus this bounded playable episode, not full regional campaigns. The records
+below describe earlier checkpoints; their broader Stage 1 wording is historical.
+
 **The resume-safe Route 101 candidate (V8r4) passed one owner-local HeartGold
 journey through natural rescue victory, party-menu return, Treecko gift,
 the in-game nickname LEAF, native save and cold reload. Actual PKHeX and PKMDS

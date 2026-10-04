@@ -1,5 +1,13 @@
 # ExpandedHeartGold — Stage 1 evidence
 
+## Current milestone
+
+Stage 1 is **the engine/save foundation plus one playable imported episode**,
+as confirmed by the owner. It does not require full Emerald/Platinum imports
+or the later integrated cross-region storyline. The
+[current scope and lean completion checklist](STAGE1.md) supersede broader
+Stage 1 gates in the historical records below.
+
 ## Current compatibility requirement
 
 The owner approved **expanded saves supported by the game and our PKHeX/PKMDS
@@ -152,5 +160,5 @@ one high-risk scene/traversal mechanic. Use explicitly allocated, versioned
 campaign storage when needed, with matching support in the editor forks.
 The current slice may retain its already allocated state; further stock-format
 compatibility cases must not block the next playable segment.
-Stage 1 completion still requires
-the full chosen campaigns and a documented end-to-end completion record.
+Stage 1 completion requires the bounded opening episode, working expanded-save
+support and the focused checks in [STAGE1.md](STAGE1.md), not both full campaigns.

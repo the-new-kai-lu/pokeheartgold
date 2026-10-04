@@ -15,8 +15,10 @@ through the supported editor forks. Changing an unrelated Pokémon field must
 not erase campaign progress.
 
 This supersedes the unchanged-layout requirement and the historical stock-save
-compatibility matrix in `README.md`. It does not reduce the full Emerald and
-Platinum campaign scope or establish Stage 1 completion.
+compatibility matrix in `README.md`. The overall Emerald/Platinum expansion
+remains later work; the owner subsequently limited Stage 1 to the foundation
+and one playable imported episode. See [the current milestone](STAGE1.md).
+Neither policy change by itself establishes Stage 1 completion.
 
 ## Format design requirements
 
@@ -65,11 +67,12 @@ do not silently repin old baselines or remove corruption checks to make it pass.
 
 ## Immediate priority
 
-Resume the playable Emerald segment through Oldale and subsequent story
-progression. The current segment can keep its existing allocated state while a
-versioned campaign allocation is designed. Do not change the format merely to
-demonstrate that changing it is allowed, and do not block campaign work on further
-unchanged-vanilla-format compatibility cases.
+Finish the bounded Emerald opening through Oldale and the return/revisit loop;
+subsequent regional story progression is outside Stage 1. Use the existing
+versioned allocation where needed. Do not change the format merely to
+demonstrate that changing it is allowed, and do not block the episode on further
+unchanged-vanilla-format compatibility cases. Reuse passing checks when the
+relevant code and inputs have not changed.
 
 The first opt-in implementation is described in
 [campaign-state format v1](CAMPAIGN_SAVE_V1.md). Its source and host tests do not
