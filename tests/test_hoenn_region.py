@@ -11,7 +11,9 @@ from emerald_region_data import split_chunks, terrain_word
 from emerald_region_graphics import map_model, texture_pages
 from emerald_region_scripts import Bank, Scripts, Unsupported
 from hgss_land import Land, flat_bdhc
-from prepare_hoenn_region import connection_cells, event_size, helper_object_id, ranges
+from prepare_hoenn_region import (
+    connection_cells, event_size, expanded_header_template, helper_object_id, ranges,
+)
 
 
 def scripts(blocks, names=None):
@@ -24,6 +26,16 @@ def scripts(blocks, names=None):
 
 
 class HoennRegionTests(unittest.TestCase):
+    def test_expanded_cartridge_capacity_does_not_rewrite_other_template_fields(self):
+        original = bytearray(0x4000)
+        original[0x14] = 10
+        expanded = expanded_header_template(bytes(original))
+        self.assertEqual(expanded[0x14], 11)
+        self.assertEqual(expanded[:0x14], original[:0x14])
+        self.assertEqual(expanded[0x15:], original[0x15:])
+        with self.assertRaises(ValueError):
+            expanded_header_template(expanded)
+
     def test_larger_maps_split_without_coordinate_truncation(self):
         self.assertEqual(len(split_chunks(40, 140)), 10)
         self.assertEqual(split_chunks(33, 33), [(0, 0), (1, 0), (0, 1), (1, 1)])

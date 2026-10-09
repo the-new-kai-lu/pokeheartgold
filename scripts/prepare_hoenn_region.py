@@ -44,6 +44,15 @@ def json_bytes(value):
     return (json.dumps(value, indent=2, ensure_ascii=False) + "\n").encode()
 
 
+def expanded_header_template(data):
+    """2 Gbit / 256 MiB cartridge capacity; makerom recalculates header CRCs."""
+    if len(data) < 0x160 or data[0x14] != 10:
+        raise ValueError("Expected the opening's 1 Gbit ROM header template")
+    result = bytearray(data)
+    result[0x14] = 11
+    return bytes(result)
+
+
 def sprite(name):
     """Declared stock stand-ins, not a claim of imported Emerald actor artwork."""
     for fragment, number in (
@@ -152,6 +161,14 @@ def prepare(episode, donor_root, output):
 
         def edit(name, before, after):
             put(name, replace_once((tree / name).read_text(), before, after, name))
+
+        # The native linker succeeds with the whole region, but the resulting
+        # ~170 MB image no longer fits the retail 1 Gbit packaging limit.
+        # Change only this opt-in source tree, not the default retail baseline.
+        edit("rom.rsf", "RomSize 1G", "RomSize 2G")
+        for edition in ("heartgold.us", "soulsilver.us"):
+            name = edition + "/rom_header_template.sbin"
+            put(name, expanded_header_template((tree / name).read_bytes()))
 
         archives = {name: narc_members((tree / name).read_bytes())
                     for name in (AREAS, TEXTURES, LANDS)}
@@ -587,6 +604,7 @@ def prepare(episode, donor_root, output):
             native_build_verified=False, gameplay_verified=False,
             scope=dict(donor_maps=len(maps), retained_maps=len(PRESERVED), added_maps=len(added),
                        native_map_count=FIRST_MAP + len(added), land_members=len(archives[LANDS]),
+                       rom_capacity_bytes=256 * 1024 * 1024,
                        trainer_parties=len(battle.trainers), encounter_tables=len(encounter_banks),
                        interactions=dict(statuses)),
             maps=list(records.values()), interaction_blockers=dict(blockers.most_common()),

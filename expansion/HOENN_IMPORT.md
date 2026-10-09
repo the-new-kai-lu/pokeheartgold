@@ -34,6 +34,11 @@ it does not scale towns into a thumbnail or remove detail to fit the opening's
 old 20×20 constraint. Sidecar tables handle larger area/encounter IDs without
 widening `MapHeader`'s packed binary layout.
 
+The generated tree uses a **2 Gbit / 256 MiB ROM capacity**, including matching
+header templates. The region exceeded the retail 1 Gbit packaging limit; this
+is ROM storage capacity, not an increase in DS RAM. The default retail checkout
+and its matching-build settings remain unchanged.
+
 The output contains:
 
 - `hoenn-import-report.json`: per-map IDs, supported interactions, blocked
