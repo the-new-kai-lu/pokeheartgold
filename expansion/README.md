@@ -2,15 +2,20 @@
 
 ## Current milestone
 
-Stage 1 is **the engine/save foundation plus one playable imported episode**,
-as confirmed by the owner. It does not require full Emerald/Platinum imports
-or the later integrated cross-region storyline. The
-[current scope and lean completion checklist](STAGE1.md) supersede broader
-Stage 1 gates in the historical records below.
+Stage 1 has resumed **regional campaign integration**, starting with a bulk
+Emerald/Hoenn import. The foundation and one-episode HeartGold checkpoint is
+complete, not the original full Stage 1. The
+[current scope and lean verification policy](STAGE1.md) distinguish the two.
 
-The bounded **HeartGold prototype is complete** under that scope. Start with
-the [build and play guide](STAGE1_GUIDE.md). This does not claim a full region,
-current SoulSilver qualification, physical-hardware support or a polished release.
+The owner and friends will do broad gameplay testing. Use focused importer
+checks and a successful HeartGold build, not exhaustive automated playthroughs,
+as the experimental-build gate. Unsupported content must remain explicit.
+The [opening build and play guide](STAGE1_GUIDE.md) still describes only the
+retained small-scale checkpoint.
+
+The [bulk Hoenn import guide](HOENN_IMPORT.md) describes the batch converter,
+its owner-local output and the implementation gaps that compilation alone
+cannot establish as working.
 
 ## Current compatibility requirement
 
@@ -155,6 +160,7 @@ Expanded-ROM legality checks will need an explicit project policy later.
 
 ## Next gate
 
-Agree the next phase's scope before adding more regional content or integrated
-story work. Keep the bounded episode as a regression checkpoint, and apply the
-lean checks in [STAGE1.md](STAGE1.md) only when relevant inputs change.
+Deliver the Hoenn batch importer and build with an honest content/limitations
+report. Keep the bounded episode as a regression checkpoint, and apply the lean
+checks in [STAGE1.md](STAGE1.md) only when relevant inputs change. Do not claim
+campaign completion merely because the ROM compiles.

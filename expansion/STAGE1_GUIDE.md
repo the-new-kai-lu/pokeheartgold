@@ -1,8 +1,10 @@
 # Building and entering the Stage 1 prototype
 
-This is the bounded HeartGold episode in [STAGE1.md](STAGE1.md), not a complete
-Hoenn/Sinnoh import or the later integrated storyline. The default checkout
-still builds its baseline maps; the episode is an explicit opt-in source build.
+This guide is for the completed opening checkpoint described in
+[STAGE1.md](STAGE1.md), not the full Hoenn/Sinnoh import. Stage 1 has resumed
+bulk regional integration; the checkpoint remains available independently.
+The default checkout still builds its baseline maps; the episode is an explicit
+opt-in source build.
 
 ## Inputs
 

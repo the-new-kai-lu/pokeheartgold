@@ -1,21 +1,45 @@
-# Stage 1: foundation and one playable episode
+# Stage 1: regional campaign integration
 
-The owner confirmed this boundary: **engine/save foundation plus one playable
-imported episode**. This supersedes older statements that Stage 1 requires the
-full Emerald and Platinum campaigns.
+**Status: in progress. The foundation / opening-episode checkpoint is complete;
+the full regional import is not.**
 
-**Status: complete for the bounded, opt-in HeartGold prototype described here.**
-This is not a four-region release, a polished town, or qualification of every
-editor workflow/edition. See the [build and play guide](STAGE1_GUIDE.md).
+The owner has resumed the original Stage 1 roadmap and selected **all of Hoenn,
+using Emerald as the donor**, as the next import target. The previously accepted
+foundation-plus-one-episode scope is a completed checkpoint (approximately
+original stages 1A/1B), not completion of the original full Stage 1.
 
-Full original regional story imports and the new integrated cross-region
-storyline are later work. Their phase numbers are not established by this
-document. "Campaign state" in the implementation means persistent story flags
-and variables; it does not imply that a new integrated storyline is being built.
+The original roadmap puts regional campaign integration in Stage 1, meaningful
+progression and a limited advanced-form experiment in Stage 2, broader playtest
+and production validation in Stage 3, and scale/polish in Stage 4. It does not
+assign a new unified storyline to Stage 3 or 4. Preserve the regional stories;
+do not substitute a generic sequence of gyms.
+
+## Current work: bulk Hoenn import
+
+Generalize the opening's conversion process and apply it to the region rather
+than individually certifying every map. Include a coverage report separating
+converted resources from unsupported scripts, mechanics and dynamic state.
+Compilation is a build check, not evidence that a story event works.
+
+The owner and friends will perform the broad gameplay testing. The delivery
+gate is focused importer checks, reference/resource-bound validation, and a
+successful HeartGold ROM build. Reuse the small-scale checks whose relevant
+inputs are unchanged; do not repeat a full gameplay, editor, edition or hardware
+matrix. An unimplemented conversion is an implementation gap, not merely an
+untested feature, and must be named as such.
+
+Sinnoh/Platinum remains part of the original roadmap, but is not part of this
+Hoenn batch. Stage 2 is not started by this work.
+
+## Completed opening checkpoint
+
+The opt-in HeartGold prototype below is the retained regression checkpoint,
+not a four-region release or a polished town. See its
+[build and play guide](STAGE1_GUIDE.md).
 
 ## Episode boundary
 
-Finish the existing Hoenn opening slice rather than starting more regions:
+The completed checkpoint covers:
 
 - Enter Hoenn from Johto using the documented prototype travel entrance.
 - Traverse Littleroot, Birch's lab and Route 101; complete the actual rescue
@@ -26,8 +50,8 @@ Finish the existing Hoenn opening slice rather than starting more regions:
 
 The prototype entrance is not the final integrated-story travel system.
 Oldale interiors, Routes 102/103, the rival sequence, gyms and the remainder of
-Emerald/Platinum are outside this milestone. Record closed borders and other
-prototype limitations instead of implying a finished region.
+Emerald/Platinum are outside that completed checkpoint. They are not implicitly
+implemented by its passing results.
 
 ## Foundation
 
@@ -41,7 +65,7 @@ saves, donor assets, proprietary tools or licenses in the repositories. Name the
 edition actually checked; HeartGold evidence does not certify SoulSilver or
 physical hardware.
 
-## Current completion checklist
+## Opening checkpoint completion checklist
 
 - [x] The corrected Oldale HeartGold native build completed successfully (R5).
 - [x] An earlier matching gameplay run earned the Johto and Hoenn partners,
@@ -58,7 +82,7 @@ physical hardware.
 - [x] Finish the owner-facing reproduction/entry/exit instructions and list
   remaining prototype and edition limitations.
 
-## Focused completion evidence
+## Retained opening checkpoint evidence
 
 The corrected R5 build completed with all 15 required new outputs. Its actual
 ROM ARM9 bytes equal the previously checked R3 code, so unchanged gameplay/save
@@ -105,8 +129,9 @@ saves and captures remain outside the repositories.
   coverage. Protect original saves and keep normal gameplay outcomes genuine.
 - Reuse existing source/build records. Do not make a new full provenance package,
   unchanged-input audit or complete playthrough a routine gate for a small edit.
-- Broader direction/failure matrices, full regional completion and hardware
-  qualification belong at their relevant later delivery milestone.
+- Broad gameplay testing of the new regional import is owner-led. Exhaustive
+  direction/failure matrices and hardware qualification are not blockers for
+  the experimental Hoenn build.
 
 Do not use savestates or gameplay-memory/outcome injection as evidence of
 ordinary progression. Preserve failures and label unverified cases honestly.
