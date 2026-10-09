@@ -191,7 +191,8 @@ class Bank:
             closure = self.scripts.closure(root, object_flag)
             labels = {label: prefix + str(i) for i, label in enumerate(closure)}
             body = ["LockAll", *(["FacePlayer"] if face else []),
-                    "BufferPlayersName 0", "GoTo " + labels[root]]
+                    "BufferPlayersName 0", "Call " + labels[root],
+                    "CloseMsg", "ReleaseAll", "End"]
             for label, operations in closure.items():
                 body.append(labels[label] + ":")
                 for operation_index, (op, args) in enumerate(operations):

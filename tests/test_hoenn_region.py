@@ -11,7 +11,7 @@ from emerald_region_data import split_chunks, terrain_word
 from emerald_region_graphics import map_model, texture_pages
 from emerald_region_scripts import Bank, Scripts, Unsupported
 from hgss_land import Land, flat_bdhc
-from prepare_hoenn_region import connection_cells, event_size, ranges
+from prepare_hoenn_region import connection_cells, event_size, helper_object_id, ranges
 
 
 def scripts(blocks, names=None):
@@ -35,6 +35,16 @@ class HoennRegionTests(unittest.TestCase):
         self.assertEqual(terrain_word((3 << 12) | (1 << 10), 0), (0x8000, None))
         self.assertEqual(terrain_word(3 << 12, 0x53), (0x8000, 0x53))
         self.assertEqual(terrain_word(3 << 12, 2), (2, None))
+
+    def test_collidable_ledges_keep_their_native_jump_behavior(self):
+        self.assertEqual(terrain_word((3 << 12) | (1 << 10), 0x3B),
+                         (0x803B, None))
+
+    def test_helpers_do_not_use_daycare_or_omitted_donor_ids(self):
+        event = dict(objects=[dict(id=1), dict(id=3)])
+        self.assertEqual(helper_object_id(event, donor_count=8), 9)
+        with self.assertRaises(ValueError):
+            helper_object_id(event, donor_count=249)
 
     def test_physical_mixed_4_and_8_bit_texture_pixels(self):
         tiles = [tuple((x + y) % 11 for y in range(16) for x in range(16)),
@@ -119,6 +129,12 @@ class HoennRegionTests(unittest.TestCase):
         source = scripts({"A": ["goto B"], "B": ["call A", "return"]})
         with self.assertRaises(Unsupported):
             source.closure("A")
+
+    def test_returning_entry_has_an_outer_unlock_continuation(self):
+        source = scripts({"NPC": ["return"]})
+        bank = Bank(source, 831)
+        bank.interaction("NPC", face=True)
+        self.assertIn("Call Interaction1_0\nCloseMsg\nReleaseAll\nEnd", bank.assembly())
 
     def test_initializer_braces_inside_names_are_not_syntax(self):
         self.assertEqual(brace_body('{.name = _("{PLAYER}"), .party = {1, 2}} tail', 0),

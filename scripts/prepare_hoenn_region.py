@@ -61,6 +61,15 @@ def object_event(local_id, graphic, script_id, x, z, flag=0, facing=1):
                 param0=0, param1=0, param2=0, xRange=0, yRange=0, x=x, z=z, y=0)
 
 
+def helper_object_id(event, donor_count=0):
+    # 250 is obj_daycare_poke_1, not a free NPC ID. Keep donor IDs reserved
+    # even when an unsupported template was omitted from this first batch.
+    value = max([donor_count] + [o["id"] for o in event["objects"]]) + 1
+    if not 0 < value < 240:
+        raise ValueError("No ordinary NPC ID available for test travel")
+    return value
+
+
 def event_size(event):
     return (16 + len(event["objects"]) * 32 + len(event["bgs"]) * 20
             + len(event["warps"]) * 12 + len(event["coords"]) * 16)
@@ -342,7 +351,8 @@ def prepare(episode, donor_root, output):
                     positions = ((x, y), (x, y + 1))
                     if any(p in occupied or p in triggers for p in positions):
                         continue
-                    if all(terrain[key][tile_index(key, *p)] == 0 for p in positions):
+                    if all(terrain[key][tile_index(key, *p)] in (0, 8, 22, 23, 33)
+                           for p in positions):
                         spawn = (x, y)
                         break
                 if spawn:
@@ -352,7 +362,8 @@ def prepare(episode, donor_root, output):
                 sid = bank.raw(f"LockAll\nFacePlayer\nNPCMsg {msg}\nYesNo 0x8000\nCloseMsg\n"
                                f"Compare 0x8000, 0\nGoToIfNe ReturnCancel\n"
                                f"Warp 543, 0, 10, 16, 0\nReturnCancel:\nReleaseAll\nEnd")
-                event["objects"].append(object_event(250, 29, sid, *spawn))
+                helper_id = helper_object_id(event, len(m.get("object_events", [])))
+                event["objects"].append(object_event(helper_id, 29, sid, *spawn))
                 record["test_entry"] = [spawn[0], spawn[1] + 1]
             else:
                 record["test_entry"] = None
@@ -477,7 +488,9 @@ def prepare(episode, donor_root, output):
                      "ReleaseAll", "End"]
         body += ["HoennDirectoryClose:", "ReleaseAll", "End"]
         sid = append_preserved_entry("MAP_OLDALE_TOWN", "HoennTestDirectory", "\n".join(body))
-        events["MAP_OLDALE_TOWN"]["objects"].append(object_event(250, 29, sid, 10, 15))
+        oldale = events["MAP_OLDALE_TOWN"]
+        helper_id = helper_object_id(oldale, len(donor.maps["MAP_OLDALE_TOWN"].get("object_events", [])))
+        oldale["objects"].append(object_event(helper_id, 29, sid, 10, 15))
         put(oldale_messages, ET.tostring(xml, encoding="utf-8", xml_declaration=True))
 
         for key, info in PRESERVED.items():

@@ -157,10 +157,13 @@ NATIVE_BEHAVIOR = {0x02: 2, 0x03: 3, 0x08: 8, 0x0B: 8, 0x16: 22,
 
 def terrain_word(block, attribute):
     collision, behavior = (block >> 10) & 3, attribute & 255
+    if behavior in GROUND or behavior in NATIVE_BEHAVIOR:
+        # Collision and behavior are independent. In particular Emerald's
+        # cardinal ledges have collision=1: discarding their low behavior byte
+        # turns every imported ledge into an ordinary impassable wall.
+        return (0x8000 if collision else 0) | NATIVE_BEHAVIOR.get(behavior, 0), None
     if collision:
         return 0x8000, None
-    if behavior in GROUND or behavior in NATIVE_BEHAVIOR:
-        return NATIVE_BEHAVIOR.get(behavior, 0), None
     return 0x8000, behavior
 
 
