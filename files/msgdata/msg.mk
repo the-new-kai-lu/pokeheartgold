@@ -873,3 +873,4 @@ files/msgdata/msg/msg_0825.bin: MSGENCFLAGS += -k 0xB47D
 files/msgdata/msg/msg_0826.bin: MSGENCFLAGS += -k 0xB479
 files/msgdata/msg/msg_0827.bin: MSGENCFLAGS += -k 0xB465
 files/msgdata/msg/msg_0828.bin: MSGENCFLAGS += -k 0xB461
+files/msgdata/msg/msg_0829_hoenn_reward.bin: MSGENCFLAGS += -k 0xB461

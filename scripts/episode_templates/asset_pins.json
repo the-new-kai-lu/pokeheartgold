@@ -1,0 +1,60 @@
+{
+  "donor": {
+    "data/layouts/LittlerootTown/border.bin": "aa298641e3346d9c7ac51454222ff057768946e61980fd82e4db65912df412fe",
+    "data/layouts/LittlerootTown/map.bin": "9bc2d52ac0f515a2af3a12483e3913aee3948531f91ca0547513f53ce92acf9d",
+    "data/layouts/Route101/border.bin": "aa298641e3346d9c7ac51454222ff057768946e61980fd82e4db65912df412fe",
+    "data/layouts/Route101/map.bin": "134cf07849968c1b3415df2205e5ba771cb26ba5484cc5d78a1e8d76e52f12ed",
+    "data/layouts/layouts.json": "5ac58ee1072862c937f82121a931b3315ccca3b5ae807f2a28a0e273957c2e4f",
+    "data/maps/LittlerootTown/map.json": "5bdd4157ca532864c0ba4bc8d0246e4b9e55c82e52b4d373d58270836ae9330f",
+    "data/maps/Route101/map.json": "d66cd8eeed6b6f164ed28060de85262476e016b668a6d9b26cf434efdb1d69f9",
+    "data/maps/Route101/scripts.inc": "8188d24a837d971f5d64bb48074dc714400929d5903006ba24a84892c72c95ed",
+    "data/tilesets/primary/general/metatile_attributes.bin": "06c9548a6c70d133b6d47638090f5d36f3fec92aace3d90deca758a4404cfa9b",
+    "data/tilesets/primary/general/metatiles.bin": "17974b0ba1bb9d105d5ba255c69a3b80d8484a26ea0b8ff22c6c6567c6c22910",
+    "data/tilesets/primary/general/palettes/00.pal": "e7fec32eef41a79d6d45e7f5af9dc74717a1d40ce07aa7cef37eeb7edd47f579",
+    "data/tilesets/primary/general/palettes/01.pal": "c17687ece4bb432d345b43b4e806ebba741553b1ed83b0f46207ce537db5d25c",
+    "data/tilesets/primary/general/palettes/02.pal": "6a2609b1c79e8489ed11182eb075edf0e25d80b5b3b7912c0de20dc5da594eb9",
+    "data/tilesets/primary/general/palettes/03.pal": "1556f735bbb61b32d99e9feba63441c83cfc25ea11d5aaa7c99ac3be92cc7a19",
+    "data/tilesets/primary/general/palettes/04.pal": "36f8de115ed9a96bab2035f4d3d10988ac2365e4fc2b530feb7ea2ef09772f68",
+    "data/tilesets/primary/general/palettes/05.pal": "8356b54b4d39ed880b83f39c82b61699dd720e28eb2ebc2d80a4bd360d8720e2",
+    "data/tilesets/primary/general/tiles.png": "365ba5482e7564763e614a0009900d1c317790dcd9f7a06c4ab74c363a3ba2f5",
+    "data/tilesets/secondary/petalburg/metatile_attributes.bin": "045a3b309c661c87a7704a8ae90d01d24d4532d853b84c730460fe176702ccd7",
+    "data/tilesets/secondary/petalburg/metatiles.bin": "3f2e021f25bc0ed6130956d70de833e874191349bc761188dbb716f32d8d7bae",
+    "data/tilesets/secondary/petalburg/palettes/06.pal": "d19ac2cc38bf373a77ca9067bb62fa3860d7efc3b2e3662287e077016becb685",
+    "data/tilesets/secondary/petalburg/palettes/07.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/petalburg/palettes/08.pal": "a2721e74b6f3dab4516825ff3fba64768d971b50319f40e2495450ef29b0c525",
+    "data/tilesets/secondary/petalburg/palettes/09.pal": "81f3aa2cce80945b1229a60058ea88d3f6335829220725935bced555d7d42ed5",
+    "data/tilesets/secondary/petalburg/palettes/10.pal": "05dff2802ae119041dfd03c7685b735c7c751ee5f93f60f8828e04a2bce53548",
+    "data/tilesets/secondary/petalburg/palettes/11.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/petalburg/palettes/12.pal": "ea391b70a00c55f0fe13590e345ee9b66fb9013864b737f40258d99f70f6eb04",
+    "data/tilesets/secondary/petalburg/tiles.png": "5f7427dfdd227f6f048b5ee9aa167144672a228dbc5bd25a84a6e348d62429d9",
+    "graphics/object_events/palettes/enemy_zigzagoon.pal": "1e5afb63e44f7082ccf700728234dca7a12187a23b95bedbdc97afa6ad98b5ee",
+    "graphics/object_events/palettes/npc_2.pal": "b47f2d2f26fbd42f1dc7375f56714765305c854b994f8046fb35d699220e1f9f",
+    "graphics/object_events/pics/misc/birchs_bag.png": "4facdd95cf1a101d93aea09b65aa68f5de1a2f911672d0f9f41bd1dc1206f266",
+    "graphics/object_events/pics/pokemon/enemy_zigzagoon.png": "9ce64ef2753a40afda7b226bb58f4f5e9514c0578f6ff3fb1c937baf0cb12b9b",
+    "include/constants/event_objects.h": "c8ae523d6dc4abb0a174beabc7a0e360e7cfff9fb93f1134cd85b971a6064381",
+    "src/data/object_events/object_event_anims.h": "4663646948caefc458e31684d6f3b89d55f50b34d8c8a6c7ca1724d139549b2a",
+    "src/data/object_events/object_event_graphics.h": "8e10170cad0ec08b4008eea74376adeb42048c10957f5fec9e9a2e48e25b7a4e",
+    "src/data/object_events/object_event_graphics_info.h": "eeb2cf276ee20664276c7905bd1e36ed40519e271655a0ef2bed3b1d56960983",
+    "src/data/object_events/object_event_graphics_info_pointers.h": "99589853f32b6773d75a9cf9871909420d83a323b95b5940cb77ee8a4037cf9d",
+    "src/data/object_events/object_event_pic_tables.h": "9d3f6afdfd3010fecfaf44a956de30a4f6d9697205b2e0ff78f5e285f47d6471"
+  },
+  "native": {
+    "asm/overlay_01_sprite_data.s": "947a43efcdb57b7c6074cdc03da5015b582aa92001b0c738620ff18451100126",
+    "files/data/mmodel/mmodel/mmodel_00000054.NSBTX": "749200a9bcd618fc47b1d56ab8f0c41f3d453a64ceeb72e7318e14ed6975604b",
+    "files/data/mmodel/mmodel/mmodel_00000266.NSBMD": "3432dea6fcb47f310336f2ff6dd2e40cb428360efa7e2847d393e1e877d3cb9a",
+    "files/data/mmodel/mmodel/mmodel_00000280.json": "d7366e285ea14a115ad70227d08df91db880b47bdac98306c3fe466588d9a25c",
+    "include/constants/sprites.h": "f794bad6114be6671f03fc3a80ba9d743e8b7106e1f2678c4f7f3514d75b10ed"
+  },
+  "packs": {
+    "LittlerootTown": {
+      "cells.json": "a06a13b786fd6a46fc6b0e43f870eeae8093c261a62d1059affe3df684cb9ce8",
+      "donor-events.json": "5bdd4157ca532864c0ba4bc8d0246e4b9e55c82e52b4d373d58270836ae9330f",
+      "preview.png": "e9842e1d0f1c5bad9e0ba76cbff79b199be4c76888e302c719bc9cb5cca3651a"
+    },
+    "Route101": {
+      "cells.json": "a8b4dd51296c3fcf416914f1764cf8da1852489b5d375d23882a8df3e5d96440",
+      "donor-events.json": "d66cd8eeed6b6f164ed28060de85262476e016b668a6d9b26cf434efdb1d69f9",
+      "preview.png": "ce22420881a428c06ba2faa621a5995be81a4274247eb2e1a1a29cf5f1153359"
+    }
+  }
+}
